@@ -91,6 +91,7 @@
 /* Resaltes de la guía de farmeo: el color refuerza, el texto ya nombra el elemento (AA en claro y oscuro) */
 .hl { font-weight: 600; }
 .hl-r { color: #b91c1c; } .hl-g { color: #166534; } .hl-b { color: #1d4ed8; } .hl-p { color: #6d28d9; }
+.hl-n { color: #475569; } .dark .hl-n { color: #cbd5e1; }
 .hl-c { color: #0e7490; } .hl-k { color: #0369a1; } .hl-y { color: #854d0e; } .hl-o { color: #9a3412; } .hl-m { color: #be185d; }
 .dark .hl-r { color: #fca5a5; } .dark .hl-g { color: #86efac; } .dark .hl-b { color: #93c5fd; } .dark .hl-p { color: #c4b5fd; }
 .dark .hl-c { color: #67e8f9; } .dark .hl-k { color: #7dd3fc; } .dark .hl-y { color: #fde047; } .dark .hl-o { color: #fdba74; } .dark .hl-m { color: #f9a8d4; }
@@ -120,3 +121,10 @@ a { text-decoration: none; }
 /* IVs 31 / EVs 252 en verde lima (AA sobre claro y oscuro) */
 .stat-max { color: #4d7c0f; font-weight: 700; }
 .dark .stat-max { color: #a3e635; }
+
+/* Fondo general de la portada (solo con <body class="home-bg">). La imagen se mueve con el scroll y se repite en vertical;
+   un velo del color del tema mantiene el texto legible. Cambia .86 para más o menos velo. */
+body.home-bg {
+  background: linear-gradient(rgb(var(--bg) / .86), rgb(var(--bg) / .86)), url('/img/fondo-inicio.webp') top center / 100% auto repeat-y;
+  background-color: rgb(var(--bg));
+}

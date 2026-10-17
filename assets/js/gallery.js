@@ -16,10 +16,10 @@ const dataEl = document.getElementById('gallery-data');
 const root = document.getElementById('gallery-root');
 const listView = document.getElementById('list-view');
 const data = JSON.parse(dataEl.textContent);
-const SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+const SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/';
 const LEAD_TITLE = 'Pokémon líder';
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const sprite = (dex) => `${SPRITE}${dex}.png`;
+const sprite = (dex) => `${SPRITE}${dex}.gif`;
 
 // ---------- Índices ----------
 /** nombre → { name, dex, blocks: [{ gen, entry, follow: sección[] }] } (orden de aparición) */
@@ -43,7 +43,7 @@ const teamRe = new RegExp(`\\b(${data.team.map((m) => m.name).join('|')})\\b`, '
 /** Texto con el sprite de tus Pokémon junto a su nombre. */
 const teamify = (text) =>
   esc(text).replace(teamRe, (n) =>
-    `<img src="${sprite(teamDex[n])}" alt="${n}" title="${n}" width="96" height="96" loading="lazy" class="mx-0.5 inline-block h-9 w-9 align-middle [image-rendering:pixelated]" />`);
+    `<img src="${sprite(teamDex[n])}" alt="${n}" title="${n}" width="96" height="96" loading="lazy" class="mx-0.5 inline-block h-9 w-9 align-middle object-contain [image-rendering:pixelated]" />`);
 
 // ---------- Estado ----------
 const state = { gen: 'all', selected: null };
@@ -65,7 +65,7 @@ const items = [...leaders.values()].map((l) => {
   li.dataset.name = l.name;
   li.innerHTML = `<button type="button" aria-expanded="false" aria-controls="gallery-detail"
       class="flex w-full flex-col items-center rounded-xl border border-line bg-surface p-1.5 transition-colors hover:border-accent aria-expanded:border-accent-strong aria-expanded:bg-accent/10">
-      <img src="${sprite(l.dex)}" alt="" width="96" height="96" loading="lazy" decoding="async" class="h-16 w-16 [image-rendering:pixelated]" />
+      <img src="${sprite(l.dex)}" alt="" width="96" height="96" loading="lazy" decoding="async" class="h-16 w-16 object-contain [image-rendering:pixelated]" />
       <span class="mt-0.5 w-full truncate text-center text-xs">${esc(l.name)}</span>
       <span class="text-[11px] leading-tight text-muted">Gen ${[...gensOf(l)].join(' · ')}</span></button>`;
   grid.append(li);
@@ -81,7 +81,7 @@ detail.tabIndex = -1;
 
 // ---------- Detalle ----------
 const rivalCard = (name, dex, extra = '') =>
-  `<span class="flex w-16 flex-col items-center text-center"><img src="${sprite(dex)}" alt="" width="96" height="96" loading="lazy" class="h-12 w-12 [image-rendering:pixelated]" /><span class="text-xs">${esc(name)}</span>${extra}</span>`;
+  `<span class="flex w-16 flex-col items-center text-center"><img src="${sprite(dex)}" alt="" width="96" height="96" loading="lazy" class="h-12 w-12 object-contain [image-rendering:pixelated]" /><span class="text-xs">${esc(name)}</span>${extra}</span>`;
 
 function stepHtml(step) {
   if (typeof step === 'string') return `<li>${teamify(step)}</li>`;
@@ -129,7 +129,7 @@ function renderDetail(l) {
   detail.innerHTML = `
     <div class="flex items-start justify-between gap-3">
       <div class="flex items-center gap-3">
-        <img src="${sprite(l.dex)}" alt="" width="96" height="96" class="h-20 w-20 shrink-0 [image-rendering:pixelated]" />
+        <img src="${sprite(l.dex)}" alt="" width="96" height="96" class="h-20 w-20 shrink-0 object-contain [image-rendering:pixelated]" />
         <div><h3 id="gallery-detail-title" class="!m-0 text-lg font-bold" tabindex="-1">RED empieza con ${esc(l.name)}</h3>
         <p class="!m-0 text-sm text-muted">${blocks.length > 1 ? 'Aparece como líder en 2 generaciones: despliega la que enfrentas.' : `Generación ${blocks[0].gen}`}</p></div>
       </div>

@@ -6,6 +6,25 @@ import { hydrateIcons } from './icons.js';
 
 await ready;
 
+// --- Sprites animados (GIF de PokeAPI, Gen 5) ---
+// · Con «reducir movimiento» se muestran estáticos (PNG).  · Si un GIF no carga, se usa el PNG estático.
+const ANIM = 'versions/generation-v/black-white/animated/';
+const still = (src) => src.replace(ANIM, '').replace(/\.gif$/, '.png');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const freeze = (img) => { if (reduce && img.src.includes(ANIM)) img.src = still(img.src); };
+document.addEventListener('error', (e) => {
+  const img = e.target;
+  if (img instanceof HTMLImageElement && !img.hasAttribute('data-own-error') && img.src.includes(ANIM)) img.src = still(img.src);
+}, true);
+const sweep = () => { if (reduce) document.querySelectorAll(`img[src*="${ANIM}"]`).forEach(freeze); };
+if (reduce) {
+  sweep();
+  new MutationObserver((list) => list.forEach((r) => {
+    if (r.type === 'attributes') freeze(r.target);
+    r.addedNodes.forEach((n) => { if (n.nodeType === 1) { freeze(n); n.querySelectorAll?.(`img[src*="${ANIM}"]`).forEach(freeze); } });
+  })).observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['src'] });
+}
+
 // --- Estructura común (navbar, footer): idioma, tema, iconos ---
 hydrateIcons();
 applyTranslations();
@@ -40,10 +59,10 @@ if (document.getElementById('hub')) {
 }
 
 // --- Guías con galería de situaciones (p. ej. RED) ---
-if (document.getElementById('gallery-data')) import('./gallery.js');
-if (document.getElementById('raid-guide')) import('./raid.js');
-if (document.getElementById('farmeo-guide')) import('./farmeo.js');
-if (document.getElementById('rush-progress')) import('./rusheo.js');
+if (document.getElementById('gallery-data')) import('./gallery.js').then(sweep);
+if (document.getElementById('raid-guide')) import('./raid.js').then(sweep);
+if (document.getElementById('farmeo-guide')) import('./farmeo.js').then(sweep);
+if (document.getElementById('rush-progress')) import('./rusheo.js').then(sweep);
 
 // --- Páginas de guía: contador y aviso de traducción ---
 const guide = document.querySelector('[data-guide]');

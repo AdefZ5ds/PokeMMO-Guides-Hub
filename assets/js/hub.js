@@ -7,7 +7,7 @@ import { icon } from './icons.js';
 import { loadViews } from './counter.js';
 
 const BASE = import.meta.env.BASE_URL;
-const SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+const SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/';
 const NEW_DAYS = 45;
 const SORTS = ['popular', 'alpha', 'recent'];
 
@@ -57,7 +57,7 @@ export function startHub() {
     catEmoji(id) { return this.categories.find((c) => c.id === id)?.emoji ?? ''; },
     href(g) { return `${BASE}guides/${g.slug}.html`; },
     cover(g) { return `${BASE}img/portadas/${g.image}.webp`; },
-    sprite(g) { return `${SPRITE}${g.sprite}.png`; },
+    sprite(g) { return `${SPRITE}${g.sprite}.gif`; },
     views(g) { return this.tr('card.views', { count: this.counts[g.slug] ?? 0 }); },
     isNew(g) { return (Date.now() - new Date(g.added)) / 864e5 <= NEW_DAYS; },
 

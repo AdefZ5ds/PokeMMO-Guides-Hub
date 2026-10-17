@@ -13,7 +13,7 @@ const note = (n) => typeof n === 'string'
   ? `<li>${esc(n)}</li>`
   : `<li><span class="badge-gold">Texto incompleto en el PDF</span> ${esc(n.text)}</li>`;
 
-const SP = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+const SP = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/';
 
 // Pestaña 1: solo mis acciones por turno
 function myTurns(pj) {
@@ -23,16 +23,18 @@ function myTurns(pj) {
   }).join('')}</ol>`;
 }
 
-// Tarjeta de un turno con SOLO la acción de este jugador (+ PS de Meloetta y avisos del turno)
+// Tarjeta de un turno con las acciones de los 4 jugadores; la del jugador de esa pestaña va resaltada («Tú»)
 function turnCard(t, pj, big) {
   const bar = t.hp == null
     ? '<span class="text-sm text-muted">PS de Meloetta: el PDF no indica el valor</span>'
     : `<span class="text-sm font-semibold">Meloetta ${t.hp}% PS</span><span role="img" aria-label="Meloetta con ${t.hp}% de PS" class="block h-2 w-28 rounded bg-line"><span class="block h-2 rounded bg-accent-strong" style="width:${t.hp}%"></span></span>`;
-  const a = t.actions[pj - 1];
   const size = big ? 'h-24 w-24' : 'h-14 w-14';
   return `<li data-turn="${t.t}" class="rounded-xl border border-line bg-surface p-3">
     <div class="flex flex-wrap items-center justify-between gap-2"><h5 class="!m-0 text-lg font-bold">Turno ${t.t}</h5><div class="flex items-center gap-2">${bar}</div></div>
-    <div class="mt-3 flex items-center gap-3 rounded-lg bg-bg p-2"><img src="${SP}${a.dex}.png" alt="${esc(a.mon)}" width="96" height="96" loading="lazy" decoding="async" class="${size} shrink-0 [image-rendering:pixelated]" /><div><span class="text-xs font-bold text-accent-text">PJ${pj}</span><br><span class="font-semibold">${esc(a.mon)}</span><br><span class="text-sm">${move(a)}</span></div></div>
+    <ul class="!pl-0 !list-none mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">${t.actions.map((a) => {
+      const mine = a.pj === pj;
+      return `<li class="flex flex-col items-center rounded-lg bg-bg p-2 text-center${mine ? ' ring-2 ring-accent-strong' : ''}"><span class="text-xs font-bold text-accent-text">PJ${a.pj}${mine ? ' <span class="badge-gold">Tú</span>' : ''}</span><img src="${SP}${a.dex}.gif" alt="${esc(a.mon)}" width="96" height="96" loading="lazy" decoding="async" class="${size} object-contain [image-rendering:pixelated]" /><span class="text-xs text-muted">${esc(a.mon)}</span><span class="text-sm font-semibold">${move(a)}</span></li>`;
+    }).join('')}</ul>
     ${t.alert ? `<p class="callout !mb-0 !mt-3 !p-3 ${t.kind === 'reset' ? '!border-red-500 !bg-red-500/10' : ''}" role="note"><strong>${t.kind === 'reset' ? '⚠️ Al terminar el turno:' : 'ℹ️ Nota:'}</strong> ${esc(t.alert)}</p>` : ''}
   </li>`;
 }

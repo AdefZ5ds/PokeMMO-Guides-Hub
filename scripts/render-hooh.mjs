@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { esc, img, teamCard } from './lib/cards.mjs';
+import { esc, img, teamCard, consumables } from './lib/cards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const d = JSON.parse(readFileSync(resolve(root, 'scripts/content/farmeo-hooh.json'), 'utf8'));
@@ -25,8 +25,7 @@ export function renderHooh() {
         `<li class="rounded-xl border border-line bg-surface p-3 text-center"><span class="block text-2xl font-bold">${esc(s.value)}</span><span class="text-sm text-muted">${esc(s.label)}</span></li>`).join('')}</ul>
       <p class="text-sm text-muted">Cifras según el autor; no las verifiqué.</p>
       <h4 class="!mt-6 font-bold">Consumibles</h4>
-      <ul class="!pl-0 !list-none grid gap-2 sm:grid-cols-2">${d.consumables.map((c) =>
-        `<li class="rounded-xl border border-line bg-surface p-3"><label class="flex items-center gap-2"><input type="checkbox" class="h-5 w-5" /><span><strong>${esc(c.name)}</strong> · ${esc(c.min)}</span></label></li>`).join('')}</ul>
+      ${consumables(d.consumables, 'sm:grid-cols-2')}
     </section>
 
     <section id="reg-equipo" data-region="equipo" aria-labelledby="reg-equipo-t" class="scroll-mt-24">

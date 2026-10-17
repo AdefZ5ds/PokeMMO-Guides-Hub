@@ -1,178 +1,840 @@
 {
- "author": "Ander",
- "updated": "05/07/2026",
- "consumables": [
-  { "name": "Pociones", "min": 10 },
-  { "name": "Zanama", "min": 3 },
-  { "name": "Especial X", "min": 5 }
- ],
- "mons": {
-  "V": { "name": "Vanilluxe", "dex": 584 },
-  "B": { "name": "Blastoise", "dex": 9 },
-  "M": { "name": "Meloetta", "dex": 648 },
-  "T": { "name": "Typhlosion", "dex": 157 },
-  "W": { "name": "Weezing", "dex": 110 }
- },
- "statLabels": ["PS", "Ataque", "Defensa", "At. Esp.", "Def. Esp.", "Velocidad"],
- "team": [
-  { "name": "Weezing", "dex": 110, "level": 100, "item": "Cinta Elección", "ability": "Gas Reactivo", "nature": "Firme",
-    "ivs": ["-", "31", "-", "-", "-", "31"], "evs": ["-", "252", "-", "6", "-", "252"],
-    "moves": ["Buena Baza", "Explosión", "Calcinación", "Danza Lluvia"] },
-  { "name": "Meloetta", "dex": 648, "level": 100, "item": "Gafas Elección", "ability": "-", "nature": "Modesta",
-    "ivs": ["-", "-", "-", "31", "-", "31"], "evs": ["6", "-", "-", "252", "-", "252"],
-    "moves": ["Vozarrón (Max. PP)", "Refuerzo"] },
-  { "name": "Blastoise", "dex": 9, "level": 100, "item": "Pañuelo Elección", "ability": "-", "nature": "Afable",
-    "ivs": ["-", "-", "-", "31", "-", "31"], "evs": ["6", "-", "-", "252", "-", "252"],
-    "moves": ["Salpicar (Max. PP)", "Ventisca", "Refuerzo", "Sorpresa"] },
-  { "name": "Vanilluxe", "dex": 584, "level": 100, "item": "Pañuelo Elección", "ability": "Nevada", "nature": "Modesta",
-    "ivs": ["-", "-", "-", "31", "-", "31"], "evs": ["6", "-", "-", "252", "-", "252"],
-    "moves": ["Ventisca (Max. PP)", "Viento Hielo", "Vozarrón"] },
-  { "name": "Typhlosion", "dex": 157, "level": 100, "item": "Gafas Elección", "ability": "-", "nature": "Modesta",
-    "ivs": ["-", "-", "-", "31", "-", "31"], "evs": ["6", "-", "-", "252", "-", "252"],
-    "moves": ["Estallido (Max. PP)", "Rapidez", "Calcinación", "Corte"] }
- ],
- "freeSlot": "Este espacio se usa para el Pokémon que desea subir de nivel mientras farmea.",
- "regions": [
-  {
-   "id": "teselia", "name": "Teselia", "map": "teselia.webp",
-   "gyms": [
-    { "city": "Ciudad Porcelana", "type": "Bicho", "leader": "burgh", "duo": [["V", "Ventisca"], ["B", "Salpicar"]] },
-    { "city": "Ciudad Gres", "type": "Fuego", "leader": "chili", "duo": [["M", "Vozarrón"], ["B", "Salpicar"]] },
-    { "city": "Ciudad Gres", "type": "Planta", "leader": "cilan", "duo": [["M", "Vozarrón"], ["T", "Calcinación"]],
-      "notes": ["vs. Leavanny, {r:Estallido} + {g:Vozarrón}"] },
-    { "city": "Ciudad Gres", "type": "Agua", "leader": "cress", "duo": [["M", "Vozarrón"], ["T", "Estallido"]],
-      "notes": [
-        { "t": "vs. Floatzel,", "sub": ["T1: Cambiar a {r:Typhlosion} por {c:Vanilluxe} + {g:Vozarrón}", "T2: Doble {g:Vozarrón}"] },
-        "{y:Cura si es necesario}"
-      ] },
-    { "city": "Ciudad Loza", "type": "Volador", "leader": "skyla", "duo": [["B", "Salpicar"], ["V", "Ventisca"]],
-      "notes": [
-        { "t": "vs. Unfezant;", "sub": ["T1: Salpicar + Viento Hielo"] },
-        "vs. Swanna/Whimsicott, Spamear {c:Ventisca}"
-      ] },
-    { "city": "Ciudad Mayólica", "type": "Eléctrico", "leader": "elesa", "duo": [["W", "Explosión"], ["B", "Salpicar"]],
-      "notes": [
-        { "t": "T1: {b:Salpicar} + {p:Explosión}", "sub": ["Sorpresa a Emolga"] },
-        { "t": "T2: {r:Estallido} + {g:Vozarrón}", "sub": [
-          { "t": "vs. Galvantula;", "sub": ["T1: {b:Sorpresa} a Galvantula + {p:Explosión}", "T2: {r:Rapidez} + {g:Vozarrón}"] }
-        ] }
-      ] },
-    { "reset": true },
-    { "city": "Ciudad Teja", "type": "Hielo", "leader": "brycen", "duo": [["W", "Buena Baza"], ["T", "Estallido"]],
-      "notes": ["El Weezing debe estar con Pañuelo Elección"] },
-    { "city": "Ciudad Caolín", "type": "Dragón", "leader": "drayden", "duo": [["V", "Ventisca"], ["T", "Estallido"]],
-      "notes": [
-        "Si Emboar sobrevive y KOs a {c:Vanilluxe}, saca a {b:Blastoise Ventisca}",
-        "Si Lapras sobrevive y KOs a {r:Typhlosion}, saca a {b:Garchomp Terremoto}",
-        "Si Samurott sobrevive y KOs a {r:Typhlosion}, saca a {m:Togekiss Vozarrón}"
+  "author": "Ander",
+  "updated": "05/07/2026",
+  "consumables": [
+    {
+      "name": "Pociones",
+      "min": 10
+    },
+    {
+      "name": "Zanama",
+      "min": 3
+    },
+    {
+      "name": "Especial X",
+      "min": 5
+    }
+  ],
+  "mons": {
+    "V": {
+      "name": "Vanilluxe",
+      "dex": 584,
+      "type": "Hielo"
+    },
+    "B": {
+      "name": "Blastoise",
+      "dex": 9,
+      "type": "Agua"
+    },
+    "M": {
+      "name": "Meloetta",
+      "dex": 648,
+      "type": "Normal"
+    },
+    "T": {
+      "name": "Typhlosion",
+      "dex": 157,
+      "type": "Fuego"
+    },
+    "W": {
+      "name": "Weezing",
+      "dex": 110,
+      "type": "Veneno"
+    }
+  },
+  "statLabels": [
+    "PS",
+    "Ataque",
+    "Defensa",
+    "At. Esp.",
+    "Def. Esp.",
+    "Velocidad"
+  ],
+  "team": [
+    {
+      "name": "Weezing",
+      "dex": 110,
+      "level": 100,
+      "item": "Cinta Elección",
+      "ability": "Gas Reactivo",
+      "nature": "Firme",
+      "ivs": [
+        "-",
+        "31",
+        "-",
+        "-",
+        "-",
+        "31"
       ],
-      "check": "No queda claro en el PDF a qué equipo pertenecen Emboar, Lapras, Samurott, Garchomp y Togekiss; se transcribe tal cual." },
-    { "city": "Ciudad Fayenza", "type": "Tierra", "leader": "clay", "duo": [["W", "Buena Baza"], ["B", "Salpicar"]],
-      "notes": [
-        { "t": "vs. Sableye;", "sub": ["T1: {p:Explosión}", "T2: {r:Estallido} + {c:Ventisca}"] },
-        "vs. Hippowdon, {p:Danza Lluvia}"
-      ] },
-    { "reset": true }
-   ]
-  },
-  {
-   "id": "johto", "name": "Johto", "map": "johto.webp",
-   "gyms": [
-    { "city": "Ciudad Olivo", "type": "Acero", "leader": "jasmine", "duo": [["W", "Buena Baza"], ["T", "Estallido"]],
-      "notes": [
-        { "t": "vs. Metagross;", "sub": ["T1: {r:Estallido} + Especial X", "T2: {r:Estallido} + {p:Buena Baza}"] },
-        "{b:Blastoise} con {k:Pañuelo Elección} cambiar a {y:Gafas Elección} después"
-      ] },
-    { "city": "Ciudad Azalea", "type": "Bicho", "leader": "bugsy", "duo": [["W", "Buena Baza"], ["B", "Salpicar"]],
-      "notes": [
-        "vs. Scyther, {p:Calcinación} + {b:Salpicar}",
-        "{b:Blastoise} con {y:Gafas Elección} cambiar a {k:Pañuelo Elección} después"
-      ] },
-    { "city": "Ciudad Malva", "type": "Volador", "leader": "falkner", "duo": [["B", "Salpicar"], ["V", "Ventisca"]],
-      "notes": [
-        { "t": "vs. Pidgeot {o:(Opcional, consiste en 3 turnos)}", "sub": ["T1: Especial X + {c:Ventisca}", "T2: {b:Salpicar} + {c:Ventisca}"] },
-        "vs. Zapdos, usar {g:Vozarrón} en lugar de {c:Ventisca}"
-      ] },
-    { "city": "Ciudad Endrino", "type": "Dragón", "leader": "clair", "duo": [["W", "Explosión"], ["B", "Salpicar"]],
-      "notes": [
-        "{p:Explosión} + {b:Salpicar} luego {g:Vozarrón} + {c:Ventisca}",
-        "vs. Blastoise, {b:Sorpresa} en Blastoise"
-      ] },
-    { "city": "Ciudad Trigal", "type": "Normal", "leader": "whitney", "duo": [["M", "Vozarrón"], ["T", "Estallido"]] },
-    { "reset": true }
-   ]
-  },
-  {
-   "id": "sinnoh", "name": "Sinnoh", "map": "sinnoh.webp",
-   "gyms": [
-    { "city": "Ciudad Vetusta", "type": "Planta", "leader": "gardenia", "duo": [["W", "Buena Baza"], ["T", "Estallido"]],
-      "notes": [
-        { "t": "vs. Whimsicott;", "sub": ["T1: {r:Estallido} + {p:Calcinación}"] },
-        { "t": "vs. Rotom-Podadora;", "sub": ["T1: {r:Estallido} + {p:Calcinación}"] }
-      ] },
-    { "city": "Pueblo Pirita", "type": "Roca", "leader": "roark", "duo": [["W", "Buena Baza"], ["B", "Salpicar"]],
-      "notes": [
-        { "t": "vs. Probopass;", "sub": ["T1: {b:Salpicar} + cambiar a {p:Weezing} por {c:Vanilluxe}", "T2: {b:Salpicar} + {c:Ventisca}"] },
-        { "t": "vs. Tyranitar y Excadrill, si Cradily y Slowbro salen juntos en el turno 2, usar {p:Buena Baza} en Cradily.", "sub": [
-          "Si {p:Weezing} cae KO por crítico de un movimiento Psíquico, sustituir por {c:Vanilluxe} → {c:Ventisca}"
-        ] }
-      ] },
-    { "city": "Ciudad Marina", "type": "Eléctrico", "leader": "volkner", "duo": [["M", "Vozarrón"], ["B", "Salpicar"]],
-      "notes": [
-        "vs. Jolteon: {g:Refuerzo} + {b:Salpicar}",
-        "vs. Lanturn: usar Especial X en {g:Meloetta} durante el turno de {b:Blastoise}"
-      ] },
-    { "city": "Ciudad Rocavelo", "type": "Lucha", "leader": "maylene", "duo": [["M", "Refuerzo"], ["T", "Estallido"]],
-      "notes": [
-        "vs. Infernape: {r:Estallido} + {g:Vozarrón}",
-        "vs. Mienshao, {p:Calcinación} + {g:Vozarrón}",
-        { "t": "Cambiar de canal después para usar TP y salir", "sub": ["{o:Puede ser necesario curar si Typhlosion recibe daño}"] }
-      ] },
-    { "city": "Ciudad Pradera", "type": "Agua", "leader": "crasherwake", "duo": [["W", "Explosión"], ["B", "Salpicar"]],
-      "notes": ["{b:Sorpresa} (a Sharpedo) + {p:Explosión} luego → {g:Vozarrón} + {r:Estallido}"] },
-    { "reset": true }
-   ]
-  },
-  {
-   "id": "kanto", "name": "Kanto", "map": "kanto.webp",
-   "gyms": [
-    { "city": "Ciudad Carmín", "type": "Eléctrico", "leader": "ltsurge", "duo": [["M", "Vozarrón"], ["T", "Estallido"]],
-      "notes": [
-        { "t": "vs. Politoed;", "sub": ["T1: {g:Vozarrón} + {r:Rapidez}", "Si Typhlosion cae, reemplaza por {c:Ventisca}"] }
-      ] },
-    { "city": "Pueblo Azulona", "type": "Planta", "leader": "erika", "duo": [["W", "Explosión"], ["B", "Salpicar"]],
-      "notes": ["Luego {r:Estallido} + {g:Vozarrón}"] },
-    { "reset": true }
-   ]
-  },
-  {
-   "id": "hoenn", "name": "Hoenn", "map": "hoenn.webp",
-   "gyms": [
-    { "city": "Ciudad Lavacalda", "type": "Fuego", "leader": "flannery", "duo": [["M", "Refuerzo"], ["B", "Salpicar"]],
-      "notes": [
-        { "t": "vs. Houndoom/Lvl.85 Arcanine, {g:Vozarrón}", "sub": ["{o:Muy baja probabilidad de necesitar 4 turnos; cura si Blastoise recibe daño}"] },
-        "{g:Meloetta} con {y:Gafas Elección} → cambiar a {k:Pañuelo Elección} después"
-      ] },
-    { "city": "Pueblo Malvalona", "type": "Eléctrico", "leader": "wattson", "duo": [["M", "Vozarrón"], ["T", "Estallido"]] },
-    { "city": "Ciudad Azuliza", "type": "Lucha", "leader": "brawly", "duo": [["M", "Vozarrón"], ["B", "Salpicar"]],
-      "notes": ["{g:Meloetta} con {k:Pañuelo Elección} → cambiar a {y:Gafas Elección} después"] },
-    { "city": "Ciudad Férrica", "type": "Roca", "leader": "roxanne", "duo": [["W", "Buena Baza"], ["B", "Salpicar"]] },
-    { "city": "Ciudad Alborada", "type": "Volador", "leader": "winona", "duo": [["M", "Vozarrón"], ["V", "Ventisca"]],
-      "notes": [
-        { "t": "vs. Pelipper;", "sub": ["T1: {g:Vozarrón} + Especial X", "T2: {g:Vozarrón} + {c:Ventisca}"] }
-      ] },
-    { "city": "Ciudad Petalia", "type": "Normal", "leader": "norman", "duo": [["W", "Explosión"], ["B", "Salpicar"]],
-      "notes": ["Luego {g:Vozarrón} + {r:Estallido}"] }
-   ]
-  }
- ],
- "verify": [
-  "Los nombres de los líderes de gimnasio NO aparecen en el PDF (solo ciudad, tipo y una imagen). Se asignaron por ciudad y tipo según el juego original; revísalos.",
-  "Los sprites de líderes se cargan desde el directorio de sprites de entrenadores de Pokémon Showdown. Solo pude comprobar que existen los de Burgh, Cilan, Chili, Cress, Brycen, Clay, Crasher Wake, Brawly, Bugsy y Clair; el resto se cargó por nombre sin verificar y, si falla, se muestra un icono de respaldo.",
-  "El PokePaste está leído de una imagen de baja resolución: revisa objetos, naturalezas, EVs y movimientos en el juego.",
-  "Los mapas son imágenes del PDF; los números del mapa no están explicados en el PDF y no se asocian aquí a ningún gimnasio.",
-  "Ciudad Caolín: no queda claro a qué equipo pertenecen Emboar, Lapras, Samurott, Garchomp y Togekiss.",
-  "Ciudad Mayólica: el PDF escribe «Sopresa» y «Explosióm»; se normalizó a Sorpresa y Explosión. El PDF alterna «Elegido/a» y «Elección» en objetos; se unificó a Pañuelo Elección y Gafas Elección.",
-  "La nota sobre Blastoise con Pañuelo/Gafas Elección en Olivo y Azalea se copia tal cual del PDF."
- ]
+      "evs": [
+        "-",
+        "252",
+        "-",
+        "6",
+        "-",
+        "252"
+      ],
+      "moves": [
+        "Buena Baza",
+        "Explosión",
+        "Calcinación",
+        "Danza Lluvia"
+      ]
+    },
+    {
+      "name": "Meloetta",
+      "dex": 648,
+      "level": 100,
+      "item": "Gafas Elección",
+      "ability": "-",
+      "nature": "Modesta",
+      "ivs": [
+        "-",
+        "-",
+        "-",
+        "31",
+        "-",
+        "31"
+      ],
+      "evs": [
+        "6",
+        "-",
+        "-",
+        "252",
+        "-",
+        "252"
+      ],
+      "moves": [
+        "Vozarrón (Max. PP)",
+        "Refuerzo"
+      ]
+    },
+    {
+      "name": "Blastoise",
+      "dex": 9,
+      "level": 100,
+      "item": "Pañuelo Elección",
+      "ability": "-",
+      "nature": "Afable",
+      "ivs": [
+        "-",
+        "-",
+        "-",
+        "31",
+        "-",
+        "31"
+      ],
+      "evs": [
+        "6",
+        "-",
+        "-",
+        "252",
+        "-",
+        "252"
+      ],
+      "moves": [
+        "Salpicar (Max. PP)",
+        "Ventisca",
+        "Refuerzo",
+        "Sorpresa"
+      ]
+    },
+    {
+      "name": "Vanilluxe",
+      "dex": 584,
+      "level": 100,
+      "item": "Pañuelo Elección",
+      "ability": "Nevada",
+      "nature": "Modesta",
+      "ivs": [
+        "-",
+        "-",
+        "-",
+        "31",
+        "-",
+        "31"
+      ],
+      "evs": [
+        "6",
+        "-",
+        "-",
+        "252",
+        "-",
+        "252"
+      ],
+      "moves": [
+        "Ventisca (Max. PP)",
+        "Viento Hielo",
+        "Vozarrón"
+      ]
+    },
+    {
+      "name": "Typhlosion",
+      "dex": 157,
+      "level": 100,
+      "item": "Gafas Elección",
+      "ability": "-",
+      "nature": "Modesta",
+      "ivs": [
+        "-",
+        "-",
+        "-",
+        "31",
+        "-",
+        "31"
+      ],
+      "evs": [
+        "6",
+        "-",
+        "-",
+        "252",
+        "-",
+        "252"
+      ],
+      "moves": [
+        "Estallido (Max. PP)",
+        "Rapidez",
+        "Calcinación",
+        "Corte"
+      ]
+    }
+  ],
+  "freeSlot": "Este espacio se usa para el Pokémon que desea subir de nivel mientras farmea.",
+  "regions": [
+    {
+      "id": "teselia",
+      "name": "Teselia",
+      "map": "teselia.webp",
+      "gyms": [
+        {
+          "city": "Ciudad Porcelana",
+          "type": "Bicho",
+          "leader": "burgh",
+          "duo": [
+            [
+              "V",
+              "Ventisca"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ]
+        },
+        {
+          "city": "Ciudad Gres",
+          "type": "Fuego",
+          "leader": "chili",
+          "duo": [
+            [
+              "M",
+              "Vozarrón"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ]
+        },
+        {
+          "city": "Ciudad Gres",
+          "type": "Planta",
+          "leader": "cilan",
+          "duo": [
+            [
+              "M",
+              "Vozarrón"
+            ],
+            [
+              "T",
+              "Calcinación"
+            ]
+          ],
+          "notes": [
+            "vs. Leavanny, {r:Estallido} + {g:Vozarrón}"
+          ]
+        },
+        {
+          "city": "Ciudad Gres",
+          "type": "Agua",
+          "leader": "cress",
+          "duo": [
+            [
+              "M",
+              "Vozarrón"
+            ],
+            [
+              "T",
+              "Estallido"
+            ]
+          ],
+          "notes": [
+            {
+              "t": "vs. Floatzel,",
+              "sub": [
+                "T1: Cambiar a {r:Typhlosion} por {c:Vanilluxe} + {g:Vozarrón}",
+                "T2: Doble {g:Vozarrón}"
+              ]
+            },
+            "{y:Cura si es necesario}"
+          ]
+        },
+        {
+          "city": "Ciudad Loza",
+          "type": "Volador",
+          "leader": "skyla",
+          "duo": [
+            [
+              "B",
+              "Salpicar"
+            ],
+            [
+              "V",
+              "Ventisca"
+            ]
+          ],
+          "notes": [
+            {
+              "t": "vs. Unfezant;",
+              "sub": [
+                "T1: Salpicar + Viento Hielo"
+              ]
+            },
+            "vs. Swanna/Whimsicott, Spamear {c:Ventisca}"
+          ]
+        },
+        {
+          "city": "Ciudad Mayólica",
+          "type": "Eléctrico",
+          "leader": "elesa",
+          "duo": [
+            [
+              "W",
+              "Explosión"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ],
+          "notes": [
+            {
+              "t": "T1: {b:Salpicar} + {p:Explosión}",
+              "sub": [
+                "Sorpresa a Emolga"
+              ]
+            },
+            {
+              "t": "T2: {r:Estallido} + {g:Vozarrón}",
+              "sub": [
+                {
+                  "t": "vs. Galvantula;",
+                  "sub": [
+                    "T1: {b:Sorpresa} a Galvantula + {p:Explosión}",
+                    "T2: {r:Rapidez} + {g:Vozarrón}"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "reset": true
+        },
+        {
+          "city": "Ciudad Teja",
+          "type": "Hielo",
+          "leader": "brycen",
+          "duo": [
+            [
+              "W",
+              "Buena Baza"
+            ],
+            [
+              "T",
+              "Estallido"
+            ]
+          ],
+          "notes": [
+            "El Weezing debe estar con Pañuelo Elección"
+          ]
+        },
+        {
+          "city": "Ciudad Caolín",
+          "type": "Dragón",
+          "leader": "drayden",
+          "duo": [
+            [
+              "V",
+              "Ventisca"
+            ],
+            [
+              "T",
+              "Estallido"
+            ]
+          ],
+          "notes": [
+            "Si Emboar sobrevive y KOs a {c:Vanilluxe}, saca a {b:Blastoise Ventisca}",
+            "Si Lapras sobrevive y KOs a {r:Typhlosion}, saca a {b:Garchomp Terremoto}",
+            "Si Samurott sobrevive y KOs a {r:Typhlosion}, saca a {m:Togekiss Vozarrón}"
+          ],
+          "check": "No queda claro en el PDF a qué equipo pertenecen Emboar, Lapras, Samurott, Garchomp y Togekiss; se transcribe tal cual."
+        },
+        {
+          "city": "Ciudad Fayenza",
+          "type": "Tierra",
+          "leader": "clay",
+          "duo": [
+            [
+              "W",
+              "Buena Baza"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ],
+          "notes": [
+            {
+              "t": "vs. Sableye;",
+              "sub": [
+                "T1: {p:Explosión}",
+                "T2: {r:Estallido} + {c:Ventisca}"
+              ]
+            },
+            "vs. Hippowdon, {p:Danza Lluvia}"
+          ]
+        },
+        {
+          "reset": true
+        }
+      ]
+    },
+    {
+      "id": "johto",
+      "name": "Johto",
+      "map": "johto.webp",
+      "gyms": [
+        {
+          "city": "Ciudad Olivo",
+          "type": "Acero",
+          "leader": "jasmine",
+          "duo": [
+            [
+              "W",
+              "Buena Baza"
+            ],
+            [
+              "T",
+              "Estallido"
+            ]
+          ],
+          "notes": [
+            {
+              "t": "vs. Metagross;",
+              "sub": [
+                "T1: {r:Estallido} + Especial X",
+                "T2: {r:Estallido} + {p:Buena Baza}"
+              ]
+            },
+            "{b:Blastoise} con {k:Pañuelo Elección} cambiar a {y:Gafas Elección} después"
+          ]
+        },
+        {
+          "city": "Ciudad Azalea",
+          "type": "Bicho",
+          "leader": "bugsy",
+          "duo": [
+            [
+              "W",
+              "Buena Baza"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ],
+          "notes": [
+            "vs. Scyther, {p:Calcinación} + {b:Salpicar}",
+            "{b:Blastoise} con {y:Gafas Elección} cambiar a {k:Pañuelo Elección} después"
+          ]
+        },
+        {
+          "city": "Ciudad Malva",
+          "type": "Volador",
+          "leader": "falkner",
+          "duo": [
+            [
+              "B",
+              "Salpicar"
+            ],
+            [
+              "V",
+              "Ventisca"
+            ]
+          ],
+          "notes": [
+            {
+              "t": "vs. Pidgeot {o:(Opcional, consiste en 3 turnos)}",
+              "sub": [
+                "T1: Especial X + {c:Ventisca}",
+                "T2: {b:Salpicar} + {c:Ventisca}"
+              ]
+            },
+            "vs. Zapdos, usar {g:Vozarrón} en lugar de {c:Ventisca}"
+          ]
+        },
+        {
+          "city": "Ciudad Endrino",
+          "type": "Dragón",
+          "leader": "clair",
+          "duo": [
+            [
+              "W",
+              "Explosión"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ],
+          "notes": [
+            "{p:Explosión} + {b:Salpicar} luego {g:Vozarrón} + {c:Ventisca}",
+            "vs. Blastoise, {b:Sorpresa} en Blastoise"
+          ]
+        },
+        {
+          "city": "Ciudad Trigal",
+          "type": "Normal",
+          "leader": "whitney",
+          "duo": [
+            [
+              "M",
+              "Vozarrón"
+            ],
+            [
+              "T",
+              "Estallido"
+            ]
+          ]
+        },
+        {
+          "reset": true
+        }
+      ]
+    },
+    {
+      "id": "sinnoh",
+      "name": "Sinnoh",
+      "map": "sinnoh.webp",
+      "gyms": [
+        {
+          "city": "Ciudad Vetusta",
+          "type": "Planta",
+          "leader": "gardenia",
+          "duo": [
+            [
+              "W",
+              "Buena Baza"
+            ],
+            [
+              "T",
+              "Estallido"
+            ]
+          ],
+          "notes": [
+            {
+              "t": "vs. Whimsicott;",
+              "sub": [
+                "T1: {r:Estallido} + {p:Calcinación}"
+              ]
+            },
+            {
+              "t": "vs. Rotom-Podadora;",
+              "sub": [
+                "T1: {r:Estallido} + {p:Calcinación}"
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Pueblo Pirita",
+          "type": "Roca",
+          "leader": "roark",
+          "duo": [
+            [
+              "W",
+              "Buena Baza"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ],
+          "notes": [
+            {
+              "t": "vs. Probopass;",
+              "sub": [
+                "T1: {b:Salpicar} + cambiar a {p:Weezing} por {c:Vanilluxe}",
+                "T2: {b:Salpicar} + {c:Ventisca}"
+              ]
+            },
+            {
+              "t": "vs. Tyranitar y Excadrill, si Cradily y Slowbro salen juntos en el turno 2, usar {p:Buena Baza} en Cradily.",
+              "sub": [
+                "Si {p:Weezing} cae KO por crítico de un movimiento Psíquico, sustituir por {c:Vanilluxe} → {c:Ventisca}"
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Ciudad Marina",
+          "type": "Eléctrico",
+          "leader": "volkner",
+          "duo": [
+            [
+              "M",
+              "Vozarrón"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ],
+          "notes": [
+            "vs. Jolteon: {g:Refuerzo} + {b:Salpicar}",
+            "vs. Lanturn: usar Especial X en {g:Meloetta} durante el turno de {b:Blastoise}"
+          ]
+        },
+        {
+          "city": "Ciudad Rocavelo",
+          "type": "Lucha",
+          "leader": "maylene",
+          "duo": [
+            [
+              "M",
+              "Refuerzo"
+            ],
+            [
+              "T",
+              "Estallido"
+            ]
+          ],
+          "notes": [
+            "vs. Infernape: {r:Estallido} + {g:Vozarrón}",
+            "vs. Mienshao, {p:Calcinación} + {g:Vozarrón}",
+            {
+              "t": "Cambiar de canal después para usar TP y salir",
+              "sub": [
+                "{o:Puede ser necesario curar si Typhlosion recibe daño}"
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Ciudad Pradera",
+          "type": "Agua",
+          "leader": "crasherwake",
+          "duo": [
+            [
+              "W",
+              "Explosión"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ],
+          "notes": [
+            "{b:Sorpresa} (a Sharpedo) + {p:Explosión} luego → {g:Vozarrón} + {r:Estallido}"
+          ]
+        },
+        {
+          "reset": true
+        }
+      ]
+    },
+    {
+      "id": "kanto",
+      "name": "Kanto",
+      "map": "kanto.webp",
+      "gyms": [
+        {
+          "city": "Ciudad Carmín",
+          "type": "Eléctrico",
+          "leader": "ltsurge",
+          "duo": [
+            [
+              "M",
+              "Vozarrón"
+            ],
+            [
+              "T",
+              "Estallido"
+            ]
+          ],
+          "notes": [
+            {
+              "t": "vs. Politoed;",
+              "sub": [
+                "T1: {g:Vozarrón} + {r:Rapidez}",
+                "Si Typhlosion cae, reemplaza por {c:Ventisca}"
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Pueblo Azulona",
+          "type": "Planta",
+          "leader": "erika",
+          "duo": [
+            [
+              "W",
+              "Explosión"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ],
+          "notes": [
+            "Luego {r:Estallido} + {g:Vozarrón}"
+          ]
+        },
+        {
+          "reset": true
+        }
+      ]
+    },
+    {
+      "id": "hoenn",
+      "name": "Hoenn",
+      "map": "hoenn.webp",
+      "gyms": [
+        {
+          "city": "Ciudad Lavacalda",
+          "type": "Fuego",
+          "leader": "flannery",
+          "duo": [
+            [
+              "M",
+              "Refuerzo"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ],
+          "notes": [
+            {
+              "t": "vs. Houndoom/Lvl.85 Arcanine, {g:Vozarrón}",
+              "sub": [
+                "{o:Muy baja probabilidad de necesitar 4 turnos; cura si Blastoise recibe daño}"
+              ]
+            },
+            "{g:Meloetta} con {y:Gafas Elección} → cambiar a {k:Pañuelo Elección} después"
+          ]
+        },
+        {
+          "city": "Pueblo Malvalona",
+          "type": "Eléctrico",
+          "leader": "wattson",
+          "duo": [
+            [
+              "M",
+              "Vozarrón"
+            ],
+            [
+              "T",
+              "Estallido"
+            ]
+          ]
+        },
+        {
+          "city": "Ciudad Azuliza",
+          "type": "Lucha",
+          "leader": "brawly",
+          "duo": [
+            [
+              "M",
+              "Vozarrón"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ],
+          "notes": [
+            "{g:Meloetta} con {k:Pañuelo Elección} → cambiar a {y:Gafas Elección} después"
+          ]
+        },
+        {
+          "city": "Ciudad Férrica",
+          "type": "Roca",
+          "leader": "roxanne",
+          "duo": [
+            [
+              "W",
+              "Buena Baza"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ]
+        },
+        {
+          "city": "Ciudad Alborada",
+          "type": "Volador",
+          "leader": "winona",
+          "duo": [
+            [
+              "M",
+              "Vozarrón"
+            ],
+            [
+              "V",
+              "Ventisca"
+            ]
+          ],
+          "notes": [
+            {
+              "t": "vs. Pelipper;",
+              "sub": [
+                "T1: {g:Vozarrón} + Especial X",
+                "T2: {g:Vozarrón} + {c:Ventisca}"
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Ciudad Petalia",
+          "type": "Normal",
+          "leader": "norman",
+          "duo": [
+            [
+              "W",
+              "Explosión"
+            ],
+            [
+              "B",
+              "Salpicar"
+            ]
+          ],
+          "notes": [
+            "Luego {g:Vozarrón} + {r:Estallido}"
+          ]
+        }
+      ]
+    }
+  ],
+  "verify": [
+    "Los nombres de los líderes de gimnasio NO aparecen en el PDF (solo ciudad, tipo y una imagen). Se asignaron por ciudad y tipo según el juego original; revísalos.",
+    "Los sprites de líderes se cargan desde el directorio de sprites de entrenadores de Pokémon Showdown. Solo pude comprobar que existen los de Burgh, Cilan, Chili, Cress, Brycen, Clay, Crasher Wake, Brawly, Bugsy y Clair; el resto se cargó por nombre sin verificar y, si falla, se muestra un icono de respaldo.",
+    "El PokePaste está leído de una imagen de baja resolución: revisa objetos, naturalezas, EVs y movimientos en el juego.",
+    "Los mapas son imágenes del PDF; los números del mapa no están explicados en el PDF y no se asocian aquí a ningún gimnasio.",
+    "Ciudad Caolín: no queda claro a qué equipo pertenecen Emboar, Lapras, Samurott, Garchomp y Togekiss.",
+    "Ciudad Mayólica: el PDF escribe «Sopresa» y «Explosióm»; se normalizó a Sorpresa y Explosión. El PDF alterna «Elegido/a» y «Elección» en objetos; se unificó a Pañuelo Elección y Gafas Elección.",
+    "La nota sobre Blastoise con Pañuelo/Gafas Elección en Olivo y Azalea se copia tal cual del PDF."
+  ]
 }

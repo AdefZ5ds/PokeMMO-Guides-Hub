@@ -3,12 +3,15 @@
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { esc, img, teamCard } from './lib/cards.mjs';
+import { esc, img, teamCard, consumables } from './lib/cards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const data = JSON.parse(readFileSync(resolve(root, 'scripts/content/farmeo-gimnasios.json'), 'utf8'));
 const TRAINER = 'https://play.pokemonshowdown.com/sprites/trainers/';
 const TYPE_EMOJI = { Bicho: '🐛', Fuego: '🔥', Planta: '🌿', Agua: '💧', Volador: '🕊️', Eléctrico: '⚡', Hielo: '❄️', Dragón: '🐉', Tierra: '⛰️', Acero: '⚙️', Roca: '🪨', Lucha: '🥊', Normal: '⚪' };
+
+// Color de cada movimiento = color del tipo de su Pokémon (campo `type` de data.mons). Para otro tipo, añade su letra aquí (colores en styles.css: .hl-*).
+const TYPE_HL = { Hielo: 'c', Agua: 'b', Normal: 'n', Fuego: 'o', Veneno: 'p', Planta: 'g', Eléctrico: 'y', Psíquico: 'm', Lucha: 'r', Volador: 'k' };
 
 // {r:texto} → texto coloreado (el color es un refuerzo; el texto ya nombra al Pokémon/movimiento)
 const hl = (s) => esc(s).replace(/\{([a-z]):([^}]+)\}/g, (_, c, t) => `<span class="hl hl-${c}">${t}</span>`);
@@ -19,7 +22,7 @@ const list = (items, level = 0) => `<ul class="${level ? '!mt-1 ' : ''}!mb-0 spa
 function gym(g, n) {
   const emoji = TYPE_EMOJI[g.type] ?? '🏟️';
   const [a, b] = g.duo.map(([k, move]) => ({ ...data.mons[k], move }));
-  const duoCell = (m) => `<li class="flex flex-col items-center text-center">${img(m.name, m.dex, 80)}<span class="text-xs text-muted">${esc(m.name)}</span><span class="text-sm font-bold">${esc(m.move)}</span></li>`;
+  const duoCell = (m) => `<li class="flex flex-col items-center text-center">${img(m.name, m.dex, 80)}<span class="text-xs text-muted">${esc(m.name)}</span><span class="text-sm hl hl-${TYPE_HL[m.type] ?? 'n'}">${esc(m.move)}</span></li>`;
   return `<li class="card !items-stretch !gap-3">
     <div class="flex flex-col items-center gap-1 text-center">
       <img src="${TRAINER}${g.leader}.png" alt="Líder del gimnasio de ${esc(g.city)} (${esc(g.type)})" width="96" height="96" loading="lazy" decoding="async"
@@ -62,8 +65,7 @@ export function renderFarmeo() {
       </aside>
 
       <h4 class="!mt-6 font-bold">Consumibles</h4>
-      <ul class="!pl-0 !list-none grid gap-2 sm:grid-cols-3">${data.consumables.map((c) =>
-        `<li class="rounded-xl border border-line bg-surface p-3"><label class="flex items-center gap-2"><input type="checkbox" class="h-5 w-5" /><span><strong>${esc(c.name)}</strong> · mín. ${c.min}</span></label></li>`).join('')}</ul>
+      ${consumables(data.consumables)}
 
       <h4 class="!mt-6 font-bold">Equipo (PokePaste)</h4>
       <p class="text-sm text-muted">Un guion («—») en una estadística significa que no es relevante y puedes asignarle cualquier valor.</p>

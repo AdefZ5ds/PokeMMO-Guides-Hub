@@ -1,5 +1,5 @@
 // Piezas HTML compartidas por los renderizadores de guías (tarjetas de equipo, sprites).
-export const SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+export const SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/';
 export const ITEM_SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/';
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -11,16 +11,18 @@ const ITEM_ICON = {
   'Pañuelo Elección': 'choice-scarf', 'Pañuelo Elegido': 'choice-scarf', 'Cinta Experta': 'expert-belt', 'Cint. Negro': 'black-belt',
   'Gafas de Sol': 'black-glasses', 'Llamaesfera': 'flame-orb', 'Flecha Veneno': 'poison-barb', 'Hechizo': 'spell-tag',
   'Bola Férrea': 'iron-ball', 'Gema (Voladora)': 'flying-gem', 'Baya Jaboca': 'jaboca-berry', 'Dados Trucados': 'loaded-dice',
+  // Consumibles de las guías de farmeo (Zanama = Leppa Berry según WikiDex)
+  'Pociones': 'potion', 'Zanama': 'leppa-berry', 'Especial X': 'x-sp-atk', 'Repelente': 'repel',
 };
-export const itemIcon = (name) => (ITEM_ICON[name]
-  ? `<img src="${ITEM_SPRITE}${ITEM_ICON[name]}.png" alt="" width="32" height="32" loading="lazy" decoding="async" class="inline h-6 w-6 shrink-0 [image-rendering:pixelated]" onerror="this.remove()" />`
+export const itemIcon = (name, size = 'h-6 w-6') => (ITEM_ICON[name]
+  ? `<img src="${ITEM_SPRITE}${ITEM_ICON[name]}.png" alt="" width="32" height="32" loading="lazy" decoding="async" class="inline ${size} shrink-0 object-contain [image-rendering:pixelated]" onerror="this.remove()" />`
   : '');
 
 // "-" / "x" = estadística no relevante (según las guías). 31 de IV y 252 de EV se resaltan en verde lima.
 const cell = (v, max) => (v === '-' || v === 'x' ? '<span aria-label="no relevante">—</span>' : `<span${v === max ? ' class="stat-max"' : ''}>${esc(v)}</span>`);
 
 export const img = (name, dex, size = 56) =>
-  `<img src="${SPRITE}${dex}.png" alt="${esc(name)}" width="96" height="96" loading="lazy" decoding="async" class="${size === 56 ? 'h-14 w-14' : 'h-20 w-20'} shrink-0 [image-rendering:pixelated]" />`;
+  `<img src="${SPRITE}${dex}.gif" alt="${esc(name)}" width="96" height="96" loading="lazy" decoding="async" class="${size === 56 ? 'h-14 w-14' : 'h-20 w-20'} shrink-0 object-contain [image-rendering:pixelated]" />`;
 
 const statRow = (label, values, max) =>
   `<tr><th scope="row" class="py-1 pr-2 text-left font-semibold">${label}</th>${values.map((v) => `<td class="px-1 py-1 text-center tabular-nums">${cell(v, max)}</td>`).join('')}</tr>`;
@@ -52,7 +54,7 @@ export function teamCard(m, statLabels) {
 
 /** Sprite pequeño en línea (sin caja ni nombre visible; el nombre queda como texto alternativo). */
 export const inlineSprite = (name, dex, label = name) =>
-  `<img src="${SPRITE}${dex}.png" alt="${esc(label)}" title="${esc(label)}" width="96" height="96" loading="lazy" decoding="async" class="mx-0.5 inline-block h-9 w-9 align-middle [image-rendering:pixelated]" />`;
+  `<img src="${SPRITE}${dex}.gif" alt="${esc(label)}" title="${esc(label)}" width="96" height="96" loading="lazy" decoding="async" class="mx-0.5 inline-block h-9 w-9 align-middle object-contain [image-rendering:pixelated]" />`;
 
 /** Texto donde los Pokémon del equipo se sustituyen por su sprite en línea. */
 export function chips(text, team) {
@@ -60,3 +62,8 @@ export function chips(text, team) {
   const dex = Object.fromEntries(team.map((m) => [m.name, m.dex]));
   return esc(text).replace(re, (n) => inlineSprite(n, dex[n]));
 }
+
+/** Lista compacta de consumibles: icono del objeto + nombre + cantidad mínima (sin casillas). */
+export const consumables = (items, cols = 'sm:grid-cols-3') =>
+  `<ul class="!pl-0 !list-none grid gap-2 ${cols}">${items.map((c) =>
+    `<li class="flex items-center gap-3 rounded-xl border border-line bg-surface p-2.5">${itemIcon(c.name, 'h-10 w-10') || '<span aria-hidden="true" class="text-2xl">🎒</span>'}<span><strong>${esc(c.name)}</strong><br><span class="text-sm text-muted">${/^mín/i.test(String(c.min)) ? '' : 'mín. '}${esc(c.min)}</span></span></li>`).join('')}</ul>`;
