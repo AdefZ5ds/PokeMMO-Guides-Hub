@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { esc, img, teamCard } from './lib/cards.mjs';
+import { esc, img, teamCard, inlineSprite } from './lib/cards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const d = JSON.parse(readFileSync(resolve(root, 'scripts/content/rusheo.json'), 'utf8'));
@@ -18,14 +18,16 @@ function step(text, id) {
   else if (/Gimnasio de/.test(text)) { badge = '<span class="badge-gold">Medalla</span>'; icon = '🏆'; }
   else if (/Barco/.test(text)) icon = '🚢';
   return `<li><label class="flex items-start gap-2 rounded-lg p-1.5 hover:bg-surface"><input type="checkbox" data-step="${id}" class="mt-1 h-5 w-5 shrink-0" />
-    <span><span aria-hidden="true">${icon}</span> ${esc(text)} ${badge}</span></label></li>`;
+    <span><span aria-hidden="true">${icon}</span> ${esc(text).replace(/Pokémon ([1-4])/g, (_, k) => inlineSprite(d.mons[k].name, d.mons[k].dex, `Pokémon ${k} (${d.mons[k].name})`))} ${badge}</span></label></li>`;
 }
 
 function chips(leg) {
   if (leg.use) {
-    return `<ul class="!pl-0 !list-none flex flex-wrap gap-2" aria-label="Pokémon a usar y límites de nivel">${Object.keys(leg.caps).map((k) => {
-      const m = d.mons[k]; const used = leg.use.includes(Number(k));
-      return `<li class="flex items-center gap-2 rounded-xl border ${used ? 'border-accent bg-accent/10' : 'border-line bg-surface opacity-90'} px-2 py-1">${img(m.name, m.dex)}<span class="text-sm"><strong>Pokémon ${k}</strong> · ${esc(m.name)}<br>${used ? '<span class="badge-gold">Usar</span> ' : '<span class="text-muted">No usar · </span>'}<span class="font-semibold">≤ Lv ${esc(leg.caps[k])}</span></span></li>`;
+    // Solo los Pokémon que se usan en el tramo, en el orden de la guía original (4, 3, 2, 1)
+    const used = [...leg.use].sort((x, y) => y - x);
+    return `<ul class="!pl-0 !list-none flex flex-wrap gap-2" aria-label="Pokémon a usar y límites de nivel">${used.map((k) => {
+      const m = d.mons[k];
+      return `<li class="flex items-center gap-2 rounded-xl border border-accent bg-accent/10 px-2 py-1">${img(m.name, m.dex)}<span class="text-sm"><strong>Pokémon ${k}</strong> · ${esc(m.name)}<br><span class="font-semibold">≤ Lv ${esc(leg.caps[k])}</span></span></li>`;
     }).join('')}</ul>`;
   }
   if (leg.cap) return `<p class="!m-0"><span class="badge-gold !text-base">Límite de nivel: Lv ${leg.cap}</span></p>`;
@@ -44,7 +46,7 @@ function leg(l, pi, li, phase) {
 }
 
 export function renderRusheo() {
-  const team = d.team.map((m) => teamCard(m, d.statLabels)).join('');
+  const team = [...d.team].reverse().map((m) => teamCard(m, d.statLabels)).join(''); // orden de la guía original: 4, 3, 2, 1
   const total = d.phases.reduce((n, p) => n + p.legs.reduce((k, l) => k + l.steps.length, 0), 0);
   const index = (p) => `<nav aria-label="Tramos de ${esc(p.name)}" class="my-3"><ul class="!pl-0 !list-none flex flex-wrap gap-1.5">${p.legs.map((l, i) => `<li><a class="chip" href="#${p.id}-${i}">${i + 1}. ${esc(l.region)}</a></li>`).join('')}</ul></nav>`;
   return `<div id="farmeo-guide" data-tabs-label="Fases" data-rush data-total="${total}">

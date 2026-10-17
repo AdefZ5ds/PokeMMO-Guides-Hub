@@ -22,16 +22,21 @@ function entry(e, type, genN) {
       <summary class="flex cursor-pointer items-center gap-3 rounded-lg"><span class="sr-only">Líder rival:</span>${rivalImgs(e.rivals)}</summary>
       ${stepsList(e.steps)}</details></li>`;
   }
-  if (type === 'moves') {
-    return `<li class="flex items-center gap-3 rounded-xl border border-line bg-surface p-3">${rivalImgs(e.rivals)}<span class="font-semibold">${chips(e.steps[0], data.team)}</span></li>`;
-  }
   return `<li class="rounded-xl border border-line bg-surface p-3"><div class="flex flex-wrap items-center gap-2">${rivalImgs(e.rivals)}</div>${e.notes ? `<p class="!mb-0 !mt-2 text-sm">${Object.entries(e.notes).map(([n, t]) => `Contra ${esc(n)}: ${esc(t)}.`).join(' ')}</p>` : ''}</li>`;
+}
+
+// "2.º Pokémon" / "Restantes": se agrupan los Pokémon con la misma acción (estilo «Ataca con…»)
+function movesGroup(s) {
+  const by = new Map();
+  for (const e of s.entries) { if (!by.has(e.steps[0])) by.set(e.steps[0], []); by.get(e.steps[0]).push(...e.rivals); }
+  return `<h4 class="!mt-5 mb-2 font-semibold text-accent-text">${esc(s.title)}</h4>
+    <ul class="!mb-0 grid gap-2 !pl-0 !list-none">${[...by].map(([action, r]) => `<li class="rounded-xl border border-line bg-surface p-3"><p class="!mb-1 font-semibold">${chips(action, data.team)}</p>${rivalImgs(r)}</li>`).join('')}</ul>`;
 }
 
 function generation(g) {
   return `<section id="gen-${g.n}" data-gen="${g.n}" aria-labelledby="gen-${g.n}-title" class="scroll-mt-24">
     <h3 id="gen-${g.n}-title" class="!mt-8 text-xl font-bold">Generación ${g.n}</h3>
-    ${g.sections.map((s) => `<h4 class="!mt-5 mb-2 font-semibold text-accent-text">${esc(s.title)}</h4>
+    ${g.sections.map((s) => s.type === 'moves' ? movesGroup(s) : `<h4 class="!mt-5 mb-2 font-semibold text-accent-text">${esc(s.title)}</h4>
     <ul class="!mb-0 grid gap-2 !pl-0 !list-none ${s.type === 'steps' ? '' : 'sm:grid-cols-2'}">${s.entries.map((e) => entry(e, s.type, g.n)).join('')}</ul>`).join('\n')}
   </section>`;
 }
@@ -58,8 +63,8 @@ export function renderRed(guide) {
       <ul class="!pl-0 !list-none grid gap-4 md:grid-cols-2">${data.team.map((m) => teamCardLib(m, data.statLabels)).join('')}</ul>
     </section>
 
-    <section id="reg-estrategia" data-region="estrategia" aria-labelledby="reg-estrategia-t" class="scroll-mt-24">
-      <h3 id="reg-estrategia-t" class="!mt-8 text-xl font-bold">Estrategia por generación</h3>
+    <section id="reg-estrategia" data-region="estrategia" data-tab="Estrategia" aria-labelledby="reg-estrategia-t" class="scroll-mt-24">
+      <h3 id="reg-estrategia-t" class="!mt-8 text-xl font-bold">Elige el Pokémon líder de RED</h3>
       <!-- Galería interactiva (la construye assets/js/gallery.js). Sin JS se ve la lista de abajo. -->
       <div id="gallery-root"></div>
       <div id="list-view">

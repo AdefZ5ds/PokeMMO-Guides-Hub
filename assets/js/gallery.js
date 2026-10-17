@@ -43,38 +43,22 @@ const teamRe = new RegExp(`\\b(${data.team.map((m) => m.name).join('|')})\\b`, '
 /** Texto con el sprite de tus Pokémon junto a su nombre. */
 const teamify = (text) =>
   esc(text).replace(teamRe, (n) =>
-    `<span class="mx-0.5 my-0.5 inline-flex flex-col items-center rounded-lg border border-line bg-surface px-1.5 py-0.5 align-middle leading-none"><img src="${sprite(teamDex[n])}" alt="" width="96" height="96" loading="lazy" class="h-10 w-10 [image-rendering:pixelated]" /><span class="text-xs font-semibold">${n}</span></span>`);
+    `<img src="${sprite(teamDex[n])}" alt="${n}" title="${n}" width="96" height="96" loading="lazy" class="mx-0.5 inline-block h-9 w-9 align-middle [image-rendering:pixelated]" />`);
 
 // ---------- Estado ----------
-const state = { gen: 'all', view: 'gallery', selected: null };
+const state = { gen: 'all', selected: null };
 const gensOf = (l) => new Set(l.blocks.map((b) => b.gen));
 
 // ---------- Estructura ----------
 root.innerHTML = `
-  <div class="flex flex-wrap items-center justify-between gap-3">
-    <div role="group" aria-label="Filtrar por generación" class="flex flex-wrap gap-2" data-gens></div>
-    <div role="group" aria-label="Tipo de vista" class="flex gap-2" data-views></div>
-  </div>
-  <div data-gallery class="mt-4">
+  <div data-gallery>
     <p class="mb-3 text-sm text-muted">Pulsa el Pokémon líder de RED al que te enfrentas para ver qué hacer.</p>
     <ul class="grid grid-cols-4 gap-2 !pl-0 !list-none sm:grid-cols-6 md:grid-cols-8" data-grid></ul>
   </div>`;
+listView.hidden = true; // la lista estática solo se ve sin JS
 
-const gensBar = root.querySelector('[data-gens]');
-const viewsBar = root.querySelector('[data-views]');
 const galleryEl = root.querySelector('[data-gallery]');
 const grid = root.querySelector('[data-grid]');
-
-const chip = (label, key, group) => {
-  const b = document.createElement('button');
-  b.type = 'button';
-  b.className = 'chip';
-  b.textContent = label;
-  b.dataset[group] = key;
-  return b;
-};
-[['all', 'Todas'], ...data.generations.map((g) => [String(g.n), `Gen ${g.n}`])].forEach(([k, l]) => gensBar.append(chip(l, k, 'gen')));
-[['gallery', 'Galería'], ['list', 'Lista']].forEach(([k, l]) => viewsBar.append(chip(l, k, 'view')));
 
 const items = [...leaders.values()].map((l) => {
   const li = document.createElement('li');
@@ -105,11 +89,20 @@ function stepHtml(step) {
   return `<li><button type="button" data-goto="${esc(target ?? '')}" class="text-accent-text">${esc(step.text)}</button></li>`;
 }
 
+const rivalGroup = (rivals, notes = {}) => `<div class="flex flex-wrap gap-2">${rivals.map(([n, d]) =>
+  rivalCard(n, d, notes[n] ? `<span class="mt-0.5 rounded bg-gold px-1 text-[11px] font-semibold text-slate-900">${esc(notes[n])}</span>` : '')).join('')}</div>`;
+
 function followHtml(section) {
   let body;
   if (section.type === 'moves') {
-    body = `<ul class="!mb-0 !pl-0 !list-none space-y-1">${section.entries.map((e) =>
-      `<li class="flex items-center gap-3 rounded-lg border border-line bg-surface p-2">${rivalCard(e.rivals[0][0], e.rivals[0][1])}<span class="font-semibold">${teamify(e.steps[0])}</span></li>`).join('')}</ul>`;
+    // Mismo estilo que "Ataca con…": se agrupan los Pokémon que comparten la misma acción.
+    const byAction = new Map();
+    for (const e of section.entries) {
+      if (!byAction.has(e.steps[0])) byAction.set(e.steps[0], []);
+      byAction.get(e.steps[0]).push(...e.rivals);
+    }
+    body = [...byAction].map(([action, rivals]) =>
+      `<div class="mt-2 first:mt-0"><p class="!mb-1 text-sm font-semibold">${teamify(action)}</p>${rivalGroup(rivals)}</div>`).join('');
   } else {
     body = `<div class="flex flex-wrap gap-2">${section.entries.map((e) =>
       e.rivals.map(([n, d]) => rivalCard(n, d, e.notes?.[n] ? `<span class="mt-0.5 rounded bg-gold px-1 text-[11px] font-semibold text-slate-900">${esc(e.notes[n])}</span>` : '')).join('')).join('')}</div>`;
@@ -175,21 +168,12 @@ function close({ refocus = false } = {}) {
 }
 
 function applyFilters() {
-  items.forEach((i) => { i.li.hidden = state.gen !== 'all' && !gensOf(i.l).has(Number(state.gen)); });
-  gensBar.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.gen === state.gen)));
-  viewsBar.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === state.view)));
-  galleryEl.hidden = state.view !== 'gallery';
-  listView.hidden = state.view !== 'list';
-  listView.querySelectorAll('[data-gen]').forEach((s) => { s.hidden = state.gen !== 'all' && s.dataset.gen !== state.gen; });
+  items.forEach((i) => { i.li.hidden = false; });
   const sel = items.find((i) => i.l.name === state.selected);
-  if (sel && !sel.li.hidden) { renderDetail(sel.l); placeDetail(); } else if (state.selected) close();
+  if (sel) { renderDetail(sel.l); placeDetail(); }
 }
 
 root.addEventListener('click', (e) => {
-  const g = e.target.closest('button[data-gen]');
-  if (g) { state.gen = g.dataset.gen; applyFilters(); return; }
-  const v = e.target.closest('button[data-view]');
-  if (v) { state.view = v.dataset.view; applyFilters(); return; }
   if (e.target.closest('[data-close]')) { close({ refocus: true }); return; }
   const go = e.target.closest('[data-goto]');
   if (go?.dataset.goto) { select(go.dataset.goto, { scroll: true, focus: true }); return; }
@@ -214,6 +198,4 @@ let rt;
 window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(placeDetail, 150); });
 
 // La selección NO se guarda: al entrar o recargar la guía siempre empieza sin nada seleccionado.
-const genHash = decodeURIComponent(location.hash.slice(1)).match(/^gen-(\d)$/); // enlaces antiguos a una generación
-if (genHash && data.generations.some((g) => String(g.n) === genHash[1])) state.gen = genHash[1];
 applyFilters();

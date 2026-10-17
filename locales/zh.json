@@ -19,13 +19,13 @@
     "guides": "指南",
     "popular": "热门",
     "searchPlaceholder": "搜索指南…",
-    "gallery": "画廊"
+    "gallery": "指南列表"
   },
   "hero": {
     "badge": "社区内容",
     "title": "所有 PokeMMO 指南，一站搞定",
     "subtitle": "繁殖、努力值/个体值、闪光狩猎、对战、刷资源等。搜索、筛选，打开你需要的指南。",
-    "cta": "查看热门指南",
+    "cta": "查看指南列表",
     "browse": "浏览全部",
     "play": "浏览指南",
     "pause": "暂停背景视频",
@@ -81,8 +81,11 @@
   "footer": {
     "official": "PokeMMO 官方网站",
     "credits": "致谢",
-    "sprites": "精灵图：PokeAPI。",
-    "disclaimer": "非官方社区网站，与 PokeMMO 及任天堂/Game Freak 无关联。宝可梦及其名称归各自所有者所有。"
+    "sprites": "精灵图：PokeAPI 和 Pokémon Showdown。",
+    "disclaimer": "非官方社区网站，与 PokeMMO 及任天堂/Game Freak 无关联。宝可梦及其名称归各自所有者所有。每篇指南归其作者所有，并在各指南中署名。",
+    "tagline": "由一位玩家用心为整个社区制作。愿你的个体值高、闪光常见、团战无意外。祝狩猎愉快，训练家！",
+    "links": "链接",
+    "icons": "图标：Lucide · 字体：Inter。"
   },
   "counter": {
     "local": "本地计数（演示模式）"
@@ -225,7 +228,7 @@
     }
   },
   "gallery": {
-    "title": "指南画廊",
+    "title": "指南列表",
     "subtitle": "点击封面打开指南。"
   }
 }

@@ -1,39 +1,62 @@
 // Piezas HTML compartidas por los renderizadores de guías (tarjetas de equipo, sprites).
 export const SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+export const ITEM_SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/';
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-// "-" / "x" = estadística no relevante (según las guías)
-const cell = (v) => (v === '-' || v === 'x' ? '<span aria-label="no relevante">—</span>' : esc(v));
+
+// Objeto (nombre en español) → nombre del icono en PokeAPI. Solo los que están comprobados;
+// un objeto sin entrada aquí (o con icono inexistente) se muestra solo con su nombre.
+const ITEM_ICON = {
+  'Restos': 'leftovers', 'Casco Dentado': 'rocky-helmet', 'Banda Focus': 'focus-sash', 'Vidaesfera': 'life-orb',
+  'Cinta Elección': 'choice-band', 'Cinta Elegida': 'choice-band', 'Gafas Elección': 'choice-specs', 'Gafas Elegidas': 'choice-specs',
+  'Pañuelo Elección': 'choice-scarf', 'Pañuelo Elegido': 'choice-scarf', 'Cinta Experta': 'expert-belt', 'Cint. Negro': 'black-belt',
+  'Gafas de Sol': 'black-glasses', 'Llamaesfera': 'flame-orb', 'Flecha Veneno': 'poison-barb', 'Hechizo': 'spell-tag',
+  'Bola Férrea': 'iron-ball', 'Gema (Voladora)': 'flying-gem', 'Baya Jaboca': 'jaboca-berry', 'Dados Trucados': 'loaded-dice',
+};
+export const itemIcon = (name) => (ITEM_ICON[name]
+  ? `<img src="${ITEM_SPRITE}${ITEM_ICON[name]}.png" alt="" width="32" height="32" loading="lazy" decoding="async" class="inline h-6 w-6 shrink-0 [image-rendering:pixelated]" onerror="this.remove()" />`
+  : '');
+
+// "-" / "x" = estadística no relevante (según las guías). 31 de IV y 252 de EV se resaltan en verde lima.
+const cell = (v, max) => (v === '-' || v === 'x' ? '<span aria-label="no relevante">—</span>' : `<span${v === max ? ' class="stat-max"' : ''}>${esc(v)}</span>`);
 
 export const img = (name, dex, size = 56) =>
   `<img src="${SPRITE}${dex}.png" alt="${esc(name)}" width="96" height="96" loading="lazy" decoding="async" class="${size === 56 ? 'h-14 w-14' : 'h-20 w-20'} shrink-0 [image-rendering:pixelated]" />`;
 
-const statRow = (label, values) =>
-  `<tr><th scope="row" class="py-1 pr-2 text-left font-semibold">${label}</th>${values.map((v) => `<td class="px-1 py-1 text-center tabular-nums">${cell(v)}</td>`).join('')}</tr>`;
+const statRow = (label, values, max) =>
+  `<tr><th scope="row" class="py-1 pr-2 text-left font-semibold">${label}</th>${values.map((v) => `<td class="px-1 py-1 text-center tabular-nums">${cell(v, max)}</td>`).join('')}</tr>`;
+
+const placeholder = (v) => /\(editar\)/.test(v);
+const field = (label, value, icon = '') =>
+  `<div class="flex items-center gap-2"><dt class="w-24 shrink-0 text-muted">${label}</dt><dd class="!m-0 flex items-center gap-1.5 font-semibold${placeholder(value) ? ' !font-normal text-muted' : ''}">${icon}${esc(value)}</dd></div>`;
 
 /**
- * Tarjeta de un Pokémon del equipo.
- * m: { name, dex, level, item, ability, nature, ivs[6]|null, ivsText?, evs[6], moves[], critical?, check?, alt? }
+ * Tarjeta de un Pokémon del equipo (PokePaste).
+ * m: { name, dex, level, item, ability, nature, ivs[6]|null, ivsText?, evs[6], moves[], critical?, check?, alt?, badge? }
  */
 export function teamCard(m, statLabels) {
   const head = statLabels.map((s) => `<th scope="col" class="px-1 pb-1 text-center text-xs font-semibold text-muted">${esc(s)}</th>`).join('');
-  return `<li class="card !gap-2${m.critical ? ' !border-gold' : ''}">
+  return `<li class="card !gap-3${m.critical ? ' !border-gold' : ''}">
     <div class="flex items-center gap-3">${img(m.name, m.dex, 80)}
-      <div><h3 class="!m-0 text-lg font-bold">${esc(m.name)} <span class="text-sm font-normal text-muted">Nv. ${m.level}</span>${m.alt ? ' <span class="badge-muted">Alternativa</span>' : ''}${m.badge ? ' <span class="badge-gold">Provisional</span>' : ''}</h3>
-      <p class="!m-0 text-sm text-muted">${esc(m.item)} · ${esc(m.ability)} · Naturaleza ${esc(m.nature)}</p></div>
+      <h3 class="!m-0 text-lg font-bold leading-snug">${esc(m.name)} <span class="text-sm font-normal text-muted">Nv. ${m.level}</span>${m.alt ? ' <span class="badge-muted">Alternativa</span>' : ''}${m.badge ? ' <span class="badge-gold">Provisional</span>' : ''}</h3>
     </div>
+    <dl class="!m-0 space-y-1 text-sm">${field('Objeto', m.item, itemIcon(m.item))}${field('Habilidad', m.ability)}${field('Naturaleza', m.nature)}</dl>
     <div class="overflow-x-auto"><table class="w-full text-sm"><caption class="sr-only">IVs y EVs de ${esc(m.name)}</caption>
       <thead><tr><td></td>${head}</tr></thead>
-      <tbody>${m.ivs ? statRow('IVs', m.ivs) : `<tr><th scope="row" class="py-1 pr-2 text-left font-semibold">IVs</th><td colspan="6" class="px-1 py-1">${esc(m.ivsText)}</td></tr>`}${statRow('EVs', m.evs)}</tbody>
+      <tbody>${m.ivs ? statRow('IVs', m.ivs, '31') : `<tr><th scope="row" class="py-1 pr-2 text-left font-semibold">IVs</th><td colspan="6" class="px-1 py-1">${esc(m.ivsText)}</td></tr>`}${statRow('EVs', m.evs, '252')}</tbody>
     </table></div>
-    <ul class="!m-0 flex flex-wrap gap-1.5 !pl-0 !list-none" aria-label="Movimientos">${m.moves.map((mv) => `<li class="badge-muted !text-sm">${esc(mv)}</li>`).join('')}</ul>
+    <ol class="!m-0 !list-none space-y-1.5 !pl-0" aria-label="Movimientos">${m.moves.map((mv) => `<li class="rounded-lg border border-line bg-bg px-3 py-1.5 text-sm font-medium">${esc(mv)}</li>`).join('')}</ol>
     ${m.critical ? `<p class="!m-0 flex gap-2 rounded-lg bg-gold/15 p-2 text-sm" role="note"><span class="badge-gold shrink-0 self-start">Crítico</span><span>${esc(m.critical)}</span></p>` : ''}
     ${m.check ? `<p class="callout !m-0 !p-3" role="note"><span aria-hidden="true">⚠️</span> ${esc(m.check)}</p>` : ''}
   </li>`;
 }
 
-/** Texto con los Pokémon del equipo como "chips" (sprite sobre el nombre), igual que la galería interactiva. */
+/** Sprite pequeño en línea (sin caja ni nombre visible; el nombre queda como texto alternativo). */
+export const inlineSprite = (name, dex, label = name) =>
+  `<img src="${SPRITE}${dex}.png" alt="${esc(label)}" title="${esc(label)}" width="96" height="96" loading="lazy" decoding="async" class="mx-0.5 inline-block h-9 w-9 align-middle [image-rendering:pixelated]" />`;
+
+/** Texto donde los Pokémon del equipo se sustituyen por su sprite en línea. */
 export function chips(text, team) {
   const re = new RegExp(`\\b(${team.map((m) => m.name).join('|')})\\b`, 'g');
   const dex = Object.fromEntries(team.map((m) => [m.name, m.dex]));
-  return esc(text).replace(re, (n) => `<span class="mx-0.5 my-0.5 inline-flex flex-col items-center rounded-lg border border-line bg-surface px-1.5 py-0.5 align-middle leading-none"><img src="${SPRITE}${dex[n]}.png" alt="" width="96" height="96" loading="lazy" class="h-10 w-10 [image-rendering:pixelated]" /><span class="text-xs font-semibold">${n}</span></span>`);
+  return esc(text).replace(re, (n) => inlineSprite(n, dex[n]));
 }

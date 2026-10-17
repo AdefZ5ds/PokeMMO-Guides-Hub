@@ -28,8 +28,7 @@ export function startHub() {
     source: 'seed',
     failed: {},
     // Listas derivadas: se recalculan una vez por cambio (no en cada lectura de la plantilla)
-    filtered: [], popular: [], shown: [], gallery: [],
-    limit: 9, // primer pintado ligero: el resto se añade en reposo
+    filtered: [],
 
     init() {
       const p = new URLSearchParams(location.search);
@@ -47,7 +46,6 @@ export function startHub() {
       const load = () => loadViews(this.guides).then((r) => { this.counts = r.counts; this.source = r.source; });
       const idle = window.requestIdleCallback || ((f) => setTimeout(f, 200));
       idle(load);
-      idle(() => { this.limit = Infinity; this.recompute(); }, { timeout: 1500 });
     },
 
     // --- helpers de presentación ---
@@ -76,10 +74,7 @@ export function startHub() {
         };
       });
       const byViews = (a, b) => b.n - a.n;
-      const ranked = [...vm].sort(byViews);
-      ranked.slice(0, 3).forEach((g) => { g.pop = true; });
-      this.popular = ranked.slice(0, 6);
-      this.gallery = [...vm].sort((a, b) => Number(!!b.image) - Number(!!a.image) || b.n - a.n);
+      [...vm].sort(byViews).slice(0, 3).forEach((g) => { g.pop = true; });
 
       const words = norm(this.q).split(/\s+/).filter(Boolean);
       const list = vm.filter((g) => {
@@ -92,8 +87,8 @@ export function startHub() {
         alpha: (a, b) => a.tt.localeCompare(b.tt, this.lang),
         recent: (a, b) => b.added.localeCompare(a.added),
       }[this.sort];
-      this.filtered = list.sort(by);
-      this.shown = this.filtered.slice(0, this.limit);
+      // Con el orden por popularidad, las guías con portada van primero.
+      this.filtered = list.sort(this.sort === 'popular' ? (a, b) => Number(!!b.image) - Number(!!a.image) || byViews(a, b) : by);
     },
 
     get resultsText() { return this.tr('results.count', { count: this.filtered.length }); },
@@ -103,7 +98,7 @@ export function startHub() {
     reset() { this.qInput = this.q = ''; this.cat = 'all'; this.sort = 'popular'; },
     goToResults() {
       this.q = this.qInput.trim();
-      document.getElementById('all-guides')?.scrollIntoView();
+      document.getElementById('galeria')?.scrollIntoView();
     },
     syncUrl() {
       const p = new URLSearchParams();

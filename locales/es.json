@@ -19,13 +19,13 @@
     "guides": "Guías",
     "popular": "Populares",
     "searchPlaceholder": "Buscar guías…",
-    "gallery": "Galería"
+    "gallery": "Lista de Guías"
   },
   "hero": {
     "badge": "Contenido de la comunidad",
     "title": "Todas las guías de PokeMMO en un solo lugar",
     "subtitle": "Crianza, EVs/IVs, shiny hunting, PvP, farmeo y más. Busca, filtra y abre la guía que necesitas.",
-    "cta": "Ver guías populares",
+    "cta": "Ver la lista de guías",
     "browse": "Explorar todas",
     "play": "Explorar guías",
     "pause": "Pausar vídeo de fondo",
@@ -83,8 +83,11 @@
   "footer": {
     "official": "Sitio oficial de PokeMMO",
     "credits": "Créditos",
-    "sprites": "Sprites: PokeAPI.",
-    "disclaimer": "Sitio comunitario no oficial, sin afiliación con PokeMMO ni con Nintendo/Game Freak. Pokémon y sus nombres pertenecen a sus respectivos dueños."
+    "sprites": "Sprites: PokeAPI y Pokémon Showdown.",
+    "disclaimer": "Sitio comunitario no oficial: no está afiliado a PokeMMO ni a Nintendo/Game Freak. Pokémon y sus nombres pertenecen a sus respectivos dueños. Cada guía pertenece a sus autores, que aparecen en los créditos de cada una.",
+    "tagline": "Hecho con cariño por un jugador para toda la comunidad. Que tus IVs sean altos, tus shinies frecuentes y tus raids sin sorpresas. ¡Buena caza, entrenador!",
+    "links": "Enlaces",
+    "icons": "Iconos: Lucide · Tipografía: Inter."
   },
   "counter": {
     "local": "Contador local (modo demo)"
@@ -101,7 +104,7 @@
     "events": "Eventos"
   },
   "gallery": {
-    "title": "Galería de guías",
+    "title": "Lista de Guías",
     "subtitle": "Pulsa una portada para abrir la guía."
   }
 }

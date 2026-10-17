@@ -97,3 +97,14 @@ Contiene archivos de un intento anterior del proyecto (12/oct) que no se sobresc
 - **RED:** los Pokémon del equipo se muestran como chips (sprite sobre el nombre) en todos los pasos; la selección de la galería ya no se guarda (ni en localStorage ni en la URL).
 - **Enlaces sin subrayado** en todo el proyecto (solo color; el foco de teclado sigue visible).
 - Imágenes convertidas a WebP; el vídeo original (1,3 MB, con audio) se recodificó a ~0,5 MB.
+
+## Actualización 2 (octubre 2026)
+- **Inicio:** se quitaron «Populares» y «Todas las guías»; la «Lista de Guías» (portadas) lleva ahora el buscador, las categorías y el orden.
+- **Footer nuevo** (inicio y guías, ES/EN/ZH): texto cercano, enlaces, créditos y aviso de sitio no oficial.
+- **PokePaste** (`scripts/lib/cards.mjs`, todas las guías): sprite, objeto con icono, habilidad, naturaleza, IVs 31 / EVs 252 en verde lima y movimientos en lista. Iconos solo para los objetos comprobados (`ITEM_ICON`); sin icono: Baya Drasi, Baya Magua, Baya Pabaya, Manto Encubierto.
+- **Sprites en línea** (solo imagen, nombre como texto alternativo) en los pasos de RED y Rusheo.
+- **RED:** sin filtros de generación ni vista Lista (solo galería; la lista queda para quien no tenga JS); subtítulo «Elige el Pokémon líder de RED»; en Gen 1 los Pokémon se agrupan por acción.
+- **Meloetta:** bajo el PokePaste de cada jugador, pestañas «Mis turnos (PJx)», «Modo combate» y «Lista» (solo acciones de ese jugador).
+- **Gimnasios:** pestañas «Resumen» / «Rutas por región», subpestañas por región, gimnasios numerados en 2 columnas (1 en móvil), tarjetas centradas y botón «Ir a <región> →».
+- **Rusheo:** Pokémon en orden 4, 3, 2, 1; no se muestran los que no se usan en el tramo.
+- **Corrección:** la primera tarjeta/botón de una fila aparecía más arriba (`space-y` en listas flex/grid); ahora solo se aplica a listas simples.

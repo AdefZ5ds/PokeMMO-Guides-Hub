@@ -79,7 +79,9 @@
   /* Cuerpo de las guías (sin plugin typography para no añadir dependencias) */
   .guide-body h2 { @apply mb-3 mt-8 text-xl font-bold; }
   .guide-body p { @apply mb-4 leading-relaxed; }
-  .guide-body ul { @apply mb-4 list-disc space-y-1.5 pl-6 leading-relaxed; }
+  .guide-body ul { @apply mb-4 list-disc pl-6 leading-relaxed; }
+  /* Separación solo en listas sencillas: en grid/flex, space-y subía la primera tarjeta/botón respecto a las demás */
+  .guide-body ul:not([class]) > li + li { margin-top: 0.375rem; }
   .guide-body a { @apply text-accent-text; }
   .callout {
     @apply my-6 rounded-xl border border-gold/60 bg-gold/10 p-4 text-sm leading-relaxed;
@@ -114,3 +116,7 @@ a { text-decoration: none; }
 .glass { background: rgb(255 255 255 / .12); border: 1px solid rgb(255 255 255 / .28); backdrop-filter: blur(8px); color: #fff; }
 .glass:hover { background: rgb(255 255 255 / .22); }
 .text-shadow { text-shadow: 0 2px 12px rgb(0 0 0 / .65); }
+
+/* IVs 31 / EVs 252 en verde lima (AA sobre claro y oscuro) */
+.stat-max { color: #4d7c0f; font-weight: 700; }
+.dark .stat-max { color: #a3e635; }

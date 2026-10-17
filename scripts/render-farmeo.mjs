@@ -16,17 +16,17 @@ const hl = (s) => esc(s).replace(/\{([a-z]):([^}]+)\}/g, (_, c, t) => `<span cla
 const list = (items, level = 0) => `<ul class="${level ? '!mt-1 ' : ''}!mb-0 space-y-1">${items.map((i) =>
   typeof i === 'string' ? `<li>${hl(i)}</li>` : `<li>${hl(i.t)}${i.sub ? list(i.sub, level + 1) : ''}</li>`).join('')}</ul>`;
 
-function gym(g, region) {
+function gym(g, n) {
   const emoji = TYPE_EMOJI[g.type] ?? '🏟️';
   const [a, b] = g.duo.map(([k, move]) => ({ ...data.mons[k], move }));
   const duoCell = (m) => `<li class="flex flex-col items-center text-center">${img(m.name, m.dex, 80)}<span class="text-xs text-muted">${esc(m.name)}</span><span class="text-sm font-bold">${esc(m.move)}</span></li>`;
-  return `<li class="card !gap-3">
-    <div class="flex items-center gap-3">
-      <img src="${TRAINER}${g.leader}.png" alt="Líder del gimnasio de ${esc(g.city)} (${esc(g.type)})" width="64" height="64" loading="lazy" decoding="async"
-           class="h-16 w-16 shrink-0 object-contain [image-rendering:pixelated]"
-           onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${emoji}',className:'text-4xl',role:'img',ariaLabel:'${esc(g.type)}'}))" />
-      <div><h4 class="!m-0 text-lg font-bold">${esc(g.city)}</h4>
-        <p class="!m-0"><span class="badge-muted"><span aria-hidden="true">${emoji}</span> ${esc(g.type)}</span></p></div>
+  return `<li class="card !items-stretch !gap-3">
+    <div class="flex flex-col items-center gap-1 text-center">
+      <img src="${TRAINER}${g.leader}.png" alt="Líder del gimnasio de ${esc(g.city)} (${esc(g.type)})" width="96" height="96" loading="lazy" decoding="async"
+           class="h-24 w-24 shrink-0 object-contain [image-rendering:pixelated]"
+           onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${emoji}',className:'text-5xl',role:'img',ariaLabel:'${esc(g.type)}'}))" />
+      <h5 class="!m-0 text-lg font-bold"><span class="text-accent-text">${n}.</span> ${esc(g.city)}</h5>
+      <p class="!m-0"><span class="badge-muted"><span aria-hidden="true">${emoji}</span> Gimnasio ${esc(g.type)}</span></p>
     </div>
     <ul class="!pl-0 !list-none flex items-end justify-center gap-3" aria-label="Dúo recomendado">${duoCell(a)}<li aria-hidden="true" class="pb-8 text-2xl font-bold">+</li>${duoCell(b)}</ul>
     ${g.notes ? `<div class="text-sm">${list(g.notes)}</div>` : ''}
@@ -34,40 +34,49 @@ function gym(g, region) {
   </li>`;
 }
 
-const reset = () => `<li class="rounded-xl border-2 border-red-500 bg-red-500/10 p-3 text-center font-bold" role="note"><span aria-hidden="true">❤️</span> RESET en el CP (Centro Pokémon)</li>`;
+const reset = () => `<li class="md:col-span-full rounded-xl border-2 border-red-500 bg-red-500/10 p-3 text-center font-bold" role="note"><span aria-hidden="true">❤️</span> RESET en el CP (Centro Pokémon)</li>`;
 
-function region(r) {
-  return `<section id="reg-${r.id}" data-region="${r.id}" aria-labelledby="reg-${r.id}-t" class="scroll-mt-24">
-    <h3 id="reg-${r.id}-t" class="!mt-8 text-xl font-bold">${esc(r.name)}</h3>
-    <figure class="my-4"><img src="../img/farmeo/${r.map}" alt="Mapa de ${esc(r.name)} del PDF con la ruta numerada del 1 al ${r.id === 'teselia' ? 7 : r.id === 'sinnoh' ? 5 : r.id === 'johto' ? 5 : r.id === 'hoenn' ? 6 : 2}" loading="lazy" decoding="async" class="mx-auto max-h-[28rem] w-auto rounded-xl border border-line" />
+function region(r, next) {
+  let n = 0;
+  return `<section id="reg-${r.id}" data-sub="${r.id}" aria-labelledby="reg-${r.id}-t" class="scroll-mt-24">
+    <h4 id="reg-${r.id}-t" class="!mt-6 text-xl font-bold">${esc(r.name)}</h4>
+    <figure class="my-4"><img src="../img/farmeo/${r.map}" alt="Mapa de ${esc(r.name)} del PDF con la ruta numerada del 1 al ${r.id === 'teselia' ? 7 : r.id === 'sinnoh' ? 5 : r.id === 'johto' ? 5 : r.id === 'hoenn' ? 6 : 2}" loading="lazy" decoding="async" class="mx-auto w-full max-w-2xl rounded-xl border border-line" />
       <figcaption class="mt-1 text-center text-sm text-muted">Mapa tomado del PDF. Los números del mapa no están explicados en el PDF.</figcaption></figure>
-    <ol class="!pl-0 !list-none space-y-4">${r.gyms.map((g) => (g.reset ? reset() : gym(g, r))).join('')}</ol>
+    <ol class="!pl-0 !list-none grid gap-4 md:grid-cols-2">${r.gyms.map((g) => (g.reset ? reset() : gym(g, ++n))).join('')}</ol>
+    ${next ? `<p class="mt-6 text-center"><a href="#${next.id}" data-next-sub class="btn-primary !px-6 !py-3 !text-base">Ir a ${esc(next.name)} <span aria-hidden="true">→</span></a></p>` : ''}
   </section>`;
 }
 
 export function renderFarmeo() {
   const team = data.team.map((m) => teamCard({ ...m, ability: m.ability === '-' ? 'Habilidad no relevante' : m.ability }, data.statLabels)).join('');
-  return `<div id="farmeo-guide">
-    <p>Ruta de farmeo de gimnasios por región y qué hacer en cada situación, con un equipo fijo de cinco Pokémon.</p>
-    <aside class="callout" aria-labelledby="credits-title">
-      <p id="credits-title" class="!mb-1 font-bold"><span aria-hidden="true">🙏</span> Créditos</p>
-      <p class="!mb-1">Guía de farmeo de gimnasios por ${esc(data.author)} (PokeMMO).</p>
-      <p class="!mb-0 text-muted">Última actualización del documento: ${esc(data.updated)}.</p>
-    </aside>
-
-    <h2>Consumibles</h2>
-    <ul class="!pl-0 !list-none grid gap-2 sm:grid-cols-3">${data.consumables.map((c, i) =>
-      `<li class="rounded-xl border border-line bg-surface p-3"><label class="flex items-center gap-2"><input type="checkbox" class="h-5 w-5" /><span><strong>${esc(c.name)}</strong> · mín. ${c.min}</span></label></li>`).join('')}</ul>
-
-    <h2>Equipo (PokePaste)</h2>
-    <p class="text-sm text-muted">Un guion («—») en una estadística significa que no es relevante y puedes asignarle cualquier valor.</p>
-    <ul class="!pl-0 !list-none grid gap-4 md:grid-cols-2">${team}
-      <li class="card !gap-2"><h3 class="!m-0 text-lg font-bold"><span aria-hidden="true">❔</span> Sexto espacio libre</h3><p class="!m-0 text-sm">${esc(data.freeSlot)}</p></li>
-    </ul>
-
-    <h2 id="rutas">Rutas por región</h2>
+  return `<div id="farmeo-guide" data-tabs-label="Secciones">
     <div id="region-controls"></div>
-    ${data.regions.map(region).join('\n')}
+
+    <section id="reg-resumen" data-region="resumen" aria-labelledby="reg-resumen-t" class="scroll-mt-24">
+      <h3 id="reg-resumen-t" class="!mt-8 text-xl font-bold">Resumen</h3>
+      <p>Ruta de farmeo de gimnasios por región y qué hacer en cada situación, con un equipo fijo de cinco Pokémon.</p>
+      <aside class="callout" aria-labelledby="credits-title">
+        <p id="credits-title" class="!mb-1 font-bold"><span aria-hidden="true">🙏</span> Créditos</p>
+        <p class="!mb-1">Guía de farmeo de gimnasios por ${esc(data.author)} (PokeMMO).</p>
+        <p class="!mb-0 text-muted">Última actualización del documento: ${esc(data.updated)}.</p>
+      </aside>
+
+      <h4 class="!mt-6 font-bold">Consumibles</h4>
+      <ul class="!pl-0 !list-none grid gap-2 sm:grid-cols-3">${data.consumables.map((c) =>
+        `<li class="rounded-xl border border-line bg-surface p-3"><label class="flex items-center gap-2"><input type="checkbox" class="h-5 w-5" /><span><strong>${esc(c.name)}</strong> · mín. ${c.min}</span></label></li>`).join('')}</ul>
+
+      <h4 class="!mt-6 font-bold">Equipo (PokePaste)</h4>
+      <p class="text-sm text-muted">Un guion («—») en una estadística significa que no es relevante y puedes asignarle cualquier valor.</p>
+      <ul class="!pl-0 !list-none grid gap-4 md:grid-cols-2">${team}
+        <li class="card !gap-2"><h5 class="!m-0 text-lg font-bold"><span aria-hidden="true">❔</span> Sexto espacio libre</h5><p class="!m-0 text-sm">${esc(data.freeSlot)}</p></li>
+      </ul>
+    </section>
+
+    <section id="reg-rutas" data-region="rutas" data-tab="Rutas por región" aria-labelledby="reg-rutas-t" class="scroll-mt-24">
+      <h3 id="reg-rutas-t" class="!mt-8 text-xl font-bold">Rutas por región</h3>
+      <div id="sub-controls" class="scroll-mt-20"></div>
+      ${data.regions.map((r, i) => region(r, data.regions[i + 1])).join('\n')}
+    </section>
 
     <div class="callout">
       <p class="!mb-2 font-bold"><span aria-hidden="true">⚠️</span> Datos por verificar</p>

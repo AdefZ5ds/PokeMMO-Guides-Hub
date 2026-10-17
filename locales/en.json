@@ -19,13 +19,13 @@
     "guides": "Guides",
     "popular": "Popular",
     "searchPlaceholder": "Search guides…",
-    "gallery": "Gallery"
+    "gallery": "Guide List"
   },
   "hero": {
     "badge": "Community content",
     "title": "Every PokeMMO guide in one place",
     "subtitle": "Breeding, EVs/IVs, shiny hunting, PvP, farming and more. Search, filter and open the guide you need.",
-    "cta": "See popular guides",
+    "cta": "See the guide list",
     "browse": "Browse all",
     "play": "Explore guides",
     "pause": "Pause background video",
@@ -83,8 +83,11 @@
   "footer": {
     "official": "Official PokeMMO site",
     "credits": "Credits",
-    "sprites": "Sprites: PokeAPI.",
-    "disclaimer": "Unofficial community site, not affiliated with PokeMMO or Nintendo/Game Freak. Pokémon and their names belong to their respective owners."
+    "sprites": "Sprites: PokeAPI and Pokémon Showdown.",
+    "disclaimer": "Unofficial community site: not affiliated with PokeMMO or Nintendo/Game Freak. Pokémon and their names belong to their respective owners. Each guide belongs to its authors, who are credited in each guide.",
+    "tagline": "Made with love by a player for the whole community. May your IVs be high, your shinies frequent and your raids free of surprises. Happy hunting, trainer!",
+    "links": "Links",
+    "icons": "Icons: Lucide · Typeface: Inter."
   },
   "counter": {
     "local": "Local counter (demo mode)"
@@ -227,7 +230,7 @@
     }
   },
   "gallery": {
-    "title": "Guide gallery",
+    "title": "Guide List",
     "subtitle": "Tap a cover to open the guide."
   }
 }

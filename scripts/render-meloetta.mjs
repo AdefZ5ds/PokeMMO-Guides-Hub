@@ -13,13 +13,28 @@ const note = (n) => typeof n === 'string'
   ? `<li>${esc(n)}</li>`
   : `<li><span class="badge-gold">Texto incompleto en el PDF</span> ${esc(n.text)}</li>`;
 
+const SP = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+
+// Pestaña 1: solo mis acciones por turno
 function myTurns(pj) {
-  return `<details class="mt-4 rounded-xl border border-line bg-surface p-3 open:border-accent">
-    <summary class="cursor-pointer font-semibold">Mis acciones por turno (PJ${pj})</summary>
-    <ol class="!mb-0 mt-2 !list-none !pl-0 space-y-1">${data.turns.map((t) => {
-      const a = t.actions[pj - 1];
-      return `<li class="flex items-center gap-2"><span class="w-9 shrink-0 font-bold text-accent-text">T${t.t}</span>${img(a.mon, a.dex)}<span><strong>${esc(a.mon)}</strong>: ${move(a)}</span></li>`;
-    }).join('')}</ol></details>`;
+  return `<ol class="!mb-0 mt-2 !list-none !pl-0 space-y-1">${data.turns.map((t) => {
+    const a = t.actions[pj - 1];
+    return `<li class="flex items-center gap-2 rounded-lg border border-line bg-surface p-2"><span class="w-9 shrink-0 font-bold text-accent-text">T${t.t}</span>${img(a.mon, a.dex)}<span><strong>${esc(a.mon)}</strong>: ${move(a)}</span></li>`;
+  }).join('')}</ol>`;
+}
+
+// Tarjeta de un turno con SOLO la acción de este jugador (+ PS de Meloetta y avisos del turno)
+function turnCard(t, pj, big) {
+  const bar = t.hp == null
+    ? '<span class="text-sm text-muted">PS de Meloetta: el PDF no indica el valor</span>'
+    : `<span class="text-sm font-semibold">Meloetta ${t.hp}% PS</span><span role="img" aria-label="Meloetta con ${t.hp}% de PS" class="block h-2 w-28 rounded bg-line"><span class="block h-2 rounded bg-accent-strong" style="width:${t.hp}%"></span></span>`;
+  const a = t.actions[pj - 1];
+  const size = big ? 'h-24 w-24' : 'h-14 w-14';
+  return `<li data-turn="${t.t}" class="rounded-xl border border-line bg-surface p-3">
+    <div class="flex flex-wrap items-center justify-between gap-2"><h5 class="!m-0 text-lg font-bold">Turno ${t.t}</h5><div class="flex items-center gap-2">${bar}</div></div>
+    <div class="mt-3 flex items-center gap-3 rounded-lg bg-bg p-2"><img src="${SP}${a.dex}.png" alt="${esc(a.mon)}" width="96" height="96" loading="lazy" decoding="async" class="${size} shrink-0 [image-rendering:pixelated]" /><div><span class="text-xs font-bold text-accent-text">PJ${pj}</span><br><span class="font-semibold">${esc(a.mon)}</span><br><span class="text-sm">${move(a)}</span></div></div>
+    ${t.alert ? `<p class="callout !mb-0 !mt-3 !p-3 ${t.kind === 'reset' ? '!border-red-500 !bg-red-500/10' : ''}" role="note"><strong>${t.kind === 'reset' ? '⚠️ Al terminar el turno:' : 'ℹ️ Nota:'}</strong> ${esc(t.alert)}</p>` : ''}
+  </li>`;
 }
 
 function player(p) {
@@ -31,27 +46,29 @@ function player(p) {
     <ul class="!pl-0 !list-none grid gap-4 md:grid-cols-2">${p.team.map((m) => teamCard(m, data.statLabels)).join('')}</ul>
     ${alt}
     <div class="callout"><p class="!mb-2 font-bold"><span aria-hidden="true">📌</span> Datos de importancia · PJ${p.n}</p><ul class="!mb-0">${p.notes.map(note).join('')}</ul></div>
-    ${myTurns(p.n)}
+    <!-- Pestañas bajo el PokePaste: raid.js las activa; sin JS se ven los paneles seguidos -->
+    <div data-ptabs class="mt-6">
+      <div data-ptab-controls></div>
+      <div data-ptab="mine" data-label="Mis turnos (PJ${p.n})" id="ptab-${p.n}-mine"><h4 class="!mb-0 !mt-4 text-lg font-bold">Mis turnos (PJ${p.n})</h4>${myTurns(p.n)}</div>
+      <div data-ptab="combat" data-label="Modo combate" id="ptab-${p.n}-combat" hidden>
+        <h4 class="!mb-2 !mt-4 text-lg font-bold">Modo combate</h4>
+        <div data-nav class="mb-3 flex flex-wrap items-center gap-2">
+          <button type="button" class="btn-ghost !py-1.5" data-prev>← Anterior</button>
+          <span class="text-sm" role="status" aria-live="polite" data-pos></span>
+          <button type="button" class="btn-primary !py-1.5" data-next>Siguiente →</button>
+        </div>
+        <ol class="!pl-0 !list-none" data-combat>${data.turns.map((t) => turnCard(t, p.n, true)).join('')}</ol>
+      </div>
+      <div data-ptab="list" data-label="Lista" id="ptab-${p.n}-list"><h4 class="!mb-2 !mt-6 text-lg font-bold">Lista</h4>
+        <ol class="!pl-0 !list-none space-y-3">${data.turns.map((t) => turnCard(t, p.n, false)).join('')}</ol></div>
+    </div>
   </section>`;
-}
-
-function turn(t) {
-  const bar = t.hp == null
-    ? '<span class="text-sm text-muted">PS de Meloetta: el PDF no indica el valor</span>'
-    : `<span class="text-sm font-semibold">Meloetta ${t.hp}% PS</span><span role="img" aria-label="Meloetta con ${t.hp}% de PS" class="block h-2 w-28 rounded bg-line"><span class="block h-2 rounded bg-accent-strong" style="width:${t.hp}%"></span></span>`;
-  const sprite = 'h-14 w-14 group-data-[mode=combat]:h-24 group-data-[mode=combat]:w-24';
-  return `<li data-turn="${t.t}" class="rounded-xl border border-line bg-surface p-3">
-    <div class="flex flex-wrap items-center justify-between gap-2"><h3 class="!m-0 text-lg font-bold">Turno ${t.t}</h3><div class="flex items-center gap-2">${bar}</div></div>
-    <ul class="!pl-0 !list-none mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">${t.actions.map((a) =>
-      `<li class="flex flex-col items-center rounded-lg bg-bg p-2 text-center"><span class="text-xs font-bold text-accent-text">PJ${a.pj}</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${a.dex}.png" alt="${esc(a.mon)}" width="96" height="96" loading="lazy" decoding="async" class="${sprite} [image-rendering:pixelated]" /><span class="text-xs text-muted">${esc(a.mon)}</span><span class="text-sm font-semibold">${move(a)}</span></li>`).join('')}</ul>
-    ${t.alert ? `<p class="callout !mb-0 !mt-3 !p-3 ${t.kind === 'reset' ? '!border-red-500 !bg-red-500/10' : ''}" role="note"><strong>${t.kind === 'reset' ? '⚠️ Al terminar el turno:' : 'ℹ️ Nota:'}</strong> ${esc(t.alert)}</p>` : ''}
-  </li>`;
 }
 
 export function renderMeloetta() {
   const sp = data.speed;
   return `<div id="raid-guide">
-    <p>Estrategia de 4 jugadores para derrotar la raid de Meloetta: elige tu jugador para ver tu equipo y tus acciones, y usa los turnos para seguir la raid.</p>
+    <p>Estrategia de 4 jugadores para derrotar la raid de Meloetta: elige tu jugador para ver tu equipo y, debajo, tus acciones turno a turno.</p>
     <aside class="callout" aria-labelledby="credits-title">
       <p id="credits-title" class="!mb-1 font-bold"><span aria-hidden="true">🙏</span> Créditos</p>
       <p class="!mb-1">${esc(data.credits)}</p>
@@ -63,10 +80,6 @@ export function renderMeloetta() {
     <p class="text-sm text-muted">${esc(data.legend)}</p>
     <div id="pj-controls"></div>
     ${data.players.map(player).join('\n')}
-
-    <h2 id="turnos">Turnos</h2>
-    <div id="turn-controls"></div>
-    <div id="turns" class="group" data-mode="list"><ol class="!pl-0 !list-none space-y-3">${data.turns.map(turn).join('')}</ol></div>
 
     <h2>Orden de velocidad</h2>
     <p>${esc(sp.intro)}</p>

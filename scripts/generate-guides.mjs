@@ -113,7 +113,7 @@ function page(g) {
           <ol class="flex flex-wrap items-center gap-1.5 text-sm text-slate-200">
             <li><a class="font-medium text-sky-300" href="../index.html" data-i18n="nav.home">Inicio</a></li>
             <li aria-hidden="true"><span data-icon="chevron-right"></span></li>
-            <li><a class="font-medium text-sky-300" href="../index.html?cat=${g.category}#all-guides" data-i18n="categories.${g.category}">${esc(cat)}</a></li>
+            <li><a class="font-medium text-sky-300" href="../index.html?cat=${g.category}#galeria" data-i18n="categories.${g.category}">${esc(cat)}</a></li>
           </ol>
         </nav>
         <h1 id="guide-title" class="mt-3 text-3xl font-bold leading-tight sm:text-4xl" style="text-shadow:0 2px 12px rgb(0 0 0/.7)" data-i18n="guides.${g.slug}.title" data-i18n-default="${esc(g.title)}">${esc(g.title)}</h1>
@@ -143,10 +143,28 @@ function page(g) {
   </main>
 
   <footer class="border-t border-line bg-surface">
-    <div class="mx-auto max-w-3xl px-4 py-6 text-sm text-muted">
-      <p data-i18n="footer.disclaimer">${esc(es.footer.disclaimer)}</p>
-      <p class="mt-2"><a class="text-accent-text" href="https://pokemmo.com" target="_blank" rel="noopener noreferrer"><span data-i18n="footer.official">${es.footer.official}</span><span class="sr-only" data-i18n="a11y.newTab">${es.a11y.newTab}</span></a> · <span data-i18n="footer.sprites">${es.footer.sprites}</span></p>
+    <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 text-sm sm:grid-cols-2 lg:grid-cols-3">
+      <div>
+        <p class="flex items-center gap-2 text-base font-bold"><img src="/assets/img/logo.svg" alt="" width="24" height="24" /> PokeMMO Guides Hub</p>
+        <p class="mt-3 text-muted" data-i18n="footer.tagline">Hecho con cariño por un jugador para toda la comunidad. Que tus IVs sean altos, tus shinies frecuentes y tus raids sin sorpresas. ¡Buena caza, entrenador!</p>
+      </div>
+      <nav aria-label="Enlaces del pie">
+        <p class="font-semibold" data-i18n="footer.links">Enlaces</p>
+        <ul class="mt-3 space-y-2">
+          <li><a class="text-accent-text" href="../index.html" data-i18n="nav.home">Inicio</a></li>
+          <li><a class="text-accent-text" href="../index.html#galeria" data-i18n="nav.gallery">Lista de Guías</a></li>
+          <li><a class="text-accent-text" href="https://pokemmo.com" target="_blank" rel="noopener noreferrer"><span data-i18n="footer.official">Sitio oficial de PokeMMO</span><span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="font-semibold" data-i18n="footer.credits">Créditos</p>
+        <ul class="mt-3 space-y-2 text-muted">
+          <li><span data-i18n="footer.sprites">Sprites: PokeAPI y Pokémon Showdown.</span> <a class="text-accent-text" href="https://pokeapi.co" target="_blank" rel="noopener noreferrer">pokeapi.co<span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a></li>
+          <li data-i18n="footer.icons">Iconos: Lucide · Tipografía: Inter.</li>
+        </ul>
+      </div>
     </div>
+    <div class="border-t border-line"><p class="mx-auto max-w-6xl px-4 py-4 text-xs text-muted" data-i18n="footer.disclaimer">Sitio comunitario no oficial: no está afiliado a PokeMMO ni a Nintendo/Game Freak. Pokémon y sus nombres pertenecen a sus respectivos dueños. Cada guía pertenece a sus autores, que aparecen en los créditos de cada una.</p></div>
   </footer>
 </body>
 </html>

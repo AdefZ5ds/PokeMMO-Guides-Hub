@@ -35,9 +35,8 @@
           <span class="hidden sm:inline">PokeMMO Guides Hub</span>
         </a>
         <ul class="ml-2 hidden items-center gap-4 text-sm font-medium lg:flex">
-          <li><a class="hover:text-accent-text" href="#galeria" data-i18n="nav.gallery">Galería</a></li>
-          <li><a class="hover:text-accent-text" href="#popular" data-i18n="nav.popular">Populares</a></li>
-          <li><a class="hover:text-accent-text" href="#all-guides" data-i18n="nav.guides">Guías</a></li>
+          <li><a class="hover:text-accent-text" href="#galeria" data-i18n="nav.gallery">Lista de Guías</a></li>
+          
         </ul>
 
         <form role="search" class="ml-auto hidden max-w-xs flex-1 md:block" @submit.prevent="goToResults()">
@@ -96,8 +95,7 @@
           </form>
 
           <div class="mt-5 flex flex-wrap justify-center gap-3">
-            <a href="#popular" class="glass btn rounded-full"><span aria-hidden="true">🔥</span> <span data-i18n="hero.cta">Ver guías populares</span></a>
-            <a href="#all-guides" class="glass btn rounded-full" data-i18n="hero.browse">Explorar todas</a>
+            <a href="#galeria" class="glass btn rounded-full"><span aria-hidden="true">📚</span> <span data-i18n="hero.cta">Ver la lista de guías</span></a>
           </div>
         </div>
 
@@ -106,55 +104,10 @@
         </button>
       </section>
 
-      <!-- ================= GALERÍA DE PORTADAS ================= -->
-      <section id="galeria" class="mx-auto max-w-6xl px-4 py-10" aria-labelledby="gallery-title">
-        <h2 id="gallery-title" class="text-2xl font-bold" data-i18n="gallery.title">Galería de guías</h2>
+      <!-- ================= LISTA DE GUÍAS (portadas + buscador + filtros) ================= -->
+      <section id="galeria" class="mx-auto max-w-6xl scroll-mt-16 px-4 py-10" aria-labelledby="gallery-title">
+        <h2 id="gallery-title" class="text-2xl font-bold" data-i18n="gallery.title">Lista de Guías</h2>
         <p class="mt-1 text-sm text-muted" data-i18n="gallery.subtitle">Pulsa una portada para abrir la guía.</p>
-        <ul class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          <template x-for="g in gallery" :key="g.slug">
-            <li class="[content-visibility:auto] [contain-intrinsic-size:auto_15rem]">
-              <a :href="href(g)" class="group relative block aspect-[2/3] overflow-hidden rounded-xl border border-line" :class="g.image ? 'bg-slate-900' : 'cov cov-' + g.category">
-                <img x-show="g.image" :src="g.image ? cover(g) : ''" alt="" width="520" height="780" loading="lazy" decoding="async"
-                     class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                <img x-show="!g.image && !failed[g.slug]" :src="sprite(g)" alt="" width="96" height="96" loading="lazy" decoding="async" @error="failed[g.slug] = true"
-                     class="absolute left-1/2 top-[30%] h-24 w-24 -translate-x-1/2 -translate-y-1/2 opacity-90 [image-rendering:pixelated]" />
-                <span class="absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 text-6xl" aria-hidden="true" x-show="!g.image && failed[g.slug]" x-text="g.emoji"></span>
-                <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-3 pt-10 text-white">
-                  <span class="block text-sm font-bold leading-snug text-shadow" x-text="g.tt"></span>
-                  <span class="mt-0.5 block text-xs text-slate-200" x-text="g.cc"></span>
-                </span>
-              </a>
-            </li>
-          </template>
-        </ul>
-      </section>
-
-      <!-- ================= POPULARES ================= -->
-      <section id="popular" class="mx-auto max-w-6xl px-4 py-10" aria-labelledby="popular-title">
-        <h2 id="popular-title" class="text-2xl font-bold"><span aria-hidden="true">🔥</span> <span data-i18n="popular.title">Guías más populares</span></h2>
-        <p class="mt-1 text-sm text-muted">
-          <span data-i18n="popular.subtitle">Ordenadas por número de visitas.</span>
-          <span x-show="source !== 'remote'" x-cloak x-text="'· ' + tr('counter.local')"></span>
-        </p>
-        <ol class="mt-5 grid min-h-[34.5rem] grid-cols-[minmax(0,1fr)] gap-3 sm:min-h-[16.8rem] sm:grid-cols-2 lg:min-h-[11rem] lg:grid-cols-3">
-          <template x-for="(g, i) in popular" :key="g.slug">
-            <li class="card !flex-row items-center gap-3">
-              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent-strong text-sm font-bold text-white" x-text="i + 1" aria-hidden="true"></span>
-              <img :src="sprite(g)" :alt="g.alt" width="48" height="48" loading="lazy" decoding="async"
-                   class="h-12 w-12 shrink-0 [image-rendering:pixelated]" x-show="!failed[g.slug]" @error="failed[g.slug] = true" />
-              <span class="text-3xl" aria-hidden="true" x-show="failed[g.slug]" x-text="g.emoji"></span>
-              <div class="min-w-0">
-                <h3 class="truncate font-semibold"><a :href="href(g)" class="after:absolute after:inset-0" x-text="g.tt"></a></h3>
-                <p class="text-sm text-muted"><span x-html="icon('eye')"></span> <span x-text="g.vv"></span></p>
-              </div>
-            </li>
-          </template>
-        </ol>
-      </section>
-
-      <!-- ================= FILTROS + GRID ================= -->
-      <section id="all-guides" class="mx-auto max-w-6xl px-4 pb-16" aria-labelledby="all-title">
-        <h2 id="all-title" class="text-2xl font-bold" data-i18n="all.title">Todas las guías</h2>
 
         <div class="mt-4 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div role="group" aria-labelledby="filters-label" class="flex flex-wrap gap-2">
@@ -178,30 +131,20 @@
 
         <p class="mt-4 text-sm text-muted" role="status" aria-live="polite" x-text="resultsText"></p>
 
-        <ul class="mt-4 grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2 lg:grid-cols-3" x-show="filtered.length">
-          <template x-for="g in shown" :key="g.slug">
-            <li class="[content-visibility:auto] [contain-intrinsic-size:auto_13rem]">
-              <article class="card h-full">
-                <div class="flex items-start gap-3">
-                  <div class="relative grid h-16 w-16 shrink-0 place-items-center rounded-lg bg-bg">
-                    <img :src="sprite(g)" :alt="g.alt" width="96" height="96" loading="lazy" decoding="async"
-                         class="h-14 w-14 [image-rendering:pixelated]" x-show="!failed[g.slug]" @error="failed[g.slug] = true" />
-                    <span class="text-3xl" aria-hidden="true" x-show="failed[g.slug]" x-text="g.emoji"></span>
-                    <span class="absolute -bottom-1 -right-1 text-base" aria-hidden="true" x-text="g.emoji" x-show="!failed[g.slug]"></span>
-                  </div>
-                  <div class="min-w-0">
-                    <h3 class="font-semibold leading-snug"><a :href="href(g)" class="after:absolute after:inset-0" x-text="g.tt"></a></h3>
-                    <p class="text-sm text-muted" x-text="g.cc"></p>
-                  </div>
-                </div>
-                <p class="text-sm text-muted" x-text="g.dd"></p>
-                <div class="mt-auto flex flex-wrap items-center gap-2 text-sm">
-                  <span class="badge-gold" x-show="g.pop"><span aria-hidden="true">🔥</span> <span x-text="tr('card.popular')"></span></span>
-                  <span class="badge-gold" x-show="g.isNew"><span aria-hidden="true">✨</span> <span x-text="tr('card.new')"></span></span>
-                  <span class="badge-muted" x-show="g.externalUrl"><span x-html="icon('external-link', 'icon h-3 w-3')"></span> <span x-text="tr('card.external')"></span></span>
-                  <span class="ml-auto text-muted"><span x-html="icon('eye')"></span> <span x-text="g.vv"></span></span>
-                </div>
-              </article>
+        <ul class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5" x-show="filtered.length">
+          <template x-for="g in filtered" :key="g.slug">
+            <li class="[content-visibility:auto] [contain-intrinsic-size:auto_15rem]">
+              <a :href="href(g)" class="group relative block aspect-[2/3] overflow-hidden rounded-xl border border-line" :class="g.image ? 'bg-slate-900' : 'cov cov-' + g.category">
+                <img x-show="g.image" :src="g.image ? cover(g) : ''" alt="" width="520" height="780" loading="lazy" decoding="async"
+                     class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                <img x-show="!g.image && !failed[g.slug]" :src="sprite(g)" alt="" width="96" height="96" loading="lazy" decoding="async" @error="failed[g.slug] = true"
+                     class="absolute left-1/2 top-[30%] h-24 w-24 -translate-x-1/2 -translate-y-1/2 opacity-90 [image-rendering:pixelated]" />
+                <span class="absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 text-6xl" aria-hidden="true" x-show="!g.image && failed[g.slug]" x-text="g.emoji"></span>
+                <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-3 pt-10 text-white">
+                  <span class="block text-sm font-bold leading-snug text-shadow" x-text="g.tt"></span>
+                  <span class="mt-0.5 block text-xs text-slate-200" x-text="g.cc"></span>
+                </span>
+              </a>
             </li>
           </template>
         </ul>
@@ -220,17 +163,28 @@
 
   <!-- ================= FOOTER ================= -->
   <footer class="border-t border-line bg-surface">
-    <div class="mx-auto grid max-w-6xl gap-6 px-4 py-8 text-sm text-muted md:grid-cols-2">
+    <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 text-sm sm:grid-cols-2 lg:grid-cols-3">
       <div>
-        <p class="font-semibold text-fg">PokeMMO Guides Hub</p>
-        <p class="mt-2" data-i18n="footer.disclaimer">Sitio comunitario no oficial.</p>
+        <p class="flex items-center gap-2 text-base font-bold"><img src="/assets/img/logo.svg" alt="" width="24" height="24" /> PokeMMO Guides Hub</p>
+        <p class="mt-3 text-muted" data-i18n="footer.tagline">Hecho con cariño por un jugador para toda la comunidad. Que tus IVs sean altos, tus shinies frecuentes y tus raids sin sorpresas. ¡Buena caza, entrenador!</p>
       </div>
-      <ul class="space-y-2 md:text-right">
-        <li><a class="text-accent-text" href="https://pokemmo.com" target="_blank" rel="noopener noreferrer"><span data-i18n="footer.official">Sitio oficial de PokeMMO</span><span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a></li>
-        <li><span data-i18n="footer.sprites">Sprites: PokeAPI.</span> <a class="text-accent-text" href="https://pokeapi.co" target="_blank" rel="noopener noreferrer">pokeapi.co<span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a></li>
-        <li><span data-i18n="footer.credits">Créditos</span>: <a class="text-accent-text" href="https://lucide.dev" target="_blank" rel="noopener noreferrer">Lucide<span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a> · Inter</li>
-      </ul>
+      <nav aria-label="Enlaces del pie">
+        <p class="font-semibold" data-i18n="footer.links">Enlaces</p>
+        <ul class="mt-3 space-y-2">
+          <li><a class="text-accent-text" href="./index.html" data-i18n="nav.home">Inicio</a></li>
+          <li><a class="text-accent-text" href="#galeria" data-i18n="nav.gallery">Lista de Guías</a></li>
+          <li><a class="text-accent-text" href="https://pokemmo.com" target="_blank" rel="noopener noreferrer"><span data-i18n="footer.official">Sitio oficial de PokeMMO</span><span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="font-semibold" data-i18n="footer.credits">Créditos</p>
+        <ul class="mt-3 space-y-2 text-muted">
+          <li><span data-i18n="footer.sprites">Sprites: PokeAPI y Pokémon Showdown.</span> <a class="text-accent-text" href="https://pokeapi.co" target="_blank" rel="noopener noreferrer">pokeapi.co<span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a></li>
+          <li data-i18n="footer.icons">Iconos: Lucide · Tipografía: Inter.</li>
+        </ul>
+      </div>
     </div>
+    <div class="border-t border-line"><p class="mx-auto max-w-6xl px-4 py-4 text-xs text-muted" data-i18n="footer.disclaimer">Sitio comunitario no oficial: no está afiliado a PokeMMO ni a Nintendo/Game Freak. Pokémon y sus nombres pertenecen a sus respectivos dueños. Cada guía pertenece a sus autores, que aparecen en los créditos de cada una.</p></div>
   </footer>
 </body>
 </html>
