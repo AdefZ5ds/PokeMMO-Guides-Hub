@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "siteName": "PokeMMO Guides Hub",
+    "description": "Hub comunitario de guías de PokeMMO: crianza, EVs/IVs, shiny hunting, PvP, farmeo y más."
+  },
+  "a11y": {
+    "skip": "Saltar al contenido principal",
+    "mainNav": "Navegación principal",
+    "home": "Inicio",
+    "lang": "Idioma",
+    "themeToLight": "Cambiar a tema claro",
+    "themeToDark": "Cambiar a tema oscuro",
+    "search": "Buscar guías",
+    "clear": "Limpiar búsqueda",
+    "newTab": "(se abre en una pestaña nueva)"
+  },
+  "nav": {
+    "home": "Inicio",
+    "guides": "Guías",
+    "popular": "Populares",
+    "searchPlaceholder": "Buscar guías…",
+    "gallery": "Galería"
+  },
+  "hero": {
+    "badge": "Contenido de la comunidad",
+    "title": "Todas las guías de PokeMMO en un solo lugar",
+    "subtitle": "Crianza, EVs/IVs, shiny hunting, PvP, farmeo y más. Busca, filtra y abre la guía que necesitas.",
+    "cta": "Ver guías populares",
+    "browse": "Explorar todas",
+    "play": "Explorar guías",
+    "pause": "Pausar vídeo de fondo",
+    "resume": "Reanudar vídeo de fondo"
+  },
+  "popular": {
+    "title": "Guías más populares",
+    "subtitle": "Ordenadas por número de visitas."
+  },
+  "all": {
+    "title": "Todas las guías"
+  },
+  "filters": {
+    "label": "Filtrar por categoría",
+    "all": "Todas"
+  },
+  "sort": {
+    "label": "Ordenar por",
+    "popular": "Popularidad",
+    "alpha": "Alfabético",
+    "recent": "Más reciente"
+  },
+  "results": {
+    "count_one": "{{count}} guía",
+    "count_other": "{{count}} guías"
+  },
+  "empty": {
+    "title": "No encontramos guías",
+    "text": "Prueba con otra palabra o quita los filtros.",
+    "reset": "Restablecer filtros"
+  },
+  "card": {
+    "views_one": "{{count}} visita",
+    "views_other": "{{count}} visitas",
+    "popular": "Popular",
+    "new": "Nuevo",
+    "external": "Externa",
+    "read": "Abrir guía",
+    "spriteAlt": "Sprite ilustrativo de la guía {{title}}"
+  },
+  "guide": {
+    "breadcrumb": "Ruta de navegación",
+    "views": "visitas",
+    "notTranslated": "Traducción próximamente: el contenido de esta guía está en español.",
+    "external": {
+      "title": "Guía externa destacada",
+      "text": "Esta guía vive en otro sitio. Se abrirá en una pestaña nueva.",
+      "cta": "Abrir guía externa",
+      "placeholder": "Enlace de ejemplo: reemplázalo en guides.json."
+    },
+    "verify": "Datos por verificar",
+    "back": "Volver al inicio",
+    "updated": "Añadida"
+  },
+  "footer": {
+    "official": "Sitio oficial de PokeMMO",
+    "credits": "Créditos",
+    "sprites": "Sprites: PokeAPI.",
+    "disclaimer": "Sitio comunitario no oficial, sin afiliación con PokeMMO ni con Nintendo/Game Freak. Pokémon y sus nombres pertenecen a sus respectivos dueños."
+  },
+  "counter": {
+    "local": "Contador local (modo demo)"
+  },
+  "categories": {
+    "basics": "Básicos",
+    "breeding": "Crianza",
+    "stats": "EVs/IVs",
+    "shiny": "Shiny Hunting",
+    "pvp": "PvP",
+    "farming": "Farming",
+    "legendary": "Legendarios",
+    "story": "Historia",
+    "events": "Eventos"
+  },
+  "gallery": {
+    "title": "Galería de guías",
+    "subtitle": "Pulsa una portada para abrir la guía."
+  }
+}

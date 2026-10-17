@@ -1,0 +1,53 @@
+{
+ "author": "Adef",
+ "strategyBy": "kriptonitogamer",
+ "updated": "05/07/2026",
+ "intro": "Con esta estrategia podrás derrotar a Ho-Oh (revancha) en solo 10 turnos, completando la run en aproximadamente 6:30 minutos y obteniendo cerca de 67k de ganancia si vendes los señuelos legendarios a 23k cada uno.",
+ "stats": [
+  { "value": "10", "label": "turnos" },
+  { "value": "~6:30", "label": "minutos por run" },
+  { "value": "~67k", "label": "ganancia por run" }
+ ],
+ "consumables": [
+  { "name": "Repelente", "min": "mín. 10" },
+  { "name": "Especial X", "min": "mín. 1 (por run)" }
+ ],
+ "mons": {
+  "P": { "name": "Pelipper", "dex": 279 },
+  "R": { "name": "Rotom (Horno)", "dex": 10008 },
+  "C": { "name": "Chandelure", "dex": 609 }
+ },
+ "statLabels": ["PS", "Ataque", "Defensa", "At. Esp.", "Def. Esp.", "Velocidad"],
+ "team": [
+  { "name": "Pelipper", "dex": 279, "level": 100, "item": "Restos", "ability": "Llovizna", "nature": "Amable",
+    "ivs": ["31", "-", "-", "-", "31", "-"], "evs": ["252", "-", "-", "6", "252", "-"],
+    "moves": ["Vastaguardia (Mov. Huevo)", "Hidrochorro (Mov. Huevo)", "Sustituto", "Vuelo (por si no tienes Ocarina)"] },
+  { "name": "Rotom (Horno)", "dex": 10008, "level": 100, "item": "Cinta Experta", "ability": "Levitación", "nature": "Mansa",
+    "ivs": ["31", "-", "25", "31", "31", "1-4"], "evs": ["-", "-", "178", "252", "80", "-"],
+    "moves": ["Rayo", "Poder Oculto (Tierra)", "Maquinación"] },
+  { "name": "Chandelure", "dex": 609, "level": 100, "item": "Hechizo", "ability": "Absor. Fuego", "nature": "Mansa",
+    "ivs": ["-", "-", "25", "31", "25", "17-31"], "evs": ["-", "-", "242", "68", "200", "-"],
+    "moves": ["Bola Sombra", "Bomba Ácida", "Más Psique", "Espacio Raro"] }
+ ],
+ "turns": [
+  { "t": 1, "P": ["Especial X", "Rotom"], "R": ["Maquinación"], "C": ["Espacio Raro"] },
+  { "t": 2, "P": ["Cambia - Chande."], "R": ["P. Oculto / Rayo", "Suicune, Entei, Raikou"], "C": ["Espacio Raro"] },
+  { "t": 3, "P": ["Cambia - Chande."], "R": ["Maquinación"], "C": ["Espacio Raro"] },
+  { "t": 4, "P": ["Sustituto"], "R": ["P. Oculto / Rayo", "Suicune, Entei, Raikou"], "C": ["Cambia - Peli."] },
+  { "t": 5, "P": ["Cambia - Chande."], "R": ["Rayo"], "C": ["Más Psique", "Rotom"] },
+  { "t": 6, "P": ["Cambia - Chande."], "R": ["P. Oculto / Rayo", "Suicune, Entei, Raikou"], "C": ["Bola Sombra"] },
+  { "t": 7, "P": ["Hidrochorro"], "R": ["Rayo"], "C": ["Bola Sombra"] },
+  { "t": 8, "P": ["Vastaguardia"], "R": ["Rayo"], "C": ["Bomba Ácida"] },
+  { "t": 9, "P": ["Vastaguardia"], "R": ["Rayo"], "C": ["Bola Sombra"] },
+  { "t": 10, "P": ["Vastaguardia"], "R": ["Rayo"], "C": ["Bola Sombra"] }
+ ],
+ "verify": [
+  "Las cifras de la introducción (10 turnos, ~6:30 min, ~67k, señuelos a 23k) son del autor y no las verifiqué. Además 3 × 23k = 69k, no 67k; no sé si el PDF cuenta otra cosa.",
+  "IVs de Rotom (Velocidad «1-4») y de Chandelure (Velocidad «17-31»): se leyeron de texto pequeño en una imagen; pueden estar mal. Los EVs sí suman 510 en los tres Pokémon.",
+  "La celda de Rotom «P. Oculto / Rayo (Suicune, Entei, Raikou)» no explica cuándo usar cada movimiento: se copia tal cual.",
+  "Las filas T2 a T6 en la columna de Pelipper dicen «Cambia - Chande.» tal como en el PDF; no se interpreta quién sale en cada turno.",
+  "Las notas entre paréntesis («Rotom» en T1 y T5) se muestran literales; el PDF no dice si indican el objetivo.",
+  "No se verificó la fecha ni que la estrategia siga vigente: «última actualización 05/07/2026» es lo que declara el PDF.",
+  "La portada se aloja por decisión del autor del proyecto; el PDF no indica permiso de redistribución."
+ ]
+}

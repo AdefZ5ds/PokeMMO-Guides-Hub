@@ -1,0 +1,606 @@
+{
+ "credit": "By-syhR",
+ "creditUrl": "https://forums.pokemmo.com/index.php?/topic/187806-complete-all-regions-with-a-single-team-simultaneously-guide/",
+ "creditNote": "Guía original en el foro oficial de PokeMMO (enlace facilitado por el autor del proyecto; no pude abrirlo para comprobarlo). El PDF indica «By-syhR».",
+ "intro": "Guía para completar las 5 regiones (Johto, Teselia, Hoenn, Kanto y Sinnoh) en paralelo con un solo equipo de 4 Pokémon, respetando los límites de nivel de cada tramo.",
+ "tips": [
+  "Control de experiencia: si el límite de nivel está muy justo, evita combates innecesarios contra entrenadores de las rutas. Corre o usa Repelentes.",
+  "Rotación de Pokémon: presta atención a las etiquetas (Pokémon 1, Pokémon 2…). Si un Pokémon alcanza el límite de su región actual, no lo uses más hasta la siguiente fase o ciudad.",
+  "Viajes rápidos: usa siempre los Barcos de Pasajeros en cuanto se desbloqueen en los puertos principales para saltar a la siguiente región.",
+  "MOs listas: enseña las Máquinas Ocultas (Corte, Surf, Fuerza, etc.) a Pokémon secundarios (esclavos de MO) para no saturar a tus Pokémon principales."
+ ],
+ "mons": {
+  "1": {
+   "name": "Starmie",
+   "dex": 121
+  },
+  "2": {
+   "name": "Cloyster",
+   "dex": 91
+  },
+  "3": {
+   "name": "Sawk",
+   "dex": 539
+  },
+  "4": {
+   "name": "Porygon-Z",
+   "dex": 474
+  }
+ },
+ "statLabels": [
+  "PS",
+  "Ataque",
+  "Defensa",
+  "At. Esp.",
+  "Def. Esp.",
+  "Velocidad"
+ ],
+ "team": [
+  {
+   "slot": "1",
+   "name": "Starmie",
+   "dex": 121,
+   "level": 100,
+   "item": "Objeto (editar)",
+   "ability": "Habilidad (editar)",
+   "nature": "Naturaleza (editar)",
+   "ivs": [
+    "-",
+    "-",
+    "-",
+    "-",
+    "-",
+    "-"
+   ],
+   "evs": [
+    "-",
+    "-",
+    "-",
+    "-",
+    "-",
+    "-"
+   ],
+   "moves": [
+    "Movimiento 1",
+    "Movimiento 2",
+    "Movimiento 3",
+    "Movimiento 4"
+   ],
+   "badge": true
+  },
+  {
+   "slot": "2",
+   "name": "Cloyster",
+   "dex": 91,
+   "level": 100,
+   "item": "Objeto (editar)",
+   "ability": "Habilidad (editar)",
+   "nature": "Naturaleza (editar)",
+   "ivs": [
+    "-",
+    "-",
+    "-",
+    "-",
+    "-",
+    "-"
+   ],
+   "evs": [
+    "-",
+    "-",
+    "-",
+    "-",
+    "-",
+    "-"
+   ],
+   "moves": [
+    "Movimiento 1",
+    "Movimiento 2",
+    "Movimiento 3",
+    "Movimiento 4"
+   ],
+   "badge": true
+  },
+  {
+   "slot": "3",
+   "name": "Sawk",
+   "dex": 539,
+   "level": 100,
+   "item": "Objeto (editar)",
+   "ability": "Habilidad (editar)",
+   "nature": "Naturaleza (editar)",
+   "ivs": [
+    "-",
+    "-",
+    "-",
+    "-",
+    "-",
+    "-"
+   ],
+   "evs": [
+    "-",
+    "-",
+    "-",
+    "-",
+    "-",
+    "-"
+   ],
+   "moves": [
+    "Movimiento 1",
+    "Movimiento 2",
+    "Movimiento 3",
+    "Movimiento 4"
+   ],
+   "badge": true
+  },
+  {
+   "slot": "4",
+   "name": "Porygon-Z",
+   "dex": 474,
+   "level": 100,
+   "item": "Objeto (editar)",
+   "ability": "Habilidad (editar)",
+   "nature": "Naturaleza (editar)",
+   "ivs": [
+    "-",
+    "-",
+    "-",
+    "-",
+    "-",
+    "-"
+   ],
+   "evs": [
+    "-",
+    "-",
+    "-",
+    "-",
+    "-",
+    "-"
+   ],
+   "moves": [
+    "Movimiento 1",
+    "Movimiento 2",
+    "Movimiento 3",
+    "Movimiento 4"
+   ],
+   "badge": true
+  }
+ ],
+ "phases": [
+  {
+   "id": "fase1",
+   "name": "Fase 1",
+   "title": "Inicio y apertura de regiones",
+   "legs": [
+    {
+     "region": "Johto",
+     "banner": "johto",
+     "use": [
+      1
+     ],
+     "caps": {
+      "1": 37
+     },
+     "steps": [
+      "Elige al inicial en Pueblo Primavera.",
+      "Pasa por Ciudad Cerezo y ve a la casa del Sr. Pokémon.",
+      "Ve a Ciudad Malva ➔ Torre Belsprout ➔ Gimnasio de Ciudad Malva.",
+      "Recoge el Huevo en la Tienda Pokémon.",
+      "Ve a Pueblo Azalea ➔ Casa de César ➔ Pozo Slowpoke ➔ Gimnasio de Pueblo Azalea.",
+      "Ve a Ciudad Trigal ➔ Consigue la Bici ➔ Radio Torre (Respuestas: Sí, Sí, No, No, No) ➔ Gimnasio de Ciudad Trigal.",
+      "Consigue la Regadera (Bote Squirt).",
+      "Consigue la MO Golpe Roca junto a Sudowoodo.",
+      "Ve a Ciudad Iris ➔ Consigue la MO Surf en el teatro ➔ Torre Quemada ➔ Gimnasio de Ciudad Iris.",
+      "Ve a Ciudad Olivo y toma el Barco hacia Unova (Teselia)."
+     ]
+    },
+    {
+     "region": "Teselia",
+     "banner": "teselia",
+     "use": [
+      2
+     ],
+     "caps": {
+      "2": 27
+     },
+     "steps": [
+      "Elige al inicial en Casa de Belén.",
+      "Pasa por Pueblo Terracota.",
+      "Ve a Ciudad Gres ➔ Escuela Entrenadores ➔ Gimnasio de Ciudad Gres.",
+      "Consigue la MO Corte en la casa de Cien.",
+      "Ve al Solar de los Sueños ➔ Cueva Manantial.",
+      "Ve a Ciudad Esmalta ➔ Gimnasio de Ciudad Esmalta.",
+      "Consigue la MO Golpe Roca (chica de rojo).",
+      "Ve al Bosque Azulejo ➔ Ciudad Porcelana ➔ Gimnasio de Ciudad Porcelana.",
+      "Toma el Barco hacia Hoenn."
+     ]
+    },
+    {
+     "region": "Hoenn",
+     "banner": "hoenn",
+     "use": [
+      3,
+      2
+     ],
+     "caps": {
+      "3": 24,
+      "2": 28
+     },
+     "steps": [
+      "Ajusta el reloj ➔ Elige al inicial en la Ruta 101.",
+      "Pasa por Pueblo Escaso ➔ Ruta 103 ➔ Pueblo Villa Raíz ➔ Ciudad Petalia (entra al gimnasio).",
+      "Ve a Ciudad Férrica ➔ Consigue la MO Corte (hombre calvo junto al Centro Pokémon) ➔ Gimnasio de Ciudad Férrica.",
+      "Ve al Túnel Ferveras ➔ Ciudad Férrica (habla con el hombre de gafas) ➔ Habla con el Sr. Arenisco.",
+      "Ve a Pueblo Azuliza ➔ Gimnasio de Pueblo Azuliza.",
+      "CAMBIA A Pokémon 2.",
+      "Cueva Granito ➔ Consigue la MO Destello (Montañero) ➔ Habla con Máximo.",
+      "Ve a Ciudad Portual ➔ Entrega las Piezas Devon ➔ Museo.",
+      "Toma el Barco hacia Kanto."
+     ]
+    },
+    {
+     "region": "Kanto",
+     "banner": "kanto",
+     "use": [
+      4,
+      3,
+      2
+     ],
+     "caps": {
+      "4": 20,
+      "3": 26,
+      "2": 32
+     },
+     "steps": [
+      "Elige al inicial ➔ Pasa por Ciudad Verde (Tienda Pokémon) ➔ Pueblo Paleta ➔ Bosque Verde.",
+      "Ve a Ciudad Plateada ➔ Gimnasio de Ciudad Plateada.",
+      "CAMBIA A Pokémon 3.",
+      "Ve al Mt. Moon ➔ Ciudad Celeste ➔ Gimnasio de Ciudad Celeste.",
+      "CAMBIA A Pokémon 2.",
+      "Ve a la Casa de Bill ➔ Ciudad Carmín ➔ S.S. Anne.",
+      "Consigue la MO Corte del Capitán ➔ Gimnasio de Ciudad Carmín.",
+      "Consigue el Bono Bici ➔ Vuelve a Ciudad Celeste por la Bici ➔ Regresa a Ciudad Carmín.",
+      "Toma el Barco hacia Sinnoh."
+     ]
+    },
+    {
+     "region": "Sinnoh",
+     "banner": "sinnoh",
+     "use": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "caps": {
+      "4": 27,
+      "3": 29,
+      "2": 37,
+      "1": 37
+     },
+     "steps": [
+      "Pasa por la casa de Israel (piso superior) ➔ Ruta 201 ➔ Elige al inicial en Lago Veraz.",
+      "Ve a Pueblo Arena ➔ Pueblo Hojaverde ➔ Ciudad Jubilife (habla con Israel, consigue el PokéReloj).",
+      "Ve a Ciudad Pirita ➔ Mina Pirita ➔ Gimnasio de Ciudad Pirita.",
+      "Ve a Pueblo Aromaflor ➔ Ruta 205 ➔ Prado Aromaflor ➔ Valle Eólico.",
+      "Ve al Bosque Beturia ➔ Ciudad Beturia (Estatua) ➔ Gimnasio de Ciudad Vetusta.",
+      "CAMBIA A Pokémon 3.",
+      "Edificio Galaxia ➔ Recoge el Huevo de Cintia ➔ Consigue la Bici.",
+      "Ve al Monte Corona ➔ Ciudad Corazón ➔ Auditorio del Concurso ➔ Gimnasio de Ciudad Corazón.",
+      "CAMBIA A Pokémon 2.",
+      "Ve a Pueblo Sosiego ➔ Consigue la MO Despejar (Ruinas Sosiego).",
+      "Ve a Ciudad Rocavelo ➔ Gimnasio de Ciudad Rocavelo.",
+      "CAMBIA A Pokémon 1 o Pokémon 2.",
+      "Consigue la MO Vuelo en el Edificio Galaxia.",
+      "Ve a Ciudad Pradera ➔ Gimnasio de Ciudad Pradera.",
+      "Toma el Barco hacia Hoenn."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fase2",
+   "name": "Fase 2",
+   "title": "Expansión y medallas intermedias",
+   "legs": [
+    {
+     "region": "Hoenn",
+     "use": [
+      4,
+      3
+     ],
+     "caps": {
+      "4": 28,
+      "3": 33,
+      "2": 37,
+      "1": 37
+     },
+     "steps": [
+      "Ve a Ciudad Malvalona ➔ Consigue MO Golpe Roca (casa junto a la Tienda) ➔ Consigue la Bici Acrobática ➔ Gimnasio de Ciudad Malvalona.",
+      "CAMBIA A Pokémon 3 (Nota: Puedes usar a Pokémon 4 pero mantenlo ≤ Lv 31).",
+      "Senda de Fuego ➔ Pueblo Lavacalda ➔ Cascada Meteoro ➔ Túnel Ferveras ➔ Pueblo Verdegal ➔ Monte Cenizo.",
+      "Ve a Ciudad Lavacalda ➔ Gimnasio de Ciudad Lavacalda.",
+      "ADVERTENCIA: ¡No ganes más experiencia a partir de este punto en Hoenn!",
+      "Ve a Ciudad Portual y toma el Barco hacia Unova (Teselia)."
+     ]
+    },
+    {
+     "region": "Teselia",
+     "use": [
+      4,
+      3
+     ],
+     "caps": {
+      "4": 35,
+      "3": 35,
+      "2": 37,
+      "1": 37
+     },
+     "steps": [
+      "Ve a Ciudad Mayólica ➔ Consigue la Bici.",
+      "Consigue la MO Fuerza (edificio sobre el Centro Pokémon) ➔ Teatro ➔ Combate contra N ➔ Gimnasio de Ciudad Mayólica.",
+      "Usa Pokémon 4 o 3.",
+      "Ve a Ciudad Fayenza ➔ Almacén Frigorífico ➔ Gimnasio de Ciudad Fayenza.",
+      "Ve a Ciudad Porcelana y toma el Barco hacia Hoenn."
+     ]
+    },
+    {
+     "region": "Hoenn",
+     "use": [
+      4,
+      3
+     ],
+     "caps": {
+      "4": 38,
+      "3": 38,
+      "2": 37,
+      "1": 37
+     },
+     "steps": [
+      "Viaja a Pueblo Azuliza en barco ➔ Ciudad Petalia ➔ Gimnasio de Ciudad Petalia.",
+      "Ve a Ciudad Malvalona ➔ Instituto Meteorológico ➔ Ciudad Arborada ➔ Máximo en el Puente ➔ Gimnasio de Ciudad Arborada.",
+      "Ve a Ciudad Portual y toma el Barco hacia Johto."
+     ]
+    },
+    {
+     "region": "Johto",
+     "use": [
+      2,
+      1
+     ],
+     "caps": {
+      "2": "37 / 38",
+      "1": "37 / 38"
+     },
+     "steps": [
+      "Faro Olivo ➔ Ciudad Orquídea ➔ Consigue la Poción Secreta.",
+      "Gimnasio de Ciudad Orquídea ➔ Regresa a Ciudad Olivo.",
+      "Toma el Barco hacia Kanto."
+     ]
+    },
+    {
+     "region": "Kanto",
+     "use": [
+      2,
+      1
+     ],
+     "caps": {
+      "2": "37 / 38",
+      "1": "37 / 38"
+     },
+     "steps": [
+      "Cueva Diglett ➔ Consigue la MO Corte en la Ruta 2 (Científico).",
+      "Ve a Ciudad Celeste ➔ Túnel Roca ➔ Pueblo Lavanda.",
+      "Ve a Ciudad Azulona ➔ Casino ➔ Base del Equipo Rocket ➔ Consigue la MO Vuelo (Ruta 16) ➔ Gimnasio de Ciudad Azulona.",
+      "Ve a Ciudad Carmín y toma el Barco hacia Unova (Teselia)."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fase3",
+   "name": "Fase 3",
+   "title": "Recta final, medallas avanzadas y Liga Pokémon",
+   "note": "A partir de aquí, mantén siempre a tus Pokémon dentro de los límites de nivel indicados.",
+   "legs": [
+    {
+     "region": "Teselia",
+     "cap": 43,
+     "steps": [
+      "Cueva Electrorroca (desde Fayenza) ➔ Ciudad Loza ➔ Torre Cielos ➔ Gimnasio de Ciudad Loza.",
+      "Ve a Ciudad Porcelana y toma el Barco hacia Johto."
+     ]
+    },
+    {
+     "region": "Johto",
+     "cap": 46,
+     "steps": [
+      "Ciudad Iris ➔ Monte Mortero ➔ Pueblo Caoba ➔ Gyarados Rojo en el Lago de la Furia ➔ Base Rocket de Caoba ➔ Gimnasio de Pueblo Caoba.",
+      "Faro de Ciudad Olivo.",
+      "Toma el Barco hacia Unova (Teselia)."
+     ]
+    },
+    {
+     "region": "Teselia",
+     "cap": 46,
+     "steps": [
+      "Ciudad Loza ➔ Monte Tuerca ➔ Ciudad Loza / Ciudad Tormellera ➔ Gimnasio de Ciudad Tormellera.",
+      "Ve a Ciudad Porcelana y toma el Barco hacia Sinnoh."
+     ]
+    },
+    {
+     "region": "Sinnoh",
+     "cap": 46,
+     "steps": [
+      "Persigue al Recluta Galaxia ➔ Pueblo Sosiego ➔ Pueblo Celestic ➔ Combate contra Helio/Cyrus.",
+      "Ciudad Jubilife ➔ Ciudad Canalave ➔ Isla Hierro ➔ Consigue la MO Fuerza.",
+      "Gimnasio de Ciudad Canalave ➔ Biblioteca ➔ Ciudad Pradera.",
+      "Toma el Barco hacia Hoenn."
+     ]
+    },
+    {
+     "region": "Hoenn",
+     "cap": 48,
+     "steps": [
+      "Ciudad Arborada ➔ Ciudad Calagua ➔ Monte Pírico ➔ Pueblo Lavacalda ➔ Guarida del Equipo Magma.",
+      "Muelles de Ciudad Portual ➔ Ciudad Calagua ➔ Guarida del Equipo Aqua.",
+      "Ciudad Algararia ➔ Gimnasio de Ciudad Algararia ➔ Ciudad Portual.",
+      "Toma el Barco hacia Kanto."
+     ]
+    },
+    {
+     "region": "Kanto",
+     "cap": 47,
+     "steps": [
+      "Pueblo Lavanda ➔ Torre Pokémon.",
+      "Ciudad Azulona ➔ Consigue el Té ➔ Despierta a Snorlax.",
+      "Ciudad Fucsia ➔ Zona Safari (Dientes de Oro + MO Surf al Noroeste) ➔ Gimnasio de Ciudad Fucsia.",
+      "Consigue la MO Fuerza (Anciano en la casa este de Ciudad Fucsia).",
+      "Ve a Ciudad Carmín y toma el Barco hacia Johto."
+     ]
+    },
+    {
+     "region": "Johto",
+     "cap": 48,
+     "steps": [
+      "Ciudad Trigal ➔ Traje Rocket ➔ Radio Torre para obtener la Llave del Subsuelo ➔ Subsuelo para obtener la Llave Tarjeta ➔ Completa la Radio Torre.",
+      "Pueblo Caoba ➔ Ruta Helada ➔ Consigue la MO Cascada.",
+      "Ciudad Endrino ➔ Gimnasio de Ciudad Endrino ➔ Guarida Dragón.",
+      "Habla con el Profesor en Pueblo Primavera ➔ Ciudad Olivo.",
+      "Toma el Barco hacia Sinnoh."
+     ]
+    },
+    {
+     "region": "Sinnoh",
+     "cap": 52,
+     "steps": [
+      "Lago Valor ➔ Pueblo Hojaverde ➔ Lago Veraz ➔ Pueblo Celestic.",
+      "Monte Corona ➔ Consigue la MO Treparrocas (Ruta 217) ➔ Ciudad Puntaneva ➔ Gimnasio de Ciudad Puntaneva ➔ Ciudad Pradera.",
+      "Toma el Barco hacia Unova (Teselia)."
+     ]
+    },
+    {
+     "region": "Teselia",
+     "cap": 56,
+     "steps": [
+      "Ciudad Tormellera ➔ Torre Duodraco.",
+      "Ciudad Mayólica ➔ Desierto Blanco / Zona Desértica ➔ Castillo Ancestral ➔ Museo de Ciudad Esmalta.",
+      "Ciudad Tormellera ➔ Puente Villa ➔ Ciudad Caolín ➔ Gimnasio de Ciudad Caolín.",
+      "Ve a Ciudad Porcelana y toma el Barco hacia Kanto."
+     ]
+    },
+    {
+     "region": "Kanto",
+     "cap": 50,
+     "steps": [
+      "Pueblo Paleta ➔ Isla Canela ➔ Mansión Pokémon (Llave Secreta) ➔ Gimnasio de Isla Canela.",
+      "Dile «No» a Bill cuando pregunte.",
+      "Ve a Ciudad Carmín y toma el Barco hacia Johto."
+     ]
+    },
+    {
+     "region": "Johto",
+     "cap": 55,
+     "steps": [
+      "Ciudad Iris ➔ Teatro ➔ Torre Campana ➔ Combate contra Ho-Oh.",
+      "Ve a Ciudad Olivo y toma el Barco hacia Hoenn."
+     ]
+    },
+    {
+     "region": "Hoenn",
+     "cap": 58,
+     "steps": [
+      "Ciudad Algararia ➔ Centro Espacial ➔ Consigue la MO Buceo (Casa de Máximo).",
+      "Ruta 128 (Zona para bucear) ➔ Caverna Abisal.",
+      "Pueblo Oromar ➔ Ciudad Algararia ➔ Ciudad Arrecípolis ➔ Cueva de la Origin ➔ Pueblo Oromar ➔ Pilar Celeste.",
+      "Ciudad Arrecípolis ➔ Gimnasio de Ciudad Arrecípolis ➔ Ciudad Portual.",
+      "Toma el Barco hacia Kanto."
+     ]
+    },
+    {
+     "region": "Kanto",
+     "cap": 55,
+     "steps": [
+      "Ciudad Azulona ➔ Ciudad Azafrán ➔ Silph S.A. ➔ Gimnasio de Ciudad Azafrán.",
+      "Ve a Ciudad Carmín y toma el Barco hacia Sinnoh."
+     ]
+    },
+    {
+     "region": "Sinnoh",
+     "cap": 60,
+     "steps": [
+      "Ciudad Puntaneva ➔ Lago Agudeza ➔ Ciudad Rocavelo ➔ Base Galaxia.",
+      "Ciudad Pirita ➔ Monte Corona ➔ Columna Lanza ➔ Mundo Distorsión.",
+      "Laboratorio de Pueblo Arena ➔ Ciudad Rocavelo.",
+      "Ciudad Marina ➔ Faro ➔ Gimnasio de Ciudad Marina ➔ Ciudad Pradera.",
+      "Toma el Barco hacia Kanto."
+     ]
+    },
+    {
+     "region": "Kanto",
+     "cap": 62,
+     "steps": [
+      "Ciudad Verde ➔ Gimnasio de Ciudad Verde.",
+      "Ve a Ciudad Carmín y toma el Barco hacia Johto."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "final",
+   "name": "Fase final",
+   "title": "Rutas de Victoria y Ligas Pokémon",
+   "legs": [
+    {
+     "region": "Johto",
+     "done": true,
+     "steps": [
+      "Pueblo Primavera ➔ Cascadas Tohjo ➔ Calle Victoria (necesitas MO Treparrocas).",
+      "Alto Mando y Campeón de Johto.",
+      "Ve a Ciudad Olivo y toma el Barco hacia Unova."
+     ]
+    },
+    {
+     "region": "Teselia",
+     "done": true,
+     "steps": [
+      "Ciudad Caolín ➔ Calle Victoria ➔ Alto Mando ➔ Castillo de N.",
+      "Ve a Ciudad Porcelana y toma el Barco hacia Hoenn."
+     ]
+    },
+    {
+     "region": "Hoenn",
+     "done": true,
+     "steps": [
+      "Ciudad Algararia ➔ Ciudad Colosalia ➔ Calle Victoria ➔ Alto Mando y Campeón de Hoenn.",
+      "Ve a Ciudad Portual y toma el Barco hacia Sinnoh."
+     ]
+    },
+    {
+     "region": "Sinnoh",
+     "done": true,
+     "steps": [
+      "Ciudad Marina ➔ Calle Victoria ➔ Alto Mando y Campeón de Sinnoh.",
+      "Ve a Ciudad Pradera y toma el Barco hacia Kanto."
+     ]
+    },
+    {
+     "region": "Kanto",
+     "done": true,
+     "steps": [
+      "Ciudad Verde ➔ Calle Victoria ➔ Alto Mando y Campeón de Kanto."
+     ]
+    }
+   ]
+  }
+ ],
+ "verify": [
+  "Los nombres de los Pokémon 1–4 (Starmie, Cloyster, Sawk, Porygon-Z) los indicaste tú; el PDF solo dice «Pokémon 1», «Pokémon 2»… Sus datos (objeto, habilidad, naturaleza, EVs, IVs y movimientos) son PROVISIONALES: edítalos en scripts/content/rusheo.json.",
+  "Correcciones de erratas evidentes: «Sra. Pokémon» → «Sr. Pokémon»; «PokReloj» → «PokéReloj»; «Ancentral» → «Ancestral»; «Guida» → «Guarida»; «MOSSDEEP (Algararia)» → «Ciudad Algararia»; «Módulos Ocultos» → «Máquinas Ocultas»; «Mo»/«MO» unificado a «MO»; «Pueblo Azuliza» se mantiene como en el PDF aunque en otros lugares se llama «Ciudad Azuliza».",
+  "En los tramos «Johto» y «Kanto» de la Fase 2 el PDF dice «Nivel ≤ 37 / 38»; se copia tal cual sin explicar qué significa «/ 38».",
+  "En Fase 1 · Hoenn el PDF pide «Pokémon 3 / Pokémon 2»; en Fase 2 la lista de «usar» muestra solo 4 y 3, pero se listan límites también para 2 y 1; se muestran como límites sin marcarlos como «a usar».",
+  "Ciudad Petalia (Fase 1 · Hoenn): el PDF dice «entra al gimnasio» sin indicar si hay combate; no se marca como gimnasio.",
+  "Los límites de nivel, rutas y MOs se copian del PDF; no los comprobé en el juego y pueden haber cambiado.",
+  "Las ilustraciones de cabecera son del PDF, de autor desconocido y sin licencia indicada. Se alojan por decisión del autor del proyecto; conviene confirmar el permiso o quitarlas.",
+  "El enlace al foro oficial lo facilitó el autor del proyecto y no pude abrirlo para verificar que corresponde a esta guía ni quién es su autor."
+ ]
+}

@@ -1,0 +1,573 @@
+{
+  "_doc": "popularity = valor semilla usado solo hasta que el contador responda. placeholderUrl=true marca enlaces de ejemplo a reemplazar.",
+  "categories": [
+    {
+      "id": "basics",
+      "emoji": "🎮"
+    },
+    {
+      "id": "breeding",
+      "emoji": "🥚"
+    },
+    {
+      "id": "stats",
+      "emoji": "📊"
+    },
+    {
+      "id": "shiny",
+      "emoji": "✨"
+    },
+    {
+      "id": "pvp",
+      "emoji": "⚔️"
+    },
+    {
+      "id": "farming",
+      "emoji": "💰"
+    },
+    {
+      "id": "legendary",
+      "emoji": "👑"
+    },
+    {
+      "id": "story",
+      "emoji": "🗺️"
+    },
+    {
+      "id": "events",
+      "emoji": "🎉"
+    }
+  ],
+  "guides": [
+    {
+      "slug": "derrotar-red",
+      "title": "Cómo derrotar a RED (todas las variantes)",
+      "description": "Equipo y respuestas por generación para vencer a RED, según la guía de ABQNI y z (BiliBili) traducida al español.",
+      "category": "story",
+      "tags": [
+        "red",
+        "jefe",
+        "equipo",
+        "generaciones",
+        "pdf",
+        "comunidad"
+      ],
+      "lang": "es",
+      "sprite": 25,
+      "emoji": "🔴",
+      "added": "2026-10-14",
+      "popularity": 1000,
+      "image": "red"
+    },
+    {
+      "slug": "raid-meloetta",
+      "title": "Raid de Meloetta (estrategia Starfall)",
+      "description": "Equipos, notas críticas y turnos para los 4 jugadores de la raid de Meloetta, según la guía de AYYA, MOVE, ASUS, iboki y gsboading.",
+      "category": "legendary",
+      "tags": [
+        "meloetta",
+        "raid",
+        "cuatro jugadores",
+        "starfall",
+        "slowbro",
+        "pdf",
+        "comunidad"
+      ],
+      "lang": "es",
+      "sprite": 648,
+      "emoji": "🎶",
+      "added": "2026-10-15",
+      "popularity": 990,
+      "image": "meloetta"
+    },
+    {
+      "slug": "crianza",
+      "title": "Crianza de Pokémon",
+      "description": "Conceptos para criar Pokémon con buenas naturalezas e IVs.",
+      "category": "breeding",
+      "tags": [
+        "huevos",
+        "ivs",
+        "naturaleza"
+      ],
+      "lang": "es",
+      "sprite": 175,
+      "emoji": "🥚",
+      "added": "2026-09-01",
+      "popularity": 920
+    },
+    {
+      "slug": "evs-ivs",
+      "title": "EVs e IVs explicados",
+      "description": "Qué son los EVs y los IVs y cómo influyen en las estadísticas.",
+      "category": "stats",
+      "tags": [
+        "evs",
+        "ivs",
+        "estadisticas"
+      ],
+      "lang": "es",
+      "sprite": 132,
+      "emoji": "📊",
+      "added": "2026-09-02",
+      "popularity": 880
+    },
+    {
+      "slug": "shiny-hunting",
+      "title": "Shiny Hunting",
+      "description": "Estrategias generales para cazar Pokémon shiny.",
+      "category": "shiny",
+      "tags": [
+        "shiny",
+        "probabilidad",
+        "caza"
+      ],
+      "lang": "es",
+      "sprite": 130,
+      "emoji": "✨",
+      "added": "2026-09-03",
+      "popularity": 860
+    },
+    {
+      "slug": "pvp-competitive",
+      "title": "PvP competitivo",
+      "description": "Fundamentos para armar un equipo y jugar combates competitivos.",
+      "category": "pvp",
+      "tags": [
+        "pvp",
+        "competitivo",
+        "equipo"
+      ],
+      "lang": "es",
+      "sprite": 445,
+      "emoji": "⚔️",
+      "added": "2026-09-04",
+      "popularity": 840
+    },
+    {
+      "slug": "farming-dinero",
+      "title": "Farmeo de dinero",
+      "description": "Enfoques generales para conseguir dinero dentro del juego.",
+      "category": "farming",
+      "tags": [
+        "dinero",
+        "farmeo",
+        "economia"
+      ],
+      "lang": "es",
+      "sprite": 52,
+      "emoji": "💰",
+      "added": "2026-09-05",
+      "popularity": 900
+    },
+    {
+      "slug": "legendarios",
+      "title": "Legendarios",
+      "description": "Cómo prepararse para capturar Pokémon legendarios.",
+      "category": "legendary",
+      "tags": [
+        "legendarios",
+        "captura",
+        "eventos"
+      ],
+      "lang": "es",
+      "sprite": 150,
+      "emoji": "👑",
+      "added": "2026-09-06",
+      "popularity": 810
+    },
+    {
+      "slug": "rutas-historia",
+      "title": "Rutas de la historia",
+      "description": "Orden general para avanzar por la historia principal.",
+      "category": "story",
+      "tags": [
+        "historia",
+        "rutas",
+        "progreso"
+      ],
+      "lang": "es",
+      "sprite": 25,
+      "emoji": "🗺️",
+      "added": "2026-09-07",
+      "popularity": 700
+    },
+    {
+      "slug": "naturalezas",
+      "title": "Naturalezas",
+      "description": "Qué hace cada naturaleza y cómo elegirla.",
+      "category": "stats",
+      "tags": [
+        "naturaleza",
+        "estadisticas"
+      ],
+      "lang": "es",
+      "sprite": 133,
+      "emoji": "🧬",
+      "added": "2026-09-08",
+      "popularity": 650
+    },
+    {
+      "slug": "habilidades-ocultas",
+      "title": "Habilidades ocultas",
+      "description": "Qué son las habilidades ocultas y cómo transmitirlas.",
+      "category": "breeding",
+      "tags": [
+        "habilidades",
+        "crianza"
+      ],
+      "lang": "es",
+      "sprite": 63,
+      "emoji": "🔮",
+      "added": "2026-09-09",
+      "popularity": 560
+    },
+    {
+      "slug": "huevos-eclosion",
+      "title": "Eclosión de huevos",
+      "description": "Consejos generales para eclosionar huevos más rápido.",
+      "category": "breeding",
+      "tags": [
+        "huevos",
+        "eclosion",
+        "pasos"
+      ],
+      "lang": "es",
+      "sprite": 175,
+      "emoji": "🐣",
+      "added": "2026-09-10",
+      "popularity": 540
+    },
+    {
+      "slug": "gtl-mercado",
+      "title": "GTL y mercado",
+      "description": "Cómo funciona el mercado entre jugadores y cómo analizarlo.",
+      "category": "farming",
+      "tags": [
+        "gtl",
+        "mercado",
+        "comercio"
+      ],
+      "lang": "es",
+      "sprite": 143,
+      "emoji": "🏪",
+      "added": "2026-09-11",
+      "popularity": 780
+    },
+    {
+      "slug": "tipos-efectividad",
+      "title": "Tipos y efectividad",
+      "description": "Tabla de tipos: fortalezas, debilidades e inmunidades.",
+      "category": "basics",
+      "tags": [
+        "tipos",
+        "efectividad",
+        "tabla"
+      ],
+      "lang": "es",
+      "sprite": 6,
+      "emoji": "🔥",
+      "added": "2026-09-12",
+      "popularity": 730
+    },
+    {
+      "slug": "primeros-pasos",
+      "title": "Primeros pasos",
+      "description": "Guía para empezar en PokeMMO sin perderte.",
+      "category": "basics",
+      "tags": [
+        "principiante",
+        "inicio",
+        "tutorial"
+      ],
+      "lang": "es",
+      "sprite": 25,
+      "emoji": "🎮",
+      "added": "2026-09-13",
+      "popularity": 950
+    },
+    {
+      "slug": "elegir-inicial",
+      "title": "Elegir inicial",
+      "description": "Cómo decidir tu Pokémon inicial según tu objetivo.",
+      "category": "story",
+      "tags": [
+        "inicial",
+        "starter",
+        "region"
+      ],
+      "lang": "es",
+      "sprite": 1,
+      "emoji": "🌱",
+      "added": "2026-09-14",
+      "popularity": 610
+    },
+    {
+      "slug": "hordas-ev",
+      "title": "Hordas para EVs",
+      "description": "Entrenar EVs con batallas de hordas.",
+      "category": "stats",
+      "tags": [
+        "hordas",
+        "evs",
+        "entrenamiento"
+      ],
+      "lang": "es",
+      "sprite": 41,
+      "emoji": "🦇",
+      "added": "2026-09-15",
+      "popularity": 690
+    },
+    {
+      "slug": "tiers-metajuego",
+      "title": "Tiers y metajuego",
+      "description": "Cómo se organizan los tiers y qué es el metajuego.",
+      "category": "pvp",
+      "tags": [
+        "tiers",
+        "meta",
+        "pvp"
+      ],
+      "lang": "es",
+      "sprite": 448,
+      "emoji": "🏆",
+      "added": "2026-09-16",
+      "popularity": 620
+    },
+    {
+      "slug": "movimientos-tm",
+      "title": "Movimientos y MT",
+      "description": "Cómo funcionan los movimientos, MT y tutores.",
+      "category": "basics",
+      "tags": [
+        "mt",
+        "movimientos",
+        "tm"
+      ],
+      "lang": "es",
+      "sprite": 143,
+      "emoji": "💿",
+      "added": "2026-09-17",
+      "popularity": 480
+    },
+    {
+      "slug": "eventos-temporada",
+      "title": "Eventos y temporadas",
+      "description": "Cómo seguir los eventos del juego sin perderte ninguno.",
+      "category": "events",
+      "tags": [
+        "eventos",
+        "temporada"
+      ],
+      "lang": "es",
+      "sprite": 251,
+      "emoji": "🎉",
+      "added": "2026-10-01",
+      "popularity": 590
+    },
+    {
+      "slug": "pokedex-completar",
+      "title": "Completar la Pokédex",
+      "description": "Organización general para completar tu Pokédex.",
+      "category": "basics",
+      "tags": [
+        "pokedex",
+        "coleccion"
+      ],
+      "lang": "es",
+      "sprite": 151,
+      "emoji": "📖",
+      "added": "2026-10-02",
+      "popularity": 430
+    },
+    {
+      "slug": "pesca-recursos",
+      "title": "Pesca y recursos",
+      "description": "Obtener recursos y Pokémon mediante la pesca.",
+      "category": "farming",
+      "tags": [
+        "pesca",
+        "recursos"
+      ],
+      "lang": "es",
+      "sprite": 129,
+      "emoji": "🎣",
+      "added": "2026-10-03",
+      "popularity": 410
+    },
+    {
+      "slug": "elite-cuatro",
+      "title": "Alto Mando",
+      "description": "Preparación general para enfrentar al Alto Mando.",
+      "category": "story",
+      "tags": [
+        "liga",
+        "elite",
+        "campeon"
+      ],
+      "lang": "es",
+      "sprite": 149,
+      "emoji": "🏅",
+      "added": "2026-10-04",
+      "popularity": 520
+    },
+    {
+      "slug": "trading-seguro",
+      "title": "Intercambio seguro",
+      "description": "Buenas prácticas para comerciar sin riesgos.",
+      "category": "basics",
+      "tags": [
+        "intercambio",
+        "seguridad",
+        "estafas"
+      ],
+      "lang": "es",
+      "sprite": 39,
+      "emoji": "🤝",
+      "added": "2026-10-05",
+      "popularity": 670
+    },
+    {
+      "slug": "legendarios-evento",
+      "title": "Preparar eventos legendarios",
+      "description": "Checklist antes de un evento de legendarios.",
+      "category": "legendary",
+      "tags": [
+        "legendarios",
+        "evento",
+        "preparacion"
+      ],
+      "lang": "es",
+      "sprite": 249,
+      "emoji": "🌟",
+      "added": "2026-10-06",
+      "popularity": 470
+    },
+    {
+      "slug": "guia-comunidad-wiki",
+      "title": "Guía de la comunidad (externa)",
+      "description": "Guía externa destacada. Reemplaza el enlace de ejemplo.",
+      "category": "basics",
+      "tags": [
+        "wiki",
+        "comunidad",
+        "externa"
+      ],
+      "lang": "es",
+      "sprite": 25,
+      "emoji": "📚",
+      "added": "2026-10-07",
+      "popularity": 500,
+      "externalUrl": "https://example.com/reemplazar-con-guia-wiki",
+      "placeholderUrl": true
+    },
+    {
+      "slug": "video-shiny-externo",
+      "title": "Video de shiny hunting (externo)",
+      "description": "Video externo destacado. Reemplaza el enlace de ejemplo.",
+      "category": "shiny",
+      "tags": [
+        "youtube",
+        "shiny",
+        "externa"
+      ],
+      "lang": "es",
+      "sprite": 130,
+      "emoji": "▶️",
+      "added": "2026-10-08",
+      "popularity": 450,
+      "externalUrl": "https://example.com/reemplazar-con-video",
+      "placeholderUrl": true
+    },
+    {
+      "slug": "pdf-crianza-externo",
+      "title": "PDF de crianza (externo)",
+      "description": "PDF externo destacado. Reemplaza el enlace de ejemplo.",
+      "category": "breeding",
+      "tags": [
+        "pdf",
+        "crianza",
+        "externa"
+      ],
+      "lang": "es",
+      "sprite": 132,
+      "emoji": "📄",
+      "added": "2026-10-09",
+      "popularity": 420,
+      "externalUrl": "https://example.com/reemplazar-con-pdf",
+      "placeholderUrl": true
+    },
+    {
+      "slug": "farmeo-gimnasios",
+      "title": "Farmeo de gimnasios por región (Kanto, Johto, Hoenn, Sinnoh, Teselia)",
+      "description": "Ruta de farmeo de gimnasios con un equipo fijo de cinco Pokémon y qué hacer en cada situación, según la guía de Ander.",
+      "category": "farming",
+      "tags": [
+        "farmeo",
+        "gimnasios",
+        "ruta",
+        "kanto",
+        "johto",
+        "hoenn",
+        "sinnoh",
+        "teselia",
+        "meloetta",
+        "pdf",
+        "comunidad"
+      ],
+      "sprite": 648,
+      "emoji": "🏟️",
+      "popularity": 980,
+      "added": "2026-10-15",
+      "lang": "es",
+      "image": "gym"
+    },
+    {
+      "slug": "farmeo-hooh",
+      "title": "Farmeo de Ho-Oh en 10 turnos",
+      "description": "Estrategia de 10 turnos con Pelipper, Rotom (Horno) y Chandelure para farmear a Ho-Oh, según la guía de Adef.",
+      "category": "farming",
+      "tags": [
+        "ho-oh",
+        "farmeo",
+        "señuelos",
+        "pelipper",
+        "rotom",
+        "chandelure",
+        "johto",
+        "pdf",
+        "comunidad"
+      ],
+      "sprite": 250,
+      "emoji": "🔥",
+      "popularity": 970,
+      "added": "2026-10-15",
+      "lang": "es",
+      "image": "hooh"
+    },
+    {
+      "slug": "rusheo-multiregion",
+      "title": "Rusheo multirregión con un solo equipo",
+      "description": "Ruta de las 5 regiones en paralelo con 4 Pokémon (Starmie, Cloyster, Sawk y Porygon-Z), con límites de nivel por tramo y progreso guardado.",
+      "category": "story",
+      "tags": [
+        "rusheo",
+        "multirregión",
+        "johto",
+        "teselia",
+        "hoenn",
+        "kanto",
+        "sinnoh",
+        "límites de nivel",
+        "pdf",
+        "comunidad"
+      ],
+      "sprite": 121,
+      "emoji": "🚢",
+      "popularity": 960,
+      "added": "2026-10-15",
+      "lang": "es",
+      "image": "region"
+    }
+  ]
+}

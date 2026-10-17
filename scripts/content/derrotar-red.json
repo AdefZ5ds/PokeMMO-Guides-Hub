@@ -1,0 +1,668 @@
+{
+  "updated": "16/05/2026, 15:32 (UTC-5)",
+  "pdf": "docs/guia-red-2025.pdf",
+  "credits": "Guía creada originalmente por ABQNI (PokeMMO) y z (BiliBili), de la comunidad china, publicada en BiliBili. Según el documento traducido, se obtuvo permiso directo de la autora para traducirla al español. La comunidad inglesa aportó mejoras; esta versión incluye cambios de ZzPSYCHOzZ.",
+  "legend": "Un guion (—) en una estadística o naturaleza significa que no es relevante: puedes usar cualquier valor.",
+  "considerations": [
+    "Siempre inicia con Blissey.",
+    "Si tu rival es Pikachu, usa Intercambio seguido de Teletransporte para identificar qué generación estás enfrentando."
+  ],
+  "statLabels": [
+    "PS",
+    "Ataque",
+    "Defensa",
+    "At. Esp.",
+    "Def. Esp.",
+    "Velocidad"
+  ],
+  "team": [
+    {
+      "name": "Blissey",
+      "dex": 242,
+      "level": 100,
+      "item": "Casco Dentado",
+      "ability": "Cura Natural",
+      "nature": "Serena",
+      "ivs": [
+        "31",
+        "-",
+        "31",
+        "-",
+        "31",
+        "-"
+      ],
+      "evs": [
+        "238",
+        "-",
+        "20",
+        "-",
+        "252",
+        "-"
+      ],
+      "moves": [
+        "Teletransporte",
+        "Intercambio",
+        "Amortiguador",
+        "Treparrocas"
+      ]
+    },
+    {
+      "name": "Honchkrow",
+      "dex": 430,
+      "level": 100,
+      "item": "Gafas de Sol",
+      "ability": "Autoestima",
+      "nature": "Firme",
+      "ivs": [
+        "-",
+        "31",
+        "-",
+        "-",
+        "-",
+        "31"
+      ],
+      "evs": [
+        "-",
+        "252",
+        "-",
+        "-",
+        "252",
+        "6"
+      ],
+      "moves": [
+        "Golpe Bajo",
+        "Protección",
+        "Fuerza Bruta",
+        "Vuelo"
+      ],
+      "check": "El PDF indica 252 EVs en la 5.ª posición (Def. Esp.) y 6 en Velocidad, a diferencia del resto del equipo (252 en Ataque y Velocidad). Se muestra tal cual; confírmalo con la fuente original."
+    },
+    {
+      "name": "Gliscor",
+      "dex": 472,
+      "level": 100,
+      "item": "Gema (Voladora)",
+      "ability": "Antídoto",
+      "nature": "Firme",
+      "ivs": [
+        "31",
+        "31",
+        "31",
+        "-",
+        "31",
+        "31"
+      ],
+      "evs": [
+        "6",
+        "252",
+        "-",
+        "-",
+        "-",
+        "252"
+      ],
+      "moves": [
+        "Acróbata",
+        "Terremoto",
+        "Pulimento",
+        "Danza Espada"
+      ]
+    },
+    {
+      "name": "Lapras",
+      "dex": 131,
+      "level": 100,
+      "item": "Dados Trucados",
+      "ability": "Abs. Agua",
+      "nature": "Firme",
+      "ivs": [
+        "-",
+        "31",
+        "-",
+        "-",
+        "-",
+        "31"
+      ],
+      "evs": [
+        "6",
+        "252",
+        "-",
+        "-",
+        "-",
+        "252"
+      ],
+      "moves": [
+        "Carámbano",
+        "Terremoto",
+        "Sustituto",
+        "Danza Dragón"
+      ]
+    },
+    {
+      "name": "Golduck",
+      "dex": 55,
+      "level": 100,
+      "item": "Banda Focus",
+      "ability": "Humedad",
+      "nature": "Modesta",
+      "ivs": [
+        "31",
+        "-",
+        "31",
+        "31",
+        "-",
+        "31"
+      ],
+      "evs": [
+        "-",
+        "-",
+        "54",
+        "204",
+        "-",
+        "252"
+      ],
+      "moves": [
+        "Hidrobomba",
+        "Doble Filo",
+        "Otra Vez",
+        "Bostezo"
+      ]
+    },
+    {
+      "name": "Breloom",
+      "dex": 286,
+      "level": 100,
+      "item": "Cint. Negro",
+      "ability": "Experto",
+      "nature": "Firme",
+      "ivs": null,
+      "evs": [
+        "6",
+        "252",
+        "-",
+        "-",
+        "-",
+        "252"
+      ],
+      "moves": [
+        "Ultrapuño",
+        "Demolición",
+        "Tumba Rocas",
+        "Danza Espada"
+      ],
+      "ivsText": "5x31 (el PDF no indica cuál estadística queda libre)"
+    }
+  ],
+  "generations": [
+    {
+      "n": 1,
+      "sections": [
+        {
+          "title": "Pokémon líder",
+          "type": "steps",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Venusaur",
+                  3
+                ],
+                [
+                  "Charizard",
+                  6
+                ],
+                [
+                  "Blastoise",
+                  9
+                ],
+                [
+                  "Espeon",
+                  196
+                ]
+              ],
+              "steps": [
+                "Teletransporte a Honchkrow → Golpe Bajo"
+              ]
+            },
+            {
+              "rivals": [
+                [
+                  "Pikachu",
+                  25
+                ]
+              ],
+              "steps": [
+                "Intercambio",
+                "Teletransporte a Honchkrow → Golpe Bajo"
+              ]
+            },
+            {
+              "rivals": [
+                [
+                  "Snorlax",
+                  143
+                ]
+              ],
+              "steps": [
+                "Teletransporte a Breloom → Demolición",
+                "Cambiar a Honchkrow → Golpe Bajo"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "2.º Pokémon",
+          "type": "moves",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Venusaur",
+                  3
+                ]
+              ],
+              "steps": [
+                "Golpe Bajo x2"
+              ]
+            },
+            {
+              "rivals": [
+                [
+                  "Charizard",
+                  6
+                ]
+              ],
+              "steps": [
+                "Protección + Golpe Bajo"
+              ]
+            },
+            {
+              "rivals": [
+                [
+                  "Blastoise",
+                  9
+                ]
+              ],
+              "steps": [
+                "Golpe Bajo x2"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Restantes",
+          "type": "moves",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Venusaur",
+                  3
+                ]
+              ],
+              "steps": [
+                "Golpe Bajo"
+              ]
+            },
+            {
+              "rivals": [
+                [
+                  "Blastoise",
+                  9
+                ]
+              ],
+              "steps": [
+                "Golpe Bajo x2"
+              ]
+            },
+            {
+              "rivals": [
+                [
+                  "Pikachu",
+                  25
+                ]
+              ],
+              "steps": [
+                "Golpe Bajo"
+              ]
+            },
+            {
+              "rivals": [
+                [
+                  "Snorlax",
+                  143
+                ]
+              ],
+              "steps": [
+                "Fuerza Bruta"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "sections": [
+        {
+          "title": "Pokémon líder",
+          "type": "steps",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Gliscor",
+                  472
+                ]
+              ],
+              "steps": [
+                "Cambiar directo a Golduck → Otra Vez",
+                "Enviar a Gliscor → 2 Danza Espada + Pulimento"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ataca con Acróbata",
+          "type": "group",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Gliscor",
+                  472
+                ],
+                [
+                  "Feraligatr",
+                  160
+                ],
+                [
+                  "Meganium",
+                  154
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ataca con Terremoto",
+          "type": "group",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Pikachu",
+                  25
+                ],
+                [
+                  "Typhlosion",
+                  157
+                ],
+                [
+                  "Tyranitar",
+                  248
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "sections": [
+        {
+          "title": "Pokémon líder",
+          "type": "steps",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Swampert",
+                  260
+                ]
+              ],
+              "steps": [
+                "Cambiar directo a Golduck → Otra Vez",
+                "Enviar a Gliscor → Danza Espada + Pulimento"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ataca con Acróbata",
+          "type": "group",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Swampert",
+                  260
+                ],
+                [
+                  "Blaziken",
+                  257
+                ],
+                [
+                  "Sceptile",
+                  254
+                ],
+                [
+                  "Salamence",
+                  373
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ataca con Terremoto",
+          "type": "group",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Pikachu",
+                  25
+                ],
+                [
+                  "Metagross",
+                  376
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "sections": [
+        {
+          "title": "Pokémon líder",
+          "type": "steps",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Staraptor",
+                  398
+                ]
+              ],
+              "steps": [
+                "Cambio directo a Blissey → Staraptor hace OHKO y muere",
+                "Si entra Lapras, sacrifica a Gliscor, saca a Breloom y luego a Blissey.",
+                "Saca a Lapras → Danza Dragón x2 + Sustituto."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ataca con Carámbano",
+          "type": "group",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Pikachu",
+                  25
+                ],
+                [
+                  "Infernape",
+                  392
+                ],
+                [
+                  "Torterra",
+                  389
+                ],
+                [
+                  "Garchomp",
+                  445
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ataca con Terremoto",
+          "type": "group",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Empoleon",
+                  395
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "sections": [
+        {
+          "title": "Pokémon líder",
+          "type": "steps",
+          "entries": [
+            {
+              "id": "g5-excadrill",
+              "rivals": [
+                [
+                  "Excadrill",
+                  530
+                ]
+              ],
+              "steps": [
+                "Sacrifica a Honchkrow.",
+                "Breloom → Ultrapuño.",
+                {
+                  "text": "Sigue la solución de Emboar.",
+                  "ref": "g5-emboar"
+                }
+              ]
+            },
+            {
+              "id": "g5-pikachu",
+              "rivals": [
+                [
+                  "Pikachu",
+                  25
+                ]
+              ],
+              "steps": [
+                "Intercambio",
+                "Teletransporte a Honchkrow → Golpe Bajo.",
+                {
+                  "text": "Sigue la solución de Emboar.",
+                  "ref": "g5-emboar"
+                }
+              ]
+            },
+            {
+              "id": "g5-trio",
+              "rivals": [
+                [
+                  "Hydreigon",
+                  635
+                ],
+                [
+                  "Samurott",
+                  503
+                ],
+                [
+                  "Serperior",
+                  497
+                ]
+              ],
+              "steps": [
+                "Teletransporte",
+                {
+                  "text": "Sigue la solución de Emboar.",
+                  "ref": "g5-emboar"
+                }
+              ]
+            },
+            {
+              "id": "g5-emboar",
+              "rivals": [
+                [
+                  "Emboar",
+                  500
+                ]
+              ],
+              "steps": [
+                "Sacrifica a Lapras (omite este paso si entró Golduck).",
+                "Saca a Golduck → Bostezo + Doble Filo.",
+                "Breloom → Danza Espada + Ultrapuño"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ataca con Ultrapuño",
+          "type": "group",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Pikachu",
+                  25
+                ],
+                [
+                  "Hydreigon",
+                  635
+                ],
+                [
+                  "Serperior",
+                  497
+                ],
+                [
+                  "Excadrill",
+                  530
+                ]
+              ],
+              "notes": {
+                "Serperior": "Ultrapuño x2"
+              }
+            }
+          ]
+        },
+        {
+          "title": "Ataca con Demolición",
+          "type": "group",
+          "entries": [
+            {
+              "rivals": [
+                [
+                  "Samurott",
+                  503
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

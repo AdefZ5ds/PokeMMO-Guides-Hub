@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Paleta (triples RGB para soportar opacidad en Tailwind) ----------
+   Contrastes calculados contra WCAG AA (≥4.5:1 texto normal):
+   - dark : fg 11.9 (sobre surface) / muted 5.7 / accent-text 5.8
+   - light: fg 17.1 / muted 7.2 / accent-text 6.4
+   - Botones rellenos usan accent-strong (#2563eb) con texto blanco: 5.2:1; badges dorados con texto slate-900: 11.7:1.
+   El acento de marca #3b82f6 solo se usa en bordes/decoración (no texto pequeño). */
+:root {
+  --bg: 248 250 252;
+  --surface: 255 255 255;
+  --line: 226 232 240;
+  --fg: 15 23 42;
+  --muted: 71 85 105;
+  --accent: 59 130 246;
+  --accent-strong: 37 99 235;
+  --accent-text: 29 78 216;
+  --gold: 250 204 21;
+  color-scheme: light;
+}
+:root.dark {
+  --bg: 15 23 42;
+  --surface: 30 41 59;
+  --line: 51 65 85;
+  --fg: 226 232 240;
+  --muted: 148 163 184;
+  --accent-text: 96 165 250;
+  color-scheme: dark;
+}
+
+@layer base {
+  [x-cloak] { display: none !important; }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { @apply bg-bg text-fg font-sans antialiased; }
+
+  /* Foco visible consistente en todo elemento interactivo */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors;
+  }
+  .btn-primary { @apply btn bg-accent-strong text-white hover:bg-blue-700; }
+  .btn-ghost { @apply btn border border-line bg-surface text-fg hover:border-accent; }
+  .field {
+    @apply w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-fg placeholder:text-muted;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1.5 text-sm font-medium text-fg transition-colors hover:border-accent;
+  }
+  .chip[aria-pressed='true'] { @apply border-accent-strong bg-accent-strong text-white; }
+  .card {
+    @apply relative flex flex-col gap-3 rounded-xl focus-within:ring-2 focus-within:ring-accent border border-line bg-surface p-4 transition-shadow hover:shadow-lg hover:shadow-black/10;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold;
+  }
+  .badge-gold { @apply badge bg-gold text-slate-900; }
+  .badge-muted { @apply badge border border-line text-muted; }
+  .skip-link {
+    @apply absolute left-3 top-3 z-[100] -translate-y-24 rounded-lg bg-accent-strong px-4 py-2 font-semibold text-white focus:translate-y-0;
+  }
+  .icon { @apply inline-block h-4 w-4 shrink-0 align-[-0.125em]; }
+
+  /* Cuerpo de las guías (sin plugin typography para no añadir dependencias) */
+  .guide-body h2 { @apply mb-3 mt-8 text-xl font-bold; }
+  .guide-body p { @apply mb-4 leading-relaxed; }
+  .guide-body ul { @apply mb-4 list-disc space-y-1.5 pl-6 leading-relaxed; }
+  .guide-body a { @apply text-accent-text; }
+  .callout {
+    @apply my-6 rounded-xl border border-gold/60 bg-gold/10 p-4 text-sm leading-relaxed;
+  }
+}
+
+/* Resaltes de la guía de farmeo: el color refuerza, el texto ya nombra el elemento (AA en claro y oscuro) */
+.hl { font-weight: 600; }
+.hl-r { color: #b91c1c; } .hl-g { color: #166534; } .hl-b { color: #1d4ed8; } .hl-p { color: #6d28d9; }
+.hl-c { color: #0e7490; } .hl-k { color: #0369a1; } .hl-y { color: #854d0e; } .hl-o { color: #9a3412; } .hl-m { color: #be185d; }
+.dark .hl-r { color: #fca5a5; } .dark .hl-g { color: #86efac; } .dark .hl-b { color: #93c5fd; } .dark .hl-p { color: #c4b5fd; }
+.dark .hl-c { color: #67e8f9; } .dark .hl-k { color: #7dd3fc; } .dark .hl-y { color: #fde047; } .dark .hl-o { color: #fdba74; } .dark .hl-m { color: #f9a8d4; }
+
+/* Enlaces sin subrayado (se distinguen solo por color; el foco visible sigue activo) */
+a { text-decoration: none; }
+
+/* Degradados por categoría para guías sin portada/banner */
+.cov { background-image: linear-gradient(145deg, var(--c1), var(--c2)); }
+.cov-basics { --c1: #1d4ed8; --c2: #0f172a; }
+.cov-breeding { --c1: #be185d; --c2: #3b0764; }
+.cov-stats { --c1: #0f766e; --c2: #0f172a; }
+.cov-shiny { --c1: #a16207; --c2: #3b0764; }
+.cov-pvp { --c1: #b91c1c; --c2: #1e1b4b; }
+.cov-farming { --c1: #15803d; --c2: #0f172a; }
+.cov-legendary { --c1: #6d28d9; --c2: #0f172a; }
+.cov-story { --c1: #c2410c; --c2: #1e293b; }
+.cov-events { --c1: #0e7490; --c2: #312e81; }
+
+/* Hero de portada: vídeo de fondo + velo oscuro (el texto es siempre claro) */
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-veil { background: linear-gradient(180deg, rgb(2 6 23 / .6) 0%, rgb(2 6 23 / .5) 50%, rgb(2 6 23 / .85) 100%); }
+.glass { background: rgb(255 255 255 / .12); border: 1px solid rgb(255 255 255 / .28); backdrop-filter: blur(8px); color: #fff; }
+.glass:hover { background: rgb(255 255 255 / .22); }
+.text-shadow { text-shadow: 0 2px 12px rgb(0 0 0 / .65); }

@@ -1,0 +1,233 @@
+{
+  "meta": {
+    "siteName": "PokeMMO Guides Hub",
+    "description": "Community hub of PokeMMO guides: breeding, EVs/IVs, shiny hunting, PvP, farming and more."
+  },
+  "a11y": {
+    "skip": "Skip to main content",
+    "mainNav": "Main navigation",
+    "home": "Home",
+    "lang": "Language",
+    "themeToLight": "Switch to light theme",
+    "themeToDark": "Switch to dark theme",
+    "search": "Search guides",
+    "clear": "Clear search",
+    "newTab": "(opens in a new tab)"
+  },
+  "nav": {
+    "home": "Home",
+    "guides": "Guides",
+    "popular": "Popular",
+    "searchPlaceholder": "Search guides…",
+    "gallery": "Gallery"
+  },
+  "hero": {
+    "badge": "Community content",
+    "title": "Every PokeMMO guide in one place",
+    "subtitle": "Breeding, EVs/IVs, shiny hunting, PvP, farming and more. Search, filter and open the guide you need.",
+    "cta": "See popular guides",
+    "browse": "Browse all",
+    "play": "Explore guides",
+    "pause": "Pause background video",
+    "resume": "Play background video"
+  },
+  "popular": {
+    "title": "Most popular guides",
+    "subtitle": "Sorted by view count."
+  },
+  "all": {
+    "title": "All guides"
+  },
+  "filters": {
+    "label": "Filter by category",
+    "all": "All"
+  },
+  "sort": {
+    "label": "Sort by",
+    "popular": "Popularity",
+    "alpha": "Alphabetical",
+    "recent": "Newest"
+  },
+  "results": {
+    "count_one": "{{count}} guide",
+    "count_other": "{{count}} guides"
+  },
+  "empty": {
+    "title": "No guides found",
+    "text": "Try another word or remove the filters.",
+    "reset": "Reset filters"
+  },
+  "card": {
+    "views_one": "{{count}} view",
+    "views_other": "{{count}} views",
+    "popular": "Popular",
+    "new": "New",
+    "external": "External",
+    "read": "Open guide",
+    "spriteAlt": "Illustrative sprite for the guide {{title}}"
+  },
+  "guide": {
+    "breadcrumb": "Breadcrumb",
+    "views": "views",
+    "notTranslated": "Translation coming soon: this guide’s content is in Spanish.",
+    "external": {
+      "title": "Featured external guide",
+      "text": "This guide lives on another site. It opens in a new tab.",
+      "cta": "Open external guide",
+      "placeholder": "Example link: replace it in guides.json."
+    },
+    "verify": "Facts to verify",
+    "back": "Back to home",
+    "updated": "Added"
+  },
+  "footer": {
+    "official": "Official PokeMMO site",
+    "credits": "Credits",
+    "sprites": "Sprites: PokeAPI.",
+    "disclaimer": "Unofficial community site, not affiliated with PokeMMO or Nintendo/Game Freak. Pokémon and their names belong to their respective owners."
+  },
+  "counter": {
+    "local": "Local counter (demo mode)"
+  },
+  "categories": {
+    "basics": "Basics",
+    "breeding": "Breeding",
+    "stats": "EVs/IVs",
+    "shiny": "Shiny Hunting",
+    "pvp": "PvP",
+    "farming": "Farming",
+    "legendary": "Legendaries",
+    "story": "Story",
+    "events": "Events"
+  },
+  "guides": {
+    "crianza": {
+      "title": "Pokémon Breeding",
+      "description": "Concepts for breeding Pokémon with good natures and IVs."
+    },
+    "evs-ivs": {
+      "title": "EVs and IVs Explained",
+      "description": "What EVs and IVs are and how they affect stats."
+    },
+    "shiny-hunting": {
+      "title": "Shiny Hunting",
+      "description": "General strategies for hunting shiny Pokémon."
+    },
+    "pvp-competitive": {
+      "title": "Competitive PvP",
+      "description": "Basics for building a team and playing competitive battles."
+    },
+    "farming-dinero": {
+      "title": "Money Farming",
+      "description": "General approaches to earning in-game money."
+    },
+    "legendarios": {
+      "title": "Legendary Pokémon",
+      "description": "How to prepare to catch legendary Pokémon."
+    },
+    "rutas-historia": {
+      "title": "Story Routes",
+      "description": "General order for progressing through the main story."
+    },
+    "naturalezas": {
+      "title": "Natures",
+      "description": "What each nature does and how to choose one."
+    },
+    "habilidades-ocultas": {
+      "title": "Hidden Abilities",
+      "description": "What hidden abilities are and how to pass them on."
+    },
+    "huevos-eclosion": {
+      "title": "Egg Hatching",
+      "description": "General tips to hatch eggs faster."
+    },
+    "gtl-mercado": {
+      "title": "GTL and Market",
+      "description": "How the player market works and how to analyze it."
+    },
+    "tipos-efectividad": {
+      "title": "Types and Effectiveness",
+      "description": "Type chart: strengths, weaknesses and immunities."
+    },
+    "primeros-pasos": {
+      "title": "Getting Started",
+      "description": "A guide to starting PokeMMO without getting lost."
+    },
+    "elegir-inicial": {
+      "title": "Choosing a Starter",
+      "description": "How to pick your starter based on your goal."
+    },
+    "hordas-ev": {
+      "title": "Hordes for EVs",
+      "description": "Training EVs with horde battles."
+    },
+    "tiers-metajuego": {
+      "title": "Tiers and Metagame",
+      "description": "How tiers are organized and what the metagame is."
+    },
+    "movimientos-tm": {
+      "title": "Moves and TMs",
+      "description": "How moves, TMs and tutors work."
+    },
+    "eventos-temporada": {
+      "title": "Events and Seasons",
+      "description": "How to keep up with in-game events."
+    },
+    "pokedex-completar": {
+      "title": "Completing the Pokédex",
+      "description": "General organization to complete your Pokédex."
+    },
+    "pesca-recursos": {
+      "title": "Fishing and Resources",
+      "description": "Obtaining resources and Pokémon through fishing."
+    },
+    "elite-cuatro": {
+      "title": "Elite Four",
+      "description": "General preparation for facing the Elite Four."
+    },
+    "trading-seguro": {
+      "title": "Safe Trading",
+      "description": "Best practices for trading without risk."
+    },
+    "legendarios-evento": {
+      "title": "Preparing for Legendary Events",
+      "description": "Checklist before a legendary event."
+    },
+    "guia-comunidad-wiki": {
+      "title": "Community Guide (external)",
+      "description": "Featured external guide. Replace the example link."
+    },
+    "video-shiny-externo": {
+      "title": "Shiny Hunting Video (external)",
+      "description": "Featured external video. Replace the example link."
+    },
+    "pdf-crianza-externo": {
+      "title": "Breeding PDF (external)",
+      "description": "Featured external PDF. Replace the example link."
+    },
+    "derrotar-red": {
+      "title": "How to Beat RED (All Variants)",
+      "description": "Team and per-generation answers to beat RED, based on the guide by ABQNI and z (BiliBili) translated to Spanish."
+    },
+    "raid-meloetta": {
+      "title": "Meloetta Raid (Starfall Strategy)",
+      "description": "Teams, critical notes and turns for the 4 players of the Meloetta raid, based on the guide by AYYA, MOVE, ASUS, iboki and gsboading."
+    },
+    "farmeo-gimnasios": {
+      "title": "Gym farming by region (Kanto, Johto, Hoenn, Sinnoh, Unova)",
+      "description": "Gym farming route with a fixed five-Pokémon team and what to do in each situation, based on the guide by Ander."
+    },
+    "farmeo-hooh": {
+      "title": "Ho-Oh farming in 10 turns",
+      "description": "10-turn strategy with Pelipper, Rotom (Heat) and Chandelure to farm Ho-Oh, based on the guide by Adef."
+    },
+    "rusheo-multiregion": {
+      "title": "Multi-region rush with a single team",
+      "description": "Route through all 5 regions in parallel with 4 Pokémon (Starmie, Cloyster, Sawk and Porygon-Z), with level caps per leg and saved progress."
+    }
+  },
+  "gallery": {
+    "title": "Guide gallery",
+    "subtitle": "Tap a cover to open the guide."
+  }
+}

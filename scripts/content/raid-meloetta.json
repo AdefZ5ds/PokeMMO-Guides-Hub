@@ -1,0 +1,1196 @@
+{
+ "updated": "19/04/2026, 23:22 (UTC-5)",
+ "credits": "Estrategia «Starfall optimizada» creada por AYYA, MOVE, ASUS, iboki y gsboading. Versión revitalizada: RogueMaster (Phoebe) o Nhien.",
+ "video": "https://www.youtube.com/watch?v=LQBGZtezIVY",
+ "legend": "Una «x» (aquí «—») en una estadística significa que ese IV/EV no es relevante.",
+ "statLabels": [
+  "PS",
+  "Ataque",
+  "Defensa",
+  "At. Esp.",
+  "Def. Esp.",
+  "Velocidad"
+ ],
+ "players": [
+  {
+   "n": 1,
+   "team": [
+    {
+     "name": "Raichu",
+     "dex": 26,
+     "level": 100,
+     "item": "Baya Magua",
+     "ability": "Pararrayos (Hab. Oculta)",
+     "nature": "Serena",
+     "ivs": [
+      "31",
+      "x",
+      "x",
+      "x",
+      "31",
+      "31"
+     ],
+     "evs": [
+      "252",
+      "x",
+      "x",
+      "x",
+      "140",
+      "98"
+     ],
+     "moves": [
+      "Conjuro (Mov. Huevo)"
+     ],
+     "critical": "Conjuro es obligatorio y es movimiento huevo."
+    },
+    {
+     "name": "Heracross",
+     "dex": 214,
+     "level": 100,
+     "item": "Cinta Elegida",
+     "ability": "Enjambre",
+     "nature": "Alegre",
+     "ivs": [
+      "x",
+      "31",
+      "x",
+      "x",
+      "x",
+      "31"
+     ],
+     "evs": [
+      "x",
+      "252",
+      "x",
+      "x",
+      "x",
+      "196"
+     ],
+     "moves": [
+      "Megacuerno"
+     ]
+    },
+    {
+     "name": "Suicune",
+     "dex": 245,
+     "level": 100,
+     "item": "Manto Encubierto",
+     "ability": "Presión",
+     "nature": "Miedosa",
+     "ivs": [
+      "31",
+      "x",
+      "x",
+      "x",
+      "20",
+      "31"
+     ],
+     "evs": [
+      "6",
+      "x",
+      "x",
+      "x",
+      "x",
+      "204"
+     ],
+     "moves": [
+      "Alarido",
+      "Último Lugar"
+     ],
+     "critical": "Def. Esp. (IV) obligatoriamente 20."
+    },
+    {
+     "name": "Crawdaunt",
+     "dex": 342,
+     "level": 100,
+     "item": "Bola Férrea",
+     "ability": "Adaptable (Hab. Oculta)",
+     "nature": "Audaz",
+     "ivs": [
+      "x",
+      "31",
+      "x",
+      "x",
+      "x",
+      "0"
+     ],
+     "evs": [
+      "x",
+      "252",
+      "x",
+      "x",
+      "x",
+      "x"
+     ],
+     "moves": [
+      "Lanzamiento"
+     ]
+    },
+    {
+     "name": "Slowbro",
+     "dex": 80,
+     "level": 100,
+     "item": "Casco Dentado",
+     "ability": "Despiste / Ritmo Propio",
+     "nature": "Plácida",
+     "ivs": [
+      "31",
+      "x",
+      "31",
+      "+29",
+      "20 - 25",
+      "10"
+     ],
+     "evs": [
+      "252",
+      "x",
+      "252",
+      "6",
+      "x",
+      "x"
+     ],
+     "moves": [
+      "Más Psique",
+      "Psíquico",
+      "Defensa Férrea",
+      "Relajo"
+     ],
+     "critical": "Def. Esp. entre 20 y 25 (IV) y Velocidad superior a la del Slowbro del Jugador 2.",
+     "check": "El PDF superpone «Despiste» y «Ritmo Propio» en la habilidad. Las notas indican que Despiste se usa para manipular la IA de Chimecho: confírmalo con la fuente."
+    },
+    {
+     "name": "Conkeldurr",
+     "dex": 534,
+     "level": 100,
+     "item": "Vidaesfera",
+     "ability": "Potencia Bruta",
+     "nature": "Audaz",
+     "ivs": [
+      "x",
+      "31",
+      "x",
+      "x",
+      "x",
+      "0"
+     ],
+     "evs": [
+      "x",
+      "252",
+      "x",
+      "x",
+      "x",
+      "x"
+     ],
+     "moves": [
+      "A Bocajarro"
+     ]
+    }
+   ],
+   "notes": [
+    "Movimiento huevo: CONJURO es obligatorio para Raichu y es movimiento huevo.",
+    "Defensa Especial: debe situarse en un rango de entre 20 y 25. En el caso de Suicune debe ser obligatoriamente 20.",
+    "Velocidad de Slowbro: no es estrictamente necesario que sea 5, pero es imperativo que sea superior a la del Jugador 2.",
+    "Habilidad «Despiste» (Slowbro): se utiliza para manipular la IA de Chimecho.",
+    "Mecánica de prioridad: la IA prioriza atacar a Slowbro porque cree que es más fácil confundirlo.",
+    "Protección: gracias al efecto constante de Velo Sagrado, Slowbro es inmune a la confusión, invalidando el intento de ataque de la IA mientras se mantiene el foco sobre él."
+   ]
+  },
+  {
+   "n": 2,
+   "team": [
+    {
+     "name": "Mr. Mime",
+     "dex": 122,
+     "level": 100,
+     "item": "Pañuelo Elegido",
+     "ability": "Insonorizar",
+     "nature": "Neutra",
+     "ivs": [
+      "31",
+      "x",
+      "x",
+      "x",
+      "31",
+      "31"
+     ],
+     "evs": [
+      "106",
+      "x",
+      "x",
+      "x",
+      "x",
+      "x"
+     ],
+     "moves": [
+      "Truco"
+     ],
+     "critical": "El objeto a intercambiar debe ser obligatoriamente Pañuelo Elegido: intercambiar otro objeto altera el comportamiento de la IA."
+    },
+    {
+     "name": "Krookodile",
+     "dex": 553,
+     "level": 100,
+     "item": "Cinta Elegida",
+     "ability": "Intimidación",
+     "nature": "Firme",
+     "ivs": [
+      "x",
+      "31",
+      "x",
+      "x",
+      "x",
+      "31"
+     ],
+     "evs": [
+      "x",
+      "252",
+      "x",
+      "x",
+      "x",
+      "252"
+     ],
+     "moves": [
+      "Buena Baza"
+     ]
+    },
+    {
+     "name": "Arcanine",
+     "dex": 59,
+     "level": 100,
+     "item": "Baya Magua",
+     "ability": "Intimidación",
+     "nature": "Neutra",
+     "ivs": [
+      "+29",
+      "x",
+      "x",
+      "x",
+      "+29",
+      "31"
+     ],
+     "evs": [
+      "x",
+      "x",
+      "x",
+      "x",
+      "x",
+      "216"
+     ],
+     "moves": [
+      "Alarido"
+     ]
+    },
+    {
+     "name": "Escavalier",
+     "dex": 589,
+     "level": 100,
+     "item": "Banda Focus",
+     "ability": "Enjambre",
+     "nature": "Audaz",
+     "ivs": [
+      "x",
+      "31",
+      "x",
+      "x",
+      "15",
+      "0"
+     ],
+     "evs": [
+      "x",
+      "252",
+      "x",
+      "x",
+      "200",
+      "52"
+     ],
+     "moves": [
+      "Megacuerno",
+      "Picadura"
+     ]
+    },
+    {
+     "name": "Dusclops",
+     "dex": 356,
+     "level": 100,
+     "item": "Llamaesfera",
+     "ability": "Presión",
+     "nature": "Neutra",
+     "ivs": [
+      "31",
+      "x",
+      "0",
+      "x",
+      "x",
+      "x"
+     ],
+     "evs": [
+      "44",
+      "x",
+      "112",
+      "x",
+      "x",
+      "x"
+     ],
+     "moves": [
+      "Lanzamiento"
+     ]
+    },
+    {
+     "name": "Slowbro",
+     "dex": 80,
+     "level": 100,
+     "item": "Casco Dentado",
+     "ability": "Ritmo Propio",
+     "nature": "Plácida",
+     "ivs": [
+      "31",
+      "x",
+      "31",
+      "+29",
+      "+29",
+      "5"
+     ],
+     "evs": [
+      "252",
+      "x",
+      "252",
+      "6",
+      "x",
+      "x"
+     ],
+     "moves": [
+      "Más Psique",
+      "Onda Certera",
+      "Psíquico",
+      "Salmuera"
+     ],
+     "critical": "Velocidad: obligatoriamente el más lento de los 4 Slowbros. Def. Esp. de 29 o más (+29)."
+    }
+   ],
+   "alt": {
+    "name": "Entei",
+    "dex": 244,
+    "level": 100,
+    "item": "Baya Magua",
+    "ability": "Presión",
+    "nature": "Afable (naturaleza barata)",
+    "ivs": [
+     "31",
+     "x",
+     "x",
+     "x",
+     "15",
+     "31"
+    ],
+    "evs": [
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "176"
+    ],
+    "moves": [
+     "Alarido"
+    ],
+    "alt": true
+   },
+   "altNote": "Reemplazo de Arcanine: úsalo si no tienes a Arcanine.",
+   "notes": [
+    "Slowbro — Velocidad: debe ser obligatoriamente el más lento de los 4 Slowbros presentes.",
+    "Slowbro — Defensa Especial: requiere un valor de 29 o más (+29).",
+    "IVs: donde aparezca una «x», el IV no es relevante.",
+    "Dusclops — Naturaleza: es funcional cualquier naturaleza que no aumente su Defensa.",
+    "Mr. Mime: es probable que los EVs en PS no sean indispensables.",
+    "Alternativas psíquicas: se sugiere que otros Pokémon psíquicos «débiles» como Kadabra, Gothitelle, Alakazam o Gardevoir podrían funcionar de manera similar en esta estrategia."
+   ]
+  },
+  {
+   "n": 3,
+   "team": [
+    {
+     "name": "Krookodile",
+     "dex": 553,
+     "level": 100,
+     "item": "Flecha Veneno",
+     "ability": "Intimidación",
+     "nature": "Firme",
+     "ivs": [
+      "x",
+      "31",
+      "x",
+      "x",
+      "x",
+      "31"
+     ],
+     "evs": [
+      "x",
+      "252",
+      "x",
+      "x",
+      "x",
+      "252"
+     ],
+     "moves": [
+      "Lanzamiento"
+     ]
+    },
+    {
+     "name": "Scolipede",
+     "dex": 545,
+     "level": 100,
+     "item": "Cinta Elegida",
+     "ability": "Punto Tóxico",
+     "nature": "Firme",
+     "ivs": [
+      "20 - 25",
+      "31",
+      "x",
+      "x",
+      "20 - 25",
+      "31"
+     ],
+     "evs": [
+      "80",
+      "252",
+      "x",
+      "x",
+      "80",
+      "96"
+     ],
+     "moves": [
+      "Megacuerno"
+     ]
+    },
+    {
+     "name": "Volcarona",
+     "dex": 637,
+     "level": 100,
+     "item": "Gafas Elegidas",
+     "ability": "Cuerpo Llama",
+     "nature": "Modesta",
+     "ivs": [
+      "31",
+      "x",
+      "x",
+      "31",
+      "+29",
+      "31"
+     ],
+     "evs": [
+      "x",
+      "x",
+      "x",
+      "252",
+      "70",
+      "182"
+     ],
+     "moves": [
+      "Zumbido"
+     ]
+    },
+    {
+     "name": "Crawdaunt",
+     "dex": 342,
+     "level": 100,
+     "item": "Bola Férrea",
+     "ability": "Adaptable (Hab. Oculta)",
+     "nature": "Audaz",
+     "ivs": [
+      "x",
+      "31",
+      "x",
+      "x",
+      "x",
+      "0 - 16"
+     ],
+     "evs": [
+      "x",
+      "252",
+      "x",
+      "x",
+      "x",
+      "32"
+     ],
+     "moves": [
+      "Lanzamiento"
+     ],
+     "check": "Nota del PDF: «Con +4 en IVs ya es superior a Crawdaunt PJ1 y Escavalier PJ2 sin EVs» (la frase aparece con un paréntesis suelto)."
+    },
+    {
+     "name": "Reuniclus",
+     "dex": 579,
+     "level": 100,
+     "item": "Casco Dentado",
+     "ability": "Muro Mágico",
+     "nature": "Plácida",
+     "ivs": [
+      "31",
+      "x",
+      "31",
+      "x",
+      "31",
+      "0"
+     ],
+     "evs": [
+      "252",
+      "x",
+      "192",
+      "x",
+      "46",
+      "x"
+     ],
+     "moves": [
+      "Reflejo",
+      "Velo Sagrado"
+     ]
+    },
+    {
+     "name": "Slowbro",
+     "dex": 80,
+     "level": 100,
+     "item": "Baya Drasi",
+     "ability": "Ritmo Propio",
+     "nature": "Plácida",
+     "ivs": [
+      "31",
+      "x",
+      "31",
+      "+29",
+      "20 - 25",
+      "15"
+     ],
+     "evs": [
+      "252",
+      "x",
+      "252",
+      "6",
+      "x",
+      "x"
+     ],
+     "moves": [
+      "Espacio Raro",
+      "Más Psique",
+      "Onda Certera",
+      "Psíquico"
+     ],
+     "critical": "Def. Esp. baja (20–25). Velocidad: más rápido que el Slowbro del PJ2 y más lento que el del PJ4."
+    }
+   ],
+   "notes": [
+    "IVs: no es obligatorio que sean de 25, pero deben ser de 20 o más (20+).",
+    {
+     "text": "Nota sobre la «x»: «Al igual que en casos anteriores, la “x” indica…»",
+     "incomplete": true
+    },
+    "Slowbro — Defensa Especial: debe ser baja, situándose en un rango de 20 a 25.",
+    {
+     "text": "Slowbro — Propósito: «El objetivo es forzar a que Exploud lo ataque a él…»",
+     "incomplete": true
+    },
+    "Slowbro — Orden de velocidad (crítico): debe ser más rápido que el Slowbro del Jugador 2 y más lento que el del Jugador 4."
+   ]
+  },
+  {
+   "n": 4,
+   "team": [
+    {
+     "name": "Jirachi",
+     "dex": 385,
+     "level": 100,
+     "item": "Manto Encubierto",
+     "ability": "Dicha",
+     "nature": "Cauta",
+     "ivs": [
+      "31",
+      "x",
+      "x",
+      "x",
+      "31",
+      "31"
+     ],
+     "evs": [
+      "42",
+      "x",
+      "x",
+      "x",
+      "110",
+      "196"
+     ],
+     "moves": [
+      "Gravedad",
+      "Velo Sagrado",
+      "Eco Metálico"
+     ],
+     "critical": "Solo los EVs indicados: añadir más EVs altera el funcionamiento de toda la estrategia."
+    },
+    {
+     "name": "Honchkrow",
+     "dex": 430,
+     "level": 100,
+     "item": "Vidaesfera",
+     "ability": "Afortunado",
+     "nature": "Firme",
+     "ivs": [
+      "+29",
+      "31",
+      "31",
+      "x",
+      "+29",
+      "31"
+     ],
+     "evs": [
+      "x",
+      "252",
+      "x",
+      "x",
+      "44",
+      "212"
+     ],
+     "moves": [
+      "Buena Baza"
+     ]
+    },
+    {
+     "name": "Escavalier",
+     "dex": 589,
+     "level": 100,
+     "item": "Banda Focus",
+     "ability": "Enjambre",
+     "nature": "Audaz",
+     "ivs": [
+      "15",
+      "31",
+      "x",
+      "x",
+      "15",
+      "0"
+     ],
+     "evs": [
+      "x",
+      "252",
+      "x",
+      "x",
+      "x",
+      "216"
+     ],
+     "moves": [
+      "Megacuerno"
+     ],
+     "critical": "Velocidad +89: debe ser más rápido que Meloetta.",
+     "check": "El PDF añade una nota parcialmente ilegible sobre Espacio Raro y Velocidad 88."
+    },
+    {
+     "name": "Musharna",
+     "dex": 518,
+     "level": 100,
+     "item": "Baya Jaboca",
+     "ability": "Sincronía",
+     "nature": "Osada",
+     "ivs": [
+      "31",
+      "x",
+      "31",
+      "x",
+      "31",
+      "0"
+     ],
+     "evs": [
+      "252",
+      "x",
+      "252",
+      "x",
+      "x",
+      "x"
+     ],
+     "moves": [
+      "Conjuro",
+      "Gravedad"
+     ]
+    },
+    {
+     "name": "Reuniclus",
+     "dex": 579,
+     "level": 100,
+     "item": "Casco Dentado",
+     "ability": "Funda",
+     "nature": "Plácida",
+     "ivs": [
+      "31",
+      "x",
+      "31",
+      "x",
+      "31",
+      "0"
+     ],
+     "evs": [
+      "252",
+      "x",
+      "252",
+      "x",
+      "x",
+      "x"
+     ],
+     "moves": [
+      "Encanto"
+     ],
+     "critical": "El más lento: Velocidad con 0 IVs, más lento que todos los Slowbros. Se recomienda naturaleza Plácida."
+    },
+    {
+     "name": "Slowbro",
+     "dex": 80,
+     "level": 100,
+     "item": "Baya Pabaya",
+     "ability": "Ritmo Propio",
+     "nature": "Plácida",
+     "ivs": [
+      "31",
+      "x",
+      "31",
+      "+29",
+      "31",
+      "20"
+     ],
+     "evs": [
+      "242",
+      "x",
+      "252",
+      "x",
+      "16",
+      "x"
+     ],
+     "moves": [
+      "Más Psique",
+      "Psíquico",
+      "Onda Certera",
+      "Salmuera"
+     ],
+     "critical": "Def. Esp. con 31 IVs al máximo para que Exploud nunca lo ataque."
+    }
+   ],
+   "notes": [
+    "Reuniclus (el más lento) — Velocidad: debe tener obligatoriamente 0 IVs. Objetivo: asegurar que sea más lento que todos los Slowbros del equipo. Recomendación: naturaleza Plácida.",
+    "Musharna y Slowbro (Velocidad): no es necesario que Musharna tenga 0 en velocidad; Slowbro no requiere tener exactamente 20.",
+    "Slowbro — Gestión de IA (Exploud y Meloetta): Defensa Especial con 31 IVs, al máximo, para asegurar que Exploud nunca lo ataque.",
+    {
+     "text": "Slowbro — otra línea de la nota quedó cortada: «…priorice como objetivo.»",
+     "incomplete": true
+    },
+    "Jirachi — precisión en EVs: solo debe llevar los EVs mencionados (42 en Vida). No añadir más EVs: alteraría el funcionamiento de toda la estrategia."
+   ]
+  }
+ ],
+ "turns": [
+  {
+   "t": 1,
+   "hp": 96.4,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Raichu",
+     "dex": 26,
+     "move": "Conjuro"
+    },
+    {
+     "pj": 2,
+     "mon": "Mr. Mime",
+     "dex": 122,
+     "move": "Truco / Chimecho"
+    },
+    {
+     "pj": 3,
+     "mon": "Krookodile",
+     "dex": 553,
+     "move": "Lanzamiento"
+    },
+    {
+     "pj": 4,
+     "mon": "Jirachi",
+     "dex": 385,
+     "move": "Gravedad"
+    }
+   ],
+   "alert": "Reset si por algún motivo Meloetta prioriza a Jirachi, en lugar de Raichu",
+   "kind": "reset"
+  },
+  {
+   "t": 2,
+   "hp": 84.4,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Heracross",
+     "dex": 214,
+     "move": "Megacuerno"
+    },
+    {
+     "pj": 2,
+     "mon": "Krookodile",
+     "dex": 553,
+     "move": "Buena Baza"
+    },
+    {
+     "pj": 3,
+     "mon": "Scolipede",
+     "dex": 545,
+     "move": "Megacuerno"
+    },
+    {
+     "pj": 4,
+     "mon": "Jirachi",
+     "dex": 385,
+     "move": "Velo Sagrado"
+    }
+   ],
+   "alert": "Reset si Chimecho confunde a Krookodile y se pega el mismo",
+   "kind": "reset"
+  },
+  {
+   "t": 3,
+   "hp": 76.2,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Suicune",
+     "dex": 245,
+     "move": "Alarido"
+    },
+    {
+     "pj": 2,
+     "mon": "Arcanine",
+     "dex": 59,
+     "move": "Alarido"
+    },
+    {
+     "pj": 3,
+     "mon": "Volcarona",
+     "dex": 637,
+     "move": "Zumbido"
+    },
+    {
+     "pj": 4,
+     "mon": "Jirachi",
+     "dex": 385,
+     "move": "Eco Metálico"
+    }
+   ],
+   "alert": "Reset si Meloetta no mata de 2 Rayo Carga a Jirachi",
+   "kind": "reset"
+  },
+  {
+   "t": 4,
+   "hp": 65.5,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Suicune",
+     "dex": 245,
+     "move": "Último Lugar"
+    },
+    {
+     "pj": 2,
+     "mon": "Escavalier",
+     "dex": 589,
+     "move": "Megacuerno"
+    },
+    {
+     "pj": 3,
+     "mon": "Volcarona",
+     "dex": 637,
+     "move": "Zumbido"
+    },
+    {
+     "pj": 4,
+     "mon": "Honchkrow",
+     "dex": 430,
+     "move": "Buena Baza"
+    }
+   ],
+   "alert": "Reset si Escavalier llega a morir",
+   "kind": "reset"
+  },
+  {
+   "t": 5,
+   "hp": 49.3,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Crawdaunt",
+     "dex": 342,
+     "move": "Lanzamiento"
+    },
+    {
+     "pj": 2,
+     "mon": "Escavalier",
+     "dex": 589,
+     "move": "Picadura"
+    },
+    {
+     "pj": 3,
+     "mon": "Crawdaunt",
+     "dex": 342,
+     "move": "Lanzamiento"
+    },
+    {
+     "pj": 4,
+     "mon": "Escavalier",
+     "dex": 589,
+     "move": "Megacuerno"
+    }
+   ],
+   "alert": "Reset si Meloetta no cambia de forma con al menos +4 en Atq. Esp.",
+   "kind": "reset"
+  },
+  {
+   "t": 6,
+   "hp": 44.5,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Más Psique",
+     "target": "Meloetta"
+    },
+    {
+     "pj": 2,
+     "mon": "Dusclops",
+     "dex": 356,
+     "move": "Lanzamiento",
+     "target": "Meloetta"
+    },
+    {
+     "pj": 3,
+     "mon": "Reuniclus",
+     "dex": 579,
+     "move": "Reflejo"
+    },
+    {
+     "pj": 4,
+     "mon": "Musharna",
+     "dex": 518,
+     "move": "Conjuro"
+    }
+   ],
+   "alert": "Aquí termina el efecto de Velo Sagrado",
+   "kind": "nota"
+  },
+  {
+   "t": 7,
+   "hp": 39.8,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Psíquico"
+    },
+    {
+     "pj": 2,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Más Psique",
+     "target": "Meloetta"
+    },
+    {
+     "pj": 3,
+     "mon": "Reuniclus",
+     "dex": 579,
+     "move": "Velo Sagrado"
+    },
+    {
+     "pj": 4,
+     "mon": "Musharna",
+     "dex": 518,
+     "move": "Gravedad"
+    }
+   ],
+   "alert": "El Slowbro PJ2 debe ser más lento que el PJ1",
+   "kind": "nota"
+  },
+  {
+   "t": 8,
+   "hp": 26.9,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Psíquico"
+    },
+    {
+     "pj": 2,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Onda Certera"
+    },
+    {
+     "pj": 3,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Espacio Raro"
+    },
+    {
+     "pj": 4,
+     "mon": "Reuniclus",
+     "dex": 579,
+     "move": "Encanto"
+    }
+   ],
+   "alert": "Reuniclus debe ser más lento que los Slowbro PJ1 y PJ2",
+   "kind": "nota"
+  },
+  {
+   "t": 9,
+   "hp": 22.4,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Defensa Férrea"
+    },
+    {
+     "pj": 2,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Onda Certera"
+    },
+    {
+     "pj": 3,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Más Psique",
+     "target": "PJ2"
+    },
+    {
+     "pj": 4,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Más Psique",
+     "target": "PJ3"
+    }
+   ],
+   "alert": "Meloetta debería de priorizar al Slowbro PJ4",
+   "kind": "nota"
+  },
+  {
+   "t": 10,
+   "hp": 10.9,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Relajo"
+    },
+    {
+     "pj": 2,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Más Psique",
+     "target": "Cualquiera"
+    },
+    {
+     "pj": 3,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Psíquico"
+    },
+    {
+     "pj": 4,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Onda Certera"
+    }
+   ],
+   "alert": "Meloetta se enfurece en este turno con el PJ1, dejando libre al PJ4",
+   "kind": "nota"
+  },
+  {
+   "t": 11,
+   "hp": null,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Conkeldurr",
+     "dex": 534,
+     "move": "A Bocajarro"
+    },
+    {
+     "pj": 2,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Psíquico"
+    },
+    {
+     "pj": 3,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Onda Certera"
+    },
+    {
+     "pj": 4,
+     "mon": "Slowbro",
+     "dex": 80,
+     "move": "Psíquico"
+    }
+   ]
+  }
+ ],
+ "speed": {
+  "intro": "Orden de velocidad BASE para los Escavalier y Crawdaunt (incluido el efecto de la Bola Férrea), por jugador:",
+  "items": [
+   {
+    "pj": 1,
+    "mon": "Crawdaunt",
+    "dex": 342,
+    "value": "51"
+   },
+   {
+    "pj": 2,
+    "mon": "Escavalier",
+    "dex": 589,
+    "value": "52"
+   },
+   {
+    "pj": 3,
+    "mon": "Crawdaunt",
+    "dex": 342,
+    "value": "53"
+   },
+   {
+    "pj": 4,
+    "mon": "Escavalier",
+    "dex": 589,
+    "value": "+89",
+    "note": "Para así superar a Meloetta"
+   }
+  ]
+ },
+ "damage": {
+  "intro": "Si Meloetta está a +4 y sus Slowbros tienen menos de 25 de ataque especial, usa esta información para decidir si debes arriesgarte o no.",
+  "rows": [
+   [
+    "+4, 31 IV At. Esp.",
+    "3 – 3.5 %",
+    "4 – 4.9 %"
+   ],
+   [
+    "+3, 31 IV At. Esp.",
+    "2.4 – 2.9 %",
+    "3.5 – 4.2 %"
+   ],
+   [
+    "+4, 15 IV At. Esp.",
+    "2.7 – 3.3 %",
+    "3.9 – 4.6 %"
+   ],
+   [
+    "+3, 15 IV At. Esp.",
+    "2.4 – 2.8 %",
+    "3.2 – 3.9 %"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PokeMMO Guides Hub · Guías de la comunidad</title>
+  <meta name="description" content="Hub comunitario de guías de PokeMMO: crianza, EVs/IVs, shiny hunting, PvP, farmeo y más." />
+  <meta name="theme-color" content="#0f172a" />
+  <meta property="og:title" content="PokeMMO Guides Hub" />
+  <meta property="og:description" content="Guías comunitarias de PokeMMO en español, inglés y chino." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <!-- Aplica el tema antes de pintar (evita el parpadeo). Sin preferencia guardada: sistema; por defecto oscuro. -->
+  <script>
+    try {
+      var s = localStorage.getItem('pmmo-theme');
+      var dark = s ? s === 'dark' : !matchMedia('(prefers-color-scheme: light)').matches;
+      document.documentElement.classList.toggle('dark', dark);
+    } catch (e) {}
+  </script>
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link" data-i18n="a11y.skip">Saltar al contenido principal</a>
+
+  <div id="hub" x-data="hub" @langchange.window="lang = $event.detail">
+    <!-- ================= NAVBAR ================= -->
+    <header class="sticky top-0 z-50 border-b border-line bg-bg/90 backdrop-blur">
+      <nav class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3" aria-label="Navegación principal" data-i18n-attr="aria-label:a11y.mainNav">
+        <a href="./index.html" class="flex items-center gap-2 font-bold" aria-current="page" aria-label="PokeMMO Guides Hub">
+          <img src="/assets/img/logo.svg" alt="" width="28" height="28" />
+          <span class="hidden sm:inline">PokeMMO Guides Hub</span>
+        </a>
+        <ul class="ml-2 hidden items-center gap-4 text-sm font-medium lg:flex">
+          <li><a class="hover:text-accent-text" href="#galeria" data-i18n="nav.gallery">Galería</a></li>
+          <li><a class="hover:text-accent-text" href="#popular" data-i18n="nav.popular">Populares</a></li>
+          <li><a class="hover:text-accent-text" href="#all-guides" data-i18n="nav.guides">Guías</a></li>
+        </ul>
+
+        <form role="search" class="ml-auto hidden max-w-xs flex-1 md:block" @submit.prevent="goToResults()">
+          <label for="nav-search" class="sr-only" data-i18n="a11y.search">Buscar guías</label>
+          <div class="relative">
+            <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" data-icon="search"></span>
+            <input id="nav-search" type="search" class="field pl-9" autocomplete="off"
+                   x-model="qInput" @keydown.escape="qInput = ''"
+                   placeholder="Buscar guías…" data-i18n-attr="placeholder:nav.searchPlaceholder" />
+          </div>
+        </form>
+
+        <div class="ml-auto flex items-center gap-2 md:ml-0">
+          <label for="lang-select" class="sr-only" data-i18n="a11y.lang">Idioma</label>
+          <select id="lang-select" class="field !w-auto py-1.5">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="zh" lang="zh-Hans">中文</option>
+          </select>
+          <button id="theme-toggle" type="button" class="btn-ghost !px-2.5" aria-label="Cambiar tema">
+            <span class="hidden dark:inline" data-icon="sun" data-icon-class="icon h-5 w-5"></span>
+            <span class="dark:hidden" data-icon="moon" data-icon-class="icon h-5 w-5"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <noscript><p class="mx-auto max-w-6xl p-4">Este sitio necesita JavaScript para buscar y filtrar guías.</p></noscript>
+
+      <!-- ================= HERO (estilo Genshin: vídeo a pantalla completa, velo y CTA central) ================= -->
+      <section class="relative isolate flex min-h-[calc(100svh-3.5rem)] items-center overflow-hidden bg-slate-950 text-white" aria-labelledby="hero-title">
+        <video id="hero-video" class="hero-video -z-20" autoplay muted loop playsinline preload="metadata" poster="/video/hero-poster.webp" aria-hidden="true" tabindex="-1">
+          <source src="/video/hero.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-veil absolute inset-0 -z-10" aria-hidden="true"></div>
+
+        <div class="mx-auto w-full max-w-6xl px-4 py-16 text-center md:py-24">
+          <p class="badge-gold mb-4"><span aria-hidden="true">🎮</span> <span data-i18n="hero.badge">Contenido de la comunidad</span></p>
+          <h1 id="hero-title" class="text-shadow mx-auto max-w-3xl text-4xl font-bold leading-tight md:text-6xl" data-i18n="hero.title">Todas las guías de PokeMMO en un solo lugar</h1>
+          <p class="text-shadow mx-auto mt-4 max-w-2xl text-base text-slate-100 md:text-lg" data-i18n="hero.subtitle">Crianza, EVs/IVs, shiny hunting, PvP, farmeo y más. Busca, filtra y abre la guía que necesitas.</p>
+
+          <a href="#galeria" class="mx-auto mt-8 grid h-24 w-24 place-items-center rounded-full border-4 border-white/80 bg-accent-strong text-white shadow-2xl shadow-black/50 transition-transform hover:scale-105 md:h-28 md:w-28" aria-label="Explorar guías" data-i18n-attr="aria-label:hero.play">
+            <span data-icon="arrow-down" data-icon-class="icon h-10 w-10"></span>
+          </a>
+          <p class="text-shadow mt-2 text-sm font-semibold" aria-hidden="true" data-i18n="hero.play">Explorar guías</p>
+
+          <form role="search" class="mx-auto mt-8 max-w-xl" @submit.prevent="goToResults()">
+            <label for="hero-search" class="sr-only" data-i18n="a11y.search">Buscar guías</label>
+            <div class="relative">
+              <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" data-icon="search" data-icon-class="icon h-5 w-5"></span>
+              <input id="hero-search" type="search" class="glass w-full rounded-full py-3 pl-11 pr-4 text-base placeholder:text-slate-200" autocomplete="off"
+                     x-model="qInput" @keydown.escape="qInput = ''"
+                     placeholder="Buscar guías…" data-i18n-attr="placeholder:nav.searchPlaceholder" />
+            </div>
+          </form>
+
+          <div class="mt-5 flex flex-wrap justify-center gap-3">
+            <a href="#popular" class="glass btn rounded-full"><span aria-hidden="true">🔥</span> <span data-i18n="hero.cta">Ver guías populares</span></a>
+            <a href="#all-guides" class="glass btn rounded-full" data-i18n="hero.browse">Explorar todas</a>
+          </div>
+        </div>
+
+        <button id="hero-toggle" type="button" class="glass absolute bottom-4 right-4 hidden h-10 w-10 place-items-center rounded-full" aria-label="Pausar vídeo de fondo" aria-pressed="false">
+          <span data-icon="pause" data-icon-class="icon h-5 w-5"></span>
+        </button>
+      </section>
+
+      <!-- ================= GALERÍA DE PORTADAS ================= -->
+      <section id="galeria" class="mx-auto max-w-6xl px-4 py-10" aria-labelledby="gallery-title">
+        <h2 id="gallery-title" class="text-2xl font-bold" data-i18n="gallery.title">Galería de guías</h2>
+        <p class="mt-1 text-sm text-muted" data-i18n="gallery.subtitle">Pulsa una portada para abrir la guía.</p>
+        <ul class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          <template x-for="g in gallery" :key="g.slug">
+            <li class="[content-visibility:auto] [contain-intrinsic-size:auto_15rem]">
+              <a :href="href(g)" class="group relative block aspect-[2/3] overflow-hidden rounded-xl border border-line" :class="g.image ? 'bg-slate-900' : 'cov cov-' + g.category">
+                <img x-show="g.image" :src="g.image ? cover(g) : ''" alt="" width="520" height="780" loading="lazy" decoding="async"
+                     class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                <img x-show="!g.image && !failed[g.slug]" :src="sprite(g)" alt="" width="96" height="96" loading="lazy" decoding="async" @error="failed[g.slug] = true"
+                     class="absolute left-1/2 top-[30%] h-24 w-24 -translate-x-1/2 -translate-y-1/2 opacity-90 [image-rendering:pixelated]" />
+                <span class="absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 text-6xl" aria-hidden="true" x-show="!g.image && failed[g.slug]" x-text="g.emoji"></span>
+                <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-3 pt-10 text-white">
+                  <span class="block text-sm font-bold leading-snug text-shadow" x-text="g.tt"></span>
+                  <span class="mt-0.5 block text-xs text-slate-200" x-text="g.cc"></span>
+                </span>
+              </a>
+            </li>
+          </template>
+        </ul>
+      </section>
+
+      <!-- ================= POPULARES ================= -->
+      <section id="popular" class="mx-auto max-w-6xl px-4 py-10" aria-labelledby="popular-title">
+        <h2 id="popular-title" class="text-2xl font-bold"><span aria-hidden="true">🔥</span> <span data-i18n="popular.title">Guías más populares</span></h2>
+        <p class="mt-1 text-sm text-muted">
+          <span data-i18n="popular.subtitle">Ordenadas por número de visitas.</span>
+          <span x-show="source !== 'remote'" x-cloak x-text="'· ' + tr('counter.local')"></span>
+        </p>
+        <ol class="mt-5 grid min-h-[34.5rem] grid-cols-[minmax(0,1fr)] gap-3 sm:min-h-[16.8rem] sm:grid-cols-2 lg:min-h-[11rem] lg:grid-cols-3">
+          <template x-for="(g, i) in popular" :key="g.slug">
+            <li class="card !flex-row items-center gap-3">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent-strong text-sm font-bold text-white" x-text="i + 1" aria-hidden="true"></span>
+              <img :src="sprite(g)" :alt="g.alt" width="48" height="48" loading="lazy" decoding="async"
+                   class="h-12 w-12 shrink-0 [image-rendering:pixelated]" x-show="!failed[g.slug]" @error="failed[g.slug] = true" />
+              <span class="text-3xl" aria-hidden="true" x-show="failed[g.slug]" x-text="g.emoji"></span>
+              <div class="min-w-0">
+                <h3 class="truncate font-semibold"><a :href="href(g)" class="after:absolute after:inset-0" x-text="g.tt"></a></h3>
+                <p class="text-sm text-muted"><span x-html="icon('eye')"></span> <span x-text="g.vv"></span></p>
+              </div>
+            </li>
+          </template>
+        </ol>
+      </section>
+
+      <!-- ================= FILTROS + GRID ================= -->
+      <section id="all-guides" class="mx-auto max-w-6xl px-4 pb-16" aria-labelledby="all-title">
+        <h2 id="all-title" class="text-2xl font-bold" data-i18n="all.title">Todas las guías</h2>
+
+        <div class="mt-4 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+          <div role="group" aria-labelledby="filters-label" class="flex flex-wrap gap-2">
+            <span id="filters-label" class="sr-only" data-i18n="filters.label">Filtrar por categoría</span>
+            <button type="button" class="chip" :aria-pressed="cat === 'all'" @click="setCat('all')" data-i18n="filters.all">Todas</button>
+            <template x-for="c in categories" :key="c.id">
+              <button type="button" class="chip" :aria-pressed="cat === c.id" @click="setCat(c.id)">
+                <span aria-hidden="true" x-text="c.emoji"></span> <span x-text="catLabel(c.id)"></span>
+              </button>
+            </template>
+          </div>
+          <div class="flex shrink-0 items-center gap-2">
+            <label for="sort" class="text-sm text-muted" data-i18n="sort.label">Ordenar por</label>
+            <select id="sort" class="field !w-auto py-1.5" x-model="sort">
+              <option value="popular" data-i18n="sort.popular">Popularidad</option>
+              <option value="alpha" data-i18n="sort.alpha">Alfabético</option>
+              <option value="recent" data-i18n="sort.recent">Más reciente</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="mt-4 text-sm text-muted" role="status" aria-live="polite" x-text="resultsText"></p>
+
+        <ul class="mt-4 grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2 lg:grid-cols-3" x-show="filtered.length">
+          <template x-for="g in shown" :key="g.slug">
+            <li class="[content-visibility:auto] [contain-intrinsic-size:auto_13rem]">
+              <article class="card h-full">
+                <div class="flex items-start gap-3">
+                  <div class="relative grid h-16 w-16 shrink-0 place-items-center rounded-lg bg-bg">
+                    <img :src="sprite(g)" :alt="g.alt" width="96" height="96" loading="lazy" decoding="async"
+                         class="h-14 w-14 [image-rendering:pixelated]" x-show="!failed[g.slug]" @error="failed[g.slug] = true" />
+                    <span class="text-3xl" aria-hidden="true" x-show="failed[g.slug]" x-text="g.emoji"></span>
+                    <span class="absolute -bottom-1 -right-1 text-base" aria-hidden="true" x-text="g.emoji" x-show="!failed[g.slug]"></span>
+                  </div>
+                  <div class="min-w-0">
+                    <h3 class="font-semibold leading-snug"><a :href="href(g)" class="after:absolute after:inset-0" x-text="g.tt"></a></h3>
+                    <p class="text-sm text-muted" x-text="g.cc"></p>
+                  </div>
+                </div>
+                <p class="text-sm text-muted" x-text="g.dd"></p>
+                <div class="mt-auto flex flex-wrap items-center gap-2 text-sm">
+                  <span class="badge-gold" x-show="g.pop"><span aria-hidden="true">🔥</span> <span x-text="tr('card.popular')"></span></span>
+                  <span class="badge-gold" x-show="g.isNew"><span aria-hidden="true">✨</span> <span x-text="tr('card.new')"></span></span>
+                  <span class="badge-muted" x-show="g.externalUrl"><span x-html="icon('external-link', 'icon h-3 w-3')"></span> <span x-text="tr('card.external')"></span></span>
+                  <span class="ml-auto text-muted"><span x-html="icon('eye')"></span> <span x-text="g.vv"></span></span>
+                </div>
+              </article>
+            </li>
+          </template>
+        </ul>
+
+        <!-- Estado vacío -->
+        <div x-show="!filtered.length" x-cloak class="mt-8 rounded-xl border border-dashed border-line p-10 text-center">
+          <p class="text-4xl" aria-hidden="true">🔍</p>
+          <span class="mx-auto mt-2 block w-fit text-muted" x-html="icon('inbox', 'h-12 w-12')"></span>
+          <h3 class="mt-3 text-lg font-semibold" data-i18n="empty.title">No encontramos guías</h3>
+          <p class="mt-1 text-muted" data-i18n="empty.text">Prueba con otra palabra o quita los filtros.</p>
+          <button type="button" class="btn-primary mt-4" @click="reset()" data-i18n="empty.reset">Restablecer filtros</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-line bg-surface">
+    <div class="mx-auto grid max-w-6xl gap-6 px-4 py-8 text-sm text-muted md:grid-cols-2">
+      <div>
+        <p class="font-semibold text-fg">PokeMMO Guides Hub</p>
+        <p class="mt-2" data-i18n="footer.disclaimer">Sitio comunitario no oficial.</p>
+      </div>
+      <ul class="space-y-2 md:text-right">
+        <li><a class="text-accent-text" href="https://pokemmo.com" target="_blank" rel="noopener noreferrer"><span data-i18n="footer.official">Sitio oficial de PokeMMO</span><span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a></li>
+        <li><span data-i18n="footer.sprites">Sprites: PokeAPI.</span> <a class="text-accent-text" href="https://pokeapi.co" target="_blank" rel="noopener noreferrer">pokeapi.co<span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a></li>
+        <li><span data-i18n="footer.credits">Créditos</span>: <a class="text-accent-text" href="https://lucide.dev" target="_blank" rel="noopener noreferrer">Lucide<span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a> · Inter</li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
