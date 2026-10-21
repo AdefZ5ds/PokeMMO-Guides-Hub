@@ -47,6 +47,6 @@ export function renderHooh() {
       <p class="!mb-1">Guía de ${esc(d.author)} (PokeMMO). Estrategia creada por ${esc(d.strategyBy)} (canal de YouTube).</p>
       <p class="!mb-0 text-muted">Última actualización del documento: ${esc(d.updated)}.</p>
     </aside>
-    <div class="callout"><p class="!mb-2 font-bold"><span aria-hidden="true">⚠️</span> Datos por verificar</p><ul class="!mb-0">${d.verify.map((v) => `<li>${esc(v)}</li>`).join('')}</ul></div>
+    
   </div>`;
 }

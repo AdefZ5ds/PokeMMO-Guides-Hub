@@ -96,16 +96,5 @@ export function renderMeloetta() {
       <tbody>${data.damage.rows.map((r) => `<tr class="border-t border-line"><th scope="row" class="p-2 text-left font-semibold">${esc(r[0])}</th><td class="p-2 tabular-nums">${esc(r[1])}</td><td class="p-2 tabular-nums">${esc(r[2])}</td></tr>`).join('')}</tbody></table></div>
     <p class="text-sm text-muted">Valores leídos de una captura de una calculadora de daño dentro del PDF; el PDF no explica qué representa exactamente cada porcentaje.</p>
 
-    <div class="callout">
-      <p class="!mb-2 font-bold"><span aria-hidden="true">⚠️</span> Datos por verificar</p>
-      <ul class="!mb-0">
-        <li>Partes del PDF están cortadas o dentro de imágenes (marcadas «Texto incompleto en el PDF»). No se completaron.</li>
-        <li>Slowbro PJ1: el PDF superpone «Despiste» y «Ritmo Propio»; además, su nota habla de una Velocidad «5» mientras su IV de Velocidad indica 10.</li>
-        <li>Orden de velocidad: el texto del PDF rotula a PJ2 y PJ4 como «Crawdaunt», pero los sprites son Escavalier; aquí se muestran como Escavalier.</li>
-        <li>«Re o» del texto del PDF se leyó como «Reflejo» (el movimiento aparece así en la tabla de turnos); se corrigió ortografía menor (Psíquico, Plácida, Metálico…).</li>
-        <li>La fila del turno 11 no indica el % de PS de Meloetta.</li>
-        <li>No se reproduce el enlace «PokePaste» del PDF (aparece como imagen). No se verificó el contenido del video.</li>
-      </ul>
-    </div>
   </div>`;
 }

@@ -40,14 +40,5 @@
   { "t": 8, "P": ["Vastaguardia"], "R": ["Rayo"], "C": ["Bomba Ácida"] },
   { "t": 9, "P": ["Vastaguardia"], "R": ["Rayo"], "C": ["Bola Sombra"] },
   { "t": 10, "P": ["Vastaguardia"], "R": ["Rayo"], "C": ["Bola Sombra"] }
- ],
- "verify": [
-  "Las cifras de la introducción (10 turnos, ~6:30 min, ~67k, señuelos a 23k) son del autor y no las verifiqué. Además 3 × 23k = 69k, no 67k; no sé si el PDF cuenta otra cosa.",
-  "IVs de Rotom (Velocidad «1-4») y de Chandelure (Velocidad «17-31»): se leyeron de texto pequeño en una imagen; pueden estar mal. Los EVs sí suman 510 en los tres Pokémon.",
-  "La celda de Rotom «P. Oculto / Rayo (Suicune, Entei, Raikou)» no explica cuándo usar cada movimiento: se copia tal cual.",
-  "Las filas T2 a T6 en la columna de Pelipper dicen «Cambia - Chande.» tal como en el PDF; no se interpreta quién sale en cada turno.",
-  "Las notas entre paréntesis («Rotom» en T1 y T5) se muestran literales; el PDF no dice si indican el objetivo.",
-  "No se verificó la fecha ni que la estrategia siga vigente: «última actualización 05/07/2026» es lo que declara el PDF.",
-  "La portada se aloja por decisión del autor del proyecto; el PDF no indica permiso de redistribución."
  ]
 }

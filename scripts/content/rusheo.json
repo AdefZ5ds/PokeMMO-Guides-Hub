@@ -40,31 +40,31 @@
    "slot": "1",
    "name": "Starmie",
    "dex": 121,
-   "level": 100,
-   "item": "Objeto (editar)",
-   "ability": "Habilidad (editar)",
-   "nature": "Naturaleza (editar)",
+   "level": 20,
+   "item": "Objeto Restos",
+   "ability": "Habilidad Iluminación",
+   "nature": "Naturaleza Modesta",
    "ivs": [
     "-",
     "-",
     "-",
+    "31",
     "-",
-    "-",
-    "-"
+    "31"
    ],
    "evs": [
+    "6",
     "-",
     "-",
+    "252",
     "-",
-    "-",
-    "-",
-    "-"
+    "252"
    ],
    "moves": [
-    "Movimiento 1",
-    "Movimiento 2",
-    "Movimiento 3",
-    "Movimiento 4"
+    "Psíquico",
+    "Surf",
+    "Joya Luz",
+    "Rayo Hielo"
    ],
    "badge": true
   },
@@ -72,31 +72,31 @@
    "slot": "2",
    "name": "Cloyster",
    "dex": 91,
-   "level": 100,
-   "item": "Objeto (editar)",
-   "ability": "Habilidad (editar)",
-   "nature": "Naturaleza (editar)",
+   "level": 20,
+   "item": "Objeto Antederretir",
+   "ability": "Habilidad Encadenado",
+   "nature": "Naturaleza Firme",
    "ivs": [
     "-",
+    "31",
     "-",
     "-",
     "-",
-    "-",
-    "-"
+    "31"
    ],
    "evs": [
+    "6",
+    "31",
     "-",
     "-",
     "-",
-    "-",
-    "-",
-    "-"
+    "31"
    ],
    "moves": [
-    "Movimiento 1",
-    "Movimiento 2",
-    "Movimiento 3",
-    "Movimiento 4"
+    "Carámbano",
+    "Cascada",
+    "Clavo Cañón",
+    "Rompecoraza"
    ],
    "badge": true
   },
@@ -104,31 +104,31 @@
    "slot": "3",
    "name": "Sawk",
    "dex": 539,
-   "level": 100,
-   "item": "Objeto (editar)",
-   "ability": "Habilidad (editar)",
-   "nature": "Naturaleza (editar)",
+   "level": 20,
+   "item": "Objeto Cint. Negra",
+   "ability": "Habilidad Foco Interno",
+   "nature": "Naturaleza Firme",
    "ivs": [
     "-",
+    "25 - 31",
     "-",
     "-",
     "-",
-    "-",
-    "-"
+    "25 - 31"
    ],
    "evs": [
+    "6",
+    "252",
     "-",
     "-",
     "-",
-    "-",
-    "-",
-    "-"
+    "252"
    ],
    "moves": [
-    "Movimiento 1",
-    "Movimiento 2",
-    "Movimiento 3",
-    "Movimiento 4"
+    "Puño Drenaje",
+    "Puño Trueno",
+    "Doble Patada",
+    "Corculencia"
    ],
    "badge": true
   },
@@ -136,31 +136,31 @@
    "slot": "4",
    "name": "Porygon-Z",
    "dex": 474,
-   "level": 100,
-   "item": "Objeto (editar)",
-   "ability": "Habilidad (editar)",
-   "nature": "Naturaleza (editar)",
+   "level": 20,
+   "item": "Objeto Pañl. Seda o Restos",
+   "ability": "Habilidad Adaptabilidad",
+   "nature": "Naturaleza Modesta",
    "ivs": [
     "-",
     "-",
     "-",
+    "31",
     "-",
-    "-",
-    "-"
+    "31"
    ],
    "evs": [
+    "6",
     "-",
     "-",
+    "252",
     "-",
-    "-",
-    "-",
-    "-"
+    "252"
    ],
    "moves": [
-    "Movimiento 1",
-    "Movimiento 2",
-    "Movimiento 3",
-    "Movimiento 4"
+    "Triataque",
+    "Rayo",
+    "Bola Sombra",
+    "Maquinación"
    ],
    "badge": true
   }
@@ -592,15 +592,5 @@
     }
    ]
   }
- ],
- "verify": [
-  "Los nombres de los Pokémon 1–4 (Starmie, Cloyster, Sawk, Porygon-Z) los indicaste tú; el PDF solo dice «Pokémon 1», «Pokémon 2»… Sus datos (objeto, habilidad, naturaleza, EVs, IVs y movimientos) son PROVISIONALES: edítalos en scripts/content/rusheo.json.",
-  "Correcciones de erratas evidentes: «Sra. Pokémon» → «Sr. Pokémon»; «PokReloj» → «PokéReloj»; «Ancentral» → «Ancestral»; «Guida» → «Guarida»; «MOSSDEEP (Algararia)» → «Ciudad Algararia»; «Módulos Ocultos» → «Máquinas Ocultas»; «Mo»/«MO» unificado a «MO»; «Pueblo Azuliza» se mantiene como en el PDF aunque en otros lugares se llama «Ciudad Azuliza».",
-  "En los tramos «Johto» y «Kanto» de la Fase 2 el PDF dice «Nivel ≤ 37 / 38»; se copia tal cual sin explicar qué significa «/ 38».",
-  "En Fase 1 · Hoenn el PDF pide «Pokémon 3 / Pokémon 2»; en Fase 2 la lista de «usar» muestra solo 4 y 3, pero se listan límites también para 2 y 1; se muestran como límites sin marcarlos como «a usar».",
-  "Ciudad Petalia (Fase 1 · Hoenn): el PDF dice «entra al gimnasio» sin indicar si hay combate; no se marca como gimnasio.",
-  "Los límites de nivel, rutas y MOs se copian del PDF; no los comprobé en el juego y pueden haber cambiado.",
-  "Las ilustraciones de cabecera son del PDF, de autor desconocido y sin licencia indicada. Se alojan por decisión del autor del proyecto; conviene confirmar el permiso o quitarlas.",
-  "El enlace al foro oficial lo facilitó el autor del proyecto y no pude abrirlo para verificar que corresponde a esta guía ni quién es su autor."
  ]
 }

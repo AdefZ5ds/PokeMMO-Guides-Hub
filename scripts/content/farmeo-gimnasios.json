@@ -362,7 +362,7 @@
         {
           "city": "Ciudad Caolín",
           "type": "Dragón",
-          "leader": "drayden",
+          "leader": "iris",
           "duo": [
             [
               "V",
@@ -829,12 +829,6 @@
     }
   ],
   "verify": [
-    "Los nombres de los líderes de gimnasio NO aparecen en el PDF (solo ciudad, tipo y una imagen). Se asignaron por ciudad y tipo según el juego original; revísalos.",
-    "Los sprites de líderes se cargan desde el directorio de sprites de entrenadores de Pokémon Showdown. Solo pude comprobar que existen los de Burgh, Cilan, Chili, Cress, Brycen, Clay, Crasher Wake, Brawly, Bugsy y Clair; el resto se cargó por nombre sin verificar y, si falla, se muestra un icono de respaldo.",
-    "El PokePaste está leído de una imagen de baja resolución: revisa objetos, naturalezas, EVs y movimientos en el juego.",
-    "Los mapas son imágenes del PDF; los números del mapa no están explicados en el PDF y no se asocian aquí a ningún gimnasio.",
-    "Ciudad Caolín: no queda claro a qué equipo pertenecen Emboar, Lapras, Samurott, Garchomp y Togekiss.",
-    "Ciudad Mayólica: el PDF escribe «Sopresa» y «Explosióm»; se normalizó a Sorpresa y Explosión. El PDF alterna «Elegido/a» y «Elección» en objetos; se unificó a Pañuelo Elección y Gafas Elección.",
-    "La nota sobre Blastoise con Pañuelo/Gafas Elección en Olivo y Azalea se copia tal cual del PDF."
+    "Nick: xXZarcAndXx"
   ]
 }

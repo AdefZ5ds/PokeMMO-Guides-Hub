@@ -74,15 +74,6 @@ export function renderRed(guide) {
     </section>
   </div>
 
-    <div class="callout">
-      <p class="!mb-2 font-bold"><span aria-hidden="true">⚠️</span> Datos por verificar</p>
-      <ul class="!mb-0">
-        <li>Los nombres de los Pokémon rivales se identificaron a partir de los sprites del PDF, que no los rotula.</li>
-        <li>No se reproduce el enlace «PokePaste» del PDF (aparece como imagen).</li>
-        <li>Se unificó la ortografía de algunos movimientos (p. ej. «Intecambio» → «Intercambio»; «Teleport» → «Teletransporte»; «Ultra Puño» → «Ultrapuño»).</li>
-        <li>Los EVs de Honchkrow y los IVs de Breloom: ver las notas en su tarjeta.</li>
-      </ul>
-    </div>
     <p class="text-sm text-muted">Palabras finales del autor de la traducción: la estrategia original no le pertenece; su objetivo es acercarla a la comunidad hispanohablante. Todos los créditos corresponden a sus creadores originales.</p>
   </div>`;
 }

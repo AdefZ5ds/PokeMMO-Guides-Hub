@@ -77,6 +77,5 @@ export function renderRusheo() {
       <p class="!mb-1">${d.creditUrl ? `<a class="font-medium" href="${esc(d.creditUrl)}" target="_blank" rel="noopener noreferrer">${esc(d.credit)}<span class="sr-only"> (nueva pestaña)</span></a>` : esc(d.credit)}</p>
       <p class="!mb-0 text-muted">${esc(d.creditNote)}</p>
     </aside>
-    <div class="callout"><p class="!mb-2 font-bold"><span aria-hidden="true">⚠️</span> Datos por verificar</p><ul class="!mb-0">${d.verify.map((v) => `<li>${esc(v)}</li>`).join('')}</ul></div>
   </div>`;
 }

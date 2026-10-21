@@ -74,8 +74,7 @@
         "Protección",
         "Fuerza Bruta",
         "Vuelo"
-      ],
-      "check": "El PDF indica 252 EVs en la 5.ª posición (Def. Esp.) y 6 en Velocidad, a diferencia del resto del equipo (252 en Ataque y Velocidad). Se muestra tal cual; confírmalo con la fuente original."
+      ]
     },
     {
       "name": "Gliscor",
@@ -174,7 +173,14 @@
       "item": "Cint. Negro",
       "ability": "Experto",
       "nature": "Firme",
-      "ivs": null,
+      "ivs": [
+        "31",
+        "31",
+        "31",
+        "-",
+        "31",
+        "31"
+      ],
       "evs": [
         "6",
         "252",
@@ -188,8 +194,7 @@
         "Demolición",
         "Tumba Rocas",
         "Danza Espada"
-      ],
-      "ivsText": "5x31 (el PDF no indica cuál estadística queda libre)"
+      ]
     }
   ],
   "generations": [

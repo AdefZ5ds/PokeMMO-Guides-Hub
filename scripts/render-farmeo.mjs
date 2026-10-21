@@ -81,7 +81,7 @@ export function renderFarmeo() {
     </section>
 
     <div class="callout">
-      <p class="!mb-2 font-bold"><span aria-hidden="true">⚠️</span> Datos por verificar</p>
+      <p class="!mb-2 font-bold"><span aria-hidden="true">👌</span> Creditos a:</p>
       <ul class="!mb-0">${data.verify.map((v) => `<li>${esc(v)}</li>`).join('')}</ul>
     </div>
     <p class="text-sm text-muted">Sprites de entrenadores: directorio de sprites de Pokémon Showdown (muchos no son de los juegos; créditos a sus artistas). No se aloja el PDF original.</p>
