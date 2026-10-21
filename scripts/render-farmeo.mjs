@@ -61,7 +61,7 @@ export function renderFarmeo() {
       <aside class="callout" aria-labelledby="credits-title">
         <p id="credits-title" class="!mb-1 font-bold"><span aria-hidden="true">🙏</span> Créditos</p>
         <p class="!mb-1">Guía de farmeo de gimnasios por ${esc(data.author)} (PokeMMO).</p>
-        <p class="!mb-0 text-muted">Última actualización del documento: ${esc(data.updated)}.</p>
+        <p class="!mb-0 text-muted">Última actualización del documento: ${esc(data.updated)}.<br>Nick: xXZarcAndXx</p>
       </aside>
 
       <h4 class="!mt-6 font-bold">Consumibles</h4>
@@ -81,9 +81,6 @@ export function renderFarmeo() {
     </section>
 
     <div class="callout">
-      <p class="!mb-2 font-bold"><span aria-hidden="true">👌</span> Creditos a:</p>
-      <ul class="!mb-0">${data.verify.map((v) => `<li>${esc(v)}</li>`).join('')}</ul>
-    </div>
-    <p class="text-sm text-muted">Sprites de entrenadores: directorio de sprites de Pokémon Showdown (muchos no son de los juegos; créditos a sus artistas). No se aloja el PDF original.</p>
+      
   </div>`;
 }
