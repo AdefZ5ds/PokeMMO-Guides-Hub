@@ -16,7 +16,7 @@ const dataEl = document.getElementById('gallery-data');
 const root = document.getElementById('gallery-root');
 const listView = document.getElementById('list-view');
 const data = JSON.parse(dataEl.textContent);
-const SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/';
+const SPRITE = `${import.meta.env.BASE_URL}img/sprites/pokemon/`;
 const LEAD_TITLE = 'Pokémon líder';
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const sprite = (dex) => `${SPRITE}${dex}.gif`;

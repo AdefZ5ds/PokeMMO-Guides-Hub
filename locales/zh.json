@@ -230,5 +230,13 @@
   "gallery": {
     "title": "指南列表",
     "subtitle": "点击封面打开指南。"
+  },
+  "anim": {
+    "pause": "暂停动画",
+    "play": "恢复动画"
+  },
+  "menu": {
+    "open": "打开菜单",
+    "close": "关闭菜单"
   }
 }

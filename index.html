@@ -28,7 +28,7 @@
 
   <div id="hub" x-data="hub" @langchange.window="lang = $event.detail">
     <!-- ================= NAVBAR ================= -->
-    <header class="sticky top-0 z-50 border-b border-line bg-bg/90 backdrop-blur">
+    <header class="sticky top-0 z-50 border-b border-line bg-bg/90 backdrop-blur" @click.outside="menuOpen = false" @keydown.escape.window="menuOpen = false">
       <nav class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3" aria-label="Navegación principal" data-i18n-attr="aria-label:a11y.mainNav">
         <a href="./index.html" class="flex items-center gap-2 font-bold" aria-current="page" aria-label="PokeMMO Guides Hub">
           <img src="/assets/img/logo.svg" alt="" width="28" height="28" />
@@ -56,12 +56,53 @@
             <option value="en">English</option>
             <option value="zh" lang="zh-Hans">中文</option>
           </select>
+          <button type="button" class="btn-ghost !px-2.5" data-anim-toggle aria-pressed="false" aria-label="Pausar animaciones"><span data-anim-icon aria-hidden="true">🎞️</span></button>
           <button id="theme-toggle" type="button" class="btn-ghost !px-2.5" aria-label="Cambiar tema">
             <span class="hidden dark:inline" data-icon="sun" data-icon-class="icon h-5 w-5"></span>
             <span class="dark:hidden" data-icon="moon" data-icon-class="icon h-5 w-5"></span>
           </button>
+          <!-- Hamburguesa: móvil y tablet (< 1024 px). El panel se despliega bajo la barra. -->
+          <button id="menu-toggle" type="button" class="btn-ghost !px-2.5 lg:hidden" aria-controls="mobile-menu" :aria-expanded="menuOpen" :aria-label="tr(menuOpen ? 'menu.close' : 'menu.open')" @click="menuOpen = !menuOpen">
+            <span x-show="!menuOpen" data-icon="menu" data-icon-class="icon h-5 w-5"></span>
+            <span x-show="menuOpen" x-cloak data-icon="x" data-icon-class="icon h-5 w-5"></span>
+          </button>
         </div>
       </nav>
+
+      <div id="mobile-menu" x-show="menuOpen" x-cloak x-transition.opacity.duration.150ms class="max-h-[calc(100svh-3.5rem)] overflow-y-auto border-t border-line bg-bg lg:hidden">
+        <div class="mx-auto flex max-w-6xl flex-col gap-5 px-4 py-4">
+          <a href="#galeria" class="btn-primary w-full justify-center" @click="menuOpen = false"><span aria-hidden="true">📚</span> <span data-i18n="nav.gallery">Lista de Guías</span></a>
+
+          <form role="search" class="md:hidden" @submit.prevent="goToResults()">
+            <label for="menu-search" class="sr-only" data-i18n="a11y.search">Buscar guías</label>
+            <div class="relative">
+              <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" data-icon="search"></span>
+              <input id="menu-search" type="search" class="field pl-9" autocomplete="off" x-model="qInput" placeholder="Buscar guías…" data-i18n-attr="placeholder:nav.searchPlaceholder" />
+            </div>
+          </form>
+
+          <div>
+            <p class="mb-2 text-sm font-semibold" data-i18n="filters.label">Filtrar por categoría</p>
+            <div role="group" aria-label="Filtrar por categoría" data-i18n-attr="aria-label:filters.label" class="flex flex-wrap gap-2">
+              <button type="button" class="chip" :aria-pressed="cat === 'all'" @click="pickCat('all')" data-i18n="filters.all">Todas</button>
+              <template x-for="c in categories" :key="c.id">
+                <button type="button" class="chip" :aria-pressed="cat === c.id" @click="pickCat(c.id)">
+                  <span aria-hidden="true" x-text="c.emoji"></span> <span x-text="catLabel(c.id)"></span>
+                </button>
+              </template>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <label for="menu-sort" class="text-sm font-semibold" data-i18n="sort.label">Ordenar por</label>
+            <select id="menu-sort" class="field !w-auto py-1.5" x-model="sort">
+              <option value="popular" data-i18n="sort.popular">Popularidad</option>
+              <option value="alpha" data-i18n="sort.alpha">Alfabético</option>
+              <option value="recent" data-i18n="sort.recent">Más reciente</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </header>
 
     <main id="main" tabindex="-1">
@@ -135,9 +176,9 @@
           <template x-for="g in filtered" :key="g.slug">
             <li class="[content-visibility:auto] [contain-intrinsic-size:auto_15rem]">
               <a :href="href(g)" class="group relative block aspect-[2/3] overflow-hidden rounded-xl border border-line" :class="g.image ? 'bg-slate-900' : 'cov cov-' + g.category">
-                <img x-show="g.image" :src="g.image ? cover(g) : ''" alt="" width="520" height="780" loading="lazy" decoding="async"
+                <img x-show="g.image" :src="g.image ? cover(g) : null" alt="" width="520" height="780" loading="lazy" decoding="async"
                      class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                <img x-show="!g.image && !failed[g.slug]" :src="sprite(g)" alt="" width="96" height="96" loading="lazy" decoding="async" data-own-error @error="spriteError($event, g)"
+                <img x-show="!g.image && !failed[g.slug]" :src="g.image ? null : sprite(g)" alt="" width="96" height="96" loading="lazy" decoding="async" data-own-error @error="spriteError($event, g)"
                      class="absolute left-1/2 top-[30%] h-24 w-24 -translate-x-1/2 -translate-y-1/2 opacity-90 [image-rendering:pixelated]" />
                 <span class="absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 text-6xl" aria-hidden="true" x-show="!g.image && failed[g.slug]" x-text="g.emoji"></span>
                 <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-3 pt-10 text-white">

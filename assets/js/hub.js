@@ -7,7 +7,7 @@ import { icon } from './icons.js';
 import { loadViews } from './counter.js';
 
 const BASE = import.meta.env.BASE_URL;
-const SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/';
+const SPRITE = `${BASE}img/sprites/pokemon/`;
 const NEW_DAYS = 45;
 const SORTS = ['popular', 'alpha', 'recent'];
 
@@ -27,6 +27,8 @@ export function startHub() {
     counts: Object.fromEntries(data.guides.map((g) => [g.slug, g.popularity])),
     source: 'seed',
     failed: {},
+    menuOpen: false,
+    spriteError(e, g) { this.failed[g.slug] = true; e.target.removeAttribute('src'); },
     // Listas derivadas: se recalculan una vez por cambio (no en cada lectura de la plantilla)
     filtered: [],
 
@@ -95,8 +97,10 @@ export function startHub() {
 
     // --- acciones ---
     setCat(id) { this.cat = id; },
+    pickCat(id) { this.cat = id; this.menuOpen = false; document.getElementById('galeria')?.scrollIntoView(); },
     reset() { this.qInput = this.q = ''; this.cat = 'all'; this.sort = 'popular'; },
     goToResults() {
+      this.menuOpen = false;
       this.q = this.qInput.trim();
       document.getElementById('galeria')?.scrollIntoView();
     },

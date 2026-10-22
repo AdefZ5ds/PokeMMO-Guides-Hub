@@ -232,5 +232,13 @@
   "gallery": {
     "title": "Guide List",
     "subtitle": "Tap a cover to open the guide."
+  },
+  "anim": {
+    "pause": "Pause animations",
+    "play": "Resume animations"
+  },
+  "menu": {
+    "open": "Open menu",
+    "close": "Close menu"
   }
 }

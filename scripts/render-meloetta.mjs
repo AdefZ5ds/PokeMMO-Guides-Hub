@@ -13,7 +13,7 @@ const note = (n) => typeof n === 'string'
   ? `<li>${esc(n)}</li>`
   : `<li><span class="badge-gold">Texto incompleto en el PDF</span> ${esc(n.text)}</li>`;
 
-const SP = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/';
+const SP = '../img/sprites/pokemon/';
 
 // Pestaña 1: solo mis acciones por turno
 function myTurns(pj) {

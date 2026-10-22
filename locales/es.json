@@ -106,5 +106,13 @@
   "gallery": {
     "title": "Lista de Guías",
     "subtitle": "Pulsa una portada para abrir la guía."
+  },
+  "anim": {
+    "pause": "Pausar animaciones",
+    "play": "Reanudar animaciones"
+  },
+  "menu": {
+    "open": "Abrir menú",
+    "close": "Cerrar menú"
   }
 }

@@ -1,0 +1,1072 @@
+{
+ "author": "Ander",
+ "nick": null,
+ "updated": "29/08/2026",
+ "objects": [
+  "Ocarina de Vuelo",
+  "Ocarina de Teletrans.",
+  "Velocidad X",
+  "Especial X",
+  "Carbón",
+  "Pañuelo Elegido"
+ ],
+ "mons": {
+  "W": {
+   "name": "Weezing",
+   "dex": 110,
+   "hl": "p"
+  },
+  "M": {
+   "name": "Meloetta",
+   "dex": 648,
+   "hl": "g"
+  },
+  "B": {
+   "name": "Blastoise",
+   "dex": 9,
+   "hl": "b"
+  },
+  "T": {
+   "name": "Typhlosion",
+   "dex": 157,
+   "hl": "r"
+  },
+  "H": {
+   "name": "Heatran",
+   "dex": 485,
+   "hl": "o"
+  }
+ },
+ "statLabels": [
+  "PS",
+  "Ataque",
+  "Defensa",
+  "At. Esp.",
+  "Def. Esp.",
+  "Velocidad"
+ ],
+ "team": [
+  {
+   "name": "Weezing",
+   "dex": 110,
+   "level": 100,
+   "item": "Cinta Elección",
+   "ability": "-",
+   "nature": "Firme",
+   "ivs": [
+    "31",
+    "31",
+    "31",
+    "x",
+    "31",
+    "31"
+   ],
+   "evs": [
+    "-",
+    "252",
+    "-",
+    "6",
+    "-",
+    "252"
+   ],
+   "moves": [
+    "Buena Baza",
+    "Explosión",
+    "Calcinación",
+    "Danza Lluvia"
+   ]
+  },
+  {
+   "name": "Meloetta",
+   "dex": 648,
+   "level": 100,
+   "item": "Gafas Elegidas",
+   "ability": "-",
+   "nature": "Afable",
+   "ivs": [
+    "0",
+    "x",
+    "0",
+    "31",
+    "0",
+    "31"
+   ],
+   "evs": [
+    "6",
+    "-",
+    "-",
+    "252",
+    "-",
+    "252"
+   ],
+   "moves": [
+    "Vozarrón (Max. PP)",
+    "Danza Lluvia",
+    "Refuerzo",
+    "Día Soleado"
+   ]
+  },
+  {
+   "name": "Blastoise",
+   "dex": 9,
+   "level": 100,
+   "item": "Pañuelo Elección",
+   "ability": "-",
+   "nature": "Afable",
+   "ivs": [
+    "13",
+    "x",
+    "0",
+    "31",
+    "13",
+    "31"
+   ],
+   "evs": [
+    "6",
+    "-",
+    "-",
+    "252",
+    "-",
+    "252"
+   ],
+   "moves": [
+    "Salpicar (Max. PP)",
+    "Rayo Hielo",
+    "Esfera Aural",
+    "Sorpresa"
+   ]
+  },
+  {
+   "name": "Heatran",
+   "dex": 485,
+   "level": 100,
+   "item": "Gafas Elegidas",
+   "ability": "-",
+   "nature": "Modesta",
+   "ivs": [
+    "31",
+    "x",
+    "31",
+    "31",
+    "31",
+    "31"
+   ],
+   "evs": [
+    "6",
+    "-",
+    "-",
+    "252",
+    "-",
+    "252"
+   ],
+   "moves": [
+    "Estallido (Max. PP)",
+    "Tierra Viva",
+    "Pulso Dragón",
+    "Poder Oculto (Hielo)"
+   ]
+  },
+  {
+   "name": "Typhlosion",
+   "dex": 157,
+   "level": 100,
+   "item": "Gafas Elegidas",
+   "ability": "-",
+   "nature": "Modesta",
+   "ivs": [
+    "31",
+    "x",
+    "31",
+    "31",
+    "31",
+    "31"
+   ],
+   "evs": [
+    "6",
+    "-",
+    "-",
+    "252",
+    "-",
+    "252"
+   ],
+   "moves": [
+    "Estallido (Max. PP)",
+    "Humareda",
+    "Calcinación",
+    "Refuerzo"
+   ]
+  }
+ ],
+ "freeSlot": "Este espacio se usa para el Pokémon que desea subir de nivel mientras farmea.",
+ "legibility": "En el PDF varios textos (sobre todo los del Heatran, en marrón oscuro sobre fondo oscuro) se leen con dificultad; se transcribieron lo mejor posible. Si algo no cuadra, contrasta con el PDF original.",
+ "regions": [
+  {
+   "id": "sinnoh",
+   "name": "Sinnoh",
+   "map": "sinnoh.webp",
+   "mapCount": 6,
+   "gyms": [
+    {
+     "city": "Ciudad Marina",
+     "type": "Eléctrico",
+     "leader": "volkner",
+     "duo": [
+      [
+       "M",
+       "Vozarrón"
+      ],
+      [
+       "B",
+       "Salpicar"
+      ]
+     ],
+     "notes": [
+      "vs. Jolteon: usar Especial X en {b:Blastoise} durante el turno de {g:Meloetta}",
+      "vs. Lanturn: usar Especial X en {g:Meloetta} durante el turno de {b:Blastoise}"
+     ]
+    },
+    {
+     "city": "Ciudad Vetusta",
+     "type": "Planta",
+     "leader": "gardenia",
+     "duo": [
+      [
+       "W",
+       "Buena Baza"
+      ],
+      [
+       "T",
+       "Estallido"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "vs. Whimsicott / Rotom-Podadora:",
+       "sub": [
+        "T1: {r:Estallido} + {p:Calcinación}"
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Ciudad Rocavelo",
+     "type": "Lucha",
+     "leader": "maylene",
+     "duo": [
+      [
+       "M",
+       "Refuerzo"
+      ],
+      [
+       "T",
+       "Estallido"
+      ]
+     ],
+     "notes": [
+      "vs. Infernape: {r:Estallido} + {g:Vozarrón}",
+      "vs. Mienshao: {r:Calcinación} + {g:Vozarrón}",
+      "Cambiar de canal después para usar TP y salir.",
+      "Puede ser necesario curar si Meloetta recibe daño."
+     ]
+    },
+    {
+     "city": "Pueblo Pirita",
+     "type": "Roca",
+     "leader": "roark",
+     "duo": [
+      [
+       "W",
+       "Buena Baza"
+      ],
+      [
+       "B",
+       "Salpicar"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "Si NO ves a Gigalith:",
+       "sub": [
+        "{b:Salpicar} + {p:Explosión}.",
+        "{r:Typhlosion} + {o:Heatran}.",
+        "{r:Humareda} + {o:Estallido}."
+       ]
+      },
+      "CURA a tu equipo si Weezing explotó.",
+      {
+       "t": "Si Typhlosion cae debilitado por Golpe Cabeza de Relicanth:",
+       "sub": [
+        "Saca a {g:Meloetta}.",
+        "{g:Vozarrón}."
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Ciudad Pradera",
+     "type": "Agua",
+     "leader": "crasherwake",
+     "duo": [
+      [
+       "W",
+       "Explosión"
+      ],
+      [
+       "B",
+       "Salpicar"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "Luego, saca a:",
+       "sub": [
+        "{g:Meloetta} + {o:Heatran}",
+        "{g:Vozarrón} + {o:Estallido}"
+       ]
+      }
+     ]
+    },
+    {
+     "reset": true
+    }
+   ]
+  },
+  {
+   "id": "hoenn",
+   "name": "Hoenn",
+   "map": "hoenn.webp",
+   "mapCount": 7,
+   "gyms": [
+    {
+     "city": "Ciudad Férrica",
+     "type": "Roca",
+     "leader": "roxanne",
+     "duo": [
+      [
+       "W",
+       "Buena Baza"
+      ],
+      [
+       "B",
+       "Salpicar"
+      ]
+     ]
+    },
+    {
+     "city": "Ciudad Alborada",
+     "type": "Volador",
+     "leader": "winona",
+     "duo": [
+      [
+       "W",
+       "Explosión"
+      ],
+      [
+       "B",
+       "Surf"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "Luego, saca a:",
+       "sub": [
+        "{r:Typhlosion} + {g:Meloetta}",
+        "{r:Estallido} + {g:Vozarrón}"
+       ]
+      }
+     ]
+    },
+    {
+     "swap": {
+      "item": "Pañuelo Elegido",
+      "to": "Meloetta"
+     }
+    },
+    {
+     "reset": true
+    },
+    {
+     "city": "Ciudad Azuliza",
+     "type": "Lucha",
+     "leader": "brawly",
+     "duo": [
+      [
+       "M",
+       "Vozarrón"
+      ],
+      [
+       "B",
+       "Salpicar"
+      ]
+     ]
+    },
+    {
+     "city": "Ciudad Lavacalda",
+     "type": "Fuego",
+     "leader": "flannery",
+     "duo": [
+      [
+       "M",
+       "Refuerzo"
+      ],
+      [
+       "B",
+       "Salpicar"
+      ]
+     ],
+     "notes": [
+      "vs. Houndoom / Arcanine Lvl.85: {g:Vozarrón}"
+     ]
+    },
+    {
+     "city": "Pueblo Malvalona",
+     "type": "Eléctrico",
+     "leader": "wattson",
+     "duo": [
+      [
+       "M",
+       "Vozarrón"
+      ],
+      [
+       "T",
+       "Estallido"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "EN CUALQUIER MOMENTO contra Electrode:",
+       "sub": [
+        "{r:Typhlosion} usa X Especial en {g:Meloetta} + {g:Vozarrón}."
+       ]
+      }
+     ]
+    },
+    {
+     "swap": {
+      "item": "Carbón",
+      "to": "Typhlosion"
+     }
+    },
+    {
+     "city": "Ciudad Arrecípolis",
+     "type": "Agua",
+     "leader": "wallace",
+     "duo": [
+      [
+       "W",
+       "Explosión"
+      ],
+      [
+       "M",
+       "Día Soleado"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "Luego, saca a:",
+       "sub": [
+        "{r:Typhlosion} + {o:Heatran}",
+        "{r:Humareda} + {o:Estallido}",
+        "{g:Refuerzo} + {o:Estallido}"
+       ]
+      }
+     ]
+    },
+    {
+     "reset": true
+    }
+   ]
+  },
+  {
+   "id": "johto",
+   "name": "Johto",
+   "map": "johto.webp",
+   "mapCount": 7,
+   "gyms": [
+    {
+     "city": "Ciudad Endrino",
+     "type": "Dragón",
+     "leader": "clair",
+     "duo": [
+      [
+       "W",
+       "Explosión"
+      ],
+      [
+       "M",
+       "Día Soleado"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "Luego, saca a:",
+       "sub": [
+        "{r:Typhlosion} + {o:Heatran}",
+        "{r:Humareda} + {o:Estallido}",
+        "{g:Refuerzo} + {o:Estallido}"
+       ]
+      },
+      {
+       "t": "Vs. Kingdra:",
+       "sub": [
+        "{p:Explosión} + {g:Día Soleado}",
+        "{r:Typhlosion} + {o:Heatran}",
+        "{r:Humareda} + {o:Estallido}"
+       ]
+      }
+     ]
+    },
+    {
+     "swap": {
+      "item": "Gafas Elegidas",
+      "to": "Typhlosion"
+     }
+    },
+    {
+     "city": "Ciudad Trigal",
+     "type": "Normal",
+     "leader": "whitney",
+     "duo": [
+      [
+       "T",
+       "Estallido"
+      ],
+      [
+       "B",
+       "Salpicar"
+      ]
+     ]
+    },
+    {
+     "reset": true
+    },
+    {
+     "city": "Ciudad Olivo",
+     "type": "Acero",
+     "leader": "jasmine",
+     "duo": [
+      [
+       "W",
+       "Buena Baza"
+      ],
+      [
+       "T",
+       "Estallido"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "vs. Metagross:",
+       "sub": [
+        "T1: {p:Especial X} + {r:Estallido}",
+        "T2: {p:Buena Baza} + {r:Estallido}"
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Ciudad Azalea",
+     "type": "Bicho",
+     "leader": "bugsy",
+     "duo": [
+      [
+       "W",
+       "Buena Baza"
+      ],
+      [
+       "H",
+       "Estallido"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "vs. Scyther / Ledian:",
+       "sub": [
+        "{p:Calcinación} + {o:Estallido}"
+       ]
+      },
+      {
+       "t": "EN CUALQUIER MOMENTO contra Tyranitar:",
+       "sub": [
+        "{p:Weezing} usa X Especial en {o:Heatran} + {o:Estallido}."
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Ciudad Malva",
+     "type": "Volador",
+     "leader": "falkner",
+     "duo": [
+      [
+       "B",
+       "Salpicar"
+      ],
+      [
+       "M",
+       "Vozarrón"
+      ]
+     ]
+    },
+    {
+     "city": "Ciudad Caoba",
+     "type": "Hielo",
+     "leader": "pryce",
+     "duo": [
+      [
+       "W",
+       "Explosión"
+      ],
+      [
+       "M",
+       "Vozarrón"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "Luego, saca a:",
+       "sub": [
+        "{r:Typhlosion} + {o:Heatran}",
+        "{r:Estallido} + {o:Estallido}"
+       ]
+      },
+      {
+       "t": "Vs. Mamoswine:",
+       "sub": [
+        "{g:Vozarrón} + {p:Explosión}",
+        "{r:Typhlosion} + {b:Blastoise}",
+        "{r:Estallido} + {b:Salpicar}"
+       ]
+      }
+     ]
+    },
+    {
+     "reset": true
+    }
+   ]
+  },
+  {
+   "id": "kanto",
+   "name": "Kanto",
+   "map": "kanto.webp",
+   "mapCount": 3,
+   "gyms": [
+    {
+     "city": "Ciudad Carmín",
+     "type": "Eléctrico",
+     "leader": "ltsurge",
+     "duo": [
+      [
+       "W",
+       "Explosión"
+      ],
+      [
+       "M",
+       "Día Soleado"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "Después, saca a:",
+       "sub": [
+        "{r:Typhlosion} + {o:Heatran}",
+        "{r:Estallido} + {o:Estallido}"
+       ]
+      },
+      {
+       "t": "Vs. Pikachu / Raichu:",
+       "sub": [
+        "{p:Explosión} + {g:Vozarrón}"
+       ]
+      }
+     ]
+    },
+    {
+     "reset": true
+    },
+    {
+     "city": "Ciudad Azulona",
+     "type": "Planta",
+     "leader": "erika",
+     "duo": [
+      [
+       "T",
+       "Estallido"
+      ],
+      [
+       "H",
+       "Estallido"
+      ]
+     ],
+     "notes": [
+      "{r:Typhlosion} → {p:Weezing} + {o:Estallido}",
+      "{p:Buena Baza} + {o:Estallido}",
+      {
+       "t": "Vs. Dragonite:",
+       "sub": [
+        "{r:Humareda} + {o:Estallido}"
+       ]
+      }
+     ]
+    },
+    {
+     "swap": {
+      "item": "Gafas Elegidas",
+      "to": "Meloetta"
+     }
+    },
+    {
+     "city": "Ciudad Plateada",
+     "type": "Roca",
+     "leader": "brock",
+     "duo": [
+      [
+       "B",
+       "Salpicar"
+      ],
+      [
+       "W",
+       "Buena Baza"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "Vs. Ludicolo / Aerodactyl / Swampert:",
+       "sub": [
+        "{b:Salpicar} + {p:Explosión}",
+        "{o:Heatran} + {g:Meloetta}",
+        "{o:Estallido} + {g:Vozarrón}"
+       ]
+      },
+      "CURA si Weezing EXPLOTÓ."
+     ]
+    },
+    {
+     "city": "Isla Canela",
+     "type": "Fuego",
+     "leader": "blaine",
+     "duo": [
+      [
+       "B",
+       "Salpicar"
+      ],
+      [
+       "W",
+       "Explosión"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "Luego, saca a:",
+       "sub": [
+        "{r:Typhlosion} + {o:Heatran}",
+        "{r:Humareda} + {o:Estallido}"
+       ]
+      },
+      {
+       "t": "Vs. Arcanine:",
+       "sub": [
+        "{b:Salpicar} + {p:Explosión}",
+        "{r:Typhlosion} + {o:Heatran}",
+        "{o:Estallido} + {o:Tierra Viva} contra Rapidash y Magcargo"
+       ]
+      },
+      {
+       "t": "Vs. Moltres:",
+       "sub": [
+        "{b:Salpicar} + {p:Buena Baza} contra Blissey"
+       ]
+      }
+     ]
+    },
+    {
+     "swap": {
+      "item": "Pañuelo Elegido",
+      "to": "Meloetta"
+     }
+    },
+    {
+     "reset": true
+    }
+   ]
+  },
+  {
+   "id": "teselia",
+   "name": "Teselia",
+   "map": "teselia.webp",
+   "mapCount": 7,
+   "gyms": [
+    {
+     "city": "Ciudad Porcelana",
+     "type": "Bicho",
+     "leader": "burgh",
+     "duo": [
+      [
+       "B",
+       "Salpicar"
+      ],
+      [
+       "M",
+       "Vozarrón"
+      ]
+     ],
+     "notes": [
+      "Curar si {b:Blastoise} recibió daño."
+     ]
+    },
+    {
+     "city": "Ciudad Loza",
+     "type": "Volador",
+     "leader": "skyla",
+     "duo": [
+      [
+       "B",
+       "Salpicar"
+      ],
+      [
+       "M",
+       "Vozarrón"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "EN CUALQUIER MOMENTO contra Jumpluff:",
+       "sub": [
+        "{b:Blastoise} usa X Especial en {g:Meloetta} + {g:Vozarrón}"
+       ]
+      },
+      {
+       "t": "EN CUALQUIER MOMENTO contra Drifblim o Mismagius:",
+       "sub": [
+        "{g:Meloetta} usa X Especial en {b:Blastoise} + {b:Salpicar}"
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Ciudad Caolín",
+     "type": "Dragón",
+     "leader": "iris",
+     "duo": [
+      [
+       "W",
+       "Explosión"
+      ],
+      [
+       "M",
+       "Día Soleado"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "Luego, saca a:",
+       "sub": [
+        "{r:Typhlosion} + {o:Heatran}",
+        "{r:Estallido} + {o:Estallido}"
+       ]
+      }
+     ]
+    },
+    {
+     "reset": true
+    },
+    {
+     "city": "Ciudad Mayólica",
+     "type": "Eléctrico",
+     "leader": "elesa",
+     "duo": [
+      [
+       "B",
+       "Salpicar"
+      ],
+      [
+       "M",
+       "Vozarrón"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "EN CUALQUIER MOMENTO contra Milotic:",
+       "sub": [
+        "{b:Blastoise} usa X Especial en {g:Meloetta} + {g:Vozarrón}"
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Ciudad Gres",
+     "type": "Fuego",
+     "leader": "chili",
+     "duo": [
+      [
+       "M",
+       "Danza Lluvia"
+      ],
+      [
+       "B",
+       "Salpicar"
+      ]
+     ]
+    },
+    {
+     "swap": {
+      "item": "Gafas Elegidas",
+      "to": "Meloetta"
+     }
+    },
+    {
+     "city": "Ciudad Gres",
+     "type": "Planta",
+     "leader": "cilan",
+     "duo": [
+      [
+       "M",
+       "Vozarrón"
+      ],
+      [
+       "T",
+       "Calcinación"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "vs. Leavanny:",
+       "sub": [
+        "{r:Estallido} + {g:Vozarrón}"
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Ciudad Gres",
+     "type": "Agua",
+     "leader": "cress",
+     "duo": [
+      [
+       "B",
+       "Salpicar"
+      ],
+      [
+       "W",
+       "Explosión"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "Luego, saca a:",
+       "sub": [
+        "{g:Meloetta} + {o:Heatran}",
+        "{g:Vozarrón} + {o:Estallido}"
+       ]
+      },
+      {
+       "t": "Vs. Torterra:",
+       "sub": [
+        "{b:Salpicar} + {p:Buena Baza}"
+       ]
+      },
+      {
+       "t": "Vs. Sableye:",
+       "sub": [
+        "{b:Salpicar} + {p:Explosión}",
+        "{g:Meloetta} + {r:Typhlosion}",
+        "{g:Vozarrón} + {r:Estallido}"
+       ]
+      },
+      "Cura si es necesario."
+     ]
+    },
+    {
+     "swap": {
+      "item": "Pañuelo Elegido",
+      "to": "Weezing"
+     }
+    },
+    {
+     "reset": true
+    },
+    {
+     "city": "Ciudad Teja",
+     "type": "Hielo",
+     "leader": "brycen",
+     "duo": [
+      [
+       "W",
+       "Calcinación"
+      ],
+      [
+       "T",
+       "Estallido"
+      ]
+     ]
+    },
+    {
+     "swap": {
+      "item": "Cinta Elegida",
+      "to": "Weezing"
+     }
+    },
+    {
+     "city": "Ciudad Fayenza",
+     "type": "Tierra",
+     "leader": "clay",
+     "duo": [
+      [
+       "W",
+       "Buena Baza"
+      ],
+      [
+       "B",
+       "Salpicar"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "vs. Sableye:",
+       "sub": [
+        "T1: {p:Explosión}",
+        "T2: {r:Estallido} + {g:Vozarrón}"
+       ]
+      },
+      {
+       "t": "vs. Hippowdon:",
+       "sub": [
+        "{p:Danza Lluvia}"
+       ]
+      }
+     ]
+    },
+    {
+     "swap": {
+      "item": "Pañuelo Elegido",
+      "to": "Weezing"
+     }
+    },
+    {
+     "city": "Ciudad Esmalte",
+     "type": "Normal",
+     "leader": "lenora",
+     "duo": [
+      [
+       "M",
+       "Día Soleado"
+      ],
+      [
+       "W",
+       "Explosión"
+      ]
+     ],
+     "notes": [
+      {
+       "t": "Luego, saca a:",
+       "sub": [
+        "{r:Typhlosion} + {o:Heatran}",
+        "{r:Humareda} + {o:Estallido}"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

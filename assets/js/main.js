@@ -6,31 +6,51 @@ import { hydrateIcons } from './icons.js';
 
 await ready;
 
-// --- Sprites animados (GIF de PokeAPI, Gen 5) ---
-// · Con «reducir movimiento» se muestran estáticos (PNG).  · Si un GIF no carga, se usa el PNG estático.
-const ANIM = 'versions/generation-v/black-white/animated/';
-const still = (src) => src.replace(ANIM, '').replace(/\.gif$/, '.png');
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const freeze = (img) => { if (reduce && img.src.includes(ANIM)) img.src = still(img.src); };
+// --- Sprites animados (GIF Gen 5 alojados en /img/sprites) ---
+// · Los GIF se ven siempre por defecto. Antes se congelaban con «reducir movimiento», y Android lo activa
+//   solo (modo ahorro de batería, «quitar animaciones»), por eso en el móvil salían estáticos.
+// · El botón de la barra («Animaciones») los pausa; la preferencia se guarda en este navegador.
+// · Si un GIF no carga, se usa su PNG estático.
+const ANIM = 'img/sprites/pokemon/';
+const KEY_ANIM = 'pmmo-anim';
+const still = (src) => src.replace('/sprites/pokemon/', '/sprites/still/').replace(/\.gif$/, '.png');
+const live = (src) => src.replace('/sprites/still/', '/sprites/pokemon/').replace(/\.png$/, '.gif');
+let animOn = true;
+try { animOn = localStorage.getItem(KEY_ANIM) !== 'off'; } catch { /* sin almacenamiento */ }
+const freeze = (img) => { if (!animOn && img.src.includes(ANIM) && img.src.endsWith('.gif')) img.src = still(img.src); };
 document.addEventListener('error', (e) => {
   const img = e.target;
-  if (img instanceof HTMLImageElement && !img.hasAttribute('data-own-error') && img.src.includes(ANIM)) img.src = still(img.src);
+  if (img instanceof HTMLImageElement && !img.hasAttribute('data-own-error') && img.src.includes(ANIM) && img.src.endsWith('.gif')) img.src = still(img.src);
 }, true);
-const sweep = () => { if (reduce) document.querySelectorAll(`img[src*="${ANIM}"]`).forEach(freeze); };
-if (reduce) {
-  sweep();
-  new MutationObserver((list) => list.forEach((r) => {
-    if (r.type === 'attributes') freeze(r.target);
-    r.addedNodes.forEach((n) => { if (n.nodeType === 1) { freeze(n); n.querySelectorAll?.(`img[src*="${ANIM}"]`).forEach(freeze); } });
-  })).observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['src'] });
-}
+const sweep = () => { if (!animOn) document.querySelectorAll(`img[src*="${ANIM}"]`).forEach(freeze); };
+new MutationObserver((list) => { if (!animOn) list.forEach((r) => {
+  if (r.type === 'attributes') freeze(r.target);
+  r.addedNodes.forEach((n) => { if (n.nodeType === 1) { freeze(n); n.querySelectorAll?.(`img[src*="${ANIM}"]`).forEach(freeze); } });
+}); }).observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['src'] });
+const animButtons = () => document.querySelectorAll('[data-anim-toggle]');
+const paintAnim = () => animButtons().forEach((b) => {
+  b.setAttribute('aria-pressed', String(!animOn));
+  b.setAttribute('aria-label', t(animOn ? 'anim.pause' : 'anim.play'));
+  b.title = t(animOn ? 'anim.pause' : 'anim.play');
+  b.querySelector('[data-anim-icon]')?.replaceChildren(document.createTextNode(animOn ? '🎞️' : '🖼️'));
+});
+animButtons().forEach((b) => b.addEventListener('click', () => {
+  animOn = !animOn;
+  try { localStorage.setItem(KEY_ANIM, animOn ? 'on' : 'off'); } catch { /* ignorar */ }
+  document.querySelectorAll('img[src*="/sprites/"]').forEach((img) => {
+    if (animOn && img.src.includes('/sprites/still/')) img.src = live(img.src); else freeze(img);
+  });
+  paintAnim();
+}));
+sweep();
 
 // --- Estructura común (navbar, footer): idioma, tema, iconos ---
 hydrateIcons();
 applyTranslations();
 initTheme();
 document.getElementById('lang-select')?.addEventListener('change', (e) => setLang(e.target.value));
-window.addEventListener('langchange', updateThemeLabel);
+window.addEventListener('langchange', () => { updateThemeLabel(); paintAnim(); });
+paintAnim();
 
 // --- Hero: vídeo de fondo con botón de pausa; sin movimiento si el usuario lo pide ---
 const heroVideo = document.getElementById('hero-video');

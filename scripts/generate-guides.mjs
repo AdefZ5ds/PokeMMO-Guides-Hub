@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { bodies } from './guide-bodies.mjs';
 import { renderRed } from './render-red.mjs';
 import { renderMeloetta } from './render-meloetta.mjs';
+import { renderCresselia } from './render-cresselia.mjs';
 import { renderFarmeo } from './render-farmeo.mjs';
 import { renderHooh } from './render-hooh.mjs';
 import { renderRusheo } from './render-rusheo.mjs';
@@ -16,10 +17,10 @@ const { guides, categories } = JSON.parse(readFileSync(resolve(root, 'assets/dat
 const es = JSON.parse(readFileSync(resolve(root, 'locales/es.json'), 'utf8'));
 const catName = (id) => es.categories[id];
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/';
+const SPRITE = '../img/sprites/pokemon/';
 
 // Guías con contenido interactivo propio (slug → renderizador)
-const custom = { 'derrotar-red': renderRed, 'raid-meloetta': renderMeloetta, 'farmeo-gimnasios': renderFarmeo, 'farmeo-hooh': renderHooh, 'rusheo-multiregion': renderRusheo };
+const custom = { 'derrotar-red': renderRed, 'raid-meloetta': renderMeloetta, 'farmeo-gimnasios': renderFarmeo, 'farmeo-gimnasios-2026': renderFarmeo, 'raid-cresselia': renderCresselia, 'farmeo-hooh': renderHooh, 'rusheo-multiregion': renderRusheo };
 
 function bodyHtml(g) {
   if (custom[g.slug]) return custom[g.slug](g);
@@ -95,6 +96,7 @@ function page(g) {
           <option value="en">English</option>
           <option value="zh" lang="zh-Hans">中文</option>
         </select>
+        <button type="button" class="btn-ghost !px-2.5" data-anim-toggle aria-pressed="false" aria-label="Pausar animaciones"><span data-anim-icon aria-hidden="true">🎞️</span></button>
         <button id="theme-toggle" type="button" class="btn-ghost !px-2.5" aria-label="Cambiar tema">
           <span class="hidden dark:inline" data-icon="sun" data-icon-class="icon h-5 w-5"></span>
           <span class="dark:hidden" data-icon="moon" data-icon-class="icon h-5 w-5"></span>

@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { esc, img, teamCard, inlineSprite } from './lib/cards.mjs';
+import { esc, img, teamCard, inlineSprite, bagIcons } from './lib/cards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const d = JSON.parse(readFileSync(resolve(root, 'scripts/content/rusheo.json'), 'utf8'));
@@ -18,7 +18,7 @@ function step(text, id) {
   else if (/Gimnasio de/.test(text)) { badge = '<span class="badge-gold">Medalla</span>'; icon = '🏆'; }
   else if (/Barco/.test(text)) icon = '🚢';
   return `<li><label class="flex items-start gap-2 rounded-lg p-1.5 hover:bg-surface"><input type="checkbox" data-step="${id}" class="mt-1 h-5 w-5 shrink-0" />
-    <span><span aria-hidden="true">${icon}</span> ${esc(text).replace(/Pokémon ([1-4])/g, (_, k) => inlineSprite(d.mons[k].name, d.mons[k].dex, `Pokémon ${k} (${d.mons[k].name})`))} ${badge}</span></label></li>`;
+    <span><span aria-hidden="true">${icon}</span> ${bagIcons(esc(text)).replace(/Pokémon ([1-4])/g, (_, k) => inlineSprite(d.mons[k].name, d.mons[k].dex, `Pokémon ${k} (${d.mons[k].name})`))} ${badge}</span></label></li>`;
 }
 
 function chips(leg) {
@@ -57,7 +57,7 @@ export function renderRusheo() {
     <section id="reg-resumen" data-region="resumen" aria-labelledby="reg-resumen-t" class="scroll-mt-24">
       <h3 id="reg-resumen-t" class="!mt-8 text-xl font-bold">Resumen</h3>
       <h4 class="!mt-4 font-bold"><span aria-hidden="true">💡</span> Consejos generales</h4>
-      <ul>${d.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+      <ul>${d.tips.map((t) => `<li>${bagIcons(esc(t))}</li>`).join('')}</ul>
       <h4 class="!mt-6 font-bold">Equipo (provisional)</h4>
       <p class="text-sm text-muted">Los Pokémon 1 a 4 son los que indicaste; el resto de datos es de relleno y se edita en <code>scripts/content/rusheo.json</code>.</p>
       <ul class="!pl-0 !list-none grid gap-4 md:grid-cols-2">${team}</ul>

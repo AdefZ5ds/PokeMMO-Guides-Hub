@@ -43,8 +43,9 @@ Guía rápida para tocar lo visual sin perderte. Regla general: **editas un arch
 | Banner de una guía | `public/img/banners/<nombre>.webp` |
 | Asociar portada/banner a una guía | `assets/data/guides.json` → campo `"image": "<nombre>"` (sin extensión) |
 | Sprite de una guía (cuando no tiene portada) | `guides.json` → campo `"sprite"` = número de Pokédex |
-| Sprites animados (GIF Gen 5) | Se piden a PokeAPI por número de Pokédex; si no existe, se usa el PNG estático |
-| Iconos de objetos | `scripts/lib/cards.mjs` → `ITEM_ICON` (nombre en español → nombre del icono en PokeAPI) |
+| Sprites animados (GIF Gen 5) | Alojados en `public/img/sprites/pokemon/<dex>.gif` (estáticos de respaldo en `sprites/still/<dex>.png`). Para un Pokémon nuevo, copia ahí su GIF y su PNG de PokeAPI |
+| Iconos de objetos | Archivos en `public/img/sprites/items/`; el nombre en español → archivo se define en `scripts/lib/cards.mjs` (`ITEM_ICON`, y `BAG` para MO, Bici, Repelente… dentro de los pasos del rusheo) |
+| Sprites de líderes de gimnasio | `public/img/trainers/<id>.webp` (se usan si existen; si no, Pokémon Showdown) |
 
 Convertir una imagen a WebP ligero (necesitas Python con Pillow): abre la imagen, redimensiónala y guárdala con `quality=80`. Para recomprimir el video con ffmpeg:
 

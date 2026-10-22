@@ -1,14 +1,14 @@
 // Lucide tree-shaken: solo se empaquetan los iconos importados aquí.
 import {
   Search, Sun, Moon, Eye, Flame, Sparkles, Inbox, ChevronRight, ExternalLink,
-  Languages, ArrowRight, ArrowLeft, Info, X, TriangleAlert, House, ArrowDown, Pause, Play,
+  Languages, ArrowRight, ArrowLeft, Info, X, TriangleAlert, House, ArrowDown, Pause, Play, Menu,
 } from 'lucide';
 
 const ICONS = {
   search: Search, sun: Sun, moon: Moon, eye: Eye, flame: Flame, sparkles: Sparkles,
   inbox: Inbox, 'chevron-right': ChevronRight, 'external-link': ExternalLink,
   languages: Languages, 'arrow-right': ArrowRight, 'arrow-left': ArrowLeft,
-  info: Info, x: X, 'alert': TriangleAlert, home: House, 'arrow-down': ArrowDown, pause: Pause, play: Play,
+  info: Info, x: X, 'alert': TriangleAlert, home: House, 'arrow-down': ArrowDown, pause: Pause, play: Play, menu: Menu,
 };
 
 /** Devuelve un <svg> decorativo (aria-hidden) como string. */

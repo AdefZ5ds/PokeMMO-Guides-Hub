@@ -81,6 +81,28 @@
       "image": "meloetta"
     },
     {
+      "slug": "raid-cresselia",
+      "title": "Raid de Cresselia V2 (12 turnos)",
+      "description": "Equipos, velocidades y turnos para los 4 jugadores de la raid de Cresselia, según la guía de Kriptonito, Kalfff, Rockerito y PAXPO.",
+      "category": "legendary",
+      "tags": [
+        "cresselia",
+        "raid",
+        "cuatro jugadores",
+        "12 turnos",
+        "blissey",
+        "espacio raro",
+        "pdf",
+        "comunidad"
+      ],
+      "lang": "es",
+      "sprite": 488,
+      "emoji": "🌙",
+      "added": "2026-10-21",
+      "popularity": 985,
+      "image": "cresselia"
+    },
+    {
       "slug": "crianza",
       "title": "Crianza de Pokémon",
       "description": "Conceptos para criar Pokémon con buenas naturalezas e IVs.",
@@ -521,6 +543,30 @@
       "added": "2026-10-15",
       "lang": "es",
       "image": "gym"
+    },
+    {
+      "slug": "farmeo-gimnasios-2026",
+      "title": "Farmeo de gimnasios 2026 · Dancing Volcano (Kanto, Johto, Hoenn, Sinnoh, Teselia)",
+      "description": "Versión del 29/08/2026 de la guía de farmeo de gimnasios de Ander: equipo con Weezing, Meloetta, Blastoise, Heatran y Typhlosion, y qué hacer en cada gimnasio.",
+      "category": "farming",
+      "tags": [
+        "farmeo",
+        "gimnasios",
+        "ruta",
+        "heatran",
+        "weezing",
+        "meloetta",
+        "typhlosion",
+        "2026",
+        "pdf",
+        "comunidad"
+      ],
+      "lang": "es",
+      "sprite": 485,
+      "emoji": "🌋",
+      "added": "2026-10-21",
+      "popularity": 975,
+      "image": "farmeo26"
     },
     {
       "slug": "farmeo-hooh",

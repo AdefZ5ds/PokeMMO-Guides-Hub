@@ -1,0 +1,1236 @@
+{
+ "title": "Raid de Cresselia V2 (12 turnos)",
+ "updated": "15/03/2026, 18:45 (UTC-5)",
+ "credits": "Estrategia desarrollada por Kriptonito, Kalfff, Rockerito y PAXPO, tomando como referencia el pokepaste del primer equipo chino que derrotó a Cresselia, con ajustes para depender menos del RNG. Actualizada el 9/11/2025 con la participación de Ackoo SweetGamer y Zzudo.",
+ "videos": [
+  [
+   "KriptonitoGamer",
+   "https://www.youtube.com/watch?v=yBd1KmFZjPE"
+  ],
+  [
+   "Ackoo SweetGamer",
+   "https://www.youtube.com/watch?v=38hsfhJgR7Q"
+  ],
+  [
+   "PAXPO",
+   "https://www.youtube.com/watch?v=AvmnNLs-CWw"
+  ]
+ ],
+ "legend": "Un guion («—») en una estadística o naturaleza significa que no es relevante y puedes asignarle cualquier valor. Mantén la posición exacta de cada jugador y Pokémon; IVs, EVs y naturalezas deben ser exactos.",
+ "warning": "Si no cumples las velocidades indicadas, lo más probable es que arruines la raid, pierdas tiempo y dinero y estropees la experiencia del resto. Si no vas a criar y entrenar bien a cada Pokémon, deberás elegir manualmente cada movimiento.",
+ "itemsNote": "El PDF muestra la mayoría de los objetos equipados solo como un icono pequeño junto al Pokémon, sin escribir su nombre. Aquí solo se transcriben los objetos que el PDF nombra por escrito; para los demás consulta el PDF original.",
+ "statLabels": [
+  "PS",
+  "Ataque",
+  "Defensa",
+  "At. Esp.",
+  "Def. Esp.",
+  "Velocidad"
+ ],
+ "players": [
+  {
+   "n": 1,
+   "team": [
+    {
+     "name": "Bisharp",
+     "dex": 625,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Competitivo",
+     "nature": "Firme / Huraña / Pícara",
+     "ivs": [
+      "-",
+      "31",
+      "-",
+      "-",
+      "-",
+      "-"
+     ],
+     "evs": [
+      "-",
+      "252",
+      "-",
+      "-",
+      "-",
+      "-"
+     ],
+     "moves": [
+      "Golpe Bajo"
+     ]
+    },
+    {
+     "name": "Weavile",
+     "dex": 461,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Presión",
+     "nature": "Firme / Huraña / Pícara",
+     "ivs": [
+      "-",
+      "31",
+      "-",
+      "-",
+      "-",
+      "31"
+     ],
+     "evs": [
+      "-",
+      "252",
+      "-",
+      "-",
+      "-",
+      "252"
+     ],
+     "moves": [
+      "Lanzamiento"
+     ]
+    },
+    {
+     "name": "Scyther",
+     "dex": 123,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Enjambre",
+     "nature": "Firme",
+     "ivs": [
+      "31",
+      "31",
+      "-",
+      "-",
+      "31",
+      "31"
+     ],
+     "evs": [
+      "-",
+      "252",
+      "-",
+      "-",
+      "152",
+      "104"
+     ],
+     "moves": [
+      "Tijera X"
+     ],
+     "speed": 272
+    },
+    {
+     "name": "Blissey",
+     "dex": 242,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "-",
+     "nature": "Serena / Cauta / Amable",
+     "ivs": [
+      "31",
+      "-",
+      "-",
+      "-",
+      "31",
+      "30"
+     ],
+     "evs": [
+      "252",
+      "-",
+      "-",
+      "-",
+      "252",
+      "0"
+     ],
+     "moves": [
+      "Mov. Sísmico",
+      "Psicoonda",
+      "Deseo",
+      "Seducción"
+     ],
+     "speed": 145
+    },
+    {
+     "name": "Armaldo",
+     "dex": 348,
+     "level": 100,
+     "item": "Baya guaya",
+     "ability": "Armad. Bat.",
+     "nature": "Grosera",
+     "ivs": [
+      "31",
+      "0",
+      "-",
+      "-",
+      "31",
+      "0"
+     ],
+     "evs": [
+      "252",
+      "-",
+      "-",
+      "-",
+      "252",
+      "-"
+     ],
+     "moves": [
+      "Mov. Sísmico",
+      "Estocismo",
+      "Seducción"
+     ],
+     "speed": 85
+    },
+    {
+     "name": "Snorlax",
+     "dex": 143,
+     "level": 100,
+     "item": "Chaleco de Asalto (mencionado en la nota final del PDF)",
+     "ability": "-",
+     "nature": "Serena / Cauta",
+     "ivs": [
+      "31",
+      "-",
+      "-",
+      "-",
+      "31",
+      "15"
+     ],
+     "evs": [
+      "252",
+      "-",
+      "-",
+      "-",
+      "252",
+      "-"
+     ],
+     "moves": [
+      "Psicoonda",
+      "Mov. Sísmico"
+     ],
+     "speed": 82
+    }
+   ],
+   "notes": [
+    "Las velocidades entre paréntesis (Scyther 272, Blissey 145, Armaldo 85, Snorlax 82) son las que indica el PDF.",
+    "Termina el turno de Blissey con Mov. Sísmico como último ataque (obligatorio).",
+    "Si las Blissey duran un turno adicional, usa Deseo con el PJ1."
+   ]
+  },
+  {
+   "n": 2,
+   "team": [
+    {
+     "name": "Bisharp",
+     "dex": 625,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Competitivo",
+     "nature": "Firme / Huraña / Pícara",
+     "ivs": [
+      "-",
+      "31",
+      "-",
+      "-",
+      "-",
+      "-"
+     ],
+     "evs": [
+      "-",
+      "252",
+      "-",
+      "-",
+      "-",
+      "-"
+     ],
+     "moves": [
+      "Golpe Bajo"
+     ]
+    },
+    {
+     "name": "Vileplume",
+     "dex": 45,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Clorofila",
+     "nature": "Modesta",
+     "ivs": [
+      "-",
+      "-",
+      "-",
+      "31",
+      "-",
+      "31"
+     ],
+     "evs": [
+      "-",
+      "-",
+      "-",
+      "252",
+      "-",
+      "252"
+     ],
+     "moves": [
+      "Bomba Ácida"
+     ]
+    },
+    {
+     "name": "Chandelure",
+     "dex": 609,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Abs. Fuego",
+     "nature": "Miedosa",
+     "ivs": [
+      "-",
+      "-",
+      "-",
+      "31",
+      "-",
+      "31"
+     ],
+     "evs": [
+      "-",
+      "-",
+      "-",
+      "252",
+      "-",
+      "200"
+     ],
+     "moves": [
+      "Infortunio"
+     ]
+    },
+    {
+     "name": "Blissey",
+     "dex": 242,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "-",
+     "nature": "Serena / Cauta / Amable",
+     "ivs": [
+      "31",
+      "-",
+      "-",
+      "-",
+      "31",
+      "15"
+     ],
+     "evs": [
+      "252",
+      "-",
+      "-",
+      "-",
+      "252",
+      "6"
+     ],
+     "moves": [
+      "Mov. Sísmico",
+      "Psicoonda",
+      "Velo Sagrado",
+      "Pantalla de Luz"
+     ],
+     "speed": 131
+    },
+    {
+     "name": "Gothitelle",
+     "dex": 576,
+     "level": 100,
+     "item": "Baya Drasi",
+     "ability": "Competitivo",
+     "nature": "Modesta",
+     "ivs": [
+      "31",
+      "-",
+      "-",
+      "31",
+      "31",
+      "31"
+     ],
+     "evs": [
+      "6",
+      "-",
+      "-",
+      "220",
+      "252",
+      "32"
+     ],
+     "moves": [
+      "Bola Sombra",
+      "Golpe Cuerpo"
+     ]
+    },
+    {
+     "name": "Electabuzz",
+     "dex": 125,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Espír. Vítal",
+     "nature": "Serena / Cauta",
+     "ivs": [
+      "31",
+      "-",
+      "-",
+      "-",
+      "31",
+      "20"
+     ],
+     "evs": [
+      "252",
+      "-",
+      "-",
+      "-",
+      "252",
+      "0"
+     ],
+     "moves": [
+      "Psicoonda",
+      "Mov. Sísmico",
+      "Pantalla Luz"
+     ],
+     "speed": 235
+    }
+   ],
+   "notes": [
+    "Velocidades indicadas: Blissey 131 y Electabuzz 235.",
+    "Termina el turno de Blissey con Mov. Sísmico como último ataque (obligatorio)."
+   ]
+  },
+  {
+   "n": 3,
+   "team": [
+    {
+     "name": "Bisharp",
+     "dex": 625,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Competitivo",
+     "nature": "Firme / Huraña / Pícara",
+     "ivs": [
+      "-",
+      "31",
+      "-",
+      "-",
+      "-",
+      "-"
+     ],
+     "evs": [
+      "-",
+      "252",
+      "-",
+      "-",
+      "-",
+      "-"
+     ],
+     "moves": [
+      "Golpe Bajo"
+     ]
+    },
+    {
+     "name": "Mismagius",
+     "dex": 429,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Levitación",
+     "nature": "Modesta",
+     "ivs": [
+      "-",
+      "-",
+      "-",
+      "31",
+      "-",
+      "31"
+     ],
+     "evs": [
+      "-",
+      "-",
+      "-",
+      "252",
+      "-",
+      "252"
+     ],
+     "moves": [
+      "Infortunio"
+     ],
+     "speed": 309
+    },
+    {
+     "name": "Krookodile",
+     "dex": 553,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Irrascible",
+     "nature": "Firme",
+     "ivs": [
+      "31",
+      "31",
+      "-",
+      "-",
+      "31",
+      "31"
+     ],
+     "evs": [
+      "6",
+      "252",
+      "-",
+      "-",
+      "252",
+      "-"
+     ],
+     "moves": [
+      "Buena Baza"
+     ]
+    },
+    {
+     "name": "Blissey",
+     "dex": 242,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "-",
+     "nature": "Grosera",
+     "ivs": [
+      "31",
+      "-",
+      "-",
+      "-",
+      "31",
+      "15"
+     ],
+     "evs": [
+      "252",
+      "-",
+      "-",
+      "-",
+      "252",
+      "0"
+     ],
+     "moves": [
+      "Mov. Sísmico",
+      "Psicoonda",
+      "Tóxico",
+      "Velo Sagrado"
+     ],
+     "speed": 117
+    },
+    {
+     "name": "Tyranitar",
+     "dex": 248,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Chorro Arena",
+     "nature": "Firme",
+     "ivs": [
+      "31",
+      "31",
+      "-",
+      "-",
+      "31",
+      "31"
+     ],
+     "evs": [
+      "6",
+      "252",
+      "-",
+      "-",
+      "252",
+      "-"
+     ],
+     "moves": [
+      "Buena Baza",
+      "Triturar"
+     ],
+     "speed": 158
+    },
+    {
+     "name": "Bronzong",
+     "dex": 437,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Ignífugo",
+     "nature": "Grosera",
+     "ivs": [
+      "31",
+      "-",
+      "-",
+      "-",
+      "31",
+      "0"
+     ],
+     "evs": [
+      "252",
+      "-",
+      "-",
+      "-",
+      "252",
+      "-"
+     ],
+     "moves": [
+      "Psicoonda",
+      "Giro Bola",
+      "Descanso",
+      "Tóxico"
+     ],
+     "speed": 77
+    }
+   ],
+   "notes": [
+    "Velocidades indicadas: Mismagius 309, Blissey 117, Tyranitar 158 y Bronzong 77.",
+    "Turno 6: si Krookodile llega debilitado por un golpe crítico del turno anterior, entra Blissey y desde ahí ataca según las velocidades (con Espacio Raro activo).",
+    "Si las Blissey duran un turno adicional, usa Tóxico con el PJ3.",
+    "Bronzong solo hace falta si algo sale mal; el PDF dice que a partir del turno 12 ya estaría sobrando."
+   ]
+  },
+  {
+   "n": 4,
+   "team": [
+    {
+     "name": "Bisharp",
+     "dex": 625,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Competitivo",
+     "nature": "Firme / Huraña / Pícara",
+     "ivs": [
+      "-",
+      "31",
+      "-",
+      "-",
+      "-",
+      "-"
+     ],
+     "evs": [
+      "-",
+      "252",
+      "-",
+      "-",
+      "-",
+      "-"
+     ],
+     "moves": [
+      "Golpe Bajo"
+     ]
+    },
+    {
+     "name": "Gengar",
+     "dex": 94,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Cuerpo Maldito",
+     "nature": "Modesta",
+     "ivs": [
+      "+20",
+      "-",
+      "-",
+      "31",
+      "+20",
+      "31"
+     ],
+     "evs": [
+      "-",
+      "-",
+      "-",
+      "252",
+      "58",
+      "202"
+     ],
+     "moves": [
+      "Infortunio"
+     ],
+     "speed": 304
+    },
+    {
+     "name": "Vanilluxe",
+     "dex": 584,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Nevada",
+     "nature": "Miedosa",
+     "ivs": [
+      "+25",
+      "-",
+      "-",
+      "-",
+      "+25",
+      "31"
+     ],
+     "evs": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "252",
+      "252"
+     ],
+     "moves": [
+      "Pantalla de Luz"
+     ]
+    },
+    {
+     "name": "Blissey",
+     "dex": 242,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "-",
+     "nature": "Grosera",
+     "ivs": [
+      "31",
+      "-",
+      "-",
+      "-",
+      "31",
+      "0"
+     ],
+     "evs": [
+      "252",
+      "-",
+      "-",
+      "-",
+      "252",
+      "0"
+     ],
+     "moves": [
+      "Mov. Sísmico",
+      "Psicoonda",
+      "Pulso Cura",
+      "Seducción"
+     ],
+     "speed": 103
+    },
+    {
+     "name": "Gothitelle",
+     "dex": 576,
+     "level": 100,
+     "item": "Baya Drasi",
+     "ability": "Competitivo",
+     "nature": "Mansa",
+     "ivs": [
+      "31",
+      "-",
+      "-",
+      "31",
+      "31",
+      "0"
+     ],
+     "evs": [
+      "6",
+      "-",
+      "-",
+      "252",
+      "252",
+      "0"
+     ],
+     "moves": [
+      "Bola Sombra",
+      "Golpe Cuerpo",
+      "Llanto Falso"
+     ]
+    },
+    {
+     "name": "Hydreigon",
+     "dex": 635,
+     "level": 100,
+     "item": "No indicado en el texto (ver PDF)",
+     "ability": "Levitación",
+     "nature": "Firme",
+     "ivs": [
+      "31",
+      "31",
+      "-",
+      "-",
+      "31",
+      "31"
+     ],
+     "evs": [
+      "-",
+      "252",
+      "-",
+      "-",
+      "232",
+      "20"
+     ],
+     "moves": [
+      "Buena Baza"
+     ],
+     "speed": 237
+    }
+   ],
+   "notes": [
+    "Velocidades indicadas: Gengar 304, Blissey 103 e Hydreigon 237.",
+    "Los IVs con «+» (+20, +25) significan «ese valor o más», tal como aparecen en el PDF.",
+    "Termina el turno de Blissey con Mov. Sísmico como último ataque (obligatorio)."
+   ]
+  }
+ ],
+ "turns": [
+  {
+   "t": 1,
+   "hp": 85,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Bisharp",
+     "dex": 625,
+     "move": "Golpe Bajo"
+    },
+    {
+     "pj": 2,
+     "mon": "Bisharp",
+     "dex": 625,
+     "move": "Golpe Bajo"
+    },
+    {
+     "pj": 3,
+     "mon": "Bisharp",
+     "dex": 625,
+     "move": "Golpe Bajo"
+    },
+    {
+     "pj": 4,
+     "mon": "Bisharp",
+     "dex": 625,
+     "move": "Golpe Bajo"
+    }
+   ]
+  },
+  {
+   "t": 2,
+   "hp": 75,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Weavile",
+     "dex": 461,
+     "move": "Lanzamiento"
+    },
+    {
+     "pj": 2,
+     "mon": "Vileplume",
+     "dex": 45,
+     "move": "Bomba Ácida"
+    },
+    {
+     "pj": 3,
+     "mon": "Mismagius",
+     "dex": 429,
+     "move": "Infortunio"
+    },
+    {
+     "pj": 4,
+     "mon": "Gengar",
+     "dex": 94,
+     "move": "Infortunio"
+    }
+   ]
+  },
+  {
+   "t": 3,
+   "hp": 64,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Scyther",
+     "dex": 123,
+     "move": "Tijera X"
+    },
+    {
+     "pj": 2,
+     "mon": "Chandelure",
+     "dex": 609,
+     "move": "Infortunio"
+    },
+    {
+     "pj": 3,
+     "mon": "Krookodile",
+     "dex": 553,
+     "move": "Buena Baza"
+    },
+    {
+     "pj": 4,
+     "mon": "Vanilluxe",
+     "dex": 584,
+     "move": "Pantalla de Luz"
+    }
+   ]
+  },
+  {
+   "t": 4,
+   "hp": 58,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Seducción",
+     "target": "Cresselia"
+    },
+    {
+     "pj": 2,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Psicoonda"
+    },
+    {
+     "pj": 3,
+     "mon": "Krookodile",
+     "dex": 553,
+     "move": "Buena Baza"
+    },
+    {
+     "pj": 4,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Seducción",
+     "target": "Liligant"
+    }
+   ]
+  },
+  {
+   "t": 5,
+   "hp": 50,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Psicoonda"
+    },
+    {
+     "pj": 2,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Mov. Sísmico"
+    },
+    {
+     "pj": 3,
+     "mon": "Krookodile",
+     "dex": 553,
+     "move": "Buena Baza"
+    },
+    {
+     "pj": 4,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Psicoonda"
+    }
+   ]
+  },
+  {
+   "t": 6,
+   "hp": 44,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Psicoonda"
+    },
+    {
+     "pj": 2,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Mov. Sísmico"
+    },
+    {
+     "pj": 3,
+     "mon": "Krookodile",
+     "dex": 553,
+     "move": "Buena Baza / Mov. Sísmico"
+    },
+    {
+     "pj": 4,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Psicoonda"
+    }
+   ],
+   "alert": "Si Krookodile llega debilitado por un golpe crítico del turno anterior, entra Blissey; desde ahí ataca según las velocidades (Espacio Raro está activo)."
+  },
+  {
+   "t": 7,
+   "hp": 40,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Mov. Sísmico"
+    },
+    {
+     "pj": 2,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Psicoonda"
+    },
+    {
+     "pj": 3,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Mov. Sísmico"
+    },
+    {
+     "pj": 4,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Psicoonda"
+    }
+   ]
+  },
+  {
+   "t": 8,
+   "hp": 38,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Mov. Sísmico"
+    },
+    {
+     "pj": 2,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Pantalla de Luz"
+    },
+    {
+     "pj": 3,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Velo Sagrado"
+    },
+    {
+     "pj": 4,
+     "mon": "Blissey",
+     "dex": 242,
+     "move": "Psicoonda"
+    }
+   ],
+   "alert": "Si las Blissey duran un turno adicional, usa Deseo con el PJ1 y Tóxico con el PJ3."
+  },
+  {
+   "t": 9,
+   "hp": 28,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Armaldo",
+     "dex": 348,
+     "move": "Seducción"
+    },
+    {
+     "pj": 2,
+     "mon": "Gothitelle",
+     "dex": 576,
+     "move": "Bola Sombra"
+    },
+    {
+     "pj": 3,
+     "mon": "Tyranitar",
+     "dex": 248,
+     "move": "Buena Baza"
+    },
+    {
+     "pj": 4,
+     "mon": "Gothitelle",
+     "dex": 576,
+     "move": "Llanto Falso"
+    }
+   ]
+  },
+  {
+   "t": 10,
+   "hp": 18,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Armaldo",
+     "dex": 348,
+     "move": "Mov. Sísmico"
+    },
+    {
+     "pj": 2,
+     "mon": "Gothitelle",
+     "dex": 576,
+     "move": "Bola Sombra"
+    },
+    {
+     "pj": 3,
+     "mon": "Tyranitar",
+     "dex": 248,
+     "move": "Buena Baza"
+    },
+    {
+     "pj": 4,
+     "mon": "Gothitelle",
+     "dex": 576,
+     "move": "Bola Sombra"
+    }
+   ]
+  },
+  {
+   "t": 11,
+   "hp": 8,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Snorlax",
+     "dex": 143,
+     "move": "Psicoonda"
+    },
+    {
+     "pj": 2,
+     "mon": "Electabuzz",
+     "dex": 125,
+     "move": "Psicoonda"
+    },
+    {
+     "pj": 3,
+     "mon": "Tyranitar",
+     "dex": 248,
+     "move": "Buena Baza"
+    },
+    {
+     "pj": 4,
+     "mon": "Hydreigon",
+     "dex": 635,
+     "move": "Buena Baza"
+    }
+   ]
+  },
+  {
+   "t": 12,
+   "hp": null,
+   "actions": [
+    {
+     "pj": 1,
+     "mon": "Snorlax",
+     "dex": 143,
+     "move": "Psicoonda"
+    },
+    {
+     "pj": 2,
+     "mon": "Electabuzz",
+     "dex": 125,
+     "move": "Psicoonda"
+    },
+    {
+     "pj": 3,
+     "mon": "Tyranitar",
+     "dex": 248,
+     "move": "Buena Baza"
+    },
+    {
+     "pj": 4,
+     "mon": "Hydreigon",
+     "dex": 635,
+     "move": "Buena Baza"
+    }
+   ],
+   "alert": "Esto debería acabar aquí y Bronzong ya estaría sobrando. En el directo Snorlax no tenía el Chaleco de Asalto y cayó rápido: si ocurre algo raro, sigue atacando; vas a llegar al daño igualmente. Fíjate en las velocidades (Espacio Raro) y usa Pantallas si crees que las necesitas."
+  }
+ ],
+ "speed": {
+  "intro": "Órdenes de velocidad que debes cumplir (transcritos del PDF). En los dos últimos, Espacio Raro invierte el orden.",
+  "rows": [
+   {
+    "label": "Sin Espacio Raro: de más rápido a más lento",
+    "items": [
+     [
+      1,
+      "Blissey",
+      242
+     ],
+     [
+      2,
+      "Blissey",
+      242
+     ],
+     [
+      3,
+      "Blissey",
+      242
+     ],
+     [
+      4,
+      "Blissey",
+      242
+     ]
+    ]
+   },
+   {
+    "label": "Con Espacio Raro: de más lento a más rápido",
+    "items": [
+     [
+      3,
+      "Tyranitar",
+      248
+     ],
+     [
+      2,
+      "Gothitelle",
+      576
+     ],
+     [
+      1,
+      "Armaldo",
+      348
+     ],
+     [
+      4,
+      "Gothitelle",
+      576
+     ]
+    ]
+   },
+   {
+    "label": "Tercer orden del PDF (sin rótulo en el original)",
+    "items": [
+     [
+      4,
+      "Hydreigon",
+      635
+     ],
+     [
+      2,
+      "Electabuzz",
+      125
+     ],
+     [
+      3,
+      "Tyranitar",
+      248
+     ],
+     [
+      1,
+      "Snorlax",
+      143
+     ]
+    ]
+   }
+  ]
+ },
+ "phases": [
+  [
+   "100%",
+   "Atadura Espejo",
+   "Si tienes varios Pokémon de la misma especie y uno cae debilitado, todos los demás comparten su destino y caen también, estén o no en el campo."
+  ],
+  [
+   "80%",
+   "Paz Mental",
+   "Sube un nivel el Ataque Especial y la Defensa Especial."
+  ],
+  [
+   "75%",
+   "Ataque alternativo",
+   "No puedes atacar dos veces seguidas con el mismo tipo de ataque (físico/especial): el segundo no tiene efecto. Los movimientos de estado no se ven afectados."
+  ],
+  [
+   "65%",
+   "Espacio Raro",
+   "Los Pokémon más lentos atacan antes que los rápidos. El efecto queda activo de forma permanente una vez se activa."
+  ],
+  [
+   "50%",
+   "Tipo de daño alternativo",
+   "No puedes atacar con dos movimientos del mismo tipo seguidos (por ejemplo, dos ataques de tipo Siniestro)."
+  ],
+  [
+   "25%",
+   "Paz Mental",
+   "Sube un nivel el Ataque Especial y la Defensa Especial."
+  ]
+ ]
+}

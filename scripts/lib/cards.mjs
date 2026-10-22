@@ -1,6 +1,6 @@
 // Piezas HTML compartidas por los renderizadores de guías (tarjetas de equipo, sprites).
-export const SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/';
-export const ITEM_SPRITE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/';
+export const SPRITE = '../img/sprites/pokemon/';
+export const ITEM_SPRITE = '../img/sprites/items/';
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // Objeto (nombre en español) → nombre del icono en PokeAPI. Solo los que están comprobados;
@@ -14,9 +14,29 @@ const ITEM_ICON = {
   // Consumibles de las guías de farmeo (Zanama = Leppa Berry según WikiDex)
   'Pociones': 'potion', 'Zanama': 'leppa-berry', 'Especial X': 'x-sp-atk', 'Repelente': 'repel',
 };
-export const itemIcon = (name, size = 'h-6 w-6') => (ITEM_ICON[name]
-  ? `<img src="${ITEM_SPRITE}${ITEM_ICON[name]}.png" alt="" width="32" height="32" loading="lazy" decoding="async" class="inline ${size} shrink-0 object-contain [image-rendering:pixelated]" onerror="this.remove()" />`
-  : '');
+// Alias de nombres tal como aparecen en los PokePaste de las guías («Objeto Restos», «Cint. Negra»…).
+Object.assign(ITEM_ICON, {
+  'Cint. Negra': 'black-belt', 'Antederretir': 'never-melt-ice', 'Pañl. Seda': 'silk-scarf', 'Pañuelo Seda': 'silk-scarf',
+  'Carbón': 'charcoal', 'Pañuelo Elegido': 'choice-scarf', 'Velocidad X': 'x-speed', 'Chaleco Asalto': 'assault-vest',
+  'Baya Zidra': 'sitrus-berry', 'Ocarina de Vuelo': 'ocarina-fly', 'Ocarina de Teletrans.': 'ocarina-teleport', 'Mineral Evolutivo': 'eviolite',
+});
+const one = (file, size) => `<img src="${ITEM_SPRITE}${file}.png" alt="" width="32" height="32" loading="lazy" decoding="async" class="inline ${size} shrink-0 object-contain [image-rendering:pixelated]" onerror="this.remove()" />`;
+/** Icono(s) de un objeto equipado. Admite el prefijo «Objeto » y alternativas «A o B». */
+export const itemIcon = (name, size = 'h-6 w-6') => String(name).replace(/^Objeto\s+/, '').split(/\s+o\s+/)
+  .map((n) => (ITEM_ICON[n.trim()] ? one(ITEM_ICON[n.trim()], size) : '')).join('');
+
+// Objetos de inventario citados en los pasos de una guía: texto → icono (PokeAPI). Las MO usan el icono de su tipo.
+const BAG = [
+  ['MO Golpe Roca', 'hm-fighting'], ['MO Corte', 'hm-normal'], ['MO Surf', 'hm-water'], ['MO Destello', 'hm-normal'],
+  ['MO Fuerza', 'hm-normal'], ['MO Despejar', 'hm-flying'], ['MO Vuelo', 'hm-flying'], ['MO Cascada', 'hm-water'],
+  ['MO Buceo', 'hm-water'], ['MO Treparrocas', 'hm-normal'], ['Bici Acrobática', 'acro-bike'], ['Poción Secreta', 'secret-potion'],
+  ['Dientes de Oro', 'gold-teeth'], ['Llave Tarjeta', 'card-key'], ['Llave del Subsuelo', 'basement-key'],
+  ['Regadera', 'squirt-bottle'], ['Repelentes', 'repel'], ['Repelente', 'repel'], ['Bici', 'bicycle'], ['Té', 'tea'],
+];
+const BAG_RE = new RegExp(`(?<!Bono )(?<![\\p{L}])(${BAG.map(([k]) => k).join('|')})(?![\\p{L}])`, 'gu');
+const BAG_MAP = Object.fromEntries(BAG);
+/** Texto ya escapado → mismo texto con el icono del objeto tras cada mención (MO, Bici, Repelente…). */
+export const bagIcons = (html) => html.replace(BAG_RE, (m) => `${m}${one(BAG_MAP[m], 'mx-0.5 h-6 w-6 align-middle')}`);
 
 // "-" / "x" = estadística no relevante (según las guías). 31 de IV y 252 de EV se resaltan en verde lima.
 const cell = (v, max) => (v === '-' || v === 'x' ? '<span aria-label="no relevante">—</span>' : `<span${v === max ? ' class="stat-max"' : ''}>${esc(v)}</span>`);
@@ -39,7 +59,7 @@ export function teamCard(m, statLabels) {
   const head = statLabels.map((s) => `<th scope="col" class="px-1 pb-1 text-center text-xs font-semibold text-muted">${esc(s)}</th>`).join('');
   return `<li class="card !gap-3${m.critical ? ' !border-gold' : ''}">
     <div class="flex items-center gap-3">${img(m.name, m.dex, 80)}
-      <h3 class="!m-0 text-lg font-bold leading-snug">${esc(m.name)} <span class="text-sm font-normal text-muted">Nv. ${m.level}</span>${m.alt ? ' <span class="badge-muted">Alternativa</span>' : ''}${m.badge ? ' <span class="badge-gold">Provisional</span>' : ''}</h3>
+      <h3 class="!m-0 text-lg font-bold leading-snug">${esc(m.name)} <span class="text-sm font-normal text-muted">Nv. ${m.level}${m.speed ? ` · ${m.speed} Vel` : ''}</span>${m.alt ? ' <span class="badge-muted">Alternativa</span>' : ''}${m.badge ? ' <span class="badge-gold">Provisional</span>' : ''}</h3>
     </div>
     <dl class="!m-0 space-y-1 text-sm">${field('Objeto', m.item, itemIcon(m.item))}${field('Habilidad', m.ability)}${field('Naturaleza', m.nature)}</dl>
     <div class="overflow-x-auto"><table class="w-full text-sm"><caption class="sr-only">IVs y EVs de ${esc(m.name)}</caption>
