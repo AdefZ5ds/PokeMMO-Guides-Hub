@@ -35,13 +35,12 @@ const DEX = {
 };
 const NAME_RE = new RegExp(`\\b(${Object.keys(DEX).join('|')})\\b`, 'g');
 const FALLBACK_JS = "if(this.src.includes('cdn.jsdelivr.net')){this.src=this.src.replace('https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/','https://raw.githubusercontent.com/PokeAPI/sprites/master/');return}";
-/** Sprite en línea de un Pokémon: aro azul = tu equipo, aro rojo = rival. Si no carga, queda el nombre en texto con el mismo aro. */
+/** Sprite en línea de un Pokémon (sin aro). Aliado/rival solo queda en el texto alternativo. Si no carga, queda el nombre en texto. */
 function spriteChip(name, ally) {
-  const ring = ally ? 'ring-sky-500' : 'ring-red-500';
   const role = ally ? 'Tu equipo' : 'Rival';
   return `<img src="${SPRITE}${DEX[name]}.gif" alt="${role}: ${name}" title="${role}: ${name}" width="96" height="96" loading="lazy" decoding="async" data-own-error `
-    + `class="mx-0.5 inline-block h-9 w-9 rounded-full bg-bg/60 object-contain align-middle ring-2 ${ring} [image-rendering:pixelated]" `
-    + `onerror="${FALLBACK_JS}this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${name}',className:'mx-0.5 rounded-full px-1.5 font-semibold ring-2 ${ring}'}))" />`;
+    + `class="mx-0.5 inline-block h-9 w-9 object-contain align-middle [image-rendering:pixelated]" `
+    + `onerror="${FALLBACK_JS}this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${name}',className:'mx-0.5 font-semibold'}))" />`;
 }
 const isAlly = (name) => Object.values(data.mons).some((m) => m.name === name);
 
@@ -95,7 +94,6 @@ function region(r, next) {
     <h4 id="reg-${r.id}-t" class="!mt-6 text-xl font-bold">${esc(r.name)}</h4>
     <figure class="my-4"><img src="../img/${cfg.maps}/${r.map}" alt="Mapa de ${esc(r.name)} del PDF con la ruta numerada del 1 al ${r.mapCount ?? (r.id === 'teselia' ? 7 : r.id === 'sinnoh' ? 5 : r.id === 'johto' ? 5 : r.id === 'hoenn' ? 6 : 2)}" loading="lazy" decoding="async" class="mx-auto w-full max-w-2xl rounded-xl border border-line" />
       <figcaption class="mt-1 text-center text-sm text-muted">Mapa tomado del PDF. Los números del mapa no están explicados en el PDF.</figcaption></figure>
-    <p class="!mb-2 text-sm text-muted"><span class="inline-block h-4 w-4 rounded-full align-middle ring-2 ring-sky-500"></span> aro azul = tu equipo · <span class="inline-block h-4 w-4 rounded-full align-middle ring-2 ring-red-500"></span> aro rojo = Pokémon rival</p>
     <ol class="!pl-0 !list-none grid gap-4 md:grid-cols-2">${gymItems(r.gyms).map((it) => `<li class="flex flex-col gap-2">${it.gym ? gym(it.gym, ++n) : ''}${it.extras.map((x) => (x.reset ? reset() : swap(x.swap))).join('')}</li>`).join('')}</ol>
     ${next ? `<p class="mt-6 text-center"><a href="#${next.id}" data-next-sub class="btn-primary !px-6 !py-3 !text-base">Ir a ${esc(next.name)} <span aria-hidden="true">→</span></a></p>` : ''}
   </section>`;
