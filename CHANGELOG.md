@@ -24,3 +24,7 @@
 - **Créditos**: la guía «Farmeo de gimnasios 2026» cita a parzivalmmo · Dancing Meloetta (enlace) como fuente original.
 - **Inicio**: categorías y orden quedan ocultos tras un botón «Filtros» desplegable (cerrado por defecto).
 - **Limpieza**: eliminadas las carpetas `.git` y `.github` (publicas con `npm run build`).
+
+## Tercera ronda
+- **Cards de farmeo**: las dos cards de una misma fila ahora miden lo mismo (la corta se estira) y las barras de RESET / cambio de objeto quedan debajo de su card.
+- **Sprites en las notas (las dos guías de farmeo)**: cada vez que un texto nombra un Pokémon (notas, avisos de «Curar…» y cambios de objeto) se muestra solo su sprite: aro azul = tu equipo, aro rojo = Pokémon rival. Hay una leyenda sobre cada lista de gimnasios. Si un sprite no carga (o no existe, como Rotom-Podadora), aparece el nombre en texto con el mismo aro.

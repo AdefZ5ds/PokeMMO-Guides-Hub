@@ -3,7 +3,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { esc, img, teamCard, consumables, itemIcon } from './lib/cards.mjs';
+import { esc, img, teamCard, consumables, itemIcon, SPRITE } from './lib/cards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 // Una misma plantilla sirve a varias guías de farmeo: slug → archivo de contenido y carpeta de mapas.
@@ -23,8 +23,34 @@ const TYPE_EMOJI = { Bicho: '🐛', Fuego: '🔥', Planta: '🌿', Agua: '💧',
 // Color de cada movimiento = color del tipo de su Pokémon (campo `type` de data.mons). Para otro tipo, añade su letra aquí (colores en styles.css: .hl-*).
 const TYPE_HL = { Hielo: 'c', Agua: 'b', Normal: 'n', Fuego: 'o', Veneno: 'p', Planta: 'g', Eléctrico: 'y', Psíquico: 'm', Lucha: 'r', Volador: 'k' };
 
-// {r:texto} → texto coloreado (el color es un refuerzo; el texto ya nombra al Pokémon/movimiento)
-const hl = (s) => esc(s).replace(/\{([a-z]):([^}]+)\}/g, (_, c, t) => `<span class="hl hl-${c}">${t}</span>`);
+// Pokémon que aparecen en las notas → n.º de Pokédex (sprite animado Gen 5). Formas sin sprite caen a texto (ver spriteChip).
+const DEX = {
+  Aerodactyl: 142, Arcanine: 59, Blastoise: 9, Blissey: 242, Cradily: 346, Dragonite: 149, Drifblim: 426, Electrode: 101, Emboar: 500,
+  Emolga: 587, Excadrill: 530, Floatzel: 419, Galvantula: 596, Garchomp: 445, Gigalith: 526, Heatran: 485, Hippowdon: 450, Houndoom: 229,
+  Infernape: 392, Jolteon: 135, Jumpluff: 189, Kingdra: 230, Lanturn: 171, Lapras: 131, Leavanny: 542, Ledian: 166, Ludicolo: 272,
+  Magcargo: 219, Mamoswine: 473, Meloetta: 648, Metagross: 376, Mienshao: 620, Milotic: 350, Mismagius: 429, Moltres: 146, Pelipper: 279,
+  Pidgeot: 18, Pikachu: 25, Politoed: 186, Probopass: 476, Raichu: 26, Rapidash: 78, Relicanth: 369, 'Rotom-Podadora': 10012, Sableye: 302,
+  Samurott: 503, Scyther: 123, Sharpedo: 319, Slowbro: 80, Swampert: 260, Swanna: 581, Togekiss: 468, Torterra: 389, Typhlosion: 157,
+  Tyranitar: 248, Unfezant: 521, Vanilluxe: 584, Weezing: 110, Whimsicott: 547, Zapdos: 145,
+};
+const NAME_RE = new RegExp(`\\b(${Object.keys(DEX).join('|')})\\b`, 'g');
+const FALLBACK_JS = "if(this.src.includes('cdn.jsdelivr.net')){this.src=this.src.replace('https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/','https://raw.githubusercontent.com/PokeAPI/sprites/master/');return}";
+/** Sprite en línea de un Pokémon: aro azul = tu equipo, aro rojo = rival. Si no carga, queda el nombre en texto con el mismo aro. */
+function spriteChip(name, ally) {
+  const ring = ally ? 'ring-sky-500' : 'ring-red-500';
+  const role = ally ? 'Tu equipo' : 'Rival';
+  return `<img src="${SPRITE}${DEX[name]}.gif" alt="${role}: ${name}" title="${role}: ${name}" width="96" height="96" loading="lazy" decoding="async" data-own-error `
+    + `class="mx-0.5 inline-block h-9 w-9 rounded-full bg-bg/60 object-contain align-middle ring-2 ${ring} [image-rendering:pixelated]" `
+    + `onerror="${FALLBACK_JS}this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${name}',className:'mx-0.5 rounded-full px-1.5 font-semibold ring-2 ${ring}'}))" />`;
+}
+const isAlly = (name) => Object.values(data.mons).some((m) => m.name === name);
+
+// {r:texto} → texto coloreado (movimientos). Todo nombre de Pokémon, coloreado o no, se muestra como sprite (aliado o rival).
+const hl = (s) => esc(s).replace(new RegExp(`\\{([a-z]):([^}]+)\\}|${NAME_RE.source}`, 'g'), (m, c, t, bare) => {
+  if (bare) return spriteChip(bare, isAlly(bare));
+  const inner = String(t).trim();
+  return DEX[inner] ? spriteChip(inner, isAlly(inner)) : `<span class="hl hl-${c}">${t}</span>`;
+});
 
 const list = (items, level = 0) => `<ul class="${level ? '!mt-1 ' : ''}!mb-0 space-y-1">${items.map((i) =>
   typeof i === 'string' ? `<li>${hl(i)}</li>` : `<li>${hl(i.t)}${i.sub ? list(i.sub, level + 1) : ''}</li>`).join('')}</ul>`;
@@ -43,11 +69,11 @@ function gym(g, n) {
     </div>
     <ul class="!pl-0 !list-none flex items-end justify-center gap-3" aria-label="Dúo recomendado">${duoCell(a)}<li aria-hidden="true" class="pb-8 text-2xl font-bold">+</li>${duoCell(b)}</ul>
     ${g.notes ? `<div class="text-sm">${list(g.notes)}</div>` : ''}
-    ${g.check ? `<p class="callout !m-0 !p-3" role="note"><span aria-hidden="true">⚠️</span> ${esc(g.check)}</p>` : ''}
+    ${g.check ? `<p class="callout !m-0 !p-3" role="note"><span aria-hidden="true">⚠️</span> ${hl(g.check)}</p>` : ''}
   </div>`;
 }
 
-const swap = ({ item, to }) => `<p class="!m-0 rounded-xl border-2 border-accent bg-accent/10 px-3 py-2 text-center text-sm font-bold" role="note"><span aria-hidden="true">🔁</span> ¡¡Cambiar a ${itemIcon(item)} ${esc(item)} → <span class="hl hl-${MON_HL[to] ?? 'n'}">${esc(to)}</span>!!</p>`;
+const swap = ({ item, to }) => `<p class="!m-0 rounded-xl border-2 border-accent bg-accent/10 px-3 py-2 text-center text-sm font-bold" role="note"><span aria-hidden="true">🔁</span> ¡¡Cambiar a ${itemIcon(item)} ${esc(item)} → ${DEX[to] ? spriteChip(to, true) : esc(to)}!!</p>`;
 
 const reset = () => `<p class="!m-0 rounded-xl border-2 border-red-500 bg-red-500/10 px-3 py-2 text-center text-sm font-bold" role="note"><span aria-hidden="true">❤️</span> RESET en el CP (Centro Pokémon)</p>`;
 
@@ -69,7 +95,8 @@ function region(r, next) {
     <h4 id="reg-${r.id}-t" class="!mt-6 text-xl font-bold">${esc(r.name)}</h4>
     <figure class="my-4"><img src="../img/${cfg.maps}/${r.map}" alt="Mapa de ${esc(r.name)} del PDF con la ruta numerada del 1 al ${r.mapCount ?? (r.id === 'teselia' ? 7 : r.id === 'sinnoh' ? 5 : r.id === 'johto' ? 5 : r.id === 'hoenn' ? 6 : 2)}" loading="lazy" decoding="async" class="mx-auto w-full max-w-2xl rounded-xl border border-line" />
       <figcaption class="mt-1 text-center text-sm text-muted">Mapa tomado del PDF. Los números del mapa no están explicados en el PDF.</figcaption></figure>
-    <ol class="!pl-0 !list-none grid items-start gap-4 md:grid-cols-2">${gymItems(r.gyms).map((it) => `<li class="flex flex-col gap-2">${it.gym ? gym(it.gym, ++n) : ''}${it.extras.map((x) => (x.reset ? reset() : swap(x.swap))).join('')}</li>`).join('')}</ol>
+    <p class="!mb-2 text-sm text-muted"><span class="inline-block h-4 w-4 rounded-full align-middle ring-2 ring-sky-500"></span> aro azul = tu equipo · <span class="inline-block h-4 w-4 rounded-full align-middle ring-2 ring-red-500"></span> aro rojo = Pokémon rival</p>
+    <ol class="!pl-0 !list-none grid gap-4 md:grid-cols-2">${gymItems(r.gyms).map((it) => `<li class="flex flex-col gap-2">${it.gym ? gym(it.gym, ++n) : ''}${it.extras.map((x) => (x.reset ? reset() : swap(x.swap))).join('')}</li>`).join('')}</ol>
     ${next ? `<p class="mt-6 text-center"><a href="#${next.id}" data-next-sub class="btn-primary !px-6 !py-3 !text-base">Ir a ${esc(next.name)} <span aria-hidden="true">→</span></a></p>` : ''}
   </section>`;
 }
