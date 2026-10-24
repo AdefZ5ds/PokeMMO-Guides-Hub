@@ -40,7 +40,8 @@
   },
   "filters": {
     "label": "Filtrar por categoría",
-    "all": "Todas"
+    "all": "Todas",
+    "button": "Filtros"
   },
   "sort": {
     "label": "Ordenar por",

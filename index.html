@@ -150,7 +150,13 @@
         <h2 id="gallery-title" class="text-2xl font-bold" data-i18n="gallery.title">Lista de Guías</h2>
         <p class="mt-1 text-sm text-muted" data-i18n="gallery.subtitle">Pulsa una portada para abrir la guía.</p>
 
-        <div class="mt-4 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+        <button id="filters-toggle" type="button" class="btn-ghost mt-4" aria-controls="filters-panel" :aria-expanded="filtersOpen" @click="filtersOpen = !filtersOpen">
+          <span aria-hidden="true">⚙️</span> <span data-i18n="filters.button">Filtros</span>
+          <span x-show="cat !== 'all' || sort !== 'popular'" x-cloak class="badge-gold !px-1.5" aria-hidden="true">•</span>
+          <span aria-hidden="true" class="transition-transform" :class="filtersOpen && 'rotate-180'">▾</span>
+        </button>
+
+        <div id="filters-panel" x-show="filtersOpen" x-cloak x-transition.opacity.duration.150ms class="mt-3 flex flex-col gap-4 rounded-xl border border-line bg-surface/80 p-4 md:flex-row md:items-start md:justify-between">
           <div role="group" aria-labelledby="filters-label" class="flex flex-wrap gap-2">
             <span id="filters-label" class="sr-only" data-i18n="filters.label">Filtrar por categoría</span>
             <button type="button" class="chip" :aria-pressed="cat === 'all'" @click="setCat('all')" data-i18n="filters.all">Todas</button>

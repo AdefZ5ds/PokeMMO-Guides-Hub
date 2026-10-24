@@ -17,3 +17,10 @@
 - En ambas guías nuevas, varios objetos equipados aparecen en el PDF solo como icono y no se transcribieron (se indica en la página).
 - Texto de Heatran en el PDF de farmeo: marrón oscuro sobre fondo oscuro, difícil de leer; revisar contra el PDF.
 - **Líderes de gimnasio**: la guía nueva usa los sprites de Pokémon Showdown, igual que la otra guía de farmeo. Si uno no carga, se usa una copia local extraída del PDF (public/img/trainers) y, en último caso, un emoji.
+
+## Segunda ronda
+- **Cards de farmeo (las dos guías)**: cada gimnasio es una card alta; los «RESET en el CP» y «Cambiar a…» quedan como barras finas pegadas debajo de la card a la que siguen. 2 columnas en tablet/escritorio, 1 en móvil.
+- **Sprites 100 % desde librería**: Pokémon (GIF) y objetos se cargan de jsDelivr (PokeAPI/sprites); si falla, de raw.githubusercontent y luego el PNG estático. Líderes: Pokémon Showdown. Se borraron `public/img/sprites/pokemon`, `still` y los iconos de objetos. Se quedan solo las dos Ocarinas y `public/img/trainers` (copias de respaldo de líderes extraídas del PDF).
+- **Créditos**: la guía «Farmeo de gimnasios 2026» cita a parzivalmmo · Dancing Meloetta (enlace) como fuente original.
+- **Inicio**: categorías y orden quedan ocultos tras un botón «Filtros» desplegable (cerrado por defecto).
+- **Limpieza**: eliminadas las carpetas `.git` y `.github` (publicas con `npm run build`).

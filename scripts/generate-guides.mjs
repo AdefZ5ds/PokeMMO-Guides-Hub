@@ -6,6 +6,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { bodies } from './guide-bodies.mjs';
 import { renderRed } from './render-red.mjs';
+import { IMG_FALLBACK } from './lib/cards.mjs';
 import { renderMeloetta } from './render-meloetta.mjs';
 import { renderCresselia } from './render-cresselia.mjs';
 import { renderFarmeo } from './render-farmeo.mjs';
@@ -17,7 +18,7 @@ const { guides, categories } = JSON.parse(readFileSync(resolve(root, 'assets/dat
 const es = JSON.parse(readFileSync(resolve(root, 'locales/es.json'), 'utf8'));
 const catName = (id) => es.categories[id];
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const SPRITE = '../img/sprites/pokemon/';
+const SPRITE = 'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/versions/generation-v/black-white/animated/';
 
 // Guías con contenido interactivo propio (slug → renderizador)
 const custom = { 'derrotar-red': renderRed, 'raid-meloetta': renderMeloetta, 'farmeo-gimnasios': renderFarmeo, 'farmeo-gimnasios-2026': renderFarmeo, 'raid-cresselia': renderCresselia, 'farmeo-hooh': renderHooh, 'rusheo-multiregion': renderRusheo };
@@ -108,7 +109,7 @@ function page(g) {
   <main id="main" tabindex="-1">
     <!-- Banner estilo Netflix: imagen a todo el ancho, degradado inferior y título encima (texto siempre claro) -->
     <section class="relative isolate flex min-h-[15rem] items-end overflow-hidden bg-slate-950 text-white sm:min-h-[20rem] lg:min-h-[24rem] ${g.image ? '' : `cov cov-${g.category}`}" aria-labelledby="guide-title">
-      ${g.image ? `<img src="../img/banners/${g.image}.webp" alt="" width="1400" height="800" fetchpriority="high" decoding="async" class="absolute inset-0 -z-20 h-full w-full object-cover" />` : `<img src="${SPRITE}${g.sprite}.gif" alt="" width="96" height="96" class="absolute right-6 top-6 -z-10 h-24 w-24 opacity-80 object-contain [image-rendering:pixelated] sm:h-32 sm:w-32" decoding="async" onerror="this.remove()" />`}
+      ${g.image ? `<img src="../img/banners/${g.image}.webp" alt="" width="1400" height="800" fetchpriority="high" decoding="async" class="absolute inset-0 -z-20 h-full w-full object-cover" />` : `<img src="${SPRITE}${g.sprite}.gif" alt="" width="96" height="96" class="absolute right-6 top-6 -z-10 h-24 w-24 opacity-80 object-contain [image-rendering:pixelated] sm:h-32 sm:w-32" decoding="async" data-own-error onerror="${IMG_FALLBACK}" />`}
       <div class="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/60 to-black/35" aria-hidden="true"></div>
       <div class="mx-auto w-full max-w-3xl px-4 pb-6 pt-16">
         <nav aria-label="Ruta de navegación" data-i18n-attr="aria-label:guide.breadcrumb">

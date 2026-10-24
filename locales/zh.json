@@ -40,7 +40,8 @@
   },
   "filters": {
     "label": "按分类筛选",
-    "all": "全部"
+    "all": "全部",
+    "button": "筛选"
   },
   "sort": {
     "label": "排序方式",

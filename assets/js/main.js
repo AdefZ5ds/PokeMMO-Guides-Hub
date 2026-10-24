@@ -11,16 +11,25 @@ await ready;
 //   solo (modo ahorro de batería, «quitar animaciones»), por eso en el móvil salían estáticos.
 // · El botón de la barra («Animaciones») los pausa; la preferencia se guarda en este navegador.
 // · Si un GIF no carga, se usa su PNG estático.
-const ANIM = 'img/sprites/pokemon/';
+const ANIM = 'black-white/animated/';
 const KEY_ANIM = 'pmmo-anim';
-const still = (src) => src.replace('/sprites/pokemon/', '/sprites/still/').replace(/\.gif$/, '.png');
-const live = (src) => src.replace('/sprites/still/', '/sprites/pokemon/').replace(/\.png$/, '.gif');
+const RAW = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/';
+const JSD = 'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/';
+const still = (src) => src.replace('versions/generation-v/black-white/animated/', '').replace(/\.gif$/, '.png');
+const live = (src) => src.replace('/sprites/pokemon/', '/sprites/pokemon/versions/generation-v/black-white/animated/').replace(/\.png$/, '.gif');
+const isLive = (src) => src.includes(ANIM) && src.endsWith('.gif');
+const isStill = (src) => src.includes('/sprites/pokemon/') && !src.includes('versions/') && src.endsWith('.png');
 let animOn = true;
 try { animOn = localStorage.getItem(KEY_ANIM) !== 'off'; } catch { /* sin almacenamiento */ }
-const freeze = (img) => { if (!animOn && img.src.includes(ANIM) && img.src.endsWith('.gif')) img.src = still(img.src); };
+const freeze = (img) => { if (!animOn && isLive(img.src)) img.src = still(img.src); };
+// Si un sprite falla: jsDelivr → raw.githubusercontent → PNG estático.
 document.addEventListener('error', (e) => {
   const img = e.target;
-  if (img instanceof HTMLImageElement && !img.hasAttribute('data-own-error') && img.src.includes(ANIM) && img.src.endsWith('.gif')) img.src = still(img.src);
+  if (!(img instanceof HTMLImageElement) || img.hasAttribute('data-own-error')) return;
+  const src = img.src;
+  if (!src.startsWith(JSD) && !src.startsWith(RAW)) return;
+  if (src.startsWith(JSD)) img.src = RAW + src.slice(JSD.length);
+  else if (isLive(src)) img.src = still(src);
 }, true);
 const sweep = () => { if (!animOn) document.querySelectorAll(`img[src*="${ANIM}"]`).forEach(freeze); };
 new MutationObserver((list) => { if (!animOn) list.forEach((r) => {
@@ -37,8 +46,8 @@ const paintAnim = () => animButtons().forEach((b) => {
 animButtons().forEach((b) => b.addEventListener('click', () => {
   animOn = !animOn;
   try { localStorage.setItem(KEY_ANIM, animOn ? 'on' : 'off'); } catch { /* ignorar */ }
-  document.querySelectorAll('img[src*="/sprites/"]').forEach((img) => {
-    if (animOn && img.src.includes('/sprites/still/')) img.src = live(img.src); else freeze(img);
+  document.querySelectorAll('img[src*="/sprites/pokemon/"]').forEach((img) => {
+    if (animOn && isStill(img.src)) img.src = live(img.src); else freeze(img);
   });
   paintAnim();
 }));

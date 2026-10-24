@@ -1,6 +1,7 @@
 // Piezas HTML compartidas por los renderizadores de guías (tarjetas de equipo, sprites).
-export const SPRITE = '../img/sprites/pokemon/';
-export const ITEM_SPRITE = '../img/sprites/items/';
+export const SPRITE = 'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/versions/generation-v/black-white/animated/';
+export const ITEM_SPRITE = 'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/items/';
+const LOCAL_ITEM = '../img/sprites/items/'; // solo lo que no existe en PokeAPI (Ocarinas del PDF)
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // Objeto (nombre en español) → nombre del icono en PokeAPI. Solo los que están comprobados;
@@ -18,9 +19,10 @@ const ITEM_ICON = {
 Object.assign(ITEM_ICON, {
   'Cint. Negra': 'black-belt', 'Antederretir': 'never-melt-ice', 'Pañl. Seda': 'silk-scarf', 'Pañuelo Seda': 'silk-scarf',
   'Carbón': 'charcoal', 'Pañuelo Elegido': 'choice-scarf', 'Velocidad X': 'x-speed', 'Chaleco Asalto': 'assault-vest',
-  'Baya Zidra': 'sitrus-berry', 'Ocarina de Vuelo': 'ocarina-fly', 'Ocarina de Teletrans.': 'ocarina-teleport', 'Mineral Evolutivo': 'eviolite',
+  'Baya Zidra': 'sitrus-berry', 'Ocarina de Vuelo': 'local:ocarina-fly', 'Ocarina de Teletrans.': 'local:ocarina-teleport', 'Mineral Evolutivo': 'eviolite',
 });
-const one = (file, size) => `<img src="${ITEM_SPRITE}${file}.png" alt="" width="32" height="32" loading="lazy" decoding="async" class="inline ${size} shrink-0 object-contain [image-rendering:pixelated]" onerror="this.remove()" />`;
+export const IMG_FALLBACK = "if(this.src.includes('cdn.jsdelivr.net')){this.src=this.src.replace('https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/','https://raw.githubusercontent.com/PokeAPI/sprites/master/')}else{this.remove()}";
+const one = (file, size) => `<img src="${file.startsWith('local:') ? `${LOCAL_ITEM}${file.slice(6)}` : `${ITEM_SPRITE}${file}`}.png" alt="" width="32" height="32" loading="lazy" decoding="async" class="inline ${size} shrink-0 object-contain [image-rendering:pixelated]" data-own-error onerror="${IMG_FALLBACK}" />`;
 /** Icono(s) de un objeto equipado. Admite el prefijo «Objeto » y alternativas «A o B». */
 export const itemIcon = (name, size = 'h-6 w-6') => String(name).replace(/^Objeto\s+/, '').split(/\s+o\s+/)
   .map((n) => (ITEM_ICON[n.trim()] ? one(ITEM_ICON[n.trim()], size) : '')).join('');

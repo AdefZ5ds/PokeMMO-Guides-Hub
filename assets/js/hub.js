@@ -7,7 +7,7 @@ import { icon } from './icons.js';
 import { loadViews } from './counter.js';
 
 const BASE = import.meta.env.BASE_URL;
-const SPRITE = `${BASE}img/sprites/pokemon/`;
+const SPRITE = 'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/versions/generation-v/black-white/animated/';
 const NEW_DAYS = 45;
 const SORTS = ['popular', 'alpha', 'recent'];
 
@@ -28,6 +28,7 @@ export function startHub() {
     source: 'seed',
     failed: {},
     menuOpen: false,
+    filtersOpen: false,
     spriteError(e, g) { this.failed[g.slug] = true; e.target.removeAttribute('src'); },
     // Listas derivadas: se recalculan una vez por cambio (no en cada lectura de la plantilla)
     filtered: [],

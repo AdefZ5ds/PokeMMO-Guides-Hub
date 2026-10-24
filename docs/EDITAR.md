@@ -72,4 +72,4 @@ npm run build    # genera guías + compila a dist/
 npm run preview  # sirve dist/ para probar el resultado final
 ```
 
-Para publicar: `git add .` → `git commit -m "mensaje"` → `git push` (la web se actualiza sola con GitHub Actions).
+Para publicar: `npm run build` y sube el contenido de `dist/` a tu hosting (se quitó el despliegue automático de GitHub Actions).

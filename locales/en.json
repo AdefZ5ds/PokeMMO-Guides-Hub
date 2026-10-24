@@ -40,7 +40,8 @@
   },
   "filters": {
     "label": "Filter by category",
-    "all": "All"
+    "all": "All",
+    "button": "Filters"
   },
   "sort": {
     "label": "Sort by",

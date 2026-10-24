@@ -33,7 +33,7 @@ function gym(g, n) {
   const emoji = TYPE_EMOJI[g.type] ?? '🏟️';
   const [a, b] = g.duo.map(([k, move]) => ({ ...data.mons[k], move }));
   const duoCell = (m) => `<li class="flex flex-col items-center text-center">${img(m.name, m.dex, 80)}<span class="text-xs text-muted">${esc(m.name)}</span><span class="text-sm hl hl-${m.hl ?? TYPE_HL[m.type] ?? 'n'}">${esc(m.move)}</span></li>`;
-  return `<li class="card !items-stretch !gap-3">
+  return `<div class="card !items-stretch !gap-3 flex-1">
     <div class="flex flex-col items-center gap-1 text-center">
       <img src="${trainerSrc(g.leader)}" data-local="${trainerLocal(g.leader)}" data-own-error alt="Líder del gimnasio de ${esc(g.city)} (${esc(g.type)})" width="96" height="96" loading="lazy" decoding="async"
            class="h-24 w-24 shrink-0 object-contain [image-rendering:pixelated]"
@@ -44,12 +44,24 @@ function gym(g, n) {
     <ul class="!pl-0 !list-none flex items-end justify-center gap-3" aria-label="Dúo recomendado">${duoCell(a)}<li aria-hidden="true" class="pb-8 text-2xl font-bold">+</li>${duoCell(b)}</ul>
     ${g.notes ? `<div class="text-sm">${list(g.notes)}</div>` : ''}
     ${g.check ? `<p class="callout !m-0 !p-3" role="note"><span aria-hidden="true">⚠️</span> ${esc(g.check)}</p>` : ''}
-  </li>`;
+  </div>`;
 }
 
-const swap = ({ item, to }) => `<li class="md:col-span-full rounded-xl border-2 border-accent bg-accent/10 p-3 text-center font-bold" role="note"><span aria-hidden="true">🔁</span> ¡¡Cambiar a ${itemIcon(item)} ${esc(item)} → <span class="hl hl-${MON_HL[to] ?? 'n'}">${esc(to)}</span>!!</li>`;
+const swap = ({ item, to }) => `<p class="!m-0 rounded-xl border-2 border-accent bg-accent/10 px-3 py-2 text-center text-sm font-bold" role="note"><span aria-hidden="true">🔁</span> ¡¡Cambiar a ${itemIcon(item)} ${esc(item)} → <span class="hl hl-${MON_HL[to] ?? 'n'}">${esc(to)}</span>!!</p>`;
 
-const reset = () => `<li class="md:col-span-full rounded-xl border-2 border-red-500 bg-red-500/10 p-3 text-center font-bold" role="note"><span aria-hidden="true">❤️</span> RESET en el CP (Centro Pokémon)</li>`;
+const reset = () => `<p class="!m-0 rounded-xl border-2 border-red-500 bg-red-500/10 px-3 py-2 text-center text-sm font-bold" role="note"><span aria-hidden="true">❤️</span> RESET en el CP (Centro Pokémon)</p>`;
+
+// Cada gimnasio es una card; los RESET y «Cambiar a…» que le siguen quedan pegados debajo de ella (como barras finas).
+function gymItems(entries) {
+  const items = [];
+  for (const e of entries) {
+    if (e.reset || e.swap) {
+      if (!items.length) items.push({ gym: null, extras: [] });
+      items[items.length - 1].extras.push(e);
+    } else items.push({ gym: e, extras: [] });
+  }
+  return items;
+}
 
 function region(r, next) {
   let n = 0;
@@ -57,7 +69,7 @@ function region(r, next) {
     <h4 id="reg-${r.id}-t" class="!mt-6 text-xl font-bold">${esc(r.name)}</h4>
     <figure class="my-4"><img src="../img/${cfg.maps}/${r.map}" alt="Mapa de ${esc(r.name)} del PDF con la ruta numerada del 1 al ${r.mapCount ?? (r.id === 'teselia' ? 7 : r.id === 'sinnoh' ? 5 : r.id === 'johto' ? 5 : r.id === 'hoenn' ? 6 : 2)}" loading="lazy" decoding="async" class="mx-auto w-full max-w-2xl rounded-xl border border-line" />
       <figcaption class="mt-1 text-center text-sm text-muted">Mapa tomado del PDF. Los números del mapa no están explicados en el PDF.</figcaption></figure>
-    <ol class="!pl-0 !list-none grid gap-4 md:grid-cols-2">${r.gyms.map((g) => (g.reset ? reset() : g.swap ? swap(g.swap) : gym(g, ++n))).join('')}</ol>
+    <ol class="!pl-0 !list-none grid items-start gap-4 md:grid-cols-2">${gymItems(r.gyms).map((it) => `<li class="flex flex-col gap-2">${it.gym ? gym(it.gym, ++n) : ''}${it.extras.map((x) => (x.reset ? reset() : swap(x.swap))).join('')}</li>`).join('')}</ol>
     ${next ? `<p class="mt-6 text-center"><a href="#${next.id}" data-next-sub class="btn-primary !px-6 !py-3 !text-base">Ir a ${esc(next.name)} <span aria-hidden="true">→</span></a></p>` : ''}
   </section>`;
 }
@@ -75,6 +87,7 @@ export function renderFarmeo(guide = { slug: 'farmeo-gimnasios' }) {
       <aside class="callout" aria-labelledby="credits-title">
         <p id="credits-title" class="!mb-1 font-bold"><span aria-hidden="true">🙏</span> Créditos</p>
         <p class="!mb-1">Guía de farmeo de gimnasios por ${esc(data.author)} (PokeMMO).</p>
+        ${data.source ? `<p class="!mb-1"><strong>Fuente original:</strong> <a class="font-medium" href="${esc(data.source.url)}" target="_blank" rel="noopener noreferrer">${esc(data.source.name)}<span class="sr-only"> (nueva pestaña)</span></a>. ${esc(data.source.note)}</p>` : ''}
         <p class="!mb-0 text-muted">Última actualización del documento: ${esc(data.updated)}.${data.nick === null ? '' : '<br>Nick: xXZarcAndXx'}</p>
       </aside>
 
