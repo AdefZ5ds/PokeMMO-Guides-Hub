@@ -12,18 +12,18 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" />
   <!-- Aplica el tema antes de pintar (evita el parpadeo). Sin preferencia guardada: sistema; por defecto oscuro. -->
   <script>
     try {
       var s = localStorage.getItem('pmmo-theme');
-      var dark = s ? s === 'dark' : !matchMedia('(prefers-color-scheme: light)').matches;
+      var dark = s ? s === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
       document.documentElement.classList.toggle('dark', dark);
     } catch (e) {}
   </script>
   <script type="module" src="/assets/js/main.js"></script>
 </head>
-<body class="home-bg">
+<body>
   <a href="#main" class="skip-link" data-i18n="a11y.skip">Saltar al contenido principal</a>
 
   <div id="hub" x-data="hub" @langchange.window="lang = $event.detail">
@@ -32,11 +32,10 @@
       <nav class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3" aria-label="Navegación principal" data-i18n-attr="aria-label:a11y.mainNav">
         <a href="./index.html" class="flex items-center gap-2 font-bold" aria-current="page" aria-label="PokeMMO Guides Hub">
           <img src="/assets/img/logo.svg" alt="" width="28" height="28" />
-          <span class="hidden sm:inline">PokeMMO Guides Hub</span>
+          <span class="font-display hidden text-lg font-extrabold tracking-tight sm:inline">PokeMMO Guides Hub</span>
         </a>
         <ul class="ml-2 hidden items-center gap-4 text-sm font-medium lg:flex">
           <li><a class="hover:text-accent-text" href="#galeria" data-i18n="nav.gallery">Lista de Guías</a></li>
-          
         </ul>
 
         <form role="search" class="ml-auto hidden max-w-xs flex-1 md:block" @submit.prevent="goToResults()">
@@ -82,13 +81,10 @@
           </form>
 
           <div>
-            <p class="mb-2 text-sm font-semibold" data-i18n="filters.label">Filtrar por categoría</p>
-            <div role="group" aria-label="Filtrar por categoría" data-i18n-attr="aria-label:filters.label" class="flex flex-wrap gap-2">
-              <button type="button" class="chip" :aria-pressed="cat === 'all'" @click="pickCat('all')" data-i18n="filters.all">Todas</button>
-              <template x-for="c in categories" :key="c.id">
-                <button type="button" class="chip" :aria-pressed="cat === c.id" @click="pickCat(c.id)">
-                  <span aria-hidden="true" x-text="c.emoji"></span> <span x-text="catLabel(c.id)"></span>
-                </button>
+            <p class="mb-2 text-sm font-semibold" data-i18n="nav.goals">Objetivos</p>
+            <div class="flex flex-wrap gap-2">
+              <template x-for="go in goals" :key="go.id">
+                <a :href="'#obj-' + go.id" class="goal-pill" :style="'--c:var(--goal-' + go.id + ')'" @click="menuOpen = false"><i aria-hidden="true"></i> <span x-text="goalTitle(go.id)"></span></a>
               </template>
             </div>
           </div>
@@ -108,66 +104,29 @@
     <main id="main" tabindex="-1">
       <noscript><p class="mx-auto max-w-6xl p-4">Este sitio necesita JavaScript para buscar y filtrar guías.</p></noscript>
 
-      <!-- ================= HERO (estilo Genshin: vídeo a pantalla completa, velo y CTA central) ================= -->
-      <section class="relative isolate flex min-h-[calc(100svh-3.5rem)] items-center overflow-hidden bg-slate-950 text-white" aria-labelledby="hero-title">
-        <video id="hero-video" class="hero-video -z-20" autoplay muted loop playsinline preload="metadata" poster="/video/hero-poster.webp" aria-hidden="true" tabindex="-1">
-          <source src="/video/hero.mp4" type="video/mp4" />
-        </video>
-        <div class="hero-veil absolute inset-0 -z-10" aria-hidden="true"></div>
+      <!-- ================= PORTADA: presentación + buscador + Filtros, y debajo los 5 objetivos ================= -->
+      <section class="mx-auto grid max-w-6xl items-center gap-8 px-4 pb-4 pt-8 lg:grid-cols-[1.05fr_.95fr] lg:gap-12 lg:pt-14" aria-labelledby="hero-title">
+        <div class="min-w-0">
+          <h1 id="hero-title" class="font-display text-4xl font-extrabold leading-[1.03] tracking-tight [text-wrap:balance] md:text-6xl" data-i18n="hero.title">Bienvenido a PokeMMO Guides Hub</h1>
+          <p class="mt-4 max-w-[52ch] text-base text-muted md:text-lg" data-i18n="hero.subtitle">Un lugar para reunir guías de PokeMMO, organizadas por lo que quieres hacer: derrotar jefes y raids, farmear, completar regiones, criar y entrenar, o aprender lo básico. Disponible en español, inglés y chino.</p>
 
-        <div class="mx-auto w-full max-w-6xl px-4 py-16 text-center md:py-24">
-          <p class="badge-gold mb-4"><span aria-hidden="true">🎮</span> <span data-i18n="hero.badge">Contenido de la comunidad</span></p>
-          <h1 id="hero-title" class="text-shadow mx-auto max-w-3xl text-4xl font-bold leading-tight md:text-6xl" data-i18n="hero.title">Todas las guías de PokeMMO en un solo lugar</h1>
-          <p class="text-shadow mx-auto mt-4 max-w-2xl text-base text-slate-100 md:text-lg" data-i18n="hero.subtitle">Crianza, EVs/IVs, shiny hunting, PvP, farmeo y más. Busca, filtra y abre la guía que necesitas.</p>
-
-          <a href="#galeria" class="mx-auto mt-8 grid h-24 w-24 place-items-center rounded-full border-4 border-white/80 bg-accent-strong text-white shadow-2xl shadow-black/50 transition-transform hover:scale-105 md:h-28 md:w-28" aria-label="Explorar guías" data-i18n-attr="aria-label:hero.play">
-            <span data-icon="arrow-down" data-icon-class="icon h-10 w-10"></span>
-          </a>
-          <p class="text-shadow mt-2 text-sm font-semibold" aria-hidden="true" data-i18n="hero.play">Explorar guías</p>
-
-          <form role="search" class="mx-auto mt-8 max-w-xl" @submit.prevent="goToResults()">
+          <form role="search" class="mt-6 flex flex-wrap gap-2" @submit.prevent="goToResults()">
             <label for="hero-search" class="sr-only" data-i18n="a11y.search">Buscar guías</label>
-            <div class="relative">
-              <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" data-icon="search" data-icon-class="icon h-5 w-5"></span>
-              <input id="hero-search" type="search" class="glass w-full rounded-full py-3 pl-11 pr-4 text-base placeholder:text-slate-200" autocomplete="off"
+            <div class="relative min-w-0 flex-[1_1_15rem]">
+              <span class="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" data-icon="search" data-icon-class="icon h-5 w-5"></span>
+              <input id="hero-search" type="search" class="field h-12 !rounded-2xl pl-11 text-base" autocomplete="off"
                      x-model="qInput" @keydown.escape="qInput = ''"
                      placeholder="Buscar guías…" data-i18n-attr="placeholder:nav.searchPlaceholder" />
             </div>
+            <button id="filters-toggle" type="button" class="btn-ghost h-12 !rounded-2xl !px-5 text-base" aria-controls="filters-panel" :aria-expanded="filtersOpen" @click="filtersOpen = !filtersOpen">
+              <span aria-hidden="true">⚙️</span> <span data-i18n="filters.button">Filtros</span>
+              <span x-show="sort !== 'popular'" x-cloak class="badge-gold !px-1.5" aria-hidden="true">•</span>
+              <span aria-hidden="true" class="transition-transform" :class="filtersOpen && 'rotate-180'">▾</span>
+            </button>
           </form>
 
-          <div class="mt-5 flex flex-wrap justify-center gap-3">
-            <a href="#galeria" class="glass btn rounded-full"><span aria-hidden="true">📚</span> <span data-i18n="hero.cta">Ver la lista de guías</span></a>
-          </div>
-        </div>
-
-        <button id="hero-toggle" type="button" class="glass absolute bottom-4 right-4 hidden h-10 w-10 place-items-center rounded-full" aria-label="Pausar vídeo de fondo" aria-pressed="false">
-          <span data-icon="pause" data-icon-class="icon h-5 w-5"></span>
-        </button>
-      </section>
-
-      <!-- ================= LISTA DE GUÍAS (portadas + buscador + filtros) ================= -->
-      <section id="galeria" class="mx-auto max-w-6xl scroll-mt-16 px-4 py-10" aria-labelledby="gallery-title">
-        <h2 id="gallery-title" class="text-2xl font-bold" data-i18n="gallery.title">Lista de Guías</h2>
-        <p class="mt-1 text-sm text-muted" data-i18n="gallery.subtitle">Pulsa una portada para abrir la guía.</p>
-
-        <button id="filters-toggle" type="button" class="btn-ghost mt-4" aria-controls="filters-panel" :aria-expanded="filtersOpen" @click="filtersOpen = !filtersOpen">
-          <span aria-hidden="true">⚙️</span> <span data-i18n="filters.button">Filtros</span>
-          <span x-show="cat !== 'all' || sort !== 'popular'" x-cloak class="badge-gold !px-1.5" aria-hidden="true">•</span>
-          <span aria-hidden="true" class="transition-transform" :class="filtersOpen && 'rotate-180'">▾</span>
-        </button>
-
-        <div id="filters-panel" x-show="filtersOpen" x-cloak x-transition.opacity.duration.150ms class="mt-3 flex flex-col gap-4 rounded-xl border border-line bg-surface/80 p-4 md:flex-row md:items-start md:justify-between">
-          <div role="group" aria-labelledby="filters-label" class="flex flex-wrap gap-2">
-            <span id="filters-label" class="sr-only" data-i18n="filters.label">Filtrar por categoría</span>
-            <button type="button" class="chip" :aria-pressed="cat === 'all'" @click="setCat('all')" data-i18n="filters.all">Todas</button>
-            <template x-for="c in categories" :key="c.id">
-              <button type="button" class="chip" :aria-pressed="cat === c.id" @click="setCat(c.id)">
-                <span aria-hidden="true" x-text="c.emoji"></span> <span x-text="catLabel(c.id)"></span>
-              </button>
-            </template>
-          </div>
-          <div class="flex shrink-0 items-center gap-2">
-            <label for="sort" class="text-sm text-muted" data-i18n="sort.label">Ordenar por</label>
+          <div id="filters-panel" x-show="filtersOpen" x-cloak x-transition.opacity.duration.150ms class="mt-3 flex flex-wrap items-center gap-3 rounded-2xl border border-line bg-surface p-4">
+            <label for="sort" class="text-sm font-semibold" data-i18n="sort.label">Ordenar por</label>
             <select id="sort" class="field !w-auto py-1.5" x-model="sort">
               <option value="popular" data-i18n="sort.popular">Popularidad</option>
               <option value="alpha" data-i18n="sort.alpha">Alfabético</option>
@@ -176,28 +135,60 @@
           </div>
         </div>
 
-        <p class="mt-4 text-sm text-muted" role="status" aria-live="polite" x-text="resultsText"></p>
+        <!-- Vídeo de la portada (el mismo de antes), ahora en un marco -->
+        <div class="relative isolate aspect-[16/10] min-w-0 overflow-hidden rounded-3xl bg-slate-950 shadow-xl shadow-black/20">
+          <video id="hero-video" class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/video/hero-poster.webp" aria-hidden="true" tabindex="-1">
+            <source src="/video/hero.mp4" type="video/mp4" />
+          </video>
+          <button id="hero-toggle" type="button" class="glass absolute bottom-3 right-3 hidden h-10 w-10 place-items-center rounded-full" aria-label="Pausar vídeo de fondo" aria-pressed="false">
+            <span data-icon="pause" data-icon-class="icon h-5 w-5"></span>
+          </button>
+        </div>
+      </section>
 
-        <ul class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5" x-show="filtered.length">
-          <template x-for="g in filtered" :key="g.slug">
-            <li class="[content-visibility:auto] [contain-intrinsic-size:auto_15rem]">
-              <a :href="href(g)" class="group relative block aspect-[2/3] overflow-hidden rounded-xl border border-line" :class="g.image ? 'bg-slate-900' : 'cov cov-' + g.category">
-                <img x-show="g.image" :src="g.image ? cover(g) : null" alt="" width="520" height="780" loading="lazy" decoding="async"
-                     class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                <img x-show="!g.image && !failed[g.slug]" :src="g.image ? null : sprite(g)" alt="" width="96" height="96" loading="lazy" decoding="async" data-own-error @error="spriteError($event, g)"
-                     class="absolute left-1/2 top-[30%] h-24 w-24 -translate-x-1/2 -translate-y-1/2 opacity-90 [image-rendering:pixelated]" />
-                <span class="absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 text-6xl" aria-hidden="true" x-show="!g.image && failed[g.slug]" x-text="g.emoji"></span>
-                <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-3 pt-10 text-white">
-                  <span class="block text-sm font-bold leading-snug text-shadow" x-text="g.tt"></span>
-                  <span class="mt-0.5 block text-xs text-slate-200" x-text="g.cc"></span>
-                </span>
-              </a>
-            </li>
+      <!-- ================= OBJETIVOS (filas de portadas, sin barra de desplazamiento) ================= -->
+      <section id="galeria" class="mx-auto max-w-6xl scroll-mt-16 px-4 pb-12" aria-labelledby="gallery-title">
+        <h2 id="gallery-title" class="sr-only" data-i18n="gallery.title">Lista de Guías</h2>
+
+        <div class="flex flex-wrap items-center gap-2 pt-4">
+          <span class="font-display text-sm font-bold" data-i18n="hero.goTo">Ir a:</span>
+          <template x-for="go in groups" :key="go.id">
+            <a :href="'#obj-' + go.id" class="goal-pill" :style="'--c:var(--goal-' + go.id + ')'"><i aria-hidden="true"></i> <span x-text="go.title"></span></a>
           </template>
-        </ul>
+        </div>
+
+        <p class="mt-3 text-sm text-muted" role="status" aria-live="polite" x-text="resultsText"></p>
+
+        <template x-for="go in groups" :key="go.id">
+          <section :id="'obj-' + go.id" class="scroll-mt-20 pt-8" :style="'--c:var(--goal-' + go.id + ')'" :aria-labelledby="'obj-t-' + go.id">
+            <div class="flex flex-wrap items-baseline gap-x-3">
+              <h3 :id="'obj-t-' + go.id" class="font-display flex items-center gap-2.5 text-2xl font-extrabold tracking-tight"><i class="goal-dot" aria-hidden="true"></i><span x-text="go.title"></span></h3>
+              <span class="ml-auto text-sm font-semibold text-muted" x-text="tr('results.count', { count: go.list.length })"></span>
+              <p class="basis-full text-sm text-muted" x-text="go.desc"></p>
+            </div>
+            <ul class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              <template x-for="g in go.list" :key="g.slug">
+                <li class="[content-visibility:auto] [contain-intrinsic-size:auto_15rem]">
+                  <a :href="href(g)" class="group block">
+                    <span class="relative block aspect-[2/3] overflow-hidden rounded-2xl shadow-md shadow-black/10 transition-transform duration-200 group-hover:-translate-y-1" :class="g.image ? 'bg-slate-900' : 'goal-cov'">
+                      <img x-show="g.image" :src="g.image ? cover(g) : null" alt="" width="520" height="780" loading="lazy" decoding="async"
+                           class="absolute inset-0 h-full w-full object-cover" />
+                      <img x-show="!g.image && !failed[g.slug]" :src="g.image ? null : sprite(g)" alt="" width="96" height="96" loading="lazy" decoding="async" data-own-error @error="spriteError($event, g)"
+                           class="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 object-contain [image-rendering:pixelated]" />
+                      <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl" aria-hidden="true" x-show="!g.image && failed[g.slug]" x-text="g.emoji"></span>
+                      <span x-show="g.isNew" x-cloak class="absolute left-2 top-2 rounded-full bg-accent-strong px-2 py-0.5 text-[0.7rem] font-extrabold uppercase tracking-wider text-white" x-text="tr('card.new')"></span>
+                    </span>
+                    <span class="mt-2.5 block text-[0.95rem] font-bold leading-snug [text-wrap:balance]" x-text="g.tt"></span>
+                    <span class="block text-xs text-muted" x-text="g.cc"></span>
+                  </a>
+                </li>
+              </template>
+            </ul>
+          </section>
+        </template>
 
         <!-- Estado vacío -->
-        <div x-show="!filtered.length" x-cloak class="mt-8 rounded-xl border border-dashed border-line p-10 text-center">
+        <div x-show="!filtered.length" x-cloak class="mt-8 rounded-2xl border border-dashed border-line p-10 text-center">
           <p class="text-4xl" aria-hidden="true">🔍</p>
           <span class="mx-auto mt-2 block w-fit text-muted" x-html="icon('inbox', 'h-12 w-12')"></span>
           <h3 class="mt-3 text-lg font-semibold" data-i18n="empty.title">No encontramos guías</h3>
@@ -227,7 +218,7 @@
         <p class="font-semibold" data-i18n="footer.credits">Créditos</p>
         <ul class="mt-3 space-y-2 text-muted">
           <li><span data-i18n="footer.sprites">Sprites: PokeAPI y Pokémon Showdown.</span> <a class="text-accent-text" href="https://pokeapi.co" target="_blank" rel="noopener noreferrer">pokeapi.co<span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a></li>
-          <li data-i18n="footer.icons">Iconos: Lucide · Tipografía: Inter.</li>
+          <li data-i18n="footer.icons">Iconos: Lucide · Tipografías: Bricolage Grotesque y Hanken Grotesk.</li>
         </ul>
       </div>
     </div>

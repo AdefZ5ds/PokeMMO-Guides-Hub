@@ -19,17 +19,19 @@
     "guides": "指南",
     "popular": "热门",
     "searchPlaceholder": "搜索指南…",
-    "gallery": "指南列表"
+    "gallery": "指南列表",
+    "goals": "目标"
   },
   "hero": {
     "badge": "社区内容",
-    "title": "所有 PokeMMO 指南，一站搞定",
-    "subtitle": "繁殖、努力值/个体值、闪光狩猎、对战、刷资源等。搜索、筛选，打开你需要的指南。",
+    "title": "欢迎来到 PokeMMO Guides Hub",
+    "subtitle": "这里汇集 PokeMMO 指南，并按你想做的事情分类：击败首领与团战、刷资源、完成地区、繁殖与培养，或学习基础。提供西班牙语、英语和中文。",
     "cta": "查看指南列表",
     "browse": "浏览全部",
     "play": "浏览指南",
     "pause": "暂停背景视频",
-    "resume": "播放背景视频"
+    "resume": "播放背景视频",
+    "goTo": "前往："
   },
   "popular": {
     "title": "最受欢迎的指南",
@@ -41,7 +43,8 @@
   "filters": {
     "label": "按分类筛选",
     "all": "全部",
-    "button": "筛选"
+    "button": "筛选",
+    "sortLabel": "排序"
   },
   "sort": {
     "label": "排序方式",
@@ -86,7 +89,7 @@
     "disclaimer": "非官方社区网站，与 PokeMMO 及任天堂/Game Freak 无关联。宝可梦及其名称归各自所有者所有。每篇指南归其作者所有，并在各指南中署名。",
     "tagline": "由一位玩家用心为整个社区制作。愿你的个体值高、闪光常见、团战无意外。祝狩猎愉快，训练家！",
     "links": "链接",
-    "icons": "图标：Lucide · 字体：Inter。"
+    "icons": "图标：Lucide · 字体：Bricolage Grotesque 与 Hanken Grotesk。"
   },
   "counter": {
     "local": "本地计数（演示模式）"
@@ -239,5 +242,27 @@
   "menu": {
     "open": "打开菜单",
     "close": "关闭菜单"
+  },
+  "goals": {
+    "boss": {
+      "title": "击败首领与团战",
+      "desc": "队伍、速度和回合，一步步讲解。"
+    },
+    "farm": {
+      "title": "刷金钱与资源",
+      "desc": "刷取路线、市场、钓鱼与道馆。"
+    },
+    "region": {
+      "title": "完成地区",
+      "desc": "速通、剧情路线与图鉴。"
+    },
+    "breed": {
+      "title": "繁殖与培养",
+      "desc": "繁殖、努力值、个体值、闪光与对战。"
+    },
+    "basic": {
+      "title": "学习基础",
+      "desc": "入门指引，避免代价高昂的错误。"
+    }
   }
 }

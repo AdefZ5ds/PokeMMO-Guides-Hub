@@ -14,7 +14,7 @@ import { renderHooh } from './render-hooh.mjs';
 import { renderRusheo } from './render-rusheo.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const { guides, categories } = JSON.parse(readFileSync(resolve(root, 'assets/data/guides.json'), 'utf8'));
+const { guides, categories, goals } = JSON.parse(readFileSync(resolve(root, 'assets/data/guides.json'), 'utf8'));
 const es = JSON.parse(readFileSync(resolve(root, 'locales/es.json'), 'utf8'));
 const catName = (id) => es.categories[id];
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -51,6 +51,7 @@ function bodyHtml(g) {
 
 function page(g) {
   const cat = catName(g.category);
+  const goalName = es.goals[g.goal].title;
   return `<!doctype html>
 <html lang="es" class="dark">
 <head>
@@ -64,11 +65,11 @@ function page(g) {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" />
   <script>
     try {
       var s = localStorage.getItem('pmmo-theme');
-      var dark = s ? s === 'dark' : !matchMedia('(prefers-color-scheme: light)').matches;
+      var dark = s ? s === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
       document.documentElement.classList.toggle('dark', dark);
     } catch (e) {}
   </script>
@@ -116,12 +117,12 @@ function page(g) {
           <ol class="flex flex-wrap items-center gap-1.5 text-sm text-slate-200">
             <li><a class="font-medium text-sky-300" href="../index.html" data-i18n="nav.home">Inicio</a></li>
             <li aria-hidden="true"><span data-icon="chevron-right"></span></li>
-            <li><a class="font-medium text-sky-300" href="../index.html?cat=${g.category}#galeria" data-i18n="categories.${g.category}">${esc(cat)}</a></li>
+            <li><a class="font-medium text-sky-300" href="../index.html#obj-${g.goal}" data-i18n="goals.${g.goal}.title">${esc(goalName)}</a></li>
           </ol>
         </nav>
         <h1 id="guide-title" class="mt-3 text-3xl font-bold leading-tight sm:text-4xl" style="text-shadow:0 2px 12px rgb(0 0 0/.7)" data-i18n="guides.${g.slug}.title" data-i18n-default="${esc(g.title)}">${esc(g.title)}</h1>
         <p class="mt-3 flex flex-wrap items-center gap-2 text-sm text-slate-100">
-          <span class="inline-flex items-center gap-1 rounded-full border border-white/40 bg-white/15 px-2 py-0.5 text-xs font-semibold"><span aria-hidden="true">${categories.find((c) => c.id === g.category).emoji}</span> <span data-i18n="categories.${g.category}">${esc(cat)}</span></span>
+          <span class="inline-flex items-center gap-1 rounded-full border border-white/40 bg-white/15 px-2 py-0.5 text-xs font-semibold"><span aria-hidden="true">${goals.find((c) => c.id === g.goal).emoji}</span> <span data-i18n="goals.${g.goal}.title">${esc(goalName)}</span></span>
           ${g.externalUrl ? `<span class="inline-flex items-center gap-1 rounded-full border border-white/40 bg-white/15 px-2 py-0.5 text-xs font-semibold" data-i18n="card.external">${es.card.external}</span>` : ''}
           <span><span data-icon="eye"></span> <span id="guide-views" aria-live="polite">…</span></span>
         </p>
@@ -163,7 +164,7 @@ function page(g) {
         <p class="font-semibold" data-i18n="footer.credits">Créditos</p>
         <ul class="mt-3 space-y-2 text-muted">
           <li><span data-i18n="footer.sprites">Sprites: PokeAPI y Pokémon Showdown.</span> <a class="text-accent-text" href="https://pokeapi.co" target="_blank" rel="noopener noreferrer">pokeapi.co<span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a></li>
-          <li data-i18n="footer.icons">Iconos: Lucide · Tipografía: Inter.</li>
+          <li data-i18n="footer.icons">Iconos: Lucide · Tipografías: Bricolage Grotesque y Hanken Grotesk.</li>
         </ul>
       </div>
     </div>

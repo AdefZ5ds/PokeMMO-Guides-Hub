@@ -22,6 +22,7 @@ export function startHub() {
   Alpine.data('hub', () => ({
     guides: data.guides,
     categories: data.categories,
+    goals: data.goals,
     lang: currentLang(),
     qInput: '', q: '', cat: 'all', sort: 'popular',
     counts: Object.fromEntries(data.guides.map((g) => [g.slug, g.popularity])),
@@ -32,6 +33,7 @@ export function startHub() {
     spriteError(e, g) { this.failed[g.slug] = true; e.target.removeAttribute('src'); },
     // Listas derivadas: se recalculan una vez por cambio (no en cada lectura de la plantilla)
     filtered: [],
+    groups: [],
 
     init() {
       const p = new URLSearchParams(location.search);
@@ -57,6 +59,8 @@ export function startHub() {
     title(g) { return this.tr(`guides.${g.slug}.title`, { defaultValue: g.title }); },
     desc(g) { return this.tr(`guides.${g.slug}.description`, { defaultValue: g.description }); },
     catLabel(id) { return this.tr(`categories.${id}`); },
+    goalTitle(id) { return this.tr(`goals.${id}.title`); },
+    goalDesc(id) { return this.tr(`goals.${id}.desc`); },
     catEmoji(id) { return this.categories.find((c) => c.id === id)?.emoji ?? ''; },
     href(g) { return `${BASE}guides/${g.slug}.html`; },
     cover(g) { return `${BASE}img/portadas/${g.image}.webp`; },
@@ -92,6 +96,10 @@ export function startHub() {
       }[this.sort];
       // Con el orden por popularidad, las guías con portada van primero.
       this.filtered = list.sort(this.sort === 'popular' ? (a, b) => Number(!!b.image) - Number(!!a.image) || byViews(a, b) : by);
+      // Una fila por objetivo (solo las que tienen resultados), conservando el orden elegido.
+      this.groups = this.goals
+        .map((go) => ({ id: go.id, title: this.goalTitle(go.id), desc: this.goalDesc(go.id), list: this.filtered.filter((g) => g.goal === go.id) }))
+        .filter((go) => go.list.length);
     },
 
     get resultsText() { return this.tr('results.count', { count: this.filtered.length }); },

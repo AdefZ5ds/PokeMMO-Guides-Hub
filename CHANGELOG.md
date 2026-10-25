@@ -1,5 +1,12 @@
 # Cambios de esta versión
 
+## Ronda 4 · Rediseño por objetivos
+- Portada nueva: texto de presentación, buscador + botón "Filtros" (solo orden) y vídeo en un marco; debajo, 5 objetivos con su fila de portadas en cuadrícula (sin barra de desplazamiento horizontal).
+- Objetivos: Derrotar jefes y raids · Farmear · Completar regiones · Criar y entrenar · Aprender lo básico. Cada guía tiene `goal` en `assets/data/guides.json` (cambia ahí el reparto).
+- Plantilla de guías: migas de pan y etiqueta apuntan al objetivo; nuevas tipografías (Bricolage Grotesque + Hanken Grotesk).
+- Textos nuevos en es/en/zh (`goals.*`, `hero.*`). Tema por defecto: el del sistema (claro si no hay preferencia).
+- Las categorías antiguas ya no se muestran en la interfaz (siguen en los datos).
+
 ## Pedidos
 - **GIF en Android**: los sprites animados ahora están dentro del proyecto (`public/img/sprites/`) y ya no dependen de raw.githubusercontent.com. Además, ya no se congelan solos con «reducir movimiento» (Android lo activa con el ahorro de batería o «quitar animaciones»): hay un botón 🎞️ en la barra para pausarlos, y la preferencia se guarda en el navegador. Causa no comprobada en un Android real: se probó con una emulación móvil con «reducir movimiento» activado.
 - **Rusheo**: sprites de objetos en los objetos equipados (Restos, Cint. Negra, Antederretir, Pañl. Seda…) y en los objetos de inventario citados en pasos y consejos (MO Corte/Surf/Golpe Roca/Fuerza/Vuelo…, Bici, Bici Acrobática, Regadera, Repelente, Poción Secreta, Té, Dientes de Oro, Llaves).

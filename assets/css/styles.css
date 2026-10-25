@@ -18,6 +18,7 @@
   --accent-strong: 37 99 235;
   --accent-text: 29 78 216;
   --gold: 250 204 21;
+  --goal-boss: #c93a3a; --goal-farm: #b27608; --goal-region: #23885c; --goal-breed: #b23c8f; --goal-basic: #52627a;
   color-scheme: light;
 }
 :root.dark {
@@ -27,6 +28,7 @@
   --fg: 226 232 240;
   --muted: 148 163 184;
   --accent-text: 96 165 250;
+  --goal-boss: #ff8a8a; --goal-farm: #f0b84a; --goal-region: #5fd39a; --goal-breed: #f08ad0; --goal-basic: #a9b8cf;
   color-scheme: dark;
 }
 
@@ -128,3 +130,11 @@ body.home-bg {
   background: linear-gradient(rgb(var(--bg) / .86), rgb(var(--bg) / .86)), url('/img/fondo-inicio.webp') top center / 100% auto repeat-y;
   background-color: rgb(var(--bg));
 }
+
+/* Objetivos de la portada: color propio por fila (variable --c) */
+.goal-dot { width: .75rem; height: .75rem; flex: none; border-radius: .25rem; background: var(--c); }
+.goal-pill { @apply inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-2 text-sm font-semibold text-fg transition-colors; }
+.goal-pill:hover { border-color: var(--c); }
+.goal-pill > i { width: .625rem; height: .625rem; border-radius: 9999px; background: var(--c); }
+.goal-cov { background-image: linear-gradient(160deg, color-mix(in srgb, var(--c) 85%, #000), color-mix(in srgb, var(--c) 40%, rgb(var(--surface)))); }
+.font-display { font-family: 'Bricolage Grotesque', 'Hanken Grotesk', ui-sans-serif, system-ui, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; }

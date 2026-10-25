@@ -19,17 +19,19 @@
     "guides": "Guides",
     "popular": "Popular",
     "searchPlaceholder": "Search guides…",
-    "gallery": "Guide List"
+    "gallery": "Guide List",
+    "goals": "Goals"
   },
   "hero": {
     "badge": "Community content",
-    "title": "Every PokeMMO guide in one place",
-    "subtitle": "Breeding, EVs/IVs, shiny hunting, PvP, farming and more. Search, filter and open the guide you need.",
+    "title": "Welcome to PokeMMO Guides Hub",
+    "subtitle": "A place that gathers PokeMMO guides, organized by what you want to do: beat bosses and raids, farm, complete regions, breed and train, or learn the basics. Available in Spanish, English and Chinese.",
     "cta": "See the guide list",
     "browse": "Browse all",
     "play": "Explore guides",
     "pause": "Pause background video",
-    "resume": "Play background video"
+    "resume": "Play background video",
+    "goTo": "Go to:"
   },
   "popular": {
     "title": "Most popular guides",
@@ -41,7 +43,8 @@
   "filters": {
     "label": "Filter by category",
     "all": "All",
-    "button": "Filters"
+    "button": "Filters",
+    "sortLabel": "Sort"
   },
   "sort": {
     "label": "Sort by",
@@ -88,7 +91,7 @@
     "disclaimer": "Unofficial community site: not affiliated with PokeMMO or Nintendo/Game Freak. Pokémon and their names belong to their respective owners. Each guide belongs to its authors, who are credited in each guide.",
     "tagline": "Made with love by a player for the whole community. May your IVs be high, your shinies frequent and your raids free of surprises. Happy hunting, trainer!",
     "links": "Links",
-    "icons": "Icons: Lucide · Typeface: Inter."
+    "icons": "Icons: Lucide · Typefaces: Bricolage Grotesque and Hanken Grotesk."
   },
   "counter": {
     "local": "Local counter (demo mode)"
@@ -241,5 +244,27 @@
   "menu": {
     "open": "Open menu",
     "close": "Close menu"
+  },
+  "goals": {
+    "boss": {
+      "title": "Beat bosses and raids",
+      "desc": "Teams, speeds and turns, step by step."
+    },
+    "farm": {
+      "title": "Farm money and resources",
+      "desc": "Farming routes, market, fishing and gyms."
+    },
+    "region": {
+      "title": "Complete regions",
+      "desc": "Rushing, story routes and Pokédex."
+    },
+    "breed": {
+      "title": "Breed and train",
+      "desc": "Breeding, EVs, IVs, shiny and PvP."
+    },
+    "basic": {
+      "title": "Learn the basics",
+      "desc": "To get started and avoid costly mistakes."
+    }
   }
 }

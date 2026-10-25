@@ -57,7 +57,8 @@
       "emoji": "🔴",
       "added": "2026-10-14",
       "popularity": 1000,
-      "image": "red"
+      "image": "red",
+      "goal": "boss"
     },
     {
       "slug": "raid-meloetta",
@@ -78,7 +79,8 @@
       "emoji": "🎶",
       "added": "2026-10-15",
       "popularity": 990,
-      "image": "meloetta"
+      "image": "meloetta",
+      "goal": "boss"
     },
     {
       "slug": "raid-cresselia",
@@ -100,7 +102,8 @@
       "emoji": "🌙",
       "added": "2026-10-21",
       "popularity": 985,
-      "image": "cresselia"
+      "image": "cresselia",
+      "goal": "boss"
     },
     {
       "slug": "crianza",
@@ -116,7 +119,8 @@
       "sprite": 175,
       "emoji": "🥚",
       "added": "2026-09-01",
-      "popularity": 920
+      "popularity": 920,
+      "goal": "breed"
     },
     {
       "slug": "evs-ivs",
@@ -132,7 +136,8 @@
       "sprite": 132,
       "emoji": "📊",
       "added": "2026-09-02",
-      "popularity": 880
+      "popularity": 880,
+      "goal": "breed"
     },
     {
       "slug": "shiny-hunting",
@@ -148,7 +153,8 @@
       "sprite": 130,
       "emoji": "✨",
       "added": "2026-09-03",
-      "popularity": 860
+      "popularity": 860,
+      "goal": "breed"
     },
     {
       "slug": "pvp-competitive",
@@ -164,7 +170,8 @@
       "sprite": 445,
       "emoji": "⚔️",
       "added": "2026-09-04",
-      "popularity": 840
+      "popularity": 840,
+      "goal": "breed"
     },
     {
       "slug": "farming-dinero",
@@ -180,7 +187,8 @@
       "sprite": 52,
       "emoji": "💰",
       "added": "2026-09-05",
-      "popularity": 900
+      "popularity": 900,
+      "goal": "farm"
     },
     {
       "slug": "legendarios",
@@ -196,7 +204,8 @@
       "sprite": 150,
       "emoji": "👑",
       "added": "2026-09-06",
-      "popularity": 810
+      "popularity": 810,
+      "goal": "boss"
     },
     {
       "slug": "rutas-historia",
@@ -212,7 +221,8 @@
       "sprite": 25,
       "emoji": "🗺️",
       "added": "2026-09-07",
-      "popularity": 700
+      "popularity": 700,
+      "goal": "region"
     },
     {
       "slug": "naturalezas",
@@ -227,7 +237,8 @@
       "sprite": 133,
       "emoji": "🧬",
       "added": "2026-09-08",
-      "popularity": 650
+      "popularity": 650,
+      "goal": "breed"
     },
     {
       "slug": "habilidades-ocultas",
@@ -242,7 +253,8 @@
       "sprite": 63,
       "emoji": "🔮",
       "added": "2026-09-09",
-      "popularity": 560
+      "popularity": 560,
+      "goal": "breed"
     },
     {
       "slug": "huevos-eclosion",
@@ -258,7 +270,8 @@
       "sprite": 175,
       "emoji": "🐣",
       "added": "2026-09-10",
-      "popularity": 540
+      "popularity": 540,
+      "goal": "breed"
     },
     {
       "slug": "gtl-mercado",
@@ -274,7 +287,8 @@
       "sprite": 143,
       "emoji": "🏪",
       "added": "2026-09-11",
-      "popularity": 780
+      "popularity": 780,
+      "goal": "farm"
     },
     {
       "slug": "tipos-efectividad",
@@ -290,7 +304,8 @@
       "sprite": 6,
       "emoji": "🔥",
       "added": "2026-09-12",
-      "popularity": 730
+      "popularity": 730,
+      "goal": "basic"
     },
     {
       "slug": "primeros-pasos",
@@ -306,7 +321,8 @@
       "sprite": 25,
       "emoji": "🎮",
       "added": "2026-09-13",
-      "popularity": 950
+      "popularity": 950,
+      "goal": "basic"
     },
     {
       "slug": "elegir-inicial",
@@ -322,7 +338,8 @@
       "sprite": 1,
       "emoji": "🌱",
       "added": "2026-09-14",
-      "popularity": 610
+      "popularity": 610,
+      "goal": "region"
     },
     {
       "slug": "hordas-ev",
@@ -338,7 +355,8 @@
       "sprite": 41,
       "emoji": "🦇",
       "added": "2026-09-15",
-      "popularity": 690
+      "popularity": 690,
+      "goal": "farm"
     },
     {
       "slug": "tiers-metajuego",
@@ -354,7 +372,8 @@
       "sprite": 448,
       "emoji": "🏆",
       "added": "2026-09-16",
-      "popularity": 620
+      "popularity": 620,
+      "goal": "breed"
     },
     {
       "slug": "movimientos-tm",
@@ -370,7 +389,8 @@
       "sprite": 143,
       "emoji": "💿",
       "added": "2026-09-17",
-      "popularity": 480
+      "popularity": 480,
+      "goal": "basic"
     },
     {
       "slug": "eventos-temporada",
@@ -385,7 +405,8 @@
       "sprite": 251,
       "emoji": "🎉",
       "added": "2026-10-01",
-      "popularity": 590
+      "popularity": 590,
+      "goal": "basic"
     },
     {
       "slug": "pokedex-completar",
@@ -400,7 +421,8 @@
       "sprite": 151,
       "emoji": "📖",
       "added": "2026-10-02",
-      "popularity": 430
+      "popularity": 430,
+      "goal": "region"
     },
     {
       "slug": "pesca-recursos",
@@ -415,7 +437,8 @@
       "sprite": 129,
       "emoji": "🎣",
       "added": "2026-10-03",
-      "popularity": 410
+      "popularity": 410,
+      "goal": "farm"
     },
     {
       "slug": "elite-cuatro",
@@ -431,7 +454,8 @@
       "sprite": 149,
       "emoji": "🏅",
       "added": "2026-10-04",
-      "popularity": 520
+      "popularity": 520,
+      "goal": "boss"
     },
     {
       "slug": "trading-seguro",
@@ -447,7 +471,8 @@
       "sprite": 39,
       "emoji": "🤝",
       "added": "2026-10-05",
-      "popularity": 670
+      "popularity": 670,
+      "goal": "basic"
     },
     {
       "slug": "legendarios-evento",
@@ -463,7 +488,8 @@
       "sprite": 249,
       "emoji": "🌟",
       "added": "2026-10-06",
-      "popularity": 470
+      "popularity": 470,
+      "goal": "boss"
     },
     {
       "slug": "guia-comunidad-wiki",
@@ -481,7 +507,8 @@
       "added": "2026-10-07",
       "popularity": 500,
       "externalUrl": "https://example.com/reemplazar-con-guia-wiki",
-      "placeholderUrl": true
+      "placeholderUrl": true,
+      "goal": "basic"
     },
     {
       "slug": "video-shiny-externo",
@@ -499,7 +526,8 @@
       "added": "2026-10-08",
       "popularity": 450,
       "externalUrl": "https://example.com/reemplazar-con-video",
-      "placeholderUrl": true
+      "placeholderUrl": true,
+      "goal": "breed"
     },
     {
       "slug": "pdf-crianza-externo",
@@ -517,7 +545,8 @@
       "added": "2026-10-09",
       "popularity": 420,
       "externalUrl": "https://example.com/reemplazar-con-pdf",
-      "placeholderUrl": true
+      "placeholderUrl": true,
+      "goal": "breed"
     },
     {
       "slug": "farmeo-gimnasios",
@@ -542,7 +571,8 @@
       "popularity": 980,
       "added": "2026-10-15",
       "lang": "es",
-      "image": "gym"
+      "image": "gym",
+      "goal": "farm"
     },
     {
       "slug": "farmeo-gimnasios-2026",
@@ -566,7 +596,8 @@
       "emoji": "🌋",
       "added": "2026-10-21",
       "popularity": 975,
-      "image": "farmeo26"
+      "image": "farmeo26",
+      "goal": "farm"
     },
     {
       "slug": "farmeo-hooh",
@@ -589,7 +620,8 @@
       "popularity": 970,
       "added": "2026-10-15",
       "lang": "es",
-      "image": "hooh"
+      "image": "hooh",
+      "goal": "farm"
     },
     {
       "slug": "rusheo-multiregion",
@@ -613,7 +645,30 @@
       "popularity": 960,
       "added": "2026-10-15",
       "lang": "es",
-      "image": "region"
+      "image": "region",
+      "goal": "region"
+    }
+  ],
+  "goals": [
+    {
+      "id": "boss",
+      "emoji": "⚔️"
+    },
+    {
+      "id": "farm",
+      "emoji": "💰"
+    },
+    {
+      "id": "region",
+      "emoji": "🗺️"
+    },
+    {
+      "id": "breed",
+      "emoji": "🥚"
+    },
+    {
+      "id": "basic",
+      "emoji": "🎮"
     }
   ]
 }

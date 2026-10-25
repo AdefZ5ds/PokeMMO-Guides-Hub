@@ -19,17 +19,19 @@
     "guides": "Guías",
     "popular": "Populares",
     "searchPlaceholder": "Buscar guías…",
-    "gallery": "Lista de Guías"
+    "gallery": "Lista de Guías",
+    "goals": "Objetivos"
   },
   "hero": {
     "badge": "Contenido de la comunidad",
-    "title": "Todas las guías de PokeMMO en un solo lugar",
-    "subtitle": "Crianza, EVs/IVs, shiny hunting, PvP, farmeo y más. Busca, filtra y abre la guía que necesitas.",
+    "title": "Bienvenido a PokeMMO Guides Hub",
+    "subtitle": "Un lugar para reunir guías de PokeMMO, organizadas por lo que quieres hacer: derrotar jefes y raids, farmear, completar regiones, criar y entrenar, o aprender lo básico. Disponible en español, inglés y chino.",
     "cta": "Ver la lista de guías",
     "browse": "Explorar todas",
     "play": "Explorar guías",
     "pause": "Pausar vídeo de fondo",
-    "resume": "Reanudar vídeo de fondo"
+    "resume": "Reanudar vídeo de fondo",
+    "goTo": "Ir a:"
   },
   "popular": {
     "title": "Guías más populares",
@@ -41,7 +43,8 @@
   "filters": {
     "label": "Filtrar por categoría",
     "all": "Todas",
-    "button": "Filtros"
+    "button": "Filtros",
+    "sortLabel": "Ordenar"
   },
   "sort": {
     "label": "Ordenar por",
@@ -88,7 +91,7 @@
     "disclaimer": "Sitio comunitario no oficial: no está afiliado a PokeMMO ni a Nintendo/Game Freak. Pokémon y sus nombres pertenecen a sus respectivos dueños. Cada guía pertenece a sus autores, que aparecen en los créditos de cada una.",
     "tagline": "Hecho con cariño por un jugador para toda la comunidad. Que tus IVs sean altos, tus shinies frecuentes y tus raids sin sorpresas. ¡Buena caza, entrenador!",
     "links": "Enlaces",
-    "icons": "Iconos: Lucide · Tipografía: Inter."
+    "icons": "Iconos: Lucide · Tipografías: Bricolage Grotesque y Hanken Grotesk."
   },
   "counter": {
     "local": "Contador local (modo demo)"
@@ -115,5 +118,27 @@
   "menu": {
     "open": "Abrir menú",
     "close": "Cerrar menú"
+  },
+  "goals": {
+    "boss": {
+      "title": "Derrotar jefes y raids",
+      "desc": "Equipos, velocidades y turnos paso a paso."
+    },
+    "farm": {
+      "title": "Farmear dinero y recursos",
+      "desc": "Rutas de farmeo, mercado, pesca y gimnasios."
+    },
+    "region": {
+      "title": "Completar regiones",
+      "desc": "Rusheo, rutas de la historia y Pokédex."
+    },
+    "breed": {
+      "title": "Criar y entrenar",
+      "desc": "Crianza, EVs, IVs, shiny y PvP."
+    },
+    "basic": {
+      "title": "Aprender lo básico",
+      "desc": "Para empezar y no cometer errores caros."
+    }
   }
 }
