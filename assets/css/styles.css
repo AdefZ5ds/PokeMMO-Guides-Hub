@@ -64,7 +64,7 @@
   .chip {
     @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1.5 text-sm font-medium text-fg transition-colors hover:border-accent;
   }
-  .chip[aria-pressed='true'] { @apply border-accent-strong bg-accent-strong text-white; }
+  .chip[aria-pressed='true'], .chip[aria-selected='true'] { @apply border-accent-strong bg-accent-strong text-white; }
   .card {
     @apply relative flex flex-col gap-3 rounded-xl focus-within:ring-2 focus-within:ring-accent border border-line bg-surface p-4 transition-shadow hover:shadow-lg hover:shadow-black/10;
   }
@@ -154,3 +154,13 @@ body.home-bg {
 }
 /* Rendimiento: las secciones fuera de pantalla no se pintan hasta acercarse (guías con cientos de sprites) */
 .guide-body section[id] { content-visibility: auto; contain-intrinsic-size: auto 18rem; }
+
+/* Pestañas movidas al índice lateral */
+.toc-sub { margin-top: 1rem; }
+.toc-tabs { @apply flex flex-wrap gap-2; }
+.toc-tabs .chip { @apply rounded-xl px-3 py-2 font-semibold; }
+.toc-list + .toc-sub, .toc-list + .toc-tabs { margin-top: .75rem; }
+@media (min-width: 1024px) {
+  .toc-tabs { flex-direction: column; flex-wrap: nowrap; gap: .375rem; }
+  .toc-tabs .chip { width: 100%; justify-content: flex-start; text-align: left; }
+}

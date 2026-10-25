@@ -102,10 +102,12 @@ if (document.getElementById('hub')) {
 }
 
 // --- Guías con galería de situaciones (p. ej. RED) ---
-if (document.getElementById('gallery-data')) import('./gallery.js').then(sweep);
-if (document.getElementById('raid-guide')) import('./raid.js').then(sweep);
-if (document.getElementById('farmeo-guide')) import('./farmeo.js').then(sweep);
-if (document.getElementById('rush-progress')) import('./rusheo.js').then(sweep);
+const guideMods = [
+  document.getElementById('gallery-data') && import('./gallery.js').then(sweep),
+  document.getElementById('raid-guide') && import('./raid.js').then(sweep),
+  document.getElementById('farmeo-guide') && import('./farmeo.js').then(sweep),
+  document.getElementById('rush-progress') && import('./rusheo.js').then(sweep),
+].filter(Boolean);
 
 // --- Páginas de guía: contador y aviso de traducción ---
 const guide = document.querySelector('[data-guide]');
@@ -124,7 +126,8 @@ if (guide) {
   refresh();
   window.addEventListener('langchange', refresh);
 
-  pageMods.toc?.then((m) => m.buildToc());
+  // El índice lateral espera a que las guías con pestañas hayan creado sus barras
+  Promise.all([pageMods.toc, ...guideMods]).then(([m]) => m?.buildToc());
   const { hit } = await import('./counter.js');
   hit(slug, Number(seed) || 0).then((n) => { views = n; refresh(); });
 }

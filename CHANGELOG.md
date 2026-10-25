@@ -1,5 +1,10 @@
 # Cambios de esta versión
 
+## Ronda 4c · Pestañas en el lateral
+- Las pestañas de las guías (secciones, regiones, jugadores PJ1-4) ahora viven en el índice lateral y cambian el contenido; ya no hay barras de pestañas arriba. Las guías sin pestañas enlazan a sus títulos.
+- Guía de RED: el índice solo muestra Resumen, Equipo y Estrategia (sin "Generación 1-5").
+- La pestaña seleccionada ahora se ve resaltada (antes no tenía estilo).
+
 ## Ronda 4b · Índice lateral y velocidad
 - Todas las guías con 2+ secciones tienen índice lateral fijo a la izquierda (escritorio) o botones en filas (móvil), con la sección activa resaltada (`assets/js/toc.js`).
 - Portada: sprites estáticos (antes 26 GIF animados a la vez), vídeo (≈7 MB) se pide solo al terminar de cargar y no en conexión lenta/ahorro de datos, fuentes sin bloquear el pintado, módulos cargados en paralelo.
