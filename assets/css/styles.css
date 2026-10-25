@@ -138,3 +138,19 @@ body.home-bg {
 .goal-pill > i { width: .625rem; height: .625rem; border-radius: 9999px; background: var(--c); }
 .goal-cov { background-image: linear-gradient(160deg, color-mix(in srgb, var(--c) 85%, #000), color-mix(in srgb, var(--c) 40%, rgb(var(--surface)))); }
 .font-display { font-family: 'Bricolage Grotesque', 'Hanken Grotesk', ui-sans-serif, system-ui, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+
+/* Guías: índice lateral + contenido. Sin índice (guías cortas) el contenido queda centrado como antes. */
+.guide-wrap { max-width: 48rem; }
+.guide-wrap.has-toc { max-width: 72rem; }
+.guide-toc { margin-bottom: 1.5rem; }
+.toc-title { @apply mb-2 text-xs font-bold uppercase tracking-wider text-muted; }
+.toc-list { @apply flex flex-wrap gap-2; }
+.toc-list a { @apply block rounded-xl border border-line bg-surface px-3 py-2 text-sm font-semibold text-fg transition-colors hover:border-accent; }
+.toc-list a[aria-current='true'] { @apply border-accent-strong bg-accent-strong text-white; }
+@media (min-width: 1024px) {
+  .guide-wrap.has-toc { display: grid; grid-template-columns: 13rem minmax(0, 1fr); column-gap: 2rem; align-items: start; }
+  .guide-wrap.has-toc .guide-toc { position: sticky; top: 5rem; margin-bottom: 0; max-height: calc(100svh - 6rem); overflow-y: auto; }
+  .toc-list { flex-direction: column; flex-wrap: nowrap; gap: .375rem; }
+}
+/* Rendimiento: las secciones fuera de pantalla no se pintan hasta acercarse (guías con cientos de sprites) */
+.guide-body section[id] { content-visibility: auto; contain-intrinsic-size: auto 18rem; }

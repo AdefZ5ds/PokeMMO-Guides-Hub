@@ -1,5 +1,10 @@
 # Cambios de esta versión
 
+## Ronda 4b · Índice lateral y velocidad
+- Todas las guías con 2+ secciones tienen índice lateral fijo a la izquierda (escritorio) o botones en filas (móvil), con la sección activa resaltada (`assets/js/toc.js`).
+- Portada: sprites estáticos (antes 26 GIF animados a la vez), vídeo (≈7 MB) se pide solo al terminar de cargar y no en conexión lenta/ahorro de datos, fuentes sin bloquear el pintado, módulos cargados en paralelo.
+- Guías: las secciones fuera de pantalla no se pintan hasta acercarse (`content-visibility`).
+
 ## Ronda 4 · Rediseño por objetivos
 - Portada nueva: texto de presentación, buscador + botón "Filtros" (solo orden) y vídeo en un marco; debajo, 5 objetivos con su fila de portadas en cuadrícula (sin barra de desplazamiento horizontal).
 - Objetivos: Derrotar jefes y raids · Farmear · Completar regiones · Criar y entrenar · Aprender lo básico. Cada guía tiene `goal` en `assets/data/guides.json` (cambia ahí el reparto).

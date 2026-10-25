@@ -80,7 +80,8 @@
     },
     "verify": "待核实信息",
     "back": "返回首页",
-    "updated": "添加于"
+    "updated": "添加于",
+    "toc": "本指南目录"
   },
   "footer": {
     "official": "PokeMMO 官方网站",

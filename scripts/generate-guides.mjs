@@ -65,7 +65,8 @@ function page(g) {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" /></noscript>
   <script>
     try {
       var s = localStorage.getItem('pmmo-theme');
@@ -129,7 +130,8 @@ function page(g) {
       </div>
     </section>
 
-    <div class="mx-auto max-w-3xl px-4 py-8">
+    <div id="guide-wrap" class="guide-wrap mx-auto px-4 py-8">
+    <aside id="guide-toc" class="guide-toc" hidden aria-labelledby="toc-title"><p id="toc-title" class="toc-title" data-toc-label>${es.guide.toc}</p></aside>
     <article data-guide data-slug="${g.slug}" data-seed="${g.popularity}">
 
       <p id="not-translated" class="callout" role="note" hidden data-i18n="guide.notTranslated">${es.guide.notTranslated}</p>

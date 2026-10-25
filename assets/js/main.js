@@ -4,6 +4,11 @@ import { ready, setLang, applyTranslations, currentLang, t } from './i18n.js';
 import { initTheme, updateThemeLabel } from './theme.js';
 import { hydrateIcons } from './icons.js';
 
+// Los módulos de cada página se piden en paralelo con i18n (antes iban uno detrás de otro)
+const pageMods = {
+  hub: document.getElementById('hub') ? import('./hub.js') : null,
+  toc: document.getElementById('guide-toc') ? import('./toc.js') : null,
+};
 await ready;
 
 // --- Sprites animados (GIF Gen 5 alojados en /img/sprites) ---
@@ -73,7 +78,16 @@ if (heroVideo && heroBtn) {
     heroBtn.innerHTML = icon(paused ? 'play' : 'pause', 'icon h-5 w-5');
   };
   heroBtn.classList.replace('hidden', 'grid');
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) heroVideo.pause();
+  // El vídeo (≈7 MB) no se pide hasta que la página termina de cargar, y no se reproduce solo
+  // con «ahorro de datos», conexión lenta o «reducir movimiento»: ahí se queda el póster.
+  const conn = navigator.connection || {};
+  const slow = conn.saveData || /(^|-)2g|3g/.test(conn.effectiveType || '');
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!slow && !calm) {
+    const start = () => { heroVideo.preload = 'auto'; heroVideo.play().catch(() => {}); };
+    const later = () => (window.requestIdleCallback || ((f) => setTimeout(f, 300)))(start);
+    document.readyState === 'complete' ? later() : window.addEventListener('load', later, { once: true });
+  }
   heroBtn.addEventListener('click', () => { heroVideo.paused ? heroVideo.play() : heroVideo.pause(); });
   heroVideo.addEventListener('play', paint);
   heroVideo.addEventListener('pause', paint);
@@ -83,7 +97,7 @@ if (heroVideo && heroBtn) {
 
 // --- Portada: Alpine y la lógica de filtros se cargan solo aquí ---
 if (document.getElementById('hub')) {
-  const { startHub } = await import('./hub.js');
+  const { startHub } = await pageMods.hub;
   startHub();
 }
 
@@ -110,6 +124,7 @@ if (guide) {
   refresh();
   window.addEventListener('langchange', refresh);
 
+  pageMods.toc?.then((m) => m.buildToc());
   const { hit } = await import('./counter.js');
   hit(slug, Number(seed) || 0).then((n) => { views = n; refresh(); });
 }

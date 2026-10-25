@@ -82,7 +82,8 @@
     },
     "verify": "Facts to verify",
     "back": "Back to home",
-    "updated": "Added"
+    "updated": "Added",
+    "toc": "In this guide"
   },
   "footer": {
     "official": "Official PokeMMO site",

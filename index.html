@@ -12,7 +12,8 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" /></noscript>
   <!-- Aplica el tema antes de pintar (evita el parpadeo). Sin preferencia guardada: sistema; por defecto oscuro. -->
   <script>
     try {
@@ -137,7 +138,7 @@
 
         <!-- Vídeo de la portada (el mismo de antes), ahora en un marco -->
         <div class="relative isolate aspect-[16/10] min-w-0 overflow-hidden rounded-3xl bg-slate-950 shadow-xl shadow-black/20">
-          <video id="hero-video" class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/video/hero-poster.webp" aria-hidden="true" tabindex="-1">
+          <video id="hero-video" class="hero-video" muted loop playsinline preload="none" poster="/video/hero-poster.webp" aria-hidden="true" tabindex="-1">
             <source src="/video/hero.mp4" type="video/mp4" />
           </video>
           <button id="hero-toggle" type="button" class="glass absolute bottom-3 right-3 hidden h-10 w-10 place-items-center rounded-full" aria-label="Pausar vídeo de fondo" aria-pressed="false">
