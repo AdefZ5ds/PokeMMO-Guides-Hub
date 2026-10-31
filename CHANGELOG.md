@@ -1,5 +1,9 @@
 # Cambios de esta versión
 
+## Ronda 5 · Rusheo: líderes y botón por tramo
+- Guía de rusheo: sprite del líder junto a cada "Gimnasio de …" (mismo tamaño que los Pokémon 1-4). Tabla `LEADERS` en `scripts/render-rusheo.mjs`; sin sprite (por dudas): Ciudad Arborada, Ciudad Tormellera, Ciudad Algararia y Ciudad Azafrán.
+- Botón "Marcar/Desmarcar tramo" en cada uno de los 30 tramos; se guarda con el progreso.
+
 ## Ronda 4c · Pestañas en el lateral
 - Las pestañas de las guías (secciones, regiones, jugadores PJ1-4) ahora viven en el índice lateral y cambian el contenido; ya no hay barras de pestañas arriba. Las guías sin pestañas enlazan a sus títulos.
 - Guía de RED: el índice solo muestra Resumen, Equipo y Estrategia (sin "Generación 1-5").

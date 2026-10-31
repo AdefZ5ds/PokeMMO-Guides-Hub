@@ -3,10 +3,35 @@
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { existsSync } from 'node:fs';
 import { esc, img, teamCard, inlineSprite, bagIcons } from './lib/cards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const d = JSON.parse(readFileSync(resolve(root, 'scripts/content/rusheo.json'), 'utf8'));
+// Líder de cada gimnasio nombrado en los pasos. Sprites: Pokémon Showdown; si no carga, copia local del PDF
+// (public/img/trainers) y, si tampoco, 🏆. Solo están los que tengo claros; los dudosos NO llevan sprite
+// (Ciudad Tormellera, Ciudad Arborada, Ciudad Algararia, Ciudad Azafrán... revisa y añádelos aquí).
+// «PDF» = ciudad/líder confirmados por la guía de farmeo de gimnasios; «mem» = de memoria, sin verificar en un PDF.
+const LEADERS = {
+  'Ciudad Malva': 'falkner', 'Pueblo Azalea': 'bugsy', 'Ciudad Trigal': 'whitney', 'Ciudad Olivo': 'jasmine', 'Ciudad Endrino': 'clair', 'Pueblo Caoba': 'pryce', // PDF
+  'Ciudad Iris': 'morty', 'Ciudad Orquídea': 'chuck', // mem
+  'Ciudad Gres': 'cress', 'Ciudad Esmalta': 'lenora', 'Ciudad Esmalte': 'lenora', 'Ciudad Porcelana': 'burgh', 'Ciudad Mayólica': 'elesa', 'Ciudad Fayenza': 'clay', 'Ciudad Loza': 'skyla', 'Ciudad Caolín': 'iris', // PDF
+  'Ciudad Férrica': 'roxanne', 'Pueblo Azuliza': 'brawly', 'Ciudad Malvalona': 'wattson', 'Ciudad Lavacalda': 'flannery', 'Ciudad Arrecípolis': 'wallace', // PDF
+  'Ciudad Petalia': 'norman', // mem
+  'Ciudad Plateada': 'brock', 'Ciudad Carmín': 'ltsurge', 'Ciudad Azulona': 'erika', 'Isla Canela': 'blaine', // PDF
+  'Ciudad Celeste': 'misty', 'Ciudad Fucsia': 'koga', 'Ciudad Verde': 'giovanni', // mem
+  'Ciudad Pirita': 'roark', 'Pueblo Pirita': 'roark', 'Ciudad Vetusta': 'gardenia', 'Ciudad Rocavelo': 'maylene', 'Ciudad Pradera': 'crasherwake', 'Ciudad Marina': 'volkner', // PDF
+  'Ciudad Corazón': 'fantina', 'Ciudad Canalave': 'byron', 'Ciudad Puntaneva': 'candice', // mem
+};
+const TRAINER = 'https://play.pokemonshowdown.com/sprites/trainers/';
+const trainerLocal = (id) => (existsSync(resolve(root, 'public/img/trainers', `${id}.webp`)) ? `../img/trainers/${id}.webp` : '');
+const leaderSprite = (city) => {
+  const id = LEADERS[city];
+  if (!id) return '';
+  return ` <img src="${TRAINER}${id}.png" data-local="${trainerLocal(id)}" data-own-error alt="Líder: ${id}" title="Líder del gimnasio de ${esc(city)}" width="96" height="96" loading="lazy" decoding="async" class="mx-0.5 inline-block h-9 w-9 align-middle object-contain [image-rendering:pixelated]" onerror="if(this.dataset.local&&!this.dataset.tried){this.dataset.tried=1;this.src=this.dataset.local;return}this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🏆',role:'img',ariaLabel:'Líder'}))" />`;
+};
+const withLeaders = (html) => html.replace(/Gimnasio de ((?:Ciudad|Pueblo|Isla) [^➔.(<]+?)(?=\s*(?:[➔.(<]|$))/g, (m, city) => m + leaderSprite(city.trim()));
+
 const REGION_EMOJI = { Johto: '🌸', Teselia: '🏙️', Hoenn: '🌊', Kanto: '🌿', Sinnoh: '❄️' };
 
 function step(text, id) {
@@ -18,7 +43,7 @@ function step(text, id) {
   else if (/Gimnasio de/.test(text)) { badge = '<span class="badge-gold">Medalla</span>'; icon = '🏆'; }
   else if (/Barco/.test(text)) icon = '🚢';
   return `<li><label class="flex items-start gap-2 rounded-lg p-1.5 hover:bg-surface"><input type="checkbox" data-step="${id}" class="mt-1 h-5 w-5 shrink-0" />
-    <span><span aria-hidden="true">${icon}</span> ${bagIcons(esc(text)).replace(/Pokémon ([1-4])/g, (_, k) => inlineSprite(d.mons[k].name, d.mons[k].dex, `Pokémon ${k} (${d.mons[k].name})`))} ${badge}</span></label></li>`;
+    <span><span aria-hidden="true">${icon}</span> ${withLeaders(bagIcons(esc(text))).replace(/Pokémon ([1-4])/g, (_, k) => inlineSprite(d.mons[k].name, d.mons[k].dex, `Pokémon ${k} (${d.mons[k].name})`))} ${badge}</span></label></li>`;
 }
 
 function chips(leg) {
@@ -39,7 +64,10 @@ function leg(l, pi, li, phase) {
   const num = `${pi + 1}.${li + 1}`;
   return `<li id="${phase.id}-${li}" class="card !gap-3 scroll-mt-24">
     ${banner}
-    <h4 class="!m-0 text-lg font-bold"><span aria-hidden="true">${REGION_EMOJI[l.region]}</span> ${li + 1}. ${esc(l.region)}${l.done ? ' <span class="badge-muted">¡Completada!</span>' : ''}</h4>
+    <div class="flex flex-wrap items-center gap-2">
+      <h4 class="!m-0 text-lg font-bold"><span aria-hidden="true">${REGION_EMOJI[l.region]}</span> ${li + 1}. ${esc(l.region)}${l.done ? ' <span class="badge-muted">¡Completada!</span>' : ''}</h4>
+      <button type="button" class="btn-ghost ml-auto !px-3 !py-1.5" data-leg-toggle hidden aria-pressed="false"><span aria-hidden="true" data-leg-icon>☑️</span> <span data-leg-label>Marcar tramo</span></button>
+    </div>
     ${chips(l)}
     <ol class="!pl-0 !list-none space-y-0.5 text-sm sm:text-base">${l.steps.map((t, si) => step(t, `${phase.id}-${li}-${si}`)).join('')}</ol>
   </li>`;

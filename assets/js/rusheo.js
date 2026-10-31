@@ -32,6 +32,56 @@ document.addEventListener('change', (e) => { if (e.target.matches('input[data-st
 box.querySelector('[data-reset]').addEventListener('click', () => {
   if (!confirm('¿Reiniciar todo el progreso de esta guía?')) return;
   checks.forEach((c) => { c.checked = false; });
-  persist(); paint();
+  persist(); 
+// Botón general de cada tramo: marca o desmarca todos sus pasos de una vez (se guarda como el resto).
+const legBtns = [...document.querySelectorAll('[data-leg-toggle]')];
+const legOf = (btn) => [...btn.closest('li').querySelectorAll('input[data-step]')];
+function paintLegs() {
+  legBtns.forEach((btn) => {
+    const boxes = legOf(btn);
+    const all = boxes.length > 0 && boxes.every((c) => c.checked);
+    btn.setAttribute('aria-pressed', String(all));
+    btn.querySelector('[data-leg-label]').textContent = all ? 'Desmarcar tramo' : 'Marcar tramo';
+    btn.querySelector('[data-leg-icon]').textContent = all ? '⬜' : '☑️';
+  });
+}
+legBtns.forEach((btn) => {
+  btn.hidden = false;
+  btn.addEventListener('click', () => {
+    const boxes = legOf(btn);
+    const all = boxes.every((c) => c.checked);
+    boxes.forEach((c) => { c.checked = !all; });
+    persist(); paint(); paintLegs();
+  });
 });
+document.addEventListener('change', (e) => { if (e.target.matches('input[data-step]')) paintLegs(); });
+box.querySelector('[data-reset]').addEventListener('click', () => setTimeout(paintLegs));
 paint();
+paintLegs();
+});
+
+// Botón general de cada tramo: marca o desmarca todos sus pasos de una vez (se guarda como el resto).
+const legBtns = [...document.querySelectorAll('[data-leg-toggle]')];
+const legOf = (btn) => [...btn.closest('li').querySelectorAll('input[data-step]')];
+function paintLegs() {
+  legBtns.forEach((btn) => {
+    const boxes = legOf(btn);
+    const all = boxes.length > 0 && boxes.every((c) => c.checked);
+    btn.setAttribute('aria-pressed', String(all));
+    btn.querySelector('[data-leg-label]').textContent = all ? 'Desmarcar tramo' : 'Marcar tramo';
+    btn.querySelector('[data-leg-icon]').textContent = all ? '⬜' : '☑️';
+  });
+}
+legBtns.forEach((btn) => {
+  btn.hidden = false;
+  btn.addEventListener('click', () => {
+    const boxes = legOf(btn);
+    const all = boxes.every((c) => c.checked);
+    boxes.forEach((c) => { c.checked = !all; });
+    persist(); paint(); paintLegs();
+  });
+});
+document.addEventListener('change', (e) => { if (e.target.matches('input[data-step]')) paintLegs(); });
+box.querySelector('[data-reset]').addEventListener('click', () => setTimeout(paintLegs));
+paint();
+paintLegs();
