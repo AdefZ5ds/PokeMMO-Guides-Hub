@@ -15,22 +15,26 @@ const d = JSON.parse(readFileSync(resolve(root, 'scripts/content/rusheo.json'), 
 const LEADERS = {
   'Ciudad Malva': 'falkner', 'Pueblo Azalea': 'bugsy', 'Ciudad Trigal': 'whitney', 'Ciudad Olivo': 'jasmine', 'Ciudad Endrino': 'clair', 'Pueblo Caoba': 'pryce', // PDF
   'Ciudad Iris': 'morty', 'Ciudad Orquídea': 'chuck', // mem
-  'Ciudad Gres': 'cress', 'Ciudad Esmalta': 'lenora', 'Ciudad Esmalte': 'lenora', 'Ciudad Porcelana': 'burgh', 'Ciudad Mayólica': 'elesa', 'Ciudad Fayenza': 'clay', 'Ciudad Loza': 'skyla', 'Ciudad Caolín': 'iris', // PDF
-  'Ciudad Férrica': 'roxanne', 'Pueblo Azuliza': 'brawly', 'Ciudad Malvalona': 'wattson', 'Ciudad Lavacalda': 'flannery', 'Ciudad Arrecípolis': 'wallace', // PDF
-  'Ciudad Petalia': 'norman', // mem
+  'Ciudad Gres': 'cress', 'Ciudad Esmalte': 'lenora', 'Ciudad Porcelana': 'burgh', 'Ciudad Mayólica': 'elesa', 'Ciudad Fayenza': 'clay', 'Ciudad Loza': 'skyla', 'Ciudad Teja': 'brycen', 'Ciudad Caolín': 'iris', // PDF
+  'Ciudad Férrica': 'roxanne', 'Pueblo Azuliza': 'brawly', 'Ciudad Malvalona': 'wattson', 'Pueblo Lavacalda': 'flannery', 'Arrecípolis': 'wallace', // PDF
+  'Ciudad Petalia': 'norman', 'Ciudad Arborada': 'winona', // mem (Winona: sprite local del PDF)
   'Ciudad Plateada': 'brock', 'Ciudad Carmín': 'ltsurge', 'Ciudad Azulona': 'erika', 'Isla Canela': 'blaine', // PDF
-  'Ciudad Celeste': 'misty', 'Ciudad Fucsia': 'koga', 'Ciudad Verde': 'giovanni', // mem
-  'Ciudad Pirita': 'roark', 'Pueblo Pirita': 'roark', 'Ciudad Vetusta': 'gardenia', 'Ciudad Rocavelo': 'maylene', 'Ciudad Pradera': 'crasherwake', 'Ciudad Marina': 'volkner', // PDF
-  'Ciudad Corazón': 'fantina', 'Ciudad Canalave': 'byron', 'Ciudad Puntaneva': 'candice', // mem
+  'Ciudad Celeste': 'misty', 'Ciudad Fucsia': 'koga', 'Ciudad Verde': 'giovanni', 'Ciudad Azafrán': 'sabrina', // mem
+  'Ciudad Pirita': 'roark', 'Ciudad Vetusta': 'gardenia', 'Ciudad Rocavelo': 'maylene', 'Ciudad Pradera': 'crasherwake', 'Ciudad Marina': 'volkner', // PDF
+  'Ciudad Corazón': 'fantina', 'Ciudad Canal': 'byron', 'Ciudad Puntaneva': 'candice', // mem
 };
+// Sin sprite a propósito: Ciudad Algaria (dos líderes: Plácido y Vana).
 const TRAINER = 'https://play.pokemonshowdown.com/sprites/trainers/';
 const trainerLocal = (id) => (existsSync(resolve(root, 'public/img/trainers', `${id}.webp`)) ? `../img/trainers/${id}.webp` : '');
-const leaderSprite = (city) => {
-  const id = LEADERS[city];
+// Sprite grande a la izquierda del paso: ≈3 líneas de texto de alto; si el paso es corto, ≈2 líneas.
+const leaderOf = (text) => {
+  const m = text.match(/Gimnasio de ((?:(?:Ciudad|Pueblo|Isla) [^➔.(<]+?)|Arrecípolis)(?=\s*(?:[➔.(<]|$))/);
+  const city = m?.[1].trim();
+  const id = city && LEADERS[city];
   if (!id) return '';
-  return ` <img src="${TRAINER}${id}.png" data-local="${trainerLocal(id)}" data-own-error alt="Líder: ${id}" title="Líder del gimnasio de ${esc(city)}" width="96" height="96" loading="lazy" decoding="async" class="mx-0.5 inline-block h-9 w-9 align-middle object-contain [image-rendering:pixelated]" onerror="if(this.dataset.local&&!this.dataset.tried){this.dataset.tried=1;this.src=this.dataset.local;return}this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🏆',role:'img',ariaLabel:'Líder'}))" />`;
+  const size = text.length > 90 ? 'h-[4.5rem] w-[4.5rem]' : 'h-12 w-12';
+  return `<img src="${TRAINER}${id}.png" data-local="${trainerLocal(id)}" data-own-error alt="Líder: ${id}" title="Líder del gimnasio de ${esc(city)}" width="96" height="96" loading="lazy" decoding="async" class="${size} shrink-0 object-contain [image-rendering:pixelated]" onerror="if(this.dataset.local&&!this.dataset.tried){this.dataset.tried=1;this.src=this.dataset.local;return}this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🏆',role:'img',ariaLabel:'Líder',className:'text-4xl'}))" />`;
 };
-const withLeaders = (html) => html.replace(/Gimnasio de ((?:Ciudad|Pueblo|Isla) [^➔.(<]+?)(?=\s*(?:[➔.(<]|$))/g, (m, city) => m + leaderSprite(city.trim()));
 
 const REGION_EMOJI = { Johto: '🌸', Teselia: '🏙️', Hoenn: '🌊', Kanto: '🌿', Sinnoh: '❄️' };
 
@@ -43,7 +47,7 @@ function step(text, id) {
   else if (/Gimnasio de/.test(text)) { badge = '<span class="badge-gold">Medalla</span>'; icon = '🏆'; }
   else if (/Barco/.test(text)) icon = '🚢';
   return `<li><label class="flex items-start gap-2 rounded-lg p-1.5 hover:bg-surface"><input type="checkbox" data-step="${id}" class="mt-1 h-5 w-5 shrink-0" />
-    <span><span aria-hidden="true">${icon}</span> ${withLeaders(bagIcons(esc(text))).replace(/Pokémon ([1-4])/g, (_, k) => inlineSprite(d.mons[k].name, d.mons[k].dex, `Pokémon ${k} (${d.mons[k].name})`))} ${badge}</span></label></li>`;
+    ${leaderOf(text) ? `<span class="flex items-start gap-3">${leaderOf(text)}<span>` : '<span>'}<span aria-hidden="true">${icon}</span> ${bagIcons(esc(text)).replace(/Pokémon ([1-4])/g, (_, k) => inlineSprite(d.mons[k].name, d.mons[k].dex, `Pokémon ${k} (${d.mons[k].name})`))} ${badge}${leaderOf(text) ? '</span>' : ''}</span></label></li>`;
 }
 
 function chips(leg) {

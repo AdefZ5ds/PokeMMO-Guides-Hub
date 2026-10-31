@@ -1,5 +1,9 @@
 # Cambios de esta versión
 
+## Ronda 5b · Rusheo: sprites grandes y nombres de lugares
+- Sprites de líderes más grandes, a la izquierda del paso (≈3 líneas de alto; ≈2 si el paso es corto). Nuevos: Ciudad Teja (Brycen), Ciudad Arborada (Winona), Ciudad Azafrán (Sabrina), Ciudad Canal (Byron).
+- Nombres de lugares corregidos según WikiDex (solo en la guía de rusheo): Esmalta→Esmalte, Algararia→Algaria, Ciudad Arrecípolis→Arrecípolis, Ciudad Lavacalda→Pueblo Lavacalda, Jubilife→Jubileo, Canalave→Canal, Celestic→Caelestis, Pueblo Villa Raíz→Villa Raíz, Belsprout→Bellsprout, Radio Torre→Torre Radio, Faro Olivo→Faro de Olivo, Beturia→Vetusta/Vetusto, Tormellera→Teja (deducido por el contexto).
+
 ## Ronda 5 · Rusheo: líderes y botón por tramo
 - Guía de rusheo: sprite del líder junto a cada "Gimnasio de …" (mismo tamaño que los Pokémon 1-4). Tabla `LEADERS` en `scripts/render-rusheo.mjs`; sin sprite (por dudas): Ciudad Arborada, Ciudad Tormellera, Ciudad Algararia y Ciudad Azafrán.
 - Botón "Marcar/Desmarcar tramo" en cada uno de los 30 tramos; se guarda con el progreso.

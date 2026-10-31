@@ -183,10 +183,10 @@
      "steps": [
       "Elige al inicial en Pueblo Primavera.",
       "Pasa por Ciudad Cerezo y ve a la casa del Sr. Pokémon.",
-      "Ve a Ciudad Malva ➔ Torre Belsprout ➔ Gimnasio de Ciudad Malva.",
+      "Ve a Ciudad Malva ➔ Torre Bellsprout ➔ Gimnasio de Ciudad Malva.",
       "Recoge el Huevo en la Tienda Pokémon.",
       "Ve a Pueblo Azalea ➔ Casa de César ➔ Pozo Slowpoke ➔ Gimnasio de Pueblo Azalea.",
-      "Ve a Ciudad Trigal ➔ Consigue la Bici ➔ Radio Torre (Respuestas: Sí, Sí, No, No, No) ➔ Gimnasio de Ciudad Trigal.",
+      "Ve a Ciudad Trigal ➔ Consigue la Bici ➔ Torre Radio (Respuestas: Sí, Sí, No, No, No) ➔ Gimnasio de Ciudad Trigal.",
       "Consigue la Regadera (Bote Squirt).",
       "Consigue la MO Golpe Roca junto a Sudowoodo.",
       "Ve a Ciudad Iris ➔ Consigue la MO Surf en el teatro ➔ Torre Quemada ➔ Gimnasio de Ciudad Iris.",
@@ -208,7 +208,7 @@
       "Ve a Ciudad Gres ➔ Escuela Entrenadores ➔ Gimnasio de Ciudad Gres.",
       "Consigue la MO Corte en la casa de Cien.",
       "Ve al Solar de los Sueños ➔ Cueva Manantial.",
-      "Ve a Ciudad Esmalta ➔ Gimnasio de Ciudad Esmalta.",
+      "Ve a Ciudad Esmalte ➔ Gimnasio de Ciudad Esmalte.",
       "Consigue la MO Golpe Roca (chica de rojo).",
       "Ve al Bosque Azulejo ➔ Ciudad Porcelana ➔ Gimnasio de Ciudad Porcelana.",
       "Toma el Barco hacia Hoenn."
@@ -227,7 +227,7 @@
      },
      "steps": [
       "Ajusta el reloj ➔ Elige al inicial en la Ruta 101.",
-      "Pasa por Pueblo Escaso ➔ Ruta 103 ➔ Pueblo Villa Raíz ➔ Ciudad Petalia (entra al gimnasio).",
+      "Pasa por Pueblo Escaso ➔ Ruta 103 ➔ Villa Raíz ➔ Ciudad Petalia (entra al gimnasio).",
       "Ve a Ciudad Férrica ➔ Consigue la MO Corte (hombre calvo junto al Centro Pokémon) ➔ Gimnasio de Ciudad Férrica.",
       "Ve al Túnel Ferveras ➔ Ciudad Férrica (habla con el hombre de gafas) ➔ Habla con el Sr. Arenisco.",
       "Ve a Pueblo Azuliza ➔ Gimnasio de Pueblo Azuliza.",
@@ -279,10 +279,10 @@
      },
      "steps": [
       "Pasa por la casa de Israel (piso superior) ➔ Ruta 201 ➔ Elige al inicial en Lago Veraz.",
-      "Ve a Pueblo Arena ➔ Pueblo Hojaverde ➔ Ciudad Jubilife (habla con Israel, consigue el PokéReloj).",
+      "Ve a Pueblo Arena ➔ Pueblo Hojaverde ➔ Ciudad Jubileo (habla con Israel, consigue el PokéReloj).",
       "Ve a Ciudad Pirita ➔ Mina Pirita ➔ Gimnasio de Ciudad Pirita.",
       "Ve a Pueblo Aromaflor ➔ Ruta 205 ➔ Prado Aromaflor ➔ Valle Eólico.",
-      "Ve al Bosque Beturia ➔ Ciudad Beturia (Estatua) ➔ Gimnasio de Ciudad Vetusta.",
+      "Ve al Bosque Vetusto ➔ Ciudad Vetusta (Estatua) ➔ Gimnasio de Ciudad Vetusta.",
       "CAMBIA A Pokémon 3.",
       "Edificio Galaxia ➔ Recoge el Huevo de Cintia ➔ Consigue la Bici.",
       "Ve al Monte Corona ➔ Ciudad Corazón ➔ Auditorio del Concurso ➔ Gimnasio de Ciudad Corazón.",
@@ -318,7 +318,7 @@
       "Ve a Ciudad Malvalona ➔ Consigue MO Golpe Roca (casa junto a la Tienda) ➔ Consigue la Bici Acrobática ➔ Gimnasio de Ciudad Malvalona.",
       "CAMBIA A Pokémon 3 (Nota: Puedes usar a Pokémon 4 pero mantenlo ≤ Lv 31).",
       "Senda de Fuego ➔ Pueblo Lavacalda ➔ Cascada Meteoro ➔ Túnel Ferveras ➔ Pueblo Verdegal ➔ Monte Cenizo.",
-      "Ve a Ciudad Lavacalda ➔ Gimnasio de Ciudad Lavacalda.",
+      "Ve a Pueblo Lavacalda ➔ Gimnasio de Pueblo Lavacalda.",
       "ADVERTENCIA: ¡No ganes más experiencia a partir de este punto en Hoenn!",
       "Ve a Ciudad Portual y toma el Barco hacia Unova (Teselia)."
      ]
@@ -372,7 +372,7 @@
       "1": "37 / 38"
      },
      "steps": [
-      "Faro Olivo ➔ Ciudad Orquídea ➔ Consigue la Poción Secreta.",
+      "Faro de Olivo ➔ Ciudad Orquídea ➔ Consigue la Poción Secreta.",
       "Gimnasio de Ciudad Orquídea ➔ Regresa a Ciudad Olivo.",
       "Toma el Barco hacia Kanto."
      ]
@@ -415,7 +415,7 @@
      "cap": 46,
      "steps": [
       "Ciudad Iris ➔ Monte Mortero ➔ Pueblo Caoba ➔ Gyarados Rojo en el Lago de la Furia ➔ Base Rocket de Caoba ➔ Gimnasio de Pueblo Caoba.",
-      "Faro de Ciudad Olivo.",
+      "Faro de Olivo.",
       "Toma el Barco hacia Unova (Teselia)."
      ]
     },
@@ -423,7 +423,7 @@
      "region": "Teselia",
      "cap": 46,
      "steps": [
-      "Ciudad Loza ➔ Monte Tuerca ➔ Ciudad Loza / Ciudad Tormellera ➔ Gimnasio de Ciudad Tormellera.",
+      "Ciudad Loza ➔ Monte Tuerca ➔ Ciudad Loza / Ciudad Teja ➔ Gimnasio de Ciudad Teja.",
       "Ve a Ciudad Porcelana y toma el Barco hacia Sinnoh."
      ]
     },
@@ -431,9 +431,9 @@
      "region": "Sinnoh",
      "cap": 46,
      "steps": [
-      "Persigue al Recluta Galaxia ➔ Pueblo Sosiego ➔ Pueblo Celestic ➔ Combate contra Helio/Cyrus.",
-      "Ciudad Jubilife ➔ Ciudad Canalave ➔ Isla Hierro ➔ Consigue la MO Fuerza.",
-      "Gimnasio de Ciudad Canalave ➔ Biblioteca ➔ Ciudad Pradera.",
+      "Persigue al Recluta Galaxia ➔ Pueblo Sosiego ➔ Pueblo Caelestis ➔ Combate contra Helio/Cyrus.",
+      "Ciudad Jubileo ➔ Ciudad Canal ➔ Isla Hierro ➔ Consigue la MO Fuerza.",
+      "Gimnasio de Ciudad Canal ➔ Biblioteca ➔ Ciudad Pradera.",
       "Toma el Barco hacia Hoenn."
      ]
     },
@@ -443,7 +443,7 @@
      "steps": [
       "Ciudad Arborada ➔ Ciudad Calagua ➔ Monte Pírico ➔ Pueblo Lavacalda ➔ Guarida del Equipo Magma.",
       "Muelles de Ciudad Portual ➔ Ciudad Calagua ➔ Guarida del Equipo Aqua.",
-      "Ciudad Algararia ➔ Gimnasio de Ciudad Algararia ➔ Ciudad Portual.",
+      "Ciudad Algaria ➔ Gimnasio de Ciudad Algaria ➔ Ciudad Portual.",
       "Toma el Barco hacia Kanto."
      ]
     },
@@ -462,7 +462,7 @@
      "region": "Johto",
      "cap": 48,
      "steps": [
-      "Ciudad Trigal ➔ Traje Rocket ➔ Radio Torre para obtener la Llave del Subsuelo ➔ Subsuelo para obtener la Llave Tarjeta ➔ Completa la Radio Torre.",
+      "Ciudad Trigal ➔ Traje Rocket ➔ Torre Radio para obtener la Llave del Subsuelo ➔ Subsuelo para obtener la Llave Tarjeta ➔ Completa la Torre Radio.",
       "Pueblo Caoba ➔ Ruta Helada ➔ Consigue la MO Cascada.",
       "Ciudad Endrino ➔ Gimnasio de Ciudad Endrino ➔ Guarida Dragón.",
       "Habla con el Profesor en Pueblo Primavera ➔ Ciudad Olivo.",
@@ -473,7 +473,7 @@
      "region": "Sinnoh",
      "cap": 52,
      "steps": [
-      "Lago Valor ➔ Pueblo Hojaverde ➔ Lago Veraz ➔ Pueblo Celestic.",
+      "Lago Valor ➔ Pueblo Hojaverde ➔ Lago Veraz ➔ Pueblo Caelestis.",
       "Monte Corona ➔ Consigue la MO Treparrocas (Ruta 217) ➔ Ciudad Puntaneva ➔ Gimnasio de Ciudad Puntaneva ➔ Ciudad Pradera.",
       "Toma el Barco hacia Unova (Teselia)."
      ]
@@ -482,9 +482,9 @@
      "region": "Teselia",
      "cap": 56,
      "steps": [
-      "Ciudad Tormellera ➔ Torre Duodraco.",
-      "Ciudad Mayólica ➔ Desierto Blanco / Zona Desértica ➔ Castillo Ancestral ➔ Museo de Ciudad Esmalta.",
-      "Ciudad Tormellera ➔ Puente Villa ➔ Ciudad Caolín ➔ Gimnasio de Ciudad Caolín.",
+      "Ciudad Teja ➔ Torre Duodraco.",
+      "Ciudad Mayólica ➔ Desierto Blanco / Zona Desértica ➔ Castillo Ancestral ➔ Museo de Ciudad Esmalte.",
+      "Ciudad Teja ➔ Puente Villa ➔ Ciudad Caolín ➔ Gimnasio de Ciudad Caolín.",
       "Ve a Ciudad Porcelana y toma el Barco hacia Kanto."
      ]
     },
@@ -509,10 +509,10 @@
      "region": "Hoenn",
      "cap": 58,
      "steps": [
-      "Ciudad Algararia ➔ Centro Espacial ➔ Consigue la MO Buceo (Casa de Máximo).",
+      "Ciudad Algaria ➔ Centro Espacial ➔ Consigue la MO Buceo (Casa de Máximo).",
       "Ruta 128 (Zona para bucear) ➔ Caverna Abisal.",
-      "Pueblo Oromar ➔ Ciudad Algararia ➔ Ciudad Arrecípolis ➔ Cueva de la Origin ➔ Pueblo Oromar ➔ Pilar Celeste.",
-      "Ciudad Arrecípolis ➔ Gimnasio de Ciudad Arrecípolis ➔ Ciudad Portual.",
+      "Pueblo Oromar ➔ Ciudad Algaria ➔ Arrecípolis ➔ Cueva de la Origin ➔ Pueblo Oromar ➔ Pilar Celeste.",
+      "Arrecípolis ➔ Gimnasio de Arrecípolis ➔ Ciudad Portual.",
       "Toma el Barco hacia Kanto."
      ]
     },
@@ -571,7 +571,7 @@
      "region": "Hoenn",
      "done": true,
      "steps": [
-      "Ciudad Algararia ➔ Ciudad Colosalia ➔ Calle Victoria ➔ Alto Mando y Campeón de Hoenn.",
+      "Ciudad Algaria ➔ Ciudad Colosalia ➔ Calle Victoria ➔ Alto Mando y Campeón de Hoenn.",
       "Ve a Ciudad Portual y toma el Barco hacia Sinnoh."
      ]
     },
