@@ -26,13 +26,13 @@ const LEADERS = {
 // Sin sprite a propósito: Ciudad Algaria (dos líderes: Plácido y Vana).
 const TRAINER = 'https://play.pokemonshowdown.com/sprites/trainers/';
 const trainerLocal = (id) => (existsSync(resolve(root, 'public/img/trainers', `${id}.webp`)) ? `../img/trainers/${id}.webp` : '');
-// Sprite grande a la izquierda del paso: ≈3 líneas de texto de alto; si el paso es corto, ≈2 líneas.
+// Sprite del líder a la izquierda del paso: siempre 72×72 en PC (≥768 px) y 48×48 en móvil.
 const leaderOf = (text) => {
   const m = text.match(/Gimnasio de ((?:(?:Ciudad|Pueblo|Isla) [^➔.(<]+?)|Arrecípolis)(?=\s*(?:[➔.(<]|$))/);
   const city = m?.[1].trim();
   const id = city && LEADERS[city];
   if (!id) return '';
-  const size = text.length > 90 ? 'h-[4.5rem] w-[4.5rem]' : 'h-12 w-12';
+  const size = 'h-12 w-12 md:h-[72px] md:w-[72px]'; // móvil/Android 48×48, PC 72×72 (igual en todos los líderes)
   return `<img src="${TRAINER}${id}.png" data-local="${trainerLocal(id)}" data-own-error alt="Líder: ${id}" title="Líder del gimnasio de ${esc(city)}" width="96" height="96" loading="lazy" decoding="async" class="${size} shrink-0 object-contain [image-rendering:pixelated]" onerror="if(this.dataset.local&&!this.dataset.tried){this.dataset.tried=1;this.src=this.dataset.local;return}this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🏆',role:'img',ariaLabel:'Líder',className:'text-4xl'}))" />`;
 };
 
