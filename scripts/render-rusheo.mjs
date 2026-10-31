@@ -38,6 +38,13 @@ const leaderOf = (text) => {
 
 const REGION_EMOJI = { Johto: '🌸', Teselia: '🏙️', Hoenn: '🌊', Kanto: '🌿', Sinnoh: '❄️' };
 
+// Galería del Mundo Distorsión: 11 capturas (public/img/rusheo/distorsion/01..11.webp, el orden lo marca el nombre).
+// Sin JS se ven todas seguidas; assets/js/rusheo.js las convierte en carrusel de ancho fijo y alto variable.
+const DW_COUNT = 11;
+const dwGallery = (id) => `<div data-dw="${id}" class="mt-2 sm:ml-8">
+      <ol class="!pl-0 !list-none space-y-3" data-dw-list>${Array.from({ length: DW_COUNT }, (_, i) => `<li data-dw-slide><img src="../img/rusheo/distorsion/${String(i + 1).padStart(2, '0')}.webp" alt="Mundo Distorsión: mapa ${i + 1} de ${DW_COUNT}" loading="lazy" decoding="async" class="mx-auto h-auto w-full max-w-[520px] rounded-lg border border-line" /></li>`).join('')}</ol>
+    </div>`;
+
 function step(text, id) {
   let badge = '';
   let icon = '▫️';
@@ -46,8 +53,9 @@ function step(text, id) {
   else if (/Alto Mando/.test(text)) { badge = '<span class="badge-gold">Liga</span>'; icon = '👑'; }
   else if (/Gimnasio de/.test(text)) { badge = '<span class="badge-gold">Medalla</span>'; icon = '🏆'; }
   else if (/Barco/.test(text)) icon = '🚢';
+  const dw = /Mundo Distorsión/.test(text);
   return `<li><label class="flex items-start gap-2 rounded-lg p-1.5 hover:bg-surface"><input type="checkbox" data-step="${id}" class="mt-1 h-5 w-5 shrink-0" />
-    ${leaderOf(text) ? `<span class="flex items-start gap-3">${leaderOf(text)}<span>` : '<span>'}<span aria-hidden="true">${icon}</span> ${bagIcons(esc(text)).replace(/Pokémon ([1-4])/g, (_, k) => inlineSprite(d.mons[k].name, d.mons[k].dex, `Pokémon ${k} (${d.mons[k].name})`))} ${badge}${leaderOf(text) ? '</span>' : ''}</span></label></li>`;
+    ${leaderOf(text) ? `<span class="flex items-start gap-3">${leaderOf(text)}<span>` : '<span>'}<span aria-hidden="true">${icon}</span> ${bagIcons(esc(text)).replace('Mundo Distorsión', dw ? '<button type="button" class="dw-toggle" data-dw-toggle="dw-' + id + '" aria-expanded="true">Mundo Distorsión <span aria-hidden="true" data-dw-chevron>▾</span></button>' : 'Mundo Distorsión').replace(/Pokémon ([1-4])/g, (_, k) => inlineSprite(d.mons[k].name, d.mons[k].dex, `Pokémon ${k} (${d.mons[k].name})`))} ${badge}${leaderOf(text) ? '</span>' : ''}</span></label>${dw ? dwGallery(`dw-${id}`) : ''}</li>`;
 }
 
 function chips(leg) {
@@ -64,7 +72,8 @@ function chips(leg) {
 }
 
 function leg(l, pi, li, phase) {
-  const banner = l.banner ? `<img src="../img/rusheo/${l.banner}.webp" alt="" width="960" height="400" loading="lazy" decoding="async" class="h-28 w-full rounded-xl object-cover sm:h-36" />` : '';
+  const poster = phase.id === 'final' ? `<img src="../img/rusheo/liga-${{ Teselia: 'teselia', Johto: 'johto', Hoenn: 'hoenn', Sinnoh: 'sinnoh', Kanto: 'kanto' }[l.region]}.webp" alt="Póster de la Liga Pokémon de ${esc(l.region)}" width="1200" height="660" loading="lazy" decoding="async" class="aspect-[16/8] w-full rounded-xl object-cover" />` : '';
+  const banner = poster || (l.banner ? `<img src="../img/rusheo/${l.banner}.webp" alt="" width="960" height="400" loading="lazy" decoding="async" class="h-28 w-full rounded-xl object-cover sm:h-36" />` : '');
   const num = `${pi + 1}.${li + 1}`;
   return `<li id="${phase.id}-${li}" class="card !gap-3 scroll-mt-24">
     ${banner}

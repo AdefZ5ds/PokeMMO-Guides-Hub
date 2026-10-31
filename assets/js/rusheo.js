@@ -85,3 +85,48 @@ document.addEventListener('change', (e) => { if (e.target.matches('input[data-st
 box.querySelector('[data-reset]').addEventListener('click', () => setTimeout(paintLegs));
 paint();
 paintLegs();
+
+// ---------- Galería «Mundo Distorsión»: ancho fijo, alto variable, botones anterior/siguiente ----------
+document.querySelectorAll('[data-dw]').forEach((box) => {
+  const slides = [...box.querySelectorAll('[data-dw-slide]')];
+  const toggle = document.querySelector(`[data-dw-toggle="${box.dataset.dw}"]`);
+  if (!slides.length || !toggle) return;
+  let cur = 0;
+  const nav = document.createElement('div');
+  nav.className = 'dw-nav';
+  nav.innerHTML = `<button type="button" class="btn-ghost !px-3 !py-1.5" data-prev aria-label="Imagen anterior">◀ Anterior</button>
+    <p class="!m-0 text-sm font-semibold" role="status" aria-live="polite" data-pos></p>
+    <button type="button" class="btn-ghost !px-3 !py-1.5" data-next aria-label="Imagen siguiente">Siguiente ▶</button>`;
+  box.append(nav);
+  box.setAttribute('role', 'region');
+  box.setAttribute('aria-label', 'Galería del Mundo Distorsión');
+  const pos = nav.querySelector('[data-pos]');
+  const show = (n) => {
+    cur = Math.min(slides.length - 1, Math.max(0, n));
+    slides.forEach((s, i) => { s.hidden = i !== cur; });
+    pos.textContent = `${cur + 1} de ${slides.length}`;
+    nav.querySelector('[data-prev]').disabled = cur === 0;
+    nav.querySelector('[data-next]').disabled = cur === slides.length - 1;
+    const next = slides[cur + 1]?.querySelector('img'); // precarga la siguiente
+    if (next) next.loading = 'eager';
+  };
+  nav.addEventListener('click', (e) => {
+    if (e.target.closest('[data-prev]')) show(cur - 1);
+    if (e.target.closest('[data-next]')) show(cur + 1);
+  });
+  box.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') show(cur + 1);
+    if (e.key === 'ArrowLeft') show(cur - 1);
+  });
+  // Se abre/cierra al pulsar «Mundo Distorsión» (empieza cerrada)
+  const open = (on) => {
+    box.hidden = !on;
+    toggle.setAttribute('aria-expanded', String(on));
+    toggle.querySelector('[data-dw-chevron]').textContent = on ? '▴' : '▾';
+    if (on) show(cur);
+  };
+  toggle.setAttribute('aria-controls', box.dataset.dw);
+  box.id = box.dataset.dw;
+  toggle.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); open(box.hidden); });
+  open(false);
+});

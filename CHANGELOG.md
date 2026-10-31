@@ -1,5 +1,9 @@
 # Cambios de esta versión
 
+## Ronda 6 · Rusheo: pósters de liga y galería del Mundo Distorsión
+- Cada liga (Fase final) abre su tarjeta con su póster (`public/img/rusheo/liga-*.webp`).
+- "Mundo Distorsión" (Fase 3, Sinnoh) es un botón que despliega una galería de 11 imágenes (`public/img/rusheo/distorsion/01-11.webp`): ancho fijo, alto variable, botones Anterior/Siguiente. Para añadir imágenes, súbelas con el siguiente número y sube `DW_COUNT` en `scripts/render-rusheo.mjs`.
+
 ## Ronda 5c · Tamaño fijo de líderes (rusheo)
 - Todos los sprites de líderes miden 72×72 en PC y 48×48 en móvil.
 
