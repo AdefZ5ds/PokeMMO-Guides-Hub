@@ -1,5 +1,8 @@
 # Cambios de esta versión
 
+## Ronda 7b · Sprites de texto más grandes
+- Sprites dentro del texto de las guías: 57×57 en PC (36×36 en móvil), excepto la guía de rusheo, que mantiene 36×36. Starry Dance: "Electro" → Electrode.
+
 ## Ronda 7 · Nueva guía: Farmeo de gimnasios 2026 · Starry Dance
 - Guía nueva (`farmeo-gimnasios-starry`, objetivo Farmear) con la misma plantilla que Dancing Volcano: consumibles, equipo (Weezing, Meloetta, Blastoise, Vanilluxe, Typhlosion), 34 gimnasios en 5 regiones, 13 cambios de objeto, 5 RESET y 2 avisos. Contenido en `scripts/content/farmeo-gimnasios-starry.json`.
 - Sprites 100% de librerías; solo se guardan portada, banner, 5 mapas (`public/img/starry`) y la ocarina de Corte.

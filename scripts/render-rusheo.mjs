@@ -55,7 +55,7 @@ function step(text, id) {
   else if (/Barco/.test(text)) icon = '🚢';
   const dw = /Mundo Distorsión/.test(text);
   return `<li><label class="flex items-start gap-2 rounded-lg p-1.5 hover:bg-surface"><input type="checkbox" data-step="${id}" class="mt-1 h-5 w-5 shrink-0" />
-    ${leaderOf(text) ? `<span class="flex items-start gap-3">${leaderOf(text)}<span>` : '<span>'}<span aria-hidden="true">${icon}</span> ${bagIcons(esc(text)).replace('Mundo Distorsión', dw ? '<button type="button" class="dw-toggle" data-dw-toggle="dw-' + id + '" aria-expanded="true">Mundo Distorsión <span aria-hidden="true" data-dw-chevron>▾</span></button>' : 'Mundo Distorsión').replace(/Pokémon ([1-4])/g, (_, k) => inlineSprite(d.mons[k].name, d.mons[k].dex, `Pokémon ${k} (${d.mons[k].name})`))} ${badge}${leaderOf(text) ? '</span>' : ''}</span></label>${dw ? dwGallery(`dw-${id}`) : ''}</li>`;
+    ${leaderOf(text) ? `<span class="flex items-start gap-3">${leaderOf(text)}<span>` : '<span>'}<span aria-hidden="true">${icon}</span> ${bagIcons(esc(text)).replace('Mundo Distorsión', dw ? '<button type="button" class="dw-toggle" data-dw-toggle="dw-' + id + '" aria-expanded="true">Mundo Distorsión <span aria-hidden="true" data-dw-chevron>▾</span></button>' : 'Mundo Distorsión').replace(/Pokémon ([1-4])/g, (_, k) => inlineSprite(d.mons[k].name, d.mons[k].dex, `Pokémon ${k} (${d.mons[k].name})`, 'h-9 w-9'))} ${badge}${leaderOf(text) ? '</span>' : ''}</span></label>${dw ? dwGallery(`dw-${id}`) : ''}</li>`;
 }
 
 function chips(leg) {

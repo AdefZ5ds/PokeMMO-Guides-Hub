@@ -43,7 +43,7 @@ const teamRe = new RegExp(`\\b(${data.team.map((m) => m.name).join('|')})\\b`, '
 /** Texto con el sprite de tus Pokémon junto a su nombre. */
 const teamify = (text) =>
   esc(text).replace(teamRe, (n) =>
-    `<img src="${sprite(teamDex[n])}" alt="${n}" title="${n}" width="96" height="96" loading="lazy" class="mx-0.5 inline-block h-9 w-9 align-middle object-contain [image-rendering:pixelated]" />`);
+    `<img src="${sprite(teamDex[n])}" alt="${n}" title="${n}" width="96" height="96" loading="lazy" class="mx-0.5 inline-block h-9 w-9 md:h-[57px] md:w-[57px] align-middle object-contain [image-rendering:pixelated]" />`);
 
 // ---------- Estado ----------
 const state = { gen: 'all', selected: null };

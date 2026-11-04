@@ -46,7 +46,7 @@ const FALLBACK_JS = "if(this.src.includes('cdn.jsdelivr.net')){this.src=this.src
 function spriteChip(name, ally) {
   const role = ally ? 'Tu equipo' : 'Rival';
   return `<img src="${SPRITE}${DEX[name]}.gif" alt="${role}: ${name}" title="${role}: ${name}" width="96" height="96" loading="lazy" decoding="async" data-own-error `
-    + `class="mx-0.5 inline-block h-9 w-9 object-contain align-middle [image-rendering:pixelated]" `
+    + `class="mx-0.5 inline-block h-9 w-9 md:h-[57px] md:w-[57px] object-contain align-middle [image-rendering:pixelated]" `
     + `onerror="${FALLBACK_JS}this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${name}',className:'mx-0.5 font-semibold'}))" />`;
 }
 const isAlly = (name) => Object.values(data.mons).some((m) => m.name === name);

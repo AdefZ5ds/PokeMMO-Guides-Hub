@@ -75,8 +75,9 @@ export function teamCard(m, statLabels) {
 }
 
 /** Sprite pequeño en línea (sin caja ni nombre visible; el nombre queda como texto alternativo). */
-export const inlineSprite = (name, dex, label = name) =>
-  `<img src="${SPRITE}${dex}.gif" alt="${esc(label)}" title="${esc(label)}" width="96" height="96" loading="lazy" decoding="async" class="mx-0.5 inline-block h-9 w-9 align-middle object-contain [image-rendering:pixelated]" />`;
+// Tamaño en PC: 57×57 (móvil 36×36). La guía de rusheo pasa `size` para mantener el suyo.
+export const inlineSprite = (name, dex, label = name, size = 'h-9 w-9 md:h-[57px] md:w-[57px]') =>
+  `<img src="${SPRITE}${dex}.gif" alt="${esc(label)}" title="${esc(label)}" width="96" height="96" loading="lazy" decoding="async" class="mx-0.5 inline-block ${size} align-middle object-contain [image-rendering:pixelated]" />`;
 
 /** Texto donde los Pokémon del equipo se sustituyen por su sprite en línea. */
 export function chips(text, team) {
