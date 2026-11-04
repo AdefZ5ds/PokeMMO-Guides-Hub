@@ -19,7 +19,7 @@ const ITEM_ICON = {
 Object.assign(ITEM_ICON, {
   'Cint. Negra': 'black-belt', 'Antederretir': 'never-melt-ice', 'Pañl. Seda': 'silk-scarf', 'Pañuelo Seda': 'silk-scarf',
   'Carbón': 'charcoal', 'Pañuelo Elegido': 'choice-scarf', 'Velocidad X': 'x-speed', 'Chaleco Asalto': 'assault-vest',
-  'Baya Zidra': 'sitrus-berry', 'Ocarina de Vuelo': 'local:ocarina-fly', 'Ocarina de Teletrans.': 'local:ocarina-teleport', 'Mineral Evolutivo': 'eviolite',
+  'Baya Zidra': 'sitrus-berry', 'Ocarina de Vuelo': 'local:ocarina-fly', 'Ocarina de Teletrans.': 'local:ocarina-teleport', 'Ocarina de Teletransporte': 'local:ocarina-teleport', 'Ocarina de Corte': 'local:ocarina-cut', 'Vidasfera': 'life-orb', 'Mineral Evolutivo': 'eviolite',
 });
 export const IMG_FALLBACK = "if(this.src.includes('cdn.jsdelivr.net')){this.src=this.src.replace('https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/','https://raw.githubusercontent.com/PokeAPI/sprites/master/')}else{this.remove()}";
 const one = (file, size) => `<img src="${file.startsWith('local:') ? `${LOCAL_ITEM}${file.slice(6)}` : `${ITEM_SPRITE}${file}`}.png" alt="" width="32" height="32" loading="lazy" decoding="async" class="inline ${size} shrink-0 object-contain [image-rendering:pixelated]" data-own-error onerror="${IMG_FALLBACK}" />`;

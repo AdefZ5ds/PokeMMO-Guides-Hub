@@ -600,6 +600,31 @@
       "goal": "farm"
     },
     {
+      "slug": "farmeo-gimnasios-starry",
+      "title": "Farmeo de gimnasios 2026 · Starry Dance",
+      "description": "Guía de farmeo de gimnasios (Starry Dance) del 04/11/2026: equipo con Weezing, Meloetta, Blastoise, Vanilluxe y Typhlosion, y qué hacer en cada gimnasio de Hoenn, Kanto, Sinnoh, Johto y Teselia.",
+      "category": "farming",
+      "tags": [
+        "farmeo",
+        "gimnasios",
+        "ruta",
+        "vanilluxe",
+        "weezing",
+        "meloetta",
+        "typhlosion",
+        "starry dance",
+        "2026",
+        "comunidad"
+      ],
+      "lang": "es",
+      "sprite": 584,
+      "emoji": "✨",
+      "added": "2026-11-04",
+      "popularity": 978,
+      "image": "starrydance",
+      "goal": "farm"
+    },
+    {
       "slug": "farmeo-hooh",
       "title": "Farmeo de Ho-Oh en 10 turnos",
       "description": "Estrategia de 10 turnos con Pelipper, Rotom (Horno) y Chandelure para farmear a Ho-Oh, según la guía de Adef.",

@@ -1,5 +1,11 @@
 # Cambios de esta versión
 
+## Ronda 7 · Nueva guía: Farmeo de gimnasios 2026 · Starry Dance
+- Guía nueva (`farmeo-gimnasios-starry`, objetivo Farmear) con la misma plantilla que Dancing Volcano: consumibles, equipo (Weezing, Meloetta, Blastoise, Vanilluxe, Typhlosion), 34 gimnasios en 5 regiones, 13 cambios de objeto, 5 RESET y 2 avisos. Contenido en `scripts/content/farmeo-gimnasios-starry.json`.
+- Sprites 100% de librerías; solo se guardan portada, banner, 5 mapas (`public/img/starry`) y la ocarina de Corte.
+- Erratas corregidas (Teletransporte, Psicocarga, Pañuelo/Gafas Elegido/as, Wobbuffet…) y lugares oficiales según WikiDex (Pueblo Lavacalda, Pueblo Azuliza, Ciudad Malvalona, Ciudad Arborada, Ciudad Azulona, Ciudad Pirita, Pueblo Azalea).
+- Créditos: enlace al Google Doc oficial.
+
 ## Ronda 6 · Rusheo: pósters de liga y galería del Mundo Distorsión
 - Cada liga (Fase final) abre su tarjeta con su póster (`public/img/rusheo/liga-*.webp`).
 - "Mundo Distorsión" (Fase 3, Sinnoh) es un botón que despliega una galería de 11 imágenes (`public/img/rusheo/distorsion/01-11.webp`): ancho fijo, alto variable, botones Anterior/Siguiente. Para añadir imágenes, súbelas con el siguiente número y sube `DW_COUNT` en `scripts/render-rusheo.mjs`.

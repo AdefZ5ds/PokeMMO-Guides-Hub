@@ -10,13 +10,15 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const GUIDES = {
   'farmeo-gimnasios': { file: 'farmeo-gimnasios.json', maps: 'farmeo' },
   'farmeo-gimnasios-2026': { file: 'farmeo-gimnasios-2026.json', maps: 'farmeo26', pdf: 'guia-farmeo-gimnasios-2026.pdf' },
+  // Starry Dance: contenido del documento oficial (Google Docs); mapas en public/img/starry
+  'farmeo-gimnasios-starry': { file: 'farmeo-gimnasios-starry.json', maps: 'starry', doc: 'documento', docButton: true },
 };
 let data; // contenido de la guía que se está generando
 let cfg;
 // Sprite del líder: Pokémon Showdown (igual que antes). Si no carga, copia local del PDF (public/img/trainers) y, si no, un emoji.
 const trainerSrc = (id) => `${TRAINER}${id}.png`;
 const trainerLocal = (id) => (existsSync(resolve(root, 'public/img/trainers', `${id}.webp`)) ? `../img/trainers/${id}.webp` : '');
-const MON_HL = { Meloetta: 'g', Weezing: 'p', Typhlosion: 'r', Blastoise: 'b', Heatran: 'o' };
+const MON_HL = { Meloetta: 'g', Weezing: 'p', Typhlosion: 'r', Blastoise: 'b', Heatran: 'o', Vanilluxe: 'c' };
 const TRAINER = 'https://play.pokemonshowdown.com/sprites/trainers/';
 const TYPE_EMOJI = { Bicho: '🐛', Fuego: '🔥', Planta: '🌿', Agua: '💧', Volador: '🕊️', Eléctrico: '⚡', Hielo: '❄️', Dragón: '🐉', Tierra: '⛰️', Acero: '⚙️', Roca: '🪨', Lucha: '🥊', Normal: '⚪' };
 
@@ -32,6 +34,11 @@ const DEX = {
   Pidgeot: 18, Pikachu: 25, Politoed: 186, Probopass: 476, Raichu: 26, Rapidash: 78, Relicanth: 369, 'Rotom-Podadora': 10012, Sableye: 302,
   Samurott: 503, Scyther: 123, Sharpedo: 319, Slowbro: 80, Swampert: 260, Swanna: 581, Togekiss: 468, Torterra: 389, Typhlosion: 157,
   Tyranitar: 248, Unfezant: 521, Vanilluxe: 584, Weezing: 110, Whimsicott: 547, Zapdos: 145,
+  // Rivales de la guía Starry Dance (n.º de Pokédex de memoria; los que no cargan quedan en texto)
+  Alakazam: 65, Ariados: 168, Articuno: 144, Bastiodon: 411, Beartic: 614, Charizard: 6, Chandelure: 609, Cryogonal: 615, Donphan: 232,
+  Dusknoir: 477, Empoleon: 395, Froslass: 478, Gengar: 94, Glalie: 362, Golem: 76, Gothitelle: 576, Haunter: 93, Jynx: 124, Mantine: 226,
+  Marowak: 105, Misdreavus: 200, Ninetales: 38, Rhyperior: 464, Seismitoad: 537, Sigilyph: 561, Snorlax: 143, Swellow: 277, Swoobat: 528,
+  Tentacruel: 73, Toxicroak: 454, Victreebel: 71, Walrein: 365, Weavile: 461, Wobbuffet: 202,
 };
 const NAME_RE = new RegExp(`\\b(${Object.keys(DEX).join('|')})\\b`, 'g');
 const FALLBACK_JS = "if(this.src.includes('cdn.jsdelivr.net')){this.src=this.src.replace('https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/','https://raw.githubusercontent.com/PokeAPI/sprites/master/');return}";
@@ -57,7 +64,7 @@ const list = (items, level = 0) => `<ul class="${level ? '!mt-1 ' : ''}!mb-0 spa
 function gym(g, n) {
   const emoji = TYPE_EMOJI[g.type] ?? '🏟️';
   const [a, b] = g.duo.map(([k, move]) => ({ ...data.mons[k], move }));
-  const duoCell = (m) => `<li class="flex flex-col items-center text-center">${img(m.name, m.dex, 80)}<span class="text-xs text-muted">${esc(m.name)}</span><span class="text-sm hl hl-${m.hl ?? TYPE_HL[m.type] ?? 'n'}">${esc(m.move)}</span></li>`;
+  const duoCell = (m) => `<li class="flex flex-col items-center text-center">${img(m.name, m.dex, 80)}<span class="text-xs text-muted">${esc(m.name)}</span>${m.move ? `<span class="text-sm hl hl-${m.hl ?? TYPE_HL[m.type] ?? 'n'}">${esc(m.move)}</span>` : ''}</li>`;
   return `<div class="card !items-stretch !gap-3 flex-1">
     <div class="flex flex-col items-center gap-1 text-center">
       <img src="${trainerSrc(g.leader)}" data-local="${trainerLocal(g.leader)}" data-own-error alt="Líder del gimnasio de ${esc(g.city)} (${esc(g.type)})" width="96" height="96" loading="lazy" decoding="async"
@@ -74,13 +81,15 @@ function gym(g, n) {
 
 const swap = ({ item, to }) => `<p class="!m-0 rounded-xl border-2 border-accent bg-accent/10 px-3 py-2 text-center text-sm font-bold" role="note"><span aria-hidden="true">🔁</span> ¡¡Cambiar a ${itemIcon(item)} ${esc(item)} → ${DEX[to] ? spriteChip(to, true) : esc(to)}!!</p>`;
 
+const infoBar = ({ icon, text }) => `<p class="!m-0 rounded-xl border-2 border-line bg-surface px-3 py-2 text-center text-sm font-bold" role="note"><span aria-hidden="true">${icon}</span> ${esc(text)}</p>`;
+
 const reset = () => `<p class="!m-0 rounded-xl border-2 border-red-500 bg-red-500/10 px-3 py-2 text-center text-sm font-bold" role="note"><span aria-hidden="true">❤️</span> RESET en el CP (Centro Pokémon)</p>`;
 
 // Cada gimnasio es una card; los RESET y «Cambiar a…» que le siguen quedan pegados debajo de ella (como barras finas).
 function gymItems(entries) {
   const items = [];
   for (const e of entries) {
-    if (e.reset || e.swap) {
+    if (e.reset || e.swap || e.bar) {
       if (!items.length) items.push({ gym: null, extras: [] });
       items[items.length - 1].extras.push(e);
     } else items.push({ gym: e, extras: [] });
@@ -92,9 +101,9 @@ function region(r, next) {
   let n = 0;
   return `<section id="reg-${r.id}" data-sub="${r.id}" aria-labelledby="reg-${r.id}-t" class="scroll-mt-24">
     <h4 id="reg-${r.id}-t" class="!mt-6 text-xl font-bold">${esc(r.name)}</h4>
-    <figure class="my-4"><img src="../img/${cfg.maps}/${r.map}" alt="Mapa de ${esc(r.name)} del PDF con la ruta numerada del 1 al ${r.mapCount ?? (r.id === 'teselia' ? 7 : r.id === 'sinnoh' ? 5 : r.id === 'johto' ? 5 : r.id === 'hoenn' ? 6 : 2)}" loading="lazy" decoding="async" class="mx-auto w-full max-w-2xl rounded-xl border border-line" />
-      <figcaption class="mt-1 text-center text-sm text-muted">Mapa tomado del PDF. Los números del mapa no están explicados en el PDF.</figcaption></figure>
-    <ol class="!pl-0 !list-none grid gap-4 md:grid-cols-2">${gymItems(r.gyms).map((it) => `<li class="flex flex-col gap-2">${it.gym ? gym(it.gym, ++n) : ''}${it.extras.map((x) => (x.reset ? reset() : swap(x.swap))).join('')}</li>`).join('')}</ol>
+    <figure class="my-4"><img src="../img/${cfg.maps}/${r.map}" alt="Mapa de ${esc(r.name)} del ${cfg.doc ?? 'PDF'} con la ruta numerada del 1 al ${r.mapCount ?? (r.id === 'teselia' ? 7 : r.id === 'sinnoh' ? 5 : r.id === 'johto' ? 5 : r.id === 'hoenn' ? 6 : 2)}" loading="lazy" decoding="async" class="mx-auto w-full max-w-2xl rounded-xl border border-line" />
+      <figcaption class="mt-1 text-center text-sm text-muted">Mapa tomado del ${cfg.doc ?? 'PDF'}. Los números del mapa no están explicados en el ${cfg.doc ?? 'PDF'}.</figcaption></figure>
+    <ol class="!pl-0 !list-none grid gap-4 md:grid-cols-2">${gymItems(r.gyms).map((it) => `<li class="flex flex-col gap-2">${it.gym ? gym(it.gym, ++n) : ''}${it.extras.map((x) => (x.reset ? reset() : x.bar ? infoBar(x.bar) : swap(x.swap))).join('')}</li>`).join('')}</ol>
     ${next ? `<p class="mt-6 text-center"><a href="#${next.id}" data-next-sub class="btn-primary !px-6 !py-3 !text-base">Ir a ${esc(next.name)} <span aria-hidden="true">→</span></a></p>` : ''}
   </section>`;
 }
@@ -111,11 +120,12 @@ export function renderFarmeo(guide = { slug: 'farmeo-gimnasios' }) {
       <p>Ruta de farmeo de gimnasios por región y qué hacer en cada situación, con un equipo fijo de cinco Pokémon.</p>
       <aside class="callout" aria-labelledby="credits-title">
         <p id="credits-title" class="!mb-1 font-bold"><span aria-hidden="true">🙏</span> Créditos</p>
-        <p class="!mb-1">Guía de farmeo de gimnasios por ${esc(data.author)} (PokeMMO).</p>
+        ${data.author ? `<p class="!mb-1">Guía de farmeo de gimnasios por ${esc(data.author)} (PokeMMO).</p>` : ''}
         ${data.source ? `<p class="!mb-1"><strong>Fuente original:</strong> <a class="font-medium" href="${esc(data.source.url)}" target="_blank" rel="noopener noreferrer">${esc(data.source.name)}<span class="sr-only"> (nueva pestaña)</span></a>. ${esc(data.source.note)}</p>` : ''}
         <p class="!mb-0 text-muted">Última actualización del documento: ${esc(data.updated)}.${data.nick === null ? '' : '<br>Nick: xXZarcAndXx'}</p>
       </aside>
 
+      ${cfg.docButton && data.source ? `<p><a class="btn-ghost" href="${esc(data.source.url)}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📄</span> Ver guía original<span class="sr-only"> (nueva pestaña)</span></a></p>` : ''}
       ${cfg.pdf ? `<p><a class="btn-ghost" href="../docs/${cfg.pdf}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📄</span> Ver el PDF original<span class="sr-only"> (nueva pestaña)</span></a></p>` : ''}
       ${data.legibility ? `<p class="callout !p-3 text-sm" role="note"><span aria-hidden="true">⚠️</span> ${esc(data.legibility)}</p>` : ''}
       ${data.objects

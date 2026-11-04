@@ -21,7 +21,7 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const SPRITE = 'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/versions/generation-v/black-white/animated/';
 
 // Guías con contenido interactivo propio (slug → renderizador)
-const custom = { 'derrotar-red': renderRed, 'raid-meloetta': renderMeloetta, 'farmeo-gimnasios': renderFarmeo, 'farmeo-gimnasios-2026': renderFarmeo, 'raid-cresselia': renderCresselia, 'farmeo-hooh': renderHooh, 'rusheo-multiregion': renderRusheo };
+const custom = { 'derrotar-red': renderRed, 'raid-meloetta': renderMeloetta, 'farmeo-gimnasios': renderFarmeo, 'farmeo-gimnasios-2026': renderFarmeo, 'farmeo-gimnasios-starry': renderFarmeo, 'raid-cresselia': renderCresselia, 'farmeo-hooh': renderHooh, 'rusheo-multiregion': renderRusheo };
 
 function bodyHtml(g) {
   if (custom[g.slug]) return custom[g.slug](g);
