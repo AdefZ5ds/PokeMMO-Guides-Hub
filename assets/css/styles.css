@@ -169,3 +169,16 @@ body.home-bg {
 .dw-toggle { @apply inline-flex items-center gap-1 rounded-lg border border-accent-strong bg-accent-strong/10 px-2 py-0.5 font-semibold text-accent-text; }
 .dw-toggle:hover { @apply bg-accent-strong/20; }
 .dw-nav { @apply mx-auto mt-3 flex max-w-[520px] items-center justify-between gap-3; }
+
+/* Créditos de cierre (tarjeta oscura centrada, igual en claro y oscuro) */
+.credits-card { position: relative; overflow: hidden; margin: 2.5rem 0 0; border-radius: 1.125rem; padding: 1.75rem 1.375rem; text-align: center; background: #0f172a; color: #e2e8f0; }
+.credits-card::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 80% at 50% 0%, rgba(251,191,36,.16), transparent 70%); }
+.credits-card > * { position: relative; }
+.credits-kick { margin: 0 !important; font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; color: #fbbf24; }
+.credits-title { margin: .3rem 0 1.1rem !important; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 1.5rem; line-height: 1.2; color: #fff; text-wrap: balance; }
+.credits-role { margin: 0 0 .875rem !important; }
+.credits-role span { display: block; margin-bottom: .125rem; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: #94a3b8; }
+.credits-role b { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 1.15rem; text-wrap: balance; }
+.credits-card hr { height: 1px; margin: 1.125rem 0; border: 0; background: linear-gradient(90deg, transparent, #334155, transparent); }
+.credits-small { max-width: 46ch; margin: 0 auto .75rem !important; font-size: .82rem; line-height: 1.5; color: #94a3b8; }
+.credits-card a { color: #93c5fd !important; text-decoration: underline; }

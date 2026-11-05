@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { esc, img, teamCard } from './lib/cards.mjs';
+import { esc, img, teamCard, creditsCard } from './lib/cards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const data = JSON.parse(readFileSync(resolve(root, 'scripts/content/raid-cresselia.json'), 'utf8'));
@@ -71,11 +71,6 @@ export function renderCresselia() {
   const sp = data.speed;
   return `<div id="raid-guide">
     <p>Estrategia de 4 jugadores para derrotar la raid de Cresselia en 12 turnos: elige tu jugador para ver tu equipo y, debajo, tus acciones turno a turno.</p>
-    <aside class="callout" aria-labelledby="credits-title">
-      <p id="credits-title" class="!mb-1 font-bold"><span aria-hidden="true">🙏</span> Créditos</p>
-      <p class="!mb-1">${esc(data.credits)}</p>
-      <p class="!mb-0 text-muted">Última actualización del documento: ${esc(data.updated)}.</p>
-    </aside>
     <p class="callout !border-red-500 !bg-red-500/10" role="note"><strong>⚠️ Importante:</strong> ${esc(data.warning)}</p>
     <p class="flex flex-wrap gap-2">${data.videos.map(([who, url]) => `<a class="btn-ghost" href="${esc(url)}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▶️</span> Video de ${esc(who)}<span class="sr-only"> (YouTube, nueva pestaña)</span></a>`).join('')}</p>
     <p><a class="btn-ghost" href="../docs/guia-raid-cresselia.pdf" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📄</span> Ver el PDF original<span class="sr-only"> (nueva pestaña)</span></a></p>
@@ -95,5 +90,9 @@ export function renderCresselia() {
     <p class="callout !p-3 text-sm" role="note"><span aria-hidden="true">ℹ️</span> ${esc(data.itemsNote)}</p>
     <div id="pj-controls"></div>
     ${data.players.map(player).join('\n')}
+${creditsCard({
+    roles: [['Estrategia', 'Kriptonito · Kalfff · Rockerito · PAXPO'], ['Actualización del 9/11/2025', 'Ackoo SweetGamer · Zzudo']],
+    notes: ['Tomando como referencia el pokepaste del primer equipo chino que derrotó a Cresselia, con ajustes para depender menos del RNG.', `Última actualización del documento: ${esc(data.updated)}.`],
+  })}
   </div>`;
 }

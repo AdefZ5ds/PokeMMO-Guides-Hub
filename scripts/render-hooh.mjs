@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { esc, img, teamCard, consumables } from './lib/cards.mjs';
+import { esc, img, teamCard, consumables, creditsCard } from './lib/cards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const d = JSON.parse(readFileSync(resolve(root, 'scripts/content/farmeo-hooh.json'), 'utf8'));
@@ -42,11 +42,10 @@ export function renderHooh() {
         <tbody class="block sm:table-row-group">${d.turns.map((t) => `<tr class="mb-3 grid grid-cols-3 rounded-xl border border-line bg-surface p-2 sm:mb-0 sm:table-row sm:rounded-none sm:border-0 sm:border-t sm:bg-transparent sm:p-0"><th scope="row" class="col-span-3 p-1 text-left text-base font-bold text-accent-text sm:table-cell sm:p-2">T${t.t}</th>${cell('P', t.P)}${cell('R', t.R)}${cell('C', t.C)}</tr>`).join('')}</tbody></table>
     </section>
 
-    <aside class="callout mt-8" aria-labelledby="credits-title">
-      <p id="credits-title" class="!mb-1 font-bold"><span aria-hidden="true">🙏</span> Créditos</p>
-      <p class="!mb-1">Guía de ${esc(d.author)} (PokeMMO). Estrategia creada por ${esc(d.strategyBy)} (canal de YouTube).</p>
-      <p class="!mb-0 text-muted">Última actualización del documento: ${esc(d.updated)}.</p>
-    </aside>
     
+${creditsCard({
+    roles: [['Guía', d.author], ['Estrategia (canal de YouTube)', d.strategyBy]],
+    notes: [`Última actualización del documento: ${esc(d.updated)}.`],
+  })}
   </div>`;
 }

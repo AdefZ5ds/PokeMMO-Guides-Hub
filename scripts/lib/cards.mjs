@@ -76,7 +76,7 @@ export function teamCard(m, statLabels) {
 
 /** Sprite pequeño en línea (sin caja ni nombre visible; el nombre queda como texto alternativo). */
 // Tamaño en PC: 57×57 (móvil 36×36). La guía de rusheo pasa `size` para mantener el suyo.
-export const inlineSprite = (name, dex, label = name, size = 'h-9 w-9 md:h-[57px] md:w-[57px]') =>
+export const inlineSprite = (name, dex, label = name, size = 'h-9 w-9 md:h-[40px] md:w-[40px]') =>
   `<img src="${SPRITE}${dex}.gif" alt="${esc(label)}" title="${esc(label)}" width="96" height="96" loading="lazy" decoding="async" class="mx-0.5 inline-block ${size} align-middle object-contain [image-rendering:pixelated]" />`;
 
 /** Texto donde los Pokémon del equipo se sustituyen por su sprite en línea. */
@@ -90,3 +90,16 @@ export function chips(text, team) {
 export const consumables = (items, cols = 'sm:grid-cols-3') =>
   `<ul class="!pl-0 !list-none grid gap-2 ${cols}">${items.map((c) =>
     `<li class="flex items-center gap-3 rounded-xl border border-line bg-surface p-2.5">${itemIcon(c.name, 'h-10 w-10') || '<span aria-hidden="true" class="text-2xl">🎒</span>'}<span><strong>${esc(c.name)}</strong><br><span class="text-sm text-muted">${/^mín/i.test(String(c.min)) ? '' : 'mín. '}${esc(c.min)}</span></span></li>`).join('')}</ul>`;
+
+// Créditos de cierre: tarjeta oscura centrada. roles = [[etiqueta, nombres], ...]; notes = [texto, ...] (HTML ya escapado);
+// link = { url, label } opcional. Los textos se escapan aquí salvo `notes`/`links`, que el llamador ya escapó.
+export const creditsCard = ({ roles = [], notes = [], links = [] }) => `
+    <aside class="credits-card" aria-labelledby="credits-title">
+      <p class="credits-kick">Gracias a</p>
+      <h3 id="credits-title" class="credits-title">Los creadores de esta guía</h3>
+      ${roles.map(([label, names]) => `<p class="credits-role"><span>${esc(label)}</span><b>${esc(names)}</b></p>`).join('')}
+      ${notes.length || links.length ? '<hr>' : ''}
+      ${notes.map((n) => `<p class="credits-small">${n}</p>`).join('')}
+      ${links.map((l) => `<p class="credits-small"><a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📄</span> ${esc(l.label)}<span class="sr-only"> (nueva pestaña)</span></a></p>`).join('')}
+    </aside>
+`;

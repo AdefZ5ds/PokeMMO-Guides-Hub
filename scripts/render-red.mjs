@@ -2,7 +2,7 @@
 // Todo el contenido es visible sin JS; assets/js/red.js añade pestañas y enlaces internos.
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
-import { SPRITE, esc, img, chips, teamCard as teamCardLib } from './lib/cards.mjs';
+import { SPRITE, esc, img, chips, teamCard as teamCardLib, creditsCard } from './lib/cards.mjs';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -48,11 +48,6 @@ export function renderRed(guide) {
     <section id="reg-resumen" data-region="resumen" aria-labelledby="reg-resumen-t" class="scroll-mt-24">
       <h3 id="reg-resumen-t" class="!mt-8 text-xl font-bold">Resumen</h3>
       <p>Equipo y respuestas para vencer a RED en todas sus variantes: identifica la generación del rival, mira su Pokémon líder y sigue los pasos.</p>
-      <aside class="callout" aria-labelledby="credits-title">
-        <p id="credits-title" class="!mb-1 font-bold"><span aria-hidden="true">🙏</span> Créditos</p>
-        <p class="!mb-1">${esc(data.credits)}</p>
-        <p class="!mb-0 text-muted">Última actualización del documento: ${esc(data.updated)}. <a href="../${data.pdf}" target="_blank" rel="noopener noreferrer">Ver PDF original<span class="sr-only"> (nueva pestaña)</span></a></p>
-      </aside>
       <h4 class="!mt-6 font-bold">Antes de empezar</h4>
       <ul>${data.considerations.map((c) => `<li>${esc(c)}</li>`).join('')}</ul>
     </section>
@@ -75,5 +70,10 @@ export function renderRed(guide) {
   </div>
 
     <p class="text-sm text-muted">Palabras finales del autor de la traducción: la estrategia original no le pertenece; su objetivo es acercarla a la comunidad hispanohablante. Todos los créditos corresponden a sus creadores originales.</p>
+${creditsCard({
+    roles: [['Creación original', 'ABQNI (PokeMMO) · z (BiliBili)'], ['Mejoras', 'ZzPSYCHOzZ y la comunidad inglesa']],
+    notes: ['Guía de la comunidad china publicada en BiliBili. Según el documento traducido, se obtuvo permiso directo de la autora para traducirla al español.', `Última actualización del documento: ${esc(data.updated)}.`],
+    links: [{ url: `../${data.pdf}`, label: 'Ver PDF original' }],
+  })}
   </div>`;
 }

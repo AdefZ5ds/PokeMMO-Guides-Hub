@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { existsSync } from 'node:fs';
-import { esc, img, teamCard, inlineSprite, bagIcons } from './lib/cards.mjs';
+import { esc, img, teamCard, inlineSprite, bagIcons, creditsCard } from './lib/cards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const d = JSON.parse(readFileSync(resolve(root, 'scripts/content/rusheo.json'), 'utf8'));
@@ -113,10 +113,10 @@ export function renderRusheo() {
       ${p.id === 'final' ? '<p class="callout mt-4" role="status"><span aria-hidden="true">🎉</span> ¡Felicidades! Has completado todas las regiones de forma paralela y eficiente.</p>' : ''}
     </section>`).join('\n')}
 
-    <aside class="callout mt-8" aria-labelledby="credits-title">
-      <p id="credits-title" class="!mb-1 font-bold"><span aria-hidden="true">🙏</span> Créditos</p>
-      <p class="!mb-1">${d.creditUrl ? `<a class="font-medium" href="${esc(d.creditUrl)}" target="_blank" rel="noopener noreferrer">${esc(d.credit)}<span class="sr-only"> (nueva pestaña)</span></a>` : esc(d.credit)}</p>
-      <p class="!mb-0 text-muted">${esc(d.creditNote)}</p>
-    </aside>
+${creditsCard({
+    roles: [['Autor', d.credit]],
+    notes: [esc(d.creditNote)],
+    links: d.creditUrl ? [{ url: d.creditUrl, label: 'Ver guía original en el foro' }] : [],
+  })}
   </div>`;
 }

@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { esc, img, teamCard } from './lib/cards.mjs';
+import { esc, img, teamCard, creditsCard } from './lib/cards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const data = JSON.parse(readFileSync(resolve(root, 'scripts/content/raid-meloetta.json'), 'utf8'));
@@ -71,11 +71,6 @@ export function renderMeloetta() {
   const sp = data.speed;
   return `<div id="raid-guide">
     <p>Estrategia de 4 jugadores para derrotar la raid de Meloetta: elige tu jugador para ver tu equipo y, debajo, tus acciones turno a turno.</p>
-    <aside class="callout" aria-labelledby="credits-title">
-      <p id="credits-title" class="!mb-1 font-bold"><span aria-hidden="true">🙏</span> Créditos</p>
-      <p class="!mb-1">${esc(data.credits)}</p>
-      <p class="!mb-0 text-muted">Última actualización del documento: ${esc(data.updated)}.</p>
-    </aside>
     <p><a class="btn-ghost" href="${esc(data.video)}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▶️</span> Guía en video (YouTube)<span class="sr-only"> (nueva pestaña)</span></a></p>
 
     <h2>Equipos por jugador</h2>
@@ -96,5 +91,9 @@ export function renderMeloetta() {
       <tbody>${data.damage.rows.map((r) => `<tr class="border-t border-line"><th scope="row" class="p-2 text-left font-semibold">${esc(r[0])}</th><td class="p-2 tabular-nums">${esc(r[1])}</td><td class="p-2 tabular-nums">${esc(r[2])}</td></tr>`).join('')}</tbody></table></div>
     <p class="text-sm text-muted">Valores leídos de una captura de una calculadora de daño dentro del PDF; el PDF no explica qué representa exactamente cada porcentaje.</p>
 
+${creditsCard({
+    roles: [['Estrategia «Starfall optimizada»', 'AYYA · MOVE · ASUS · iboki · gsboading'], ['Versión revitalizada', 'RogueMaster (Phoebe) o Nhien']],
+    notes: [`Última actualización del documento: ${esc(data.updated)}.`],
+  })}
   </div>`;
 }

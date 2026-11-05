@@ -3,7 +3,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { esc, img, teamCard, consumables, itemIcon, SPRITE } from './lib/cards.mjs';
+import { esc, img, teamCard, consumables, itemIcon, SPRITE, creditsCard } from './lib/cards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 // Una misma plantilla sirve a varias guías de farmeo: slug → archivo de contenido y carpeta de mapas.
@@ -46,7 +46,7 @@ const FALLBACK_JS = "if(this.src.includes('cdn.jsdelivr.net')){this.src=this.src
 function spriteChip(name, ally) {
   const role = ally ? 'Tu equipo' : 'Rival';
   return `<img src="${SPRITE}${DEX[name]}.gif" alt="${role}: ${name}" title="${role}: ${name}" width="96" height="96" loading="lazy" decoding="async" data-own-error `
-    + `class="mx-0.5 inline-block h-9 w-9 md:h-[57px] md:w-[57px] object-contain align-middle [image-rendering:pixelated]" `
+    + `class="mx-0.5 inline-block h-9 w-9 md:h-[40px] md:w-[40px] object-contain align-middle [image-rendering:pixelated]" `
     + `onerror="${FALLBACK_JS}this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${name}',className:'mx-0.5 font-semibold'}))" />`;
 }
 const isAlly = (name) => Object.values(data.mons).some((m) => m.name === name);
@@ -118,12 +118,6 @@ export function renderFarmeo(guide = { slug: 'farmeo-gimnasios' }) {
     <section id="reg-resumen" data-region="resumen" aria-labelledby="reg-resumen-t" class="scroll-mt-24">
       <h3 id="reg-resumen-t" class="!mt-8 text-xl font-bold">Resumen</h3>
       <p>Ruta de farmeo de gimnasios por región y qué hacer en cada situación, con un equipo fijo de cinco Pokémon.</p>
-      <aside class="callout" aria-labelledby="credits-title">
-        <p id="credits-title" class="!mb-1 font-bold"><span aria-hidden="true">🙏</span> Créditos</p>
-        ${data.author ? `<p class="!mb-1">Guía de farmeo de gimnasios por ${esc(data.author)} (PokeMMO).</p>` : ''}
-        ${data.source ? `<p class="!mb-1"><strong>Fuente original:</strong> <a class="font-medium" href="${esc(data.source.url)}" target="_blank" rel="noopener noreferrer">${esc(data.source.name)}<span class="sr-only"> (nueva pestaña)</span></a>. ${esc(data.source.note)}</p>` : ''}
-        <p class="!mb-0 text-muted">Última actualización del documento: ${esc(data.updated)}.${data.nick === null ? '' : '<br>Nick: xXZarcAndXx'}</p>
-      </aside>
 
       ${cfg.docButton && data.source ? `<p><a class="btn-ghost" href="${esc(data.source.url)}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📄</span> Ver guía original<span class="sr-only"> (nueva pestaña)</span></a></p>` : ''}
       ${cfg.pdf ? `<p><a class="btn-ghost" href="../docs/${cfg.pdf}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📄</span> Ver el PDF original<span class="sr-only"> (nueva pestaña)</span></a></p>` : ''}
@@ -146,5 +140,10 @@ export function renderFarmeo(guide = { slug: 'farmeo-gimnasios' }) {
       ${data.regions.map((r, i) => region(r, data.regions[i + 1])).join('\n')}
     </section>
 
+${creditsCard({
+    roles: [...(data.author ? [['Guía de farmeo de gimnasios', data.author]] : []), ...(data.source ? [['Fuente original', data.source.name]] : []), ...(data.nick === null ? [] : [['Nick', 'xXZarcAndXx']])],
+    notes: [...(data.source ? [esc(data.source.note)] : []), `Última actualización del documento: ${esc(data.updated)}.`],
+    links: [...(data.source ? [{ url: data.source.url, label: 'Ver guía original' }] : [])],
+  })}
   </div>`;
 }

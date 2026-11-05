@@ -69,3 +69,7 @@
 ## Tercera ronda
 - **Cards de farmeo**: las dos cards de una misma fila ahora miden lo mismo (la corta se estira) y las barras de RESET / cambio de objeto quedan debajo de su card.
 - **Sprites en las notas (las dos guías de farmeo)**: cada vez que un texto nombra un Pokémon (notas, avisos de «Curar…» y cambios de objeto) se muestra solo su sprite, sin aro (aliado/rival solo consta en el texto alternativo del sprite). Si un sprite no carga (o no existe, como Rotom-Podadora), aparece el nombre en texto.
+
+## Ronda 8
+- Créditos de cierre: nueva tarjeta oscura centrada (`creditsCard` en `scripts/lib/cards.mjs`, estilos `.credits-*`) al final de todas las guías (RED, Cresselia, Meloetta, Ho-Oh, rusheo y las tres de farmeo).
+- Sprites de texto en PC: 57×57 → 40×40 (móvil 36×36; rusheo sin cambios).
