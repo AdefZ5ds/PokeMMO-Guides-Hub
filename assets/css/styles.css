@@ -183,17 +183,13 @@ a { text-decoration: none; }
    Fondo degradado fijo + Poké Ball; paneles de vidrio translúcido con borde grueso y relieve.
    Modo nocturno: mismo estilo sobre azul noche (clase .dark, botón de tema). */
 body { background-color: rgb(var(--bg)); }
-body::before { content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
-  background: radial-gradient(40% 35% at 8% 12%, rgb(253 224 71 / .55), transparent 70%),
-              radial-gradient(45% 40% at 70% 55%, rgb(56 189 248 / .5), transparent 70%),
-              linear-gradient(160deg, #ef4444 0%, #f97316 38%, #3b82f6 100%); }
-body::after { content: ""; position: fixed; z-index: -1; pointer-events: none; width: 36rem; height: 36rem; right: -9rem; bottom: -12rem; border-radius: 50%;
-  background: linear-gradient(#ef4444 0 47%, #fff 47% 53%, #e2e8f0 53%); opacity: .38; }
-.dark body::before { background: radial-gradient(40% 35% at 8% 12%, rgb(220 38 38 / .38), transparent 70%),
-              radial-gradient(45% 40% at 70% 55%, rgb(37 99 235 / .4), transparent 70%),
-              linear-gradient(160deg, #1b0b1a 0%, #140f2e 45%, #0a1c44 100%); }
-.dark body::after { opacity: .14; }
-@media (max-width: 640px) { body::after { width: 22rem; height: 22rem; right: -8rem; bottom: -8rem; } }
+body::before { content: ""; position: fixed; inset: 0; height: 100vh; height: 100lvh; z-index: -2; pointer-events: none; filter: blur(22px) saturate(.9); transform: scale(1.12);
+  background: linear-gradient(rgb(255 255 255 / .38), rgb(255 255 255 / .38)), url('/img/fondo-sitio.webp') center / cover no-repeat; }
+.dark body::before { background: linear-gradient(rgb(6 10 24 / .8), rgb(6 10 24 / .8)), url('/img/fondo-sitio.webp') center / cover no-repeat; }
+@media (max-width: 640px) {
+  body::before { background-image: linear-gradient(rgb(255 255 255 / .38), rgb(255 255 255 / .38)), url('/img/fondo-sitio-movil.webp'); }
+  .dark body::before { background-image: linear-gradient(rgb(6 10 24 / .8), rgb(6 10 24 / .8)), url('/img/fondo-sitio-movil.webp'); }
+}
 
 /* Superficies: translúcidas (las utilidades de Tailwind quedan por debajo de estas reglas sin capa) */
 .bg-surface { background-color: rgb(var(--surface) / .74); }
@@ -228,3 +224,15 @@ h1, h2, h3, h4, .font-display { font-weight: 800; }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .panel, .guide-toc, header.sticky, footer.border-t { background-color: rgb(var(--surface) / .94); }
 }
+
+/* Móvil (Android): las tarjetas no pueden ensanchar la columna; el contenido ancho se desplaza dentro de ellas */
+.card, .guide-body li, .guide-body .grid > * { min-width: 0; max-width: 100%; }
+@media (max-width: 480px) {
+  .guide-body { padding-left: .75rem; padding-right: .75rem; border-radius: 1.25rem; }
+  .panel { border-radius: 1.25rem; }
+  .guide-wrap { padding-left: .75rem; padding-right: .75rem; }
+}
+
+/* Avisos: fondo de vidrio legible (antes amarillo sobre amarillo) con borde dorado */
+.callout { background-color: rgb(var(--surface) / .88); border-color: rgb(var(--gold) / .9); }
+.dark .callout { background-color: rgb(var(--surface) / .8); }

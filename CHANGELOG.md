@@ -79,3 +79,12 @@
 - Modo nocturno del mismo estilo (azul noche, vidrio oscuro, selección en rojo), con el botón de tema de siempre.
 - Portada y guías: paneles `.panel` (portada, objetivos), contenido de cada guía y índice lateral dentro de paneles de vidrio; barra superior y pie con desenfoque.
 - Tipografía: Nunito (antes Bricolage Grotesque + Hanken Grotesk). Se retira el fondo `fondo-inicio.webp` de la portada (el archivo sigue en `public/img`).
+
+## Ronda 10
+- Fondo de todo el sitio: imagen de Pikachu en el bosque (`public/img/fondo-sitio.webp` + versión vertical `fondo-sitio-movil.webp` para móviles), fija al hacer scroll; velo claro/oscuro según el tema. Se quita el degradado y la Poké Ball.
+- Android: las tarjetas de equipo ya no ensanchan la columna (se cortaban a 360 px); menos relleno lateral en paneles y guías en pantallas ≤480 px; fondo fijo con `100lvh` para que no salte con la barra de direcciones.
+- Vídeo de la portada: se reproduce solo al entrar (`autoplay`) y ya no tiene botón de pausa; si el sistema lo detiene (segundo plano, ahorro de batería) se retoma solo.
+
+## Ronda 10b
+- Fondo del sitio desenfocado (blur 22 px + velo más fuerte) para que no sea notorio; solo se distinguen los colores del bosque.
+- Avisos (`.callout`): fondo de vidrio legible con borde dorado (antes amarillo sobre amarillo).

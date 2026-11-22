@@ -66,33 +66,16 @@ document.getElementById('lang-select')?.addEventListener('change', (e) => setLan
 window.addEventListener('langchange', () => { updateThemeLabel(); paintAnim(); });
 paintAnim();
 
-// --- Hero: vídeo de fondo con botón de pausa; sin movimiento si el usuario lo pide ---
+// --- Hero: el vídeo se reproduce siempre al entrar y no tiene control de pausa ---
 const heroVideo = document.getElementById('hero-video');
-const heroBtn = document.getElementById('hero-toggle');
-if (heroVideo && heroBtn) {
-  const { icon } = await import('./icons.js');
-  const paint = () => {
-    const paused = heroVideo.paused;
-    heroBtn.setAttribute('aria-pressed', String(paused));
-    heroBtn.setAttribute('aria-label', t(paused ? 'hero.resume' : 'hero.pause'));
-    heroBtn.innerHTML = icon(paused ? 'play' : 'pause', 'icon h-5 w-5');
-  };
-  heroBtn.classList.replace('hidden', 'grid');
-  // El vídeo (≈7 MB) no se pide hasta que la página termina de cargar, y no se reproduce solo
-  // con «ahorro de datos», conexión lenta o «reducir movimiento»: ahí se queda el póster.
-  const conn = navigator.connection || {};
-  const slow = conn.saveData || /(^|-)2g|3g/.test(conn.effectiveType || '');
-  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!slow && !calm) {
-    const start = () => { heroVideo.preload = 'auto'; heroVideo.play().catch(() => {}); };
-    const later = () => (window.requestIdleCallback || ((f) => setTimeout(f, 300)))(start);
-    document.readyState === 'complete' ? later() : window.addEventListener('load', later, { once: true });
-  }
-  heroBtn.addEventListener('click', () => { heroVideo.paused ? heroVideo.play() : heroVideo.pause(); });
-  heroVideo.addEventListener('play', paint);
-  heroVideo.addEventListener('pause', paint);
-  window.addEventListener('langchange', paint);
-  paint();
+if (heroVideo) {
+  heroVideo.muted = true;
+  const go = () => { if (heroVideo.paused) heroVideo.play().catch(() => {}); };
+  go();
+  // Si el sistema lo detiene (pestaña en segundo plano, ahorro de batería, bloqueo de autoplay), se retoma solo.
+  heroVideo.addEventListener('pause', () => { if (!document.hidden) setTimeout(go, 150); });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) go(); });
+  ['touchstart', 'pointerdown', 'scroll', 'keydown'].forEach((ev) => window.addEventListener(ev, go, { once: true, passive: true }));
 }
 
 // --- Portada: Alpine y la lógica de filtros se cargan solo aquí ---
