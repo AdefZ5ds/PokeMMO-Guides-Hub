@@ -25,8 +25,8 @@ export default {
         gold: v('gold'),
       },
       fontFamily: {
-        sans: ['"Hanken Grotesk"', 'ui-sans-serif', 'system-ui', '"Noto Sans SC"', '"PingFang SC"', '"Microsoft YaHei"', 'sans-serif'],
-        display: ['"Bricolage Grotesque"', '"Hanken Grotesk"', 'ui-sans-serif', 'system-ui', '"Noto Sans SC"', '"PingFang SC"', '"Microsoft YaHei"', 'sans-serif'],
+        sans: ['"Nunito"', 'ui-sans-serif', 'system-ui', '"Noto Sans SC"', '"PingFang SC"', '"Microsoft YaHei"', 'sans-serif'],
+        display: ['"Nunito"', 'ui-sans-serif', 'system-ui', '"Noto Sans SC"', '"PingFang SC"', '"Microsoft YaHei"', 'sans-serif'],
       },
     },
   },

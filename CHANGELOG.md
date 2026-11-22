@@ -73,3 +73,9 @@
 ## Ronda 8
 - Créditos de cierre: nueva tarjeta oscura centrada (`creditsCard` en `scripts/lib/cards.mjs`, estilos `.credits-*`) al final de todas las guías (RED, Cresselia, Meloetta, Ho-Oh, rusheo y las tres de farmeo).
 - Sprites de texto en PC: 57×57 → 40×40 (móvil 36×36; rusheo sin cambios).
+
+## Ronda 9 · Estilo glassmorphism «Escarcha Poké»
+- Nuevo estilo global (`assets/css/styles.css`, bloque final): fondo degradado fijo rojo-naranja-azul con Poké Ball, paneles de vidrio translúcido con borde grueso y relieve, botones rojos con relieve.
+- Modo nocturno del mismo estilo (azul noche, vidrio oscuro, selección en rojo), con el botón de tema de siempre.
+- Portada y guías: paneles `.panel` (portada, objetivos), contenido de cada guía y índice lateral dentro de paneles de vidrio; barra superior y pie con desenfoque.
+- Tipografía: Nunito (antes Bricolage Grotesque + Hanken Grotesk). Se retira el fondo `fondo-inicio.webp` de la portada (el archivo sigue en `public/img`).

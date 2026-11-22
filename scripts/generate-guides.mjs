@@ -65,8 +65,8 @@ function page(g) {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" /></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&display=swap" /></noscript>
   <script>
     try {
       var s = localStorage.getItem('pmmo-theme');
@@ -166,7 +166,7 @@ function page(g) {
         <p class="font-semibold" data-i18n="footer.credits">Créditos</p>
         <ul class="mt-3 space-y-2 text-muted">
           <li><span data-i18n="footer.sprites">Sprites: PokeAPI y Pokémon Showdown.</span> <a class="text-accent-text" href="https://pokeapi.co" target="_blank" rel="noopener noreferrer">pokeapi.co<span class="sr-only" data-i18n="a11y.newTab"> (nueva pestaña)</span></a></li>
-          <li data-i18n="footer.icons">Iconos: Lucide · Tipografías: Bricolage Grotesque y Hanken Grotesk.</li>
+          <li data-i18n="footer.icons">Iconos: Lucide · Tipografía: Nunito.</li>
         </ul>
       </div>
     </div>

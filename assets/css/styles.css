@@ -9,11 +9,12 @@
    - Botones rellenos usan accent-strong (#2563eb) con texto blanco: 5.2:1; badges dorados con texto slate-900: 11.7:1.
    El acento de marca #3b82f6 solo se usa en bordes/decoración (no texto pequeño). */
 :root {
-  --bg: 248 250 252;
+  --bg: 255 237 225;
   --surface: 255 255 255;
-  --line: 226 232 240;
-  --fg: 15 23 42;
-  --muted: 71 85 105;
+  --line: 120 108 140;
+  --fg: 18 24 43;
+  --muted: 51 62 88;
+  --ink: 18 24 43; --ink-a: .95;
   --accent: 59 130 246;
   --accent-strong: 37 99 235;
   --accent-text: 29 78 216;
@@ -22,11 +23,12 @@
   color-scheme: light;
 }
 :root.dark {
-  --bg: 15 23 42;
-  --surface: 30 41 59;
-  --line: 51 65 85;
-  --fg: 226 232 240;
-  --muted: 148 163 184;
+  --bg: 9 12 28;
+  --surface: 22 30 56;
+  --line: 90 105 150;
+  --fg: 232 236 250;
+  --muted: 165 176 204;
+  --ink: 160 175 215; --ink-a: .5;
   --accent-text: 96 165 250;
   --goal-boss: #ff8a8a; --goal-farm: #f0b84a; --goal-region: #5fd39a; --goal-breed: #f08ad0; --goal-basic: #a9b8cf;
   color-scheme: dark;
@@ -124,12 +126,6 @@ a { text-decoration: none; }
 .stat-max { color: #4d7c0f; font-weight: 700; }
 .dark .stat-max { color: #a3e635; }
 
-/* Fondo general de la portada (solo con <body class="home-bg">). La imagen se mueve con el scroll y se repite en vertical;
-   un velo del color del tema mantiene el texto legible. Cambia .86 para más o menos velo. */
-body.home-bg {
-  background: linear-gradient(rgb(var(--bg) / .86), rgb(var(--bg) / .86)), url('/img/fondo-inicio.webp') top center / 100% auto repeat-y;
-  background-color: rgb(var(--bg));
-}
 
 /* Objetivos de la portada: color propio por fila (variable --c) */
 .goal-dot { width: .75rem; height: .75rem; flex: none; border-radius: .25rem; background: var(--c); }
@@ -182,3 +178,53 @@ body.home-bg {
 .credits-card hr { height: 1px; margin: 1.125rem 0; border: 0; background: linear-gradient(90deg, transparent, #334155, transparent); }
 .credits-small { max-width: 46ch; margin: 0 auto .75rem !important; font-size: .82rem; line-height: 1.5; color: #94a3b8; }
 .credits-card a { color: #93c5fd !important; text-decoration: underline; }
+
+/* ============ Estilo «Escarcha Poké» (glassmorphism) ============
+   Fondo degradado fijo + Poké Ball; paneles de vidrio translúcido con borde grueso y relieve.
+   Modo nocturno: mismo estilo sobre azul noche (clase .dark, botón de tema). */
+body { background-color: rgb(var(--bg)); }
+body::before { content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background: radial-gradient(40% 35% at 8% 12%, rgb(253 224 71 / .55), transparent 70%),
+              radial-gradient(45% 40% at 70% 55%, rgb(56 189 248 / .5), transparent 70%),
+              linear-gradient(160deg, #ef4444 0%, #f97316 38%, #3b82f6 100%); }
+body::after { content: ""; position: fixed; z-index: -1; pointer-events: none; width: 36rem; height: 36rem; right: -9rem; bottom: -12rem; border-radius: 50%;
+  background: linear-gradient(#ef4444 0 47%, #fff 47% 53%, #e2e8f0 53%); opacity: .38; }
+.dark body::before { background: radial-gradient(40% 35% at 8% 12%, rgb(220 38 38 / .38), transparent 70%),
+              radial-gradient(45% 40% at 70% 55%, rgb(37 99 235 / .4), transparent 70%),
+              linear-gradient(160deg, #1b0b1a 0%, #140f2e 45%, #0a1c44 100%); }
+.dark body::after { opacity: .14; }
+@media (max-width: 640px) { body::after { width: 22rem; height: 22rem; right: -8rem; bottom: -8rem; } }
+
+/* Superficies: translúcidas (las utilidades de Tailwind quedan por debajo de estas reglas sin capa) */
+.bg-surface { background-color: rgb(var(--surface) / .74); }
+.dark .bg-surface { background-color: rgb(var(--surface) / .62); }
+header.sticky { background-color: rgb(var(--surface) / .72); border-bottom: 2px solid rgb(var(--ink) / var(--ink-a)); -webkit-backdrop-filter: blur(16px) saturate(150%); backdrop-filter: blur(16px) saturate(150%); }
+footer.border-t { background-color: rgb(var(--surface) / .72); border-top: 2px solid rgb(var(--ink) / var(--ink-a)); -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); }
+
+.panel, .guide-body, .guide-toc {
+  background-color: rgb(var(--surface) / .76); border: 2px solid rgb(var(--ink) / var(--ink-a)); border-radius: 1.5rem;
+  box-shadow: 0 8px 0 rgb(var(--ink) / .14), 0 16px 34px rgb(0 0 0 / .18);
+}
+.dark .panel, .dark .guide-body, .dark .guide-toc { background-color: rgb(var(--surface) / .62); box-shadow: 0 8px 0 rgb(0 0 0 / .35), 0 16px 34px rgb(0 0 0 / .4); }
+.panel, .guide-toc, #filters-panel, .card, .callout { -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); }
+.guide-body { padding: .25rem 1.25rem 1.5rem; }
+@media (min-width: 640px) { .guide-body { padding: .5rem 1.75rem 2rem; } }
+.guide-toc { padding: .875rem; }
+@media (max-width: 1023px) { .guide-toc { border-radius: 1.125rem; } }
+#filters-panel { border-width: 2px; border-color: rgb(var(--ink) / var(--ink-a)); border-radius: 1.25rem; }
+.callout { border-width: 2px; }
+
+/* Bordes gruesos + relieve en controles */
+.card, .chip, .btn-ghost, .goal-pill, .toc-list a { border-width: 2px; border-color: rgb(var(--ink) / var(--ink-a)); }
+.field { border-width: 2px; border-color: rgb(var(--ink) / var(--ink-a)); background-color: rgb(var(--surface) / .9); }
+.btn-ghost, .chip, .goal-pill, .toc-list a { box-shadow: 0 3px 0 rgb(var(--ink) / calc(var(--ink-a) * .7)); }
+.btn-ghost:hover, .chip:hover, .goal-pill:hover, .toc-list a:hover { transform: translateY(-1px); }
+.btn-primary { background-color: #dc2626; border: 2px solid rgb(var(--ink) / var(--ink-a)); color: #fff; box-shadow: 0 4px 0 rgb(var(--ink) / var(--ink-a)); }
+.btn-primary:hover { background-color: #b91c1c; }
+.chip[aria-pressed='true'], .chip[aria-selected='true'], .toc-list a[aria-current='true'] { background-color: #12182b; border-color: #12182b; color: #fff; }
+.dark .chip[aria-pressed='true'], .dark .chip[aria-selected='true'], .dark .toc-list a[aria-current='true'] { background-color: #dc2626; border-color: rgb(var(--ink) / .7); }
+.credits-card { border: 2px solid rgb(255 255 255 / .3); box-shadow: 0 8px 0 rgb(0 0 0 / .25), 0 16px 34px rgb(0 0 0 / .3); }
+h1, h2, h3, h4, .font-display { font-weight: 800; }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .panel, .guide-toc, header.sticky, footer.border-t { background-color: rgb(var(--surface) / .94); }
+}
